@@ -6,32 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/22 11:53:20 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:08:46 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void	exec(t_data *data)
-{
-	int		pid;
-	char	*path;
-
-	while (*data->splitted_path)
-	{
-		path = ft_strjoin(*data->splitted_path, "/");
-		path = ft_strjoin(path, data->spllited_cmd_buf[0]);
-		if (!access(path, X_OK))
-		{
-			pid = fork();
-			if (pid == 0)
-				execve(path, data->spllited_cmd_buf, data->env);
-			else
-				waitpid(pid, NULL, 0);
-		}
-		data->splitted_path++;
-	}
-}
 
 int	get_size_splited_cmd(char **data)
 {
@@ -71,6 +50,29 @@ char	**get_splitted_cmd(char **data)
 		i++;
 	}
 	return (splitted_cmd);
+}
+
+void	exec(t_data *data)
+{
+	int		pid;
+	int		i;
+	char	*path;
+
+	i = 0;
+	while (data->splitted_path[i])
+	{
+		path = ft_strjoin(data->splitted_path[i], "/");
+		path = ft_strjoin(path, data->spllited_cmd_buf[0]);
+		if (!access(path, X_OK))
+		{
+			pid = fork();
+			if (pid == 0)
+				execve(path, get_splitted_cmd(data->spllited_cmd_buf), data->env);
+			else
+				waitpid(pid, NULL, 0);
+		}
+		i++;
+	}
 }
 
 const char	*get_file_name(t_data *data)
