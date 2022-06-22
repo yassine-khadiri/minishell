@@ -6,32 +6,32 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/22 19:32:12 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:08:47 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// int	without_name_hh(char *var_env)
-// {
-// 	int	i;
+int	without_name_hh(char *var_env)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (var_env[i])
-// 	{
-// 		if (var_env[i] == '-')
-// 			return (1);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	i = 0;
+	while (var_env[i])
+	{
+		if (var_env[i] == '-')
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	check_exported_var_env(char *var_env)
 {
 	int	i;
 
 	i = 0;
-	if (ft_isalpha(var_env[0]) || var_env[0] == '_')
+	if (!without_name_hh(var_env) && (ft_isalpha(var_env[0]) || var_env[0] == '_'))
 	{
 		while (var_env[i])
 		{
