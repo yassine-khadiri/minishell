@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-int pipe_founded(t_data *data)
+int	pipe_founded(t_data *data)
 {
 	while (*data->spllited_cmd_buf)
 	{
@@ -23,11 +23,11 @@ int pipe_founded(t_data *data)
 	return (0);
 }
 
-int cmd_founded_y_n(t_data *data)
+int	cmd_founded_y_n(t_data *data)
 {
 	char	*path;
-	int 	result;
-	int 	i;
+	int		result;
+	int		i;
 
 	path = NULL;
 	result = -1;
@@ -35,18 +35,19 @@ int cmd_founded_y_n(t_data *data)
 	while (data->splitted_path[i])
 	{
 		if (!ft_strcmp(data->spllited_cmd_buf[0], "export")
-		|| !ft_strcmp(data->spllited_cmd_buf[0], "unset"))
+			|| !ft_strcmp(data->spllited_cmd_buf[0], "unset"))
 			return (0);
 		path = ft_strjoin(data->splitted_path[i], "/");
 		path = ft_strjoin(path, data->spllited_cmd_buf[0]);
 		if (access(path, X_OK) != -1)
 		{
 			result = 0;
-			break;
+			break ;
 		}
 		i++;
 	}
 	if (result == -1)
-		printf(WHT "minishell : %s: command not found\n" BLU, data->spllited_cmd_buf[0]);
+		printf(WHT "minishell : %s: command not found\n" BLU,
+			data->spllited_cmd_buf[0]);
 	return (free(path), result);
 }

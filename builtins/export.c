@@ -31,7 +31,8 @@ int	check_exported_var_env(char *var_env)
 	int	i;
 
 	i = 0;
-	if (!without_name_hh(var_env) && (ft_isalpha(var_env[0]) || var_env[0] == '_'))
+	if (!without_name_hh(var_env)
+		&& (ft_isalpha(var_env[0]) || var_env[0] == '_'))
 	{
 		while (var_env[i])
 		{
@@ -41,7 +42,7 @@ int	check_exported_var_env(char *var_env)
 		}
 	}
 	printf("minishell: export: `%s': not a valid identifier\n", var_env);
-	return (1); 
+	return (1);
 }
 
 int	ft_export(t_data *data, int index)
@@ -50,7 +51,7 @@ int	ft_export(t_data *data, int index)
 	char	*var_name;
 
 	i = 0;
-	var_name = ft_strdup(data->spllited_cmd_buf[++index]);	
+	var_name = ft_strdup(data->spllited_cmd_buf[++index]);
 	if (!check_exported_var_env(var_name))
 	{
 		while (data->env[i])

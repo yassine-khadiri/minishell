@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/22 18:55:03 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:38:56 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,14 @@ typedef struct s_global
 
 typedef struct s_data
 {
-	char	*command_buf;
-	char	**spllited_cmd_buf;
-	char	getpath[1000];
-	char	**env;
-	char	**splitted_path;
+	char		*command_buf;
+	char		**spllited_cmd_buf;
+	char		getpath[1000];
+	char		**env;
+	char		**splitted_path;
 	const char	*fd_name;
 	t_global	g_std;
 }	t_data;
-
 
 // typedef struct s_pipe
 // {
@@ -88,11 +87,11 @@ void	exec(t_data *data);
 
 // redirections
 // -- output redirection
-const char	*get_file_name(t_data *data);
 void	output_rdr_std_appnd(t_data *data, int flag);
 char	*verify_rdr(t_data *data);
 int		rdr_execution(t_data *data);
 char	**get_splitted_cmd(char **data);
+const char	*get_file_name(t_data *data);
 
 // -- output redirection
 void	input_rdr_std_appnd(t_data *data);

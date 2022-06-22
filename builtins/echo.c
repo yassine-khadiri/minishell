@@ -12,26 +12,26 @@
 
 #include "../minishell.h"
 
-char    *extract_var_name_env(char *env)
+char	*extract_var_name_env(char *env)
 {
-    char    *var_name;
-    int     i;
+	char	*var_name;
+	int		i;
 
-    i = 0;
-    var_name = malloc(sizeof(char) * ft_strlen(env));
-    if (!var_name)
-        return (0);
-    while (env[i])
-    {
-       if (env[i] == '=')
-       {
-           var_name[i] = '\0';
-           return (var_name);
-       }
-        var_name[i] = env[i];
-        i++;
-    }
-    return (0);
+	i = 0;
+	var_name = malloc(sizeof(char) * ft_strlen(env));
+	if (!var_name)
+		return (0);
+	while (env[i])
+	{
+		if (env[i] == '=')
+		{
+			var_name[i] = '\0';
+			return (var_name);
+		}
+		var_name[i] = env[i];
+		i++;
+	}
+	return (0);
 }
 
 void	env_vars(char **env, char *var_name)
