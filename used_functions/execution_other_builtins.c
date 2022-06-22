@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/21 18:01:24 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 16:02:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,19 @@ char	*get_path(char **env, char *env_variable)
 	return (NULL);
 }
 
-char	**ft_get_spllited_env(t_data *data)
+char	**ft_get_spllited_path_env(t_data *data)
 {
-	int		len;
+	// int		len;
 
-	len = 0;
-	while (data->env[len])
-		len++;
-	data->splitted_env = malloc(len * sizeof(char *));
-	if (!data->splitted_env)
-		return (NULL);
-	data->splitted_env = ft_split(get_path(data->env, "PATH"), ':');
-	return (data->splitted_env);
+	// len = 0;
+	// while (data->env[len])
+	// 	len++;
+	// printf("%d\n", len);
+	// data->splitted_env = malloc(len * sizeof(char *));
+	// if (!data->splitted_env)
+	// 	return (NULL);
+	data->splitted_path = ft_split(get_path(data->env, "PATH"), ':');
+	return (data->splitted_path);
 }
 
 // void	execution_other_builtins(char **av, char **env)
@@ -45,11 +46,13 @@ void	execution_other_builtins(t_data *data)
 {
 	char	*path;
 	int		pid;
+	int		i;
 
-	while (*data->splitted_env)
+	i = 0;
+	while (data->splitted_path[i])
 	{
-		path = ft_strjoin(*data->splitted_env, "/");
-		path = ft_strjoin(path, data->splitted_env[0]);
+		path = ft_strjoin(data->splitted_path[i], "/");
+		path = ft_strjoin(path, data->spllited_cmd_buf[0]);
 		if (!access(path, X_OK))
 		{
 			pid = fork(); // don't forget protection
@@ -58,6 +61,6 @@ void	execution_other_builtins(t_data *data)
 			else
 				waitpid(pid, NULL, 0);
 		}
-		data->splitted_env++;
+		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/21 19:48:54 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 11:51:26 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_data
 	char	**spllited_cmd_buf;
 	char	getpath[1000];
 	char	**env;
-	char	**splitted_env;
+	char	**splitted_path;
 	const char	*fd_name;
 	t_global	g_std;
 }	t_data;
@@ -74,11 +74,11 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strdup(const char *s1);
 char	*ft_strjoin_space(char *s1, char *s2);
 char	*ft_strjoin(char *s1, char *s2);
-void	execution(t_data *cmds);
+void	execution(t_data *data);
 char	**ft_split(const char *s, char c);
 void	execution_other_builtins(t_data *data);
 void	execution_pipe_cmd(char *av, char **env);
-char	**ft_get_spllited_env(t_data *data);
+char	**ft_get_spllited_path_env(t_data *data);
 char	*get_path(char **env, char *env_variable);
 int		ft_pipe(char *str, char **env);
 int		cmd_founded_y_n(t_data *data);

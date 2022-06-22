@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/21 19:43:51 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 12:12:41 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@
 char	**ft_get_spllited_string(char *str)
 {
 	char	**get_spllited_string;
-
+	// get_spllited_string = malloc(sizeof(char *) * ft_strlen(str));
+	// if(!get_spllited_string)
+	// 	return (NULL);
 	get_spllited_string = ft_split(str, ' ');
 	return (get_spllited_string);
 }
@@ -50,4 +52,9 @@ void	execution(t_data *data)
 	// 	return ;
 	rdr_execution(data);
 	builtins_execution(data);
+	// if (!ft_strcmp(data->command_buf, "pwd"))
+	// {
+	// 	printf("%s\n", getcwd(data->getpath, sizeof(data->getpath)));
+	// 	return ;
+	// }
 }

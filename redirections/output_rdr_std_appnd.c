@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/21 19:22:51 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 11:53:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	exec(t_data *data)
 	int		pid;
 	char	*path;
 
-	while (*data->splitted_env)
+	while (*data->splitted_path)
 	{
-		path = ft_strjoin(*data->splitted_env, "/");
+		path = ft_strjoin(*data->splitted_path, "/");
 		path = ft_strjoin(path, data->spllited_cmd_buf[0]);
 		if (!access(path, X_OK))
 		{
@@ -29,7 +29,7 @@ void	exec(t_data *data)
 			else
 				waitpid(pid, NULL, 0);
 		}
-		data->splitted_env++;
+		data->splitted_path++;
 	}
 }
 

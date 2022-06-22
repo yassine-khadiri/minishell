@@ -6,17 +6,17 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:02:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/04 16:05:44 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 14:39:02 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char *ft_strjoin(char *s1, char *s2)
 {
-	int		len_s1;
-	int		i;
-	char	*tab;
+	int len_s1;
+	int i;
+	char *tab;
 
 	if (!s1 || !s2)
 		return (NULL);
@@ -34,6 +34,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[i] != '\0')
 		tab[len_s1++] = s2[i++];
 	tab[len_s1] = '\0';
-	free(s1);
+	// free(s1);
 	return (tab);
 }
