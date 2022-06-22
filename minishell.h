@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/22 17:24:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 18:55:03 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_data
 // used_functions :)
 void	minishel_start(t_data *data);
 int		ft_strlen(const char *s);
+int		ft_isalpha(int c);
 char	*ft_strtrim(char const *s1, char const *set);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
