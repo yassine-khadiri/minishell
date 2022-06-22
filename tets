@@ -1,0 +1,15 @@
+Makefile
+README.md
+builtins
+env_vars
+interactive_modes
+minishell
+minishell.c
+minishell.h
+minishell.o
+pipes
+redirections
+test
+test.c
+tets
+used_functions

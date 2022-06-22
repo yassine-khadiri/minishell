@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:52:30 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/21 18:51:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/22 17:24:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 int	ft_env(char **env)
 {
-	while (*env)
+	int	i;
+
+	i = 0;
+	while (env[i])
 	{
-		printf("%s\n", *env);
-		env++;
+		printf("%s\n", env[i]);
+		i++;
 	}
 	return (0);
 }
