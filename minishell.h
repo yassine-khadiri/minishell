@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/22 20:38:56 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:02:02 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int		builtins_execution(t_data *data);
 int	ft_pwd(t_data *data);
 
 // echo Command :)
-int		ft_echo(t_data *data, int index);
+int	ft_echo(t_data *data, int index);
 
 // export Command :)
 int		get_env_size(char **env);
