@@ -12,9 +12,9 @@
 
 #include "../minishell.h"
 
-char *extract_var_name(char *string)
+char	*extract_var_name(char *string)
 {
-	char	*extracted_var_name = NULL;
+	char	*extracted_var_name;
 	int		i;
 
 	i = 0;
@@ -26,7 +26,7 @@ char *extract_var_name(char *string)
 	}
 	extracted_var_name = malloc(sizeof(char) * (i + 1));
 	if (!extracted_var_name)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	while (string[i])
 	{
@@ -41,7 +41,7 @@ char *extract_var_name(char *string)
 	return (NULL);
 }
 
-int update_val(char **env, char *var_name)
+int	update_val(char **env, char *var_name)
 {
 	int		i;
 
