@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/23 14:29:42 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:07:06 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	check_var(char *var_name, char **env)
 {
 	var_name = ft_strtrim(var_name, "$");
-	if (get_path(env, var_name))
-		printf("%s\n", get_path(env, var_name));
+	if (get_val_env_var(env, var_name))
+		printf("%s\n", get_val_env_var(env, var_name));
 	else
 		printf("\n");
 }

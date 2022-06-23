@@ -6,13 +6,13 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/22 18:22:59 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:06:12 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*get_path(char **env, char *env_variable)
+char	*get_val_env_var(char **env, char *env_variable)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ char	*get_path(char **env, char *env_variable)
 
 char	**ft_get_spllited_path_env(t_data *data)
 {
-	data->splitted_path = ft_split(get_path(data->env, "PATH"), ':');
+	data->splitted_path = ft_split(get_val_env_var(data->env, "PATH"), ':');
 	return (data->splitted_path);
 }
 

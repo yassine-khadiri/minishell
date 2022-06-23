@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/22 12:12:41 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/23 17:06:44 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	edit_pwd(char **env)
 	char	*pwd;
 	char	*old_pwd;
 
-	pwd = get_path(env, "PWD");
-	old_pwd = get_path(env, "OLDPWD");
+	pwd = get_val_env_var(env, "PWD");
+	old_pwd = get_val_env_var(env, "OLDPWD");
 }
 
 void	execution(t_data *data)
