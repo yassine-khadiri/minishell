@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/06/22 18:55:57 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/06/24 15:55:19 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ RM = rm -f
 SRC = minishell.c \
 	used_functions/minishell_start.c \
 	used_functions/ft_strlen.c \
-	used_functions/ft_isalpha.c \
+	used_functions/is_String.c \
 	used_functions/ft_strtrim.c \
 	used_functions/ft_strcmp.c \
 	used_functions/ft_strncmp.c \
