@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/24 15:59:36 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/24 18:28:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,48 +41,49 @@ char	*extract_var_name(char *string)
 	return (NULL);
 }
 
+char	*update_append(char *env, char *var_name)
+{
+	char	*next_val;
+	int		i;
+	int		j;
+
+	next_val = malloc(sizeof(char) * 1000);
+	if (!next_val)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (var_name[i])
+	{
+		if (var_name[i] == '=')
+		{
+			i++;
+			while (var_name[j])
+				next_val[j++] = var_name[i++];
+			next_val[j] = '\0';
+			break ;
+		}
+		i++;
+	}
+	env = ft_strjoin(env, next_val);
+	return (env);
+}
+
 int	update_val(char **env, char *var_name)
 {
 	int		i;
-	// int		j;
-	// char	*prev_val;
-	// char	*next_val = NULL;
 
 	i = 0;
-
 	while (env[i])
 	{
-		// if (get_val_env_var(env, extract_var_name(var_name)))
-		// {
-		// 	printf("HERE2\n");
-		// 	prev_val = get_val_env_var(env, extract_var_name(var_name));
-		// 	// printf("%s\n", prev_val);
-		// 	// exit(0);
-		// 	j = 0;
-		// 	while (env[i][j])
-		// 	{
-		// 		if (env[i][j] == '=')
-		// 		{
-		// 			while (env[i][j])
-		// 			{
-		// 				next_val[j] = env[i][j];
-		// 				j++;
-		// 			}
-		// 			next_val[j] = '\0';
-		// 			break ;
-		// 		}
-		// 		j++;
-		// 	}
-		// 	printf("%s\n", next_val);
-		// 	env[i] = ft_strjoin(prev_val, next_val);
-		// 	return (1);
-		// }
-		// printf("%s\n", var_name);
-		// printf("%s\n", env[i]);
 		if (!ft_strncmp(env[i], extract_var_name(var_name), ft_strlen(extract_var_name(var_name))))
 		{
-			// printf("HERE1\n");
 			env[i] = var_name;
+			return (1);
+		}
+		else if (!ft_strncmp(env[i], var_name, ft_strlen(extract_var_name(env[i])))
+			&& ft_strlen(extract_var_name(var_name)) - ft_strlen(extract_var_name(env[i])) == 1)
+		{
+			env[i] = update_append(env[i], var_name);
 			return (1);
 		}
 		i++;
@@ -102,11 +103,6 @@ int	without_name_hh(char *var_env)
 			return (1);
 		i++;
 	}
-	i = 0;
-	while (var_env[i])
-		i++;
-	if (var_env[--i] == '+' && var_env[--i] == '+')
-		return (1);
 	return (0);
 }
 
@@ -116,7 +112,7 @@ int	check_exported_var_env(char *var_env)
 
 	i = 0;
 	if (!without_name_hh(var_env)
-		&& !extract_var_name(var_env)
+		&& extract_var_name(var_env)
 		&& is_String(extract_var_name(var_env)))
 			return (0);
 	printf("minishell: export: `%s': not a valid identifier\n", var_env);
