@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/24 18:28:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/24 20:08:43 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*update_append(char *env, char *var_name)
 	int		j;
 
 	next_val = malloc(sizeof(char) * 1000);
+
 	if (!next_val)
 		return (NULL);
 	i = 0;
@@ -109,11 +110,14 @@ int	without_name_hh(char *var_env)
 int	check_exported_var_env(char *var_env)
 {
 	int	i;
-
+	char	*extracted_var;
 	i = 0;
+	
+	extracted_var = ft_strdup(extract_var_name(var_env));
 	if (!without_name_hh(var_env)
 		&& extract_var_name(var_env)
-		&& is_String(extract_var_name(var_env)))
+		&& is_String(extracted_var)
+		&& !ft_isdigit(extracted_var[0]))
 			return (0);
 	printf("minishell: export: `%s': not a valid identifier\n", var_env);
 	return (1);
