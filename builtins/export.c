@@ -6,40 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/25 15:59:17 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/25 18:36:58 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char	*extract_var_name(char *string)
-{
-	char	*extracted_var_name;
-	int		i;
-
-	i = 0;
-	while (string[i])
-	{
-		if (string[i] == '=')
-			break ;
-		i++;
-	}
-	extracted_var_name = malloc(sizeof(char) * (i + 1));
-	if (!extracted_var_name)
-		return (NULL);
-	i = 0;
-	while (string[i])
-	{
-		extracted_var_name[i] = string[i];
-		if (string[i] == '=')
-		{
-			extracted_var_name[i] = '\0';
-			return (extracted_var_name);
-		}
-		i++;
-	}
-	return (NULL);
-}
 
 char	*update_append(char *env, char *var_name)
 {
@@ -142,7 +113,10 @@ int	ft_export(t_data *data, int index)
 		{
 			while (data->env[i])
 				i++;
-			data->env[i] = var_name;
+			if (!ignore_something(var_name))
+				data->env[i] = var_name;
+			else
+				data->env[i] = ignore_something(var_name);
 			data->env[++i] = NULL;
 		}
 	}
