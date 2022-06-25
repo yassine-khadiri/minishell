@@ -48,13 +48,16 @@ int	update_val(char **env, char *var_name)
 	i = 0;
 	while (env[i])
 	{
-		if (!ft_strncmp(env[i], extract_var_name(var_name), ft_strlen(extract_var_name(var_name))))
+		if (!ft_strncmp(env[i], extract_var_name(var_name),
+				ft_strlen(extract_var_name(var_name))))
 		{
 			env[i] = var_name;
 			return (1);
 		}
-		else if (!ft_strncmp(env[i], var_name, ft_strlen(extract_var_name(env[i])))
-			&& ft_strlen(extract_var_name(var_name)) - ft_strlen(extract_var_name(env[i])) == 1)
+		else if (!ft_strncmp(env[i], var_name,
+				ft_strlen(extract_var_name(env[i])))
+			&& ft_strlen(extract_var_name(var_name))
+			- ft_strlen(extract_var_name(env[i])) == 1)
 		{
 			if (!update_append(env[i], var_name))
 				return (0);
@@ -83,16 +86,16 @@ int	without_name_hh(char *var_env)
 
 int	check_exported_var_env(char *var_env)
 {
-	int	i;
+	int		i;
 	char	*extracted_var;
+
 	i = 0;
-	
 	extracted_var = ft_strdup(extract_var_name(var_env));
 	if (!without_name_hh(var_env)
 		&& extract_var_name(var_env)
 		&& is_String(extracted_var)
 		&& !ft_isdigit(extracted_var[0]))
-			return (0);
+		return (0);
 	printf("minishell: export: `%s': not a valid identifier\n", var_env);
 	return (1);
 }
@@ -104,7 +107,6 @@ int	ft_export(t_data *data, int index)
 
 	i = 0;
 	var_name = ft_strdup(data->spllited_cmd_buf[++index]);
-
 	if (!check_exported_var_env(var_name))
 	{
 		if (update_val(data->env, var_name))
