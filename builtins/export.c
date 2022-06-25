@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/24 20:08:43 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/25 15:59:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,15 @@ char	*update_append(char *env, char *var_name)
 	int		j;
 
 	next_val = malloc(sizeof(char) * 1000);
-
 	if (!next_val)
 		return (NULL);
 	i = 0;
 	j = 0;
 	while (var_name[i])
 	{
-		if (var_name[i] == '=')
+		if (var_name[i] == '=' && var_name[i - 1] != '+')
+			return (0);
+		else if (var_name[i] == '=' && var_name[i - 1] == '+')
 		{
 			i++;
 			while (var_name[j])
@@ -66,7 +67,7 @@ char	*update_append(char *env, char *var_name)
 		i++;
 	}
 	env = ft_strjoin(env, next_val);
-	return (env);
+	return (free(next_val), env);
 }
 
 int	update_val(char **env, char *var_name)
@@ -84,6 +85,8 @@ int	update_val(char **env, char *var_name)
 		else if (!ft_strncmp(env[i], var_name, ft_strlen(extract_var_name(env[i])))
 			&& ft_strlen(extract_var_name(var_name)) - ft_strlen(extract_var_name(env[i])) == 1)
 		{
+			if (!update_append(env[i], var_name))
+				return (0);
 			env[i] = update_append(env[i], var_name);
 			return (1);
 		}
