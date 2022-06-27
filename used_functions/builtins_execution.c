@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/23 14:45:24 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/27 14:06:05 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	builtins_execution(t_data *data)
 		else if (!ft_strcmp(data->spllited_cmd_buf[i], "echo"))
 			return (ft_echo(data, i));
 		else if (!ft_strcmp(data->spllited_cmd_buf[i], "export"))
-			return (ft_export(data, i));
+			return (ft_export(data));
 		else if (!ft_strcmp(data->spllited_cmd_buf[i], "unset"))
 			return (ft_unset(data, i));
 		else if (!ft_strcmp(data->spllited_cmd_buf[i], "env"))

@@ -6,20 +6,22 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/27 12:17:17 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:42:54 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	check_equal_sign(char *string)
+int	check_equal_sign(char *env_var)
 {
 	int	i;
 
 	i = 0;
-	while (string[i])
+	if (!ft_isalpha(env_var[i]) && env_var[i] != '_')
+        return (-1);
+	while (env_var[i])
 	{
-		if (string[i] == '=')
+		if (env_var[i] == '=')
 			return (i);
 		i++;
 	}
@@ -32,6 +34,8 @@ char	*extract_var_name(char *string)
 	int		i;
 
 	i = 0;
+	if (!check_equal_sign(string) || check_equal_sign(string) == -1)
+		return (NULL);
 	extracted_var_name = malloc(sizeof(char) * (check_equal_sign(string) + 1));
 	if (!extracted_var_name)
 		return (NULL);
