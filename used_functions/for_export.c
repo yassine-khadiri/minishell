@@ -6,11 +6,25 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/25 18:50:51 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:17:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	check_equal_sign(char *string)
+{
+	int	i;
+
+	i = 0;
+	while (string[i])
+	{
+		if (string[i] == '=')
+			return (i);
+		i++;
+	}
+	return (0);
+}
 
 char	*extract_var_name(char *string)
 {
@@ -18,13 +32,7 @@ char	*extract_var_name(char *string)
 	int		i;
 
 	i = 0;
-	while (string[i])
-	{
-		if (string[i] == '=')
-			break ;
-		i++;
-	}
-	extracted_var_name = malloc(sizeof(char) * (i + 1));
+	extracted_var_name = malloc(sizeof(char) * (check_equal_sign(string) + 1));
 	if (!extracted_var_name)
 		return (NULL);
 	i = 0;

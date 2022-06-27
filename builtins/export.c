@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/25 18:36:58 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/27 12:16:59 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	check_exported_var_env(char *var_env)
 	char	*extracted_var;
 
 	i = 0;
+	if (!check_equal_sign(var_env))
+		return (1);
 	extracted_var = ft_strdup(extract_var_name(var_env));
 	if (!without_name_hh(var_env)
 		&& extract_var_name(var_env)
