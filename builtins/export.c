@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/27 17:53:43 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:34:54 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*update_append(char *env, char *var_name)
 		i++;
 	}
 	env = ft_strjoin(env, next_val);
-	return (free(next_val), env);
+	return (env);
 }
 
 int	update_val(char **env, char *var_name)
@@ -112,16 +112,13 @@ int	ft_export(t_data *data)
 	while (data->spllited_cmd_buf[i])
 	{
 		j = 0;
-		var_name = ft_strdup(data->spllited_cmd_buf[i]);
+		var_name = ft_strdup(ft_strtrim(data->spllited_cmd_buf[i], "\\"));
 		if (check_env_var(var_name) == 1)
-		{
 			printf("minishell: export: `%s': not a valid identifier\n", var_name);
-			return (0);
-		}
 		else if (check_env_var(var_name) == 0)
 		{
 			if (update_val(data->env, var_name))
-				return (0);
+				update_val(data->env, var_name);
 			else
 			{
 				while (data->env[j])
@@ -129,7 +126,10 @@ int	ft_export(t_data *data)
 				if (!ignore_something(var_name))
 					data->env[j] = var_name;
 				else
+				{
 					data->env[j] = ignore_something(var_name);
+					printf("%s\n", data->env[j]);
+				}
 				data->env[++j] = NULL;
 			}
 		}
