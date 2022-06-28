@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/27 19:26:12 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:21:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	minishel_start(t_data *data);
 int		ft_strlen(const char *s);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
-int 	is_validated(char *var_name);
+int		is_validated(char *var_name);
 char	*ft_strtrim(char const *s1, char const *set);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -117,6 +117,7 @@ int		ft_export(t_data *data);
 char	*extract_var_name(char *string);
 char	*ignore_something(char *var_name);
 int		check_equal_sign(char *env_var);
+char	*update_append(char *env, char *var_name);
 
 // unset Command :)
 int		ft_unset(t_data *data, int index);

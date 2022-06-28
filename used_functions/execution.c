@@ -52,9 +52,4 @@ void	execution(t_data *data)
 	// 	return ;
 	rdr_execution(data);
 	builtins_execution(data);
-	// if (!ft_strcmp(data->command_buf, "pwd"))
-	// {
-	// 	printf("%s\n", getcwd(data->getpath, sizeof(data->getpath)));
-	// 	return ;
-	// }
 }

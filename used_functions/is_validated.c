@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_validated.c                                        :+:      :+:    :+:   */
+/*   is_validated.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/24 15:49:02 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/27 16:57:16 by ykhadiri         ###   ########.fr       */
+/*   Created: 2022/06/28 11:30:21 by ykhadiri          #+#    #+#             */
+/*   Updated: 2022/06/28 11:30:23 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,21 @@ int	ft_isalpha(int c)
 	return (0);
 }
 
-int is_validated(char *var_name)
+int	is_validated(char *var_name)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    // if (!ft_isalpha(var_name[i]) && var_name[i] != '_')
-    //     return (0);
-    while (ft_isalpha(var_name[i]) || var_name[i] == '_'
-            || ft_isdigit(var_name[i]))
-        i++;
-    j = 0;
-    while (var_name[j])
-        j++;
+	i = 0;
+	while (ft_isalpha(var_name[i]) || var_name[i] == '_'
+		|| ft_isdigit(var_name[i]))
+		i++;
+	j = 0;
+	while (var_name[j])
+		j++;
 	if (var_name[--j] == '+' && var_name[--j] != '+')
 		i++;
-    if (ft_strlen(var_name) == i)
-        return (1);
-    return (0);
+	if (ft_strlen(var_name) == i)
+		return (1);
+	return (0);
 }

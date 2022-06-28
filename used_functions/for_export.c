@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 11:09:08 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:20:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_equal_sign(char *env_var)
 
 	i = 0;
 	if (!ft_isalpha(env_var[i]) && env_var[i] != '_')
-        return (-1);
+		return (-1);
 	while (env_var[i])
 	{
 		if (env_var[i] == '=')
@@ -79,4 +79,33 @@ char	*ignore_something(char *var_name)
 	if (val)
 		return (new_var);
 	return (NULL);
+}
+
+char	*update_append(char *env, char *var_name)
+{
+	char	*next_val;
+	int		i;
+	int		j;
+
+	next_val = malloc(sizeof(char) * 1000);
+	if (!next_val)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (var_name[i])
+	{
+		if (var_name[i] == '=' && var_name[i - 1] != '+')
+			return (0);
+		else if (var_name[i] == '=' && var_name[i - 1] == '+')
+		{
+			i++;
+			while (var_name[j])
+				next_val[j++] = var_name[i++];
+			next_val[j] = '\0';
+			break ;
+		}
+		i++;
+	}
+	env = ft_strjoin(env, next_val);
+	return (env);
 }
