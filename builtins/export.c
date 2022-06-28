@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 17:20:29 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/28 17:57:10 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	exec_export(t_data *data, char *var_name)
 	int	j;
 
 	j = 0;
+	if (!ft_strcmp(extract_var_name(var_name), "_"))
+		return ;
 	if (check_env_var(var_name) == 1)
 		printf("minishell: export: `%s': not a valid identifier\n", var_name);
 	else if (check_env_var(var_name) == 0)
@@ -113,7 +115,6 @@ int	ft_export(t_data *data)
 	while (data->spllited_cmd_buf[i])
 	{
 		j = 0;
-		var_name = ft_strdup(ft_strtrim(data->spllited_cmd_buf[i], "\\"));
 		exec_export(data, var_name);
 		i++;
 	}
