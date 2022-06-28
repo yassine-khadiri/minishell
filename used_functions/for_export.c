@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 15:58:25 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/28 19:55:00 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	check_equal_sign(char *env_var)
 {
 	int	i;
 
-	i = 0;
-	if (!ft_isalpha(env_var[i]) && env_var[i] != '_')
-		return (-1);
+	i = 1;
 	while (env_var[i])
 	{
 		if (env_var[i] == '=')
@@ -34,7 +32,7 @@ char	*extract_var_name(char *string)
 	int		i;
 
 	i = 0;
-	if (!check_equal_sign(string) || check_equal_sign(string) == -1)
+	if (check_equal_sign(string) || check_equal_sign(string) == -1)
 		return (NULL);
 	extracted_var_name = malloc(sizeof(char) * (check_equal_sign(string) + 1));
 	if (!extracted_var_name)
