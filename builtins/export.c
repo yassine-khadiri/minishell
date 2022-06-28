@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 11:25:43 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/28 17:20:29 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,7 @@ int	update_val(char **env, char *var_name)
 	i = 0;
 	while (env[i])
 	{
-		if (!ft_strncmp(env[i], extract_var_name(var_name),
-				ft_strlen(extract_var_name(var_name))))
-		{
-			env[i] = var_name;
-			return (1);
-		}
-		else if (!ft_strncmp(env[i], var_name,
+		if (!ft_strncmp(env[i], var_name,
 				ft_strlen(extract_var_name(env[i])))
 			&& ft_strlen(extract_var_name(var_name))
 			- ft_strlen(extract_var_name(env[i])) == 1)
@@ -33,6 +27,12 @@ int	update_val(char **env, char *var_name)
 			if (!update_append(env[i], var_name))
 				return (0);
 			env[i] = update_append(env[i], var_name);
+			return (1);
+		}
+		else if (!ft_strncmp(env[i], extract_var_name(var_name),
+				ft_strlen(extract_var_name(env[i]))))
+		{
+			env[i] = var_name;
 			return (1);
 		}
 		i++;
@@ -79,12 +79,11 @@ void	exec_export(t_data *data, char *var_name)
 
 	j = 0;
 	if (check_env_var(var_name) == 1)
-		printf("minishell: export: `%s': \
-				not a valid identifier\n", var_name);
+		printf("minishell: export: `%s': not a valid identifier\n", var_name);
 	else if (check_env_var(var_name) == 0)
 	{
 		if (update_val(data->env, var_name))
-			update_val(data->env, var_name);
+			return ;
 		else
 		{
 			while (data->env[j])
@@ -104,6 +103,12 @@ int	ft_export(t_data *data)
 	int		j;
 	char	*var_name;
 
+	if (!ft_strcmp(data->spllited_cmd_buf[0], "export")
+		&& !data->spllited_cmd_buf[1])
+	{
+		display_export(data);
+		return (0);
+	}
 	i = 1;
 	while (data->spllited_cmd_buf[i])
 	{

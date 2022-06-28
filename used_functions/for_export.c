@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 11:20:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:58:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,32 @@ char	*update_append(char *env, char *var_name)
 	}
 	env = ft_strjoin(env, next_val);
 	return (env);
+}
+
+void	display_export(t_data *data)
+{
+	int	i;
+	int	len = 0;
+	char	*tmp;
+
+	while (data->env[len])
+		len++;
+	i = 0;
+	while (i < len - 1)
+	{
+		// if (ft_strcmp(extract_var_name(data->env[i]), extract_var_name(data->env[i + 1])) > 0)
+		// {
+		// 	tmp = ft_strdup(data->env[i]);
+		// 	data->env[i] = data->env[i + 1];
+		// 	data->env[i + 1] = tmp;
+		// }
+		if (data->env[i][0] > data->env[i + 1][0])
+		{
+			tmp = ft_strdup(data->env[i]);
+			data->env[i] = data->env[i + 1];
+			data->env[i + 1] = tmp;
+		}
+		printf("declare -x %s\n", data->env[i]);	
+		i++;
+	}
 }
