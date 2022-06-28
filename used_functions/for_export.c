@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/27 20:33:15 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:09:08 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*ignore_something(char *var_name)
 	i = -1;
 	j = -1;
 	val = false;
-	new_var = malloc(sizeof(char) * ft_strlen(extract_var_name(var_name)));
+	new_var = malloc(sizeof(char) * ft_strlen(var_name));
 	if (!new_var)
 		return (NULL);
 	while (var_name[++i])
