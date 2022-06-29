@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/23 17:06:12 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/29 12:43:41 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_val_env_var(char **env, char *env_variable)
 	while (env[i])
 	{
 		if (!ft_strncmp(env[i], env_variable, ft_strlen(env_variable)))
-			return (env[i] + ft_strlen(env_variable) + 1);
+			return (env[i] + ft_strlen(env_variable) + 1);	
 		i++;
 	}
 	return (NULL);
@@ -29,8 +29,7 @@ char	*get_val_env_var(char **env, char *env_variable)
 char	**ft_get_spllited_path_env(t_data *data)
 {
 	data->splitted_path = ft_split(get_val_env_var(data->env, "PATH"), ':');
-	return (data->splitted_path);
-}
+	return (data->splitted_path);}
 
 void	execution_other_builtins(t_data *data)
 {

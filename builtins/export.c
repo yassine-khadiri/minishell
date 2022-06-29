@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 19:56:23 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/29 11:07:26 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,26 @@ int	check_env_var(char *env_var)
 	int		i;
 	char	*extracted_var;
 
-	if (check_equal_sign(env_var) == 0)
-		return (-1);
-	else if ((!ft_isalpha(env_var[0]) && env_var[0] != '_'))
-		return (1);
 	i = 0;
-	extracted_var = extract_var_name(env_var);
-	if (check_dash_err(extracted_var)
-		|| !is_validated(extracted_var))
-		return (1);
+	if (!check_equal_sign(env_var))
+	{
+		while (env_var[i])
+		{
+			if (!ft_isalpha(env_var[i]) && env_var[i] != '_')
+				return (1);
+			i++;
+		}
+		return (-1);
+	}
+	else
+	{
+		extracted_var = extract_var_name(env_var);
+		if (!ft_strcmp(extracted_var, "_"))
+			return (-1);
+		else if (check_dash_err(extracted_var)
+			|| !is_validated(extracted_var))
+			return (1);
+	}
 	return (0);
 }
 
@@ -111,8 +122,6 @@ int	ft_export(t_data *data)
 	i = 1;
 	while (data->spllited_cmd_buf[i])
 	{
-		if (check_env_var(var_name) == 1)
-			printf("minishell: export: `%s': not a valid identifier\n", var_name);
 		var_name = ft_strdup(data->spllited_cmd_buf[i]);
 		exec_export(data, var_name);
 		i++;

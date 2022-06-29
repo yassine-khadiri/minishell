@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 19:55:00 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/29 12:23:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*extract_var_name(char *string)
 	int		i;
 
 	i = 0;
-	if (check_equal_sign(string) || check_equal_sign(string) == -1)
+	if (!check_equal_sign(string))
 		return (NULL);
 	extracted_var_name = malloc(sizeof(char) * (check_equal_sign(string) + 1));
 	if (!extracted_var_name)
@@ -110,28 +110,41 @@ char	*update_append(char *env, char *var_name)
 
 void	display_export(t_data *data)
 {
-	int	i;
-	int	len = 0;
+	int		i;
+	int		len;
 	char	*tmp;
+	int		step;
+	int		j;
 
+	step = 0;
+	len = 0;
 	while (data->env[len])
 		len++;
-	i = 0;
-	while (i < len - 1)
+	while (step < len - 1)
 	{
-		// if (ft_strcmp(extract_var_name(data->env[i]), extract_var_name(data->env[i + 1])) > 0)
-		// {
-		// 	tmp = ft_strdup(data->env[i]);
-		// 	data->env[i] = data->env[i + 1];
-		// 	data->env[i + 1] = tmp;
-		// }
-		if (data->env[i][0] > data->env[i + 1][0])
+		i = 0;
+		while (i < len - step - 1)
 		{
-			tmp = ft_strdup(data->env[i]);
-			data->env[i] = data->env[i + 1];
-			data->env[i + 1] = tmp;
+			j = 0;
+			while (data->env[i][j])
+			{
+				if (data->env[i][j] == data->env[i + 1][j])
+					j++;
+				else if (data->env[i][j] > data->env[i + 1][j])
+				{
+					tmp = data->env[i];
+					data->env[i] = data->env[i + 1];
+					data->env[i + 1] = tmp;
+					break ;
+				}
+				else
+					break ;
+			}
+			i++;
 		}
-		printf("declare -x %s\n", data->env[i]);	
-		i++;
+		step++;
 	}
+	i = 0;
+	while (data->env[i])
+		printf("declare -x %s\n", data->env[i++]);
 }
