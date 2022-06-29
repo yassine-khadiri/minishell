@@ -6,36 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/29 19:05:07 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/29 19:25:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int update_without_equal(char **env, char *var_name)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (env[i])
-	{
-		if (!ft_strncmp(env[i], var_name, ft_strlen(env[i])))
-		{
-			if (!update_append(env[i], var_name))
-				return (0);
-			env[i] = update_append(env[i], var_name);
-			return (1);
-		}
-		i++;
-	}
-	while (env[j])
-		j++;
-	env[j] = var_name;
-	env[++j] = NULL;
-	return (0);
-}
 
 int	update_val(char **env, char *var_name)
 {
@@ -81,29 +56,20 @@ int	check_dash_err(char *env_var)
 	return (0);
 }
 
-int	check_env_var(t_data *data, char *env_var)
+int	check_env_var(char *env_var)
 {
 	int		i;
 	char	*extracted_var;
-(void)data;
+
 	i = 0;
-	// if (!check_equal_sign(env_var))
-	// {
-	// 	if (!ft_isalpha(env_var[0]) && env_var[0] != '_')
-	// 		return (1);
-	// 	update_without_equal(data->env, env_var);
-	// 	return (-1);
-	// }
-	// else
-	// {
-		extracted_var = extract_var_name(env_var);
-		printf("%s\n", extracted_var);
-		if (!ft_strcmp(extracted_var, "_"))
-			return (-1);
-		else if (check_dash_err(extracted_var)
-			|| !is_validated(extracted_var))
-			return (1);
-	// }
+	if (!ft_isalpha(env_var[0]) && env_var[0] != '_')
+		return (1);
+	extracted_var = extract_var_name(env_var);
+	if (!ft_strcmp(extracted_var, "_"))
+		return (-1);
+	else if (check_dash_err(extracted_var)
+		|| !is_validated(extracted_var))
+		return (1);
 	return (0);
 }
 
@@ -112,9 +78,9 @@ void	exec_export(t_data *data, char *var_name)
 	int	j;
 
 	j = 0;
-	if (check_env_var(data, var_name) == 1)
+	if (check_env_var(var_name) == 1)
 		printf("minishell: export: `%s': not a valid identifier\n", var_name);
-	else if (check_env_var(data, var_name) == 0)
+	else if (check_env_var(var_name) == 0)
 	{
 		if (update_val(data->env, var_name))
 			return ;

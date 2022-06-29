@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/29 19:03:57 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/29 19:06:35 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,29 @@ int	check_equal_sign(char *env_var)
 
 char	*extract_var_name(char *string)
 {
-	char	*extracted_var_name;
+	char	*extr_var_name;
 	int		i;
 
 	i = check_equal_sign(string);
 	if (i)
-		extracted_var_name = malloc(sizeof(char) * i);
+		extr_var_name = malloc(sizeof(char) * i);
 	else
-		extracted_var_name = malloc(sizeof(char) * ft_strlen(string) + 1);
-	if (!extracted_var_name)
+		extr_var_name = malloc(sizeof(char) * ft_strlen(string) + 1);
+	if (!extr_var_name)
 		return (NULL);
 	i = 0;
 	while (string[i])
 	{
-		extracted_var_name[i] = string[i];
+		extr_var_name[i] = string[i];
 		if (string[i] == '=')
 		{
-			extracted_var_name[i] = '\0';
-			return (extracted_var_name);
+			extr_var_name[i] = '\0';
+			return (extr_var_name);
 		}
 		i++;
 	}
-	extracted_var_name = string;
-	return (extracted_var_name);
+	extr_var_name = string;
+	return (extr_var_name);
 }
 
 char	*ignore_something(char *var_name)
