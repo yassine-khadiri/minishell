@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:30:21 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 19:08:22 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/29 16:02:12 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	is_validated(char *var_name)
 	int	j;
 
 	i = 0;
+	if (ft_isdigit(var_name[0]))
+		return (0);
 	while (ft_isalpha(var_name[i]) || var_name[i] == '_'
 		|| ft_isdigit(var_name[i]))
 		i++;

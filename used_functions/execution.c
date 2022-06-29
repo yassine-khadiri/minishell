@@ -6,23 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/29 12:33:38 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/29 14:38:41 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-// char	*ft_get_string(char **av)
-// {
-// 	char	*get_string;
-// 	int		i;
-
-// 	i = 1;
-// 	get_string = ft_strdup(av[i++]);
-// 	while (av[i])
-// 		get_string = ft_strjoin_space(get_string, av[i++]);
-// 	return (get_string);
-// }
 
 char	**ft_get_spllited_string(char *str)
 {

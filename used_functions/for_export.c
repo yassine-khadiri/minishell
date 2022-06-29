@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 18:22:13 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/29 12:23:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/29 19:03:57 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ char	*extract_var_name(char *string)
 	char	*extracted_var_name;
 	int		i;
 
-	i = 0;
-	if (!check_equal_sign(string))
-		return (NULL);
-	extracted_var_name = malloc(sizeof(char) * (check_equal_sign(string) + 1));
+	i = check_equal_sign(string);
+	if (i)
+		extracted_var_name = malloc(sizeof(char) * i);
+	else
+		extracted_var_name = malloc(sizeof(char) * ft_strlen(string) + 1);
 	if (!extracted_var_name)
 		return (NULL);
 	i = 0;
@@ -48,7 +49,8 @@ char	*extract_var_name(char *string)
 		}
 		i++;
 	}
-	return (NULL);
+	extracted_var_name = string;
+	return (extracted_var_name);
 }
 
 char	*ignore_something(char *var_name)
@@ -108,18 +110,12 @@ char	*update_append(char *env, char *var_name)
 	return (env);
 }
 
-void	display_export(t_data *data)
+void	sort_data(t_data *data, int len, int step)
 {
 	int		i;
-	int		len;
-	char	*tmp;
-	int		step;
 	int		j;
+	char	*tmp;
 
-	step = 0;
-	len = 0;
-	while (data->env[len])
-		len++;
 	while (step < len - 1)
 	{
 		i = 0;
@@ -144,6 +140,19 @@ void	display_export(t_data *data)
 		}
 		step++;
 	}
+}
+
+void	display_export(t_data *data)
+{
+	int		i;
+	int		len;
+	int		step;
+
+	step = 0;
+	len = 0;
+	while (data->env[len])
+		len++;
+	sort_data(data, len, step);
 	i = 0;
 	while (data->env[i])
 		printf("declare -x %s\n", data->env[i++]);
