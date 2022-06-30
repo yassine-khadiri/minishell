@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:30:21 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/29 16:02:12 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/30 14:13:08 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_isalpha(int c)
 	return (0);
 }
 
-int	is_validated(char *var_name)
+int	is_validated(char *var_name, char *env_var)
 {
 	int	i;
 	int	j;
@@ -40,8 +40,10 @@ int	is_validated(char *var_name)
 	j = 0;
 	while (var_name[j])
 		j++;
-	if (var_name[--j] == '+' && var_name[--j] != '+')
-		i++;
+	if (check_equal_sign(env_var)
+		&& var_name[--j] == '+'
+		&& var_name[--j] != '+')
+			i++;
 	if (ft_strlen(var_name) == i)
 		return (1);
 	return (0);

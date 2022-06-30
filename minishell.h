@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/29 14:50:24 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/30 14:13:30 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	minishel_start(t_data *data);
 int		ft_strlen(const char *s);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
-int		is_validated(char *var_name);
+int		is_validated(char *var_name, char *env_var);
 char	*ft_strtrim(char const *s1, char const *set);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
