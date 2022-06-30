@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 16:33:02 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:16:37 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ typedef struct s_data
 	const char	*fd_name;
 	t_global	g_std;
 }	t_data;
+
+// char **BUILTINS =
+// {
+// 	"echo",
+// 	"cd",
+// 	"pwd",
+// 	"export",
+// 	"unset",
+// 	"env",
+// 	"exit"
+// };
 
 // typedef struct s_pipe
 // {
@@ -126,4 +137,7 @@ int		ft_unset(t_data *data, int index);
 
 // env Command :)
 int		ft_env(char **env);
+
+// exit Command :)
+int		ft_exit();
 #endif

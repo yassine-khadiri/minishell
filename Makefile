@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/06/30 15:38:53 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/06/30 18:29:30 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC = minishell.c \
 	builtins/pwd.c \
 	builtins/unset.c \
 	builtins/env.c \
+	builtins/exit.c \
 	interactive_modes/ctrl-D.c \
 	interactive_modes/ctrl-C.c \
 	interactive_modes/ctrl-slash.c \

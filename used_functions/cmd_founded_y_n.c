@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/29 12:36:55 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:30:32 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	cmd_founded_y_n(t_data *data)
 	while (data->splitted_path[i])
 	{
 		if (!ft_strcmp(data->spllited_cmd_buf[0], "export")
-			|| !ft_strcmp(data->spllited_cmd_buf[0], "unset"))
+			|| !ft_strcmp(data->spllited_cmd_buf[0], "unset")
+			|| !ft_strcmp(data->spllited_cmd_buf[0], "exit"))
 			return (0);
 		path = ft_strjoin(data->splitted_path[i], "/");
 		path = ft_strjoin(path, data->spllited_cmd_buf[0]);
