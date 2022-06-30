@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/29 14:49:12 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:16:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	check_var(char *var_name, char **env)
 
 int	ft_echo(t_data *data, int index)
 {
-	if (data->spllited_cmd_buf[++index][0] == '$')
+	if (!data->spllited_cmd_buf[index + 1])
+		printf("\n");
+	else if (data->spllited_cmd_buf[++index][0] == '$')
 		check_var(data->spllited_cmd_buf[index], data->env);
 	else if (!ft_strcmp(data->spllited_cmd_buf[index], "-n"))
 		printf("%s", ft_strtrim(data->spllited_cmd_buf[++index], "\""));

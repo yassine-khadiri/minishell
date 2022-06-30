@@ -6,11 +6,37 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 14:32:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:03:36 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+// int	exec_update_val(char *var_name, char *env)
+// {
+// 	if (!ft_strncmp(extract_var_name(env),
+// 			extract_var_name(var_name), ft_strlen(extract_var_name(env)))
+// 		&& ft_strlen(extract_var_name(var_name))
+// 		- ft_strlen(extract_var_name(env)) == 1
+// 		&& var_name[ft_strlen(extract_var_name(var_name)) - 1] == '+')
+// 	{
+// 		if (!update_append(env, var_name))
+// 			return (0);
+// 		env = update_append(env, var_name);
+// 		return (1);
+// 	}
+// 	else if (!ft_strcmp(extract_var_name(env),
+// 			extract_var_name(var_name)))
+// 	{
+// 		if (check_equal_sign(var_name))
+// 		{
+// 			env = var_name;
+// 			return (1);
+// 		}
+// 		return (-1);
+// 	}
+// 	return (0);
+// }
 
 int	update_val(char **env, char *var_name)
 {
@@ -40,24 +66,9 @@ int	update_val(char **env, char *var_name)
 			}
 			return (-1);
 		}
+		// exec_update_val(var_name, env[i]);
 		i++;
 	}
-	return (0);
-}
-
-int	check_dash_err(char *env_var)
-{
-	int	i;
-
-	i = 0;
-	if (!env_var)
-		return (0);
-	while (env_var[i])
-	{
-		if (env_var[i] == '-')
-			return (1);
-		i++;
-	}	
 	return (0);
 }
 

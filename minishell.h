@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 14:13:30 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:33:02 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ char	*ignore_something(char *var_name);
 int		check_equal_sign(char *env_var);
 char	*update_append(char *env, char *var_name);
 void	display_export(t_data *data);
+int		check_dash_err(char *env_var);
 
 // unset Command :)
 int		ft_unset(t_data *data, int index);

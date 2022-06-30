@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:52:30 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/28 11:08:22 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/06/30 17:11:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	ft_env(char **env)
 	i = 0;
 	while (env[i])
 	{
-		printf("%s\n", env[i]);
+		if (check_equal_sign(env[i]))
+			printf("%s\n", env[i]);
 		i++;
 	}
 	return (0);
