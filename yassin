@@ -2,6 +2,7 @@ Makefile
 README.md
 builtins
 env_vars
+file
 interactive_modes
 minishell
 minishell.c
@@ -12,17 +13,5 @@ redirections
 test
 tets
 used_functions
-Makefile
-README.md
-builtins
-env_vars
-interactive_modes
-minishell
-minishell.c
-minishell.h
-minishell.o
-pipes
-redirections
-test
-tets
-used_functions
+yasisn
+yassin

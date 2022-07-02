@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 18:30:32 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/01 12:01:05 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 int	pipe_founded(t_data *data)
 {
-	while (*data->spllited_cmd_buf)
+	int	i;
+
+	i = 0;
+	while (data->spllited_cmd_buf[i])
 	{
-		if (!ft_strcmp(*data->spllited_cmd_buf, "|"))
+		if (!ft_strcmp(data->spllited_cmd_buf[i], "|"))
 			return (1);
-		data->spllited_cmd_buf++;
+		i++;
 	}
 	return (0);
 }

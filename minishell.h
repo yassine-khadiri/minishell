@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 19:16:37 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/01 11:41:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,9 @@ char	*ft_strjoin(char *s1, char *s2);
 void	execution(t_data *data);
 char	**ft_split(const char *s, char c);
 void	execution_other_builtins(t_data *data);
-void	execution_pipe_cmd(char *av, char **env);
 char	**ft_get_spllited_path_env(t_data *data);
 char	*get_val_env_var(char **env, char *env_variable);
-int		ft_pipe(char *str, char **env);
+int		ft_pipe(t_data *data);
 int		cmd_founded_y_n(t_data *data);
 int		pipe_founded(t_data *data);
 void	exec(t_data *data);

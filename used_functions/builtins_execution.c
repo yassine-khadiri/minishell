@@ -6,11 +6,21 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 19:17:33 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/02 12:26:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	print_err_mssj(t_data *data, int index)
+{
+	if(data->spllited_cmd_buf[index + 1])
+	{
+		printf("Invalid Command :)\n");
+		return (1);
+	}
+	return (0);
+}
 
 int	builtins_execution(t_data *data)
 {
@@ -40,8 +50,11 @@ int	builtins_execution(t_data *data)
 			return (ft_env(data->env));
 		else if (!ft_strcmp(data->spllited_cmd_buf[i], "exit"))
 		{
-			printf("exit\n");
-			exit(0);
+			if(!print_err_mssj(data, i))
+			{
+				printf("exit\n");
+				exit(0);	
+			}
 		}
 		else if (!verify_rdr(data))
 		{

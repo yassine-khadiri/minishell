@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 17:16:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:08:10 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	ft_echo(t_data *data, int index)
 	else if (data->spllited_cmd_buf[++index][0] == '$')
 		check_var(data->spllited_cmd_buf[index], data->env);
 	else if (!ft_strcmp(data->spllited_cmd_buf[index], "-n"))
-		printf("%s", ft_strtrim(data->spllited_cmd_buf[++index], "\""));
+		printf("%s", data->spllited_cmd_buf[++index]);
 	else
-		printf("%s\n", ft_strtrim(data->spllited_cmd_buf[index], "\""));
+		printf("%s\n", data->spllited_cmd_buf[index]);
 	return (0);
 }
