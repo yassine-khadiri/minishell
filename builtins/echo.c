@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/03 19:05:20 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/03 19:16:15 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,20 @@ void	print_pid(char *str)
 	}
 	dollars_arr[i] = '\0';
 	i = 0;
-	while (dollars_arr[i] && dollar_count >= 0)
+	while (dollars_arr[i] && dollar_count > 0)
 	{
 		printf("%d", getpid());
 		dollar_count -= 2;
-		if (dollar_count - 2 == 1)
+		if (!dollar_count)
+		{
+			printf("\n");
+			break ;
+		}
+		else if (dollar_count == 1)
 		{
 			printf("$\n");
 			break;
-		}
-		else
-			
+		}	
 		i++;
 	}
 }
