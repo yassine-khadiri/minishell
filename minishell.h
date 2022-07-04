@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/01 11:41:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:25:18 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 # include <unistd.h>
 # include <stdio.h>
+# include <termios.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <signal.h>
