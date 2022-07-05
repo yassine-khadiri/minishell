@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/05 17:49:20 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/05 20:13:34 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	ft_echo(t_data *data, int index)
 	char	mode;
 	char	*string;
 
-	mode = '\0';
+	mode = '\n';
 	len = 0;
 	while (data->spllited_cmd_buf[++len]);
 	get_mssjs = (char **)malloc(sizeof(char *) * len);
@@ -128,22 +128,27 @@ int	ft_echo(t_data *data, int index)
 			mode = '\n';
 			i++;
 		}
+		if (get_mssjs[i][0] == '\'' && get_mssjs[i][ft_strlen(get_mssjs[i]) - 1] == '\'')
+			get_mssjs[i] = ft_strtrim(get_mssjs[i], "'");
+		print_mssj(get_mssjs[i], mode);
+		if (i < len - 2 && !ft_strcmp(get_mssjs[0], "-n"))
+			printf(" ");;
 		while (get_mssjs[i][j])
 		{
-			if (get_mssjs[i][j] == '$' && get_mssjs[i][j + 1] != '$')
+			if (get_mssjs[i][j] == '$'
+				&& get_mssjs[i][j + 1] != '$'
+				&& get_mssjs[i][j + 1] != '\0')
 			{
-				check_dollar_sign(get_mssjs[i], string, data->env, mode);
+				check_dollar_sign(get_mssjs[i], string, data->env);
+				break ;
+			}
+			else if (get_mssjs[i][j] == '$' && get_mssjs[i][j + 1] == '$')
+			{
+				check_dollars(get_mssjs[i]);
 				break ;
 			}
 			j++;
 		}
-		// if (get_mssjs[i][0] == '\'' && get_mssjs[i][ft_strlen(get_mssjs[i]) - 1] == '\'')
-		// 	get_mssjs[i] = ft_strtrim(get_mssjs[i], "'");
-		// if (get_mssjs[i][0] == '$')
-		// 	get_mssjs[i] = check_var(get_mssjs[i], data->env);
-		// print_mssj(get_mssjs[i], mode);
-		// if (i < len - 2 && !ft_strcmp(get_mssjs[0], "-n"))
-		// 	printf(" ");
 		i++;
 	}
 	return (0);

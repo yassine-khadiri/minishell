@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/05 13:58:44 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/05 20:03:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_data
 	char		getpath[1000];
 	char		**env;
 	char		**splitted_path;
+	int			new_index;
 	const char	*fd_name;
 	t_global	g_std;
 }	t_data;
@@ -99,6 +100,7 @@ int		pipe_founded(t_data *data);
 void	exec(t_data *data);
 char	*check_var(char *var_name, char **env);
 void	print_mssj(char *str, char mode);
+char	*ft_itoa(int n);
 
 // redirections
 // -- output redirection
@@ -123,7 +125,9 @@ int	ft_pwd(t_data *data);
 
 // echo Command :)
 int	ft_echo(t_data *data, int index);
-int	check_dollar_sign(char *str, char *string, char **env, char mode);
+int	check_dollar_sign(char *str, char *string, char **env);
+char    **ft_analayzer(t_data *data, char *str, char *string);
+char    **dollar_analayzer(t_data *data, char *str);
 
 // export Command :)
 int		get_env_size(char **env);

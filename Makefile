@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/05 13:57:54 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/07/05 20:03:20 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = minishell.c \
 	used_functions/ft_strjoin_space.c \
 	used_functions/ft_strjoin.c \
 	used_functions/ft_split.c \
+	used_functions/ft_itoa.c \
 	used_functions/execution_other_builtins.c \
 	used_functions/execution.c \
 	used_functions/rdr_execution.c \
