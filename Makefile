@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/03 12:39:22 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/07/05 13:57:54 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC = minishell.c \
 	used_functions/builtins_execution.c \
 	used_functions/for_export_1.c \
 	used_functions/for_export_2.c \
+	used_functions/for_echo.c \
 	redirections/output_rdr_std_appnd.c \
 	redirections/input_rdr_std_appnd.c \
 	redirections/verify_rdr.c \

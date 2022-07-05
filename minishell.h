@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/04 12:25:18 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/05 13:58:44 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int		ft_pipe(t_data *data);
 int		cmd_founded_y_n(t_data *data);
 int		pipe_founded(t_data *data);
 void	exec(t_data *data);
+char	*check_var(char *var_name, char **env);
+void	print_mssj(char *str, char mode);
 
 // redirections
 // -- output redirection
@@ -121,6 +123,7 @@ int	ft_pwd(t_data *data);
 
 // echo Command :)
 int	ft_echo(t_data *data, int index);
+int	check_dollar_sign(char *str, char *string, char **env, char mode);
 
 // export Command :)
 int		get_env_size(char **env);

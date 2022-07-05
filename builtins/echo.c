@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/04 19:38:51 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:49:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_val_env_var1(char **env, char *env_variable)
 	i = 0;
 	while (env[i])
 	{
-		if (!ft_strncmp(env[i], env_variable, ft_strlen(extract_var_name(env[i]))))
+		if (!ft_strcmp(extract_var_name(env[i]), env_variable))
 			return (env[i] + ft_strlen(env_variable) + 1);
 		i++;
 	}
@@ -85,9 +85,9 @@ void	check_dollars(char *str)
 
 void	print_mssj(char *str, char mode)
 {
-	if (mode == '\n')
+	if (mode == '\0')
 		printf("%s", str);
-	else
+	else if (mode == '\n')
 		printf("%s\n", str);
 }
 
@@ -96,9 +96,8 @@ int	ft_echo(t_data *data, int index)
 	char	**get_mssjs;
 	int		i;
 	int		j;
-	int		k;
 	int		len;
-	char mode;
+	char	mode;
 	char	*string;
 
 	mode = '\0';
@@ -121,38 +120,23 @@ int	ft_echo(t_data *data, int index)
 	while (get_mssjs[i])
 	{
 		j = 0;
-		k = 0;
 		string = malloc(sizeof(char) * (ft_strlen(get_mssjs[i]) + 1));
 		if (!string)
 			return (0);
+		if (!ft_strcmp(get_mssjs[i], "-n") && i == 0)
+		{
+			mode = '\n';
+			i++;
+		}
 		while (get_mssjs[i][j])
 		{
 			if (get_mssjs[i][j] == '$' && get_mssjs[i][j + 1] != '$')
 			{
-				j = 1;
-				while (get_mssjs[i][j])
-				{
-					string[k++] = get_mssjs[i][j++];
-					// printf("%c\n", get_mssjs[i][j]);
-					// printf("%s\n", check_var(string, data->env));
-					if (strcmp(check_var(string, data->env), ""))
-					{
-						printf("HERE\n");
-						string[k] = '\0';
-						break ;
-					}
-				}
+				check_dollar_sign(get_mssjs[i], string, data->env, mode);
+				break ;
 			}
-			// printf("%s\n", string);
-			// if (get_mssjs[i][j] == '$')
-			// 	check_dollars(get_mssjs[i]);
 			j++;
 		}
-		// if (!ft_strcmp(get_mssjs[i], "-n") && i == 0)
-		// {
-		// 	mode = '\n';
-		// 	i++;
-		// }
 		// if (get_mssjs[i][0] == '\'' && get_mssjs[i][ft_strlen(get_mssjs[i]) - 1] == '\'')
 		// 	get_mssjs[i] = ft_strtrim(get_mssjs[i], "'");
 		// if (get_mssjs[i][0] == '$')
