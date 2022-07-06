@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/01 12:01:05 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:57:30 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ int	pipe_founded(t_data *data)
 	return (0);
 }
 
+int	quotes_count(char *cmd)
+{
+	int	quotes_start;
+	int	quotes_end;
+
+	quotes_start = 0;
+	quotes_end = 0;
+	while (cmd[quotes_start] && cmd[quotes_start] == '"')
+		quotes_start++;
+	while (cmd[ft_strlen(cmd) - quotes_end - 1]
+		&& (cmd[ft_strlen(cmd) - quotes_end - 1] == '"'))
+		quotes_end++;
+	if (quotes_start == quotes_end)
+		return (1);
+	return (0);
+}
+
 int	cmd_founded_y_n(t_data *data)
 {
 	char	*path;
@@ -35,6 +52,13 @@ int	cmd_founded_y_n(t_data *data)
 	path = NULL;
 	result = -1;
 	i = 0;
+	if (quotes_count(data->spllited_cmd_buf[0]))
+		data->spllited_cmd_buf[0] = ft_strtrim(data->spllited_cmd_buf[0], "\"");
+	else
+	{
+		printf("Syntax Error 😒\n");
+		return (0);
+	}
 	while (data->splitted_path[i])
 	{
 		if (!ft_strcmp(data->spllited_cmd_buf[0], "export")

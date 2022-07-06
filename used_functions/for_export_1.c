@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:12 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 16:32:38 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/06 14:48:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*extract_var_name(char *string)
 {
 	char	*extr_var_name;
 	int		i;
-
+	
 	i = check_equal_sign(string);
 	if (i)
 		extr_var_name = malloc(sizeof(char) * i);

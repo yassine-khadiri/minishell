@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 16:32:23 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/06 14:53:34 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	display_export(t_data *data)
 	int		i;
 	int		len;
 	int		step;
+	// char	*mssj = NULL;
 
 	step = 0;
 	len = 0;
@@ -57,7 +58,17 @@ void	display_export(t_data *data)
 	sort_data(data, len, step);
 	i = 0;
 	while (data->env[i])
+	{
+		// printf("%s\n", extract_var_name(data->env[i++]));
+		// mssj = ft_strjoin(extract_var_name(data->env[i++]), "=");
+		// mssj = ft_strjoin(mssj, "\"");
+		// mssj = ft_strjoin(mssj, get_val_env_var(data->env, extract_var_name(data->env[i++])));
+		// mssj = ft_strjoin(mssj, "\"");
+		// printf("declare -x %s\n", mssj);
+		// mssj = NULL;
+		// bash: syntax error
 		printf("declare -x %s\n", data->env[i++]);
+	}
 }
 
 char	*ignore_something(char *var_name)
