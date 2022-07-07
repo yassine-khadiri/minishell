@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/06 18:57:30 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:02:26 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	cmd_founded_y_n(t_data *data)
 		data->spllited_cmd_buf[0] = ft_strtrim(data->spllited_cmd_buf[0], "\"");
 	else
 	{
-		printf("Syntax Error 😒\n");
+		printf("Syntax Error\n");
 		return (0);
 	}
 	while (data->splitted_path[i])
