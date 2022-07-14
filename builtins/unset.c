@@ -6,16 +6,16 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:56:08 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 16:22:58 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:19:58 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_unset(t_data *data, int index)
+int ft_unset(t_data *data, int index)
 {
-	int		i;
-	char	*var_name;
+	int i;
+	char *var_name;
 
 	var_name = ft_strdup(data->spllited_cmd_buf[++index]);
 	i = 0;
@@ -29,7 +29,7 @@ int	ft_unset(t_data *data, int index)
 				i++;
 			}
 			data->env[i] = NULL;
-			break ;
+			break;
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/05 20:03:20 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/07/14 16:19:52 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,21 @@ SRC = minishell.c \
 	used_functions/ft_strdup.c \
 	used_functions/ft_strjoin_space.c \
 	used_functions/ft_strjoin.c \
+	used_functions/ft_isalnum.c \
+	used_functions/ft_islast.c \
+	used_functions/ft_isdigit.c \
+	used_functions/ft_substr.c \
+	used_functions/ft_strndup.c \
+	parsing/add_back.c \
+	parsing/initialize_tokens.c \
+	parsing/tokenizing.c \
+	parsing/tokenizing_utils.c \
+	parsing/check_syntax.c \
+	parsing/check_syntax_utils.c \
+	parsing/parser.c \
+	parsing/parser_utils.c \
+	parsing/envirenement.c \
+	parsing/expander.c \
 	used_functions/ft_split.c \
 	used_functions/ft_itoa.c \
 	used_functions/execution_other_builtins.c \

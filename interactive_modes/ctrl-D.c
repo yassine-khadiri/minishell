@@ -6,13 +6,13 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 13:43:42 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/16 16:07:30 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:19:55 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	ft_ctl_d(t_data *cmds)
+void ft_ctl_d(t_data *cmds)
 {
 	if (!cmds->command_buf)
 	{

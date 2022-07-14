@@ -6,14 +6,14 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 18:29:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:19:56 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int    ft_exit()
+int ft_exit()
 {
-    printf("exit\n");
-    return (0);
+	printf("exit\n");
+	return (0);
 }

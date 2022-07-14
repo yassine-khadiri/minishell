@@ -6,18 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:30:21 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 14:13:08 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:28:02 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
 
 int	ft_isalpha(int c)
 {

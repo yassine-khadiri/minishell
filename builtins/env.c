@@ -6,15 +6,15 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:52:30 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/30 17:11:09 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:19:56 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_env(char **env)
+int ft_env(char **env)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (env[i])

@@ -1,6 +1,14 @@
 {
     "files.associations": {
         "string": "c",
-        "iosfwd": "c"
-    }
+        "iosfwd": "c",
+        "minishell.h": "c",
+        "unistd.h": "c",
+        "termios.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c"
+    },
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+	"editor.tabSize": 4
 }

@@ -6,29 +6,29 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/01 14:01:07 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:20:05 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	**get_cmd(char *str)
+char **get_cmd(char *str)
 {
-	char	**splitted_cmd;
+	char **splitted_cmd;
 
 	splitted_cmd = ft_split(str, ' ');
 	return (splitted_cmd);
 }
 
-void	execution_pipe_cmd(t_data *data, char *cmd)
+void execution_pipe_cmd(t_data *data, char *cmd)
 {
-	char	*path;
-	char	**spllited_cmd;
-	int		i;
+	char *path;
+	char **spllited_cmd;
+	int i;
 
 	i = 0;
 	printf("%s\n", cmd);
-	cmd = ft_strtrim(cmd, " "); 
+	cmd = ft_strtrim(cmd, " ");
 	spllited_cmd = get_cmd(cmd);
 	// printf("%s\n", spllited_cmd[0]);
 	while (*data->splitted_path[i])
@@ -41,11 +41,11 @@ void	execution_pipe_cmd(t_data *data, char *cmd)
 	}
 }
 
-char	**get_cmds(char **str)
+char **get_cmds(char **str)
 {
-	int		i;
-	char	**get_cmds;
-	char	*cmds;
+	int i;
+	char **get_cmds;
+	char *cmds;
 
 	i = 2;
 	cmds = ft_strjoin_space(str[0], str[1]);
@@ -58,14 +58,14 @@ char	**get_cmds(char **str)
 	return (get_cmds);
 }
 
-int	ft_pipe(t_data *data)
+int ft_pipe(t_data *data)
 {
-	char	**cmds_arr;
-	int		fd[2];
-	int		pid1;
+	char **cmds_arr;
+	int fd[2];
+	int pid1;
 
 	cmds_arr = get_cmds(data->spllited_cmd_buf);
-	int		pid2;
+	int pid2;
 
 	// while (*cmds_arr)
 	// 	printf("%s\n", *cmds_arr++);

@@ -6,16 +6,15 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/05 20:13:34 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:19:55 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-
-char	*get_val_env_var1(char **env, char *env_variable)
+char *get_val_env_var1(char **env, char *env_variable)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (env[i])
@@ -27,7 +26,7 @@ char	*get_val_env_var1(char **env, char *env_variable)
 	return (NULL);
 }
 
-char	*check_var(char *var_name, char **env)
+char *check_var(char *var_name, char **env)
 {
 	// var_name = ft_strtrim(var_name, "$");
 	// printf("%s:\n", var_name);
@@ -38,9 +37,9 @@ char	*check_var(char *var_name, char **env)
 	return (var_name);
 }
 
-void	print_dollar(int dollar_count, char *dollars_arr)
+void print_dollar(int dollar_count, char *dollars_arr)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (dollars_arr[i] && dollar_count > 0)
@@ -49,11 +48,11 @@ void	print_dollar(int dollar_count, char *dollars_arr)
 		{
 			printf("$\n");
 			break;
-		}	
+		}
 		else if (!dollar_count)
 		{
 			printf("\n");
-			break ;
+			break;
 		}
 		printf("%d", getpid());
 		dollar_count -= 2;
@@ -61,18 +60,17 @@ void	print_dollar(int dollar_count, char *dollars_arr)
 	}
 }
 
-void	check_dollars(char *str)
+void check_dollars(char *str)
 {
-	int	i;
-	int	dollar_count;
-	char	dollars_arr[1000];
+	int i;
+	int dollar_count;
+	char dollars_arr[1000];
 
 	i = 0;
 	dollar_count = 0;
 	while (str[i])
 	{
-		if ((str[i] == '$' && str[i + 1] == '$')
-			|| (str[i] == '$' && str[i + 1] == '\0'))
+		if ((str[i] == '$' && str[i + 1] == '$') || (str[i] == '$' && str[i + 1] == '\0'))
 		{
 			dollars_arr[i] = '$';
 			dollar_count++;
@@ -83,7 +81,7 @@ void	check_dollars(char *str)
 	print_dollar(dollar_count, dollars_arr);
 }
 
-void	print_mssj(char *str, char mode)
+void print_mssj(char *str, char mode)
 {
 	if (mode == '\0')
 		printf("%s", str);
@@ -91,18 +89,19 @@ void	print_mssj(char *str, char mode)
 		printf("%s\n", str);
 }
 
-int	ft_echo(t_data *data, int index)
+int ft_echo(t_data *data, int index)
 {
-	char	**get_mssjs;
-	int		i;
-	int		j;
-	int		len;
-	char	mode;
-	char	*string;
+	char **get_mssjs;
+	int i;
+	int j;
+	int len;
+	char mode;
+	char *string;
 
 	mode = '\n';
 	len = 0;
-	while (data->spllited_cmd_buf[++len]);
+	while (data->spllited_cmd_buf[++len])
+		;
 	get_mssjs = (char **)malloc(sizeof(char *) * len);
 	if (!get_mssjs)
 		return (0);
@@ -132,20 +131,19 @@ int	ft_echo(t_data *data, int index)
 			get_mssjs[i] = ft_strtrim(get_mssjs[i], "'");
 		print_mssj(get_mssjs[i], mode);
 		if (i < len - 2 && !ft_strcmp(get_mssjs[0], "-n"))
-			printf(" ");;
+			printf(" ");
+		;
 		while (get_mssjs[i][j])
 		{
-			if (get_mssjs[i][j] == '$'
-				&& get_mssjs[i][j + 1] != '$'
-				&& get_mssjs[i][j + 1] != '\0')
+			if (get_mssjs[i][j] == '$' && get_mssjs[i][j + 1] != '$' && get_mssjs[i][j + 1] != '\0')
 			{
 				check_dollar_sign(get_mssjs[i], string, data->env);
-				break ;
+				break;
 			}
 			else if (get_mssjs[i][j] == '$' && get_mssjs[i][j + 1] == '$')
 			{
 				check_dollars(get_mssjs[i]);
-				break ;
+				break;
 			}
 			j++;
 		}
