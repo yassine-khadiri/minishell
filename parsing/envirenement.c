@@ -6,15 +6,16 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:07:10 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 16:20:01 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 17:35:14 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_env *initial_env_node(char *name, char *value)
+t_env	*initial_env_node(char *name, char *value)
 {
-	t_env *first_env_node;
+	t_env	*first_env_node;
+
 	first_env_node = (t_env *)malloc(sizeof(t_env));
 	first_env_node->name = name;
 	first_env_node->value = value;
@@ -22,9 +23,9 @@ t_env *initial_env_node(char *name, char *value)
 	return (first_env_node);
 }
 
-void add_env_node(t_env *env_l, char *name, char *value)
+void	add_env_node(t_env *env_l, char *name, char *value)
 {
-	t_env *new_env;
+	t_env	*new_env;
 
 	new_env = env_l;
 	while (new_env->next != NULL)
@@ -35,7 +36,7 @@ void add_env_node(t_env *env_l, char *name, char *value)
 	new_env->next->next = NULL;
 }
 
-t_env *create_env_list(t_env *l_env, char **env)
+t_env	*create_env_list(t_env *l_env, char **env)
 {
 	char **str;
 	int i;

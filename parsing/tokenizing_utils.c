@@ -25,9 +25,9 @@
 //     return (i);
 // }
 
-int is_pipe(t_token **tokens, char *str)
+int	is_pipe(t_token **tokens, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -37,9 +37,9 @@ int is_pipe(t_token **tokens, char *str)
 	return (1);
 }
 
-int is_redin(t_token **tokens, char *str)
+int	is_redin(t_token **tokens, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -54,9 +54,9 @@ int is_redin(t_token **tokens, char *str)
 	return (1);
 }
 
-int is_redout(t_token **tokens, char *str)
+int	is_redout(t_token **tokens, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -71,9 +71,9 @@ int is_redout(t_token **tokens, char *str)
 	return (1);
 }
 
-int not_word(char c, char *str)
+int	not_word(char c, char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -85,9 +85,9 @@ int not_word(char c, char *str)
 	return (1);
 }
 
-int db_quote(t_token **tokens, char *str)
+int	db_quote(t_token **tokens, char *str)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (!str)
@@ -104,9 +104,9 @@ int db_quote(t_token **tokens, char *str)
 	return (i + 1);
 }
 
-int quote(t_token **tokens, char *str)
+int	quote(t_token **tokens, char *str)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (!str)
@@ -123,9 +123,10 @@ int quote(t_token **tokens, char *str)
 	return (i + 1);
 }
 
-int word(t_token **tokens, char *str)
+int	word(t_token **tokens, char *str)
 {
-	static int i;
+	static int	i;
+
 	if (!str)
 		return (0);
 	i = 0;
@@ -147,7 +148,7 @@ int word(t_token **tokens, char *str)
 //         return (1);
 // }
 
-int semicolon(t_token **tokens, char *str)
+int	semicolon(t_token **tokens, char *str)
 {
 	int i;
 	i = 0;

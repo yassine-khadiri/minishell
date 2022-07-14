@@ -12,15 +12,16 @@
 
 #include "../minishell.h"
 
-void input_rdr_std_appnd(t_data *data)
+void	input_rdr_std_appnd(t_data *data)
 {
-	int fd;
+	int	fd;
+
 	get_file_name(data);
 	fd = open(data->fd_name, O_RDONLY, 0777);
 	if (fd == -1)
 	{
 		printf(RED "minishell: %s: No such file or directory\n", data->fd_name);
-		return;
+		return ;
 	}
 	dup2(fd, 0);
 	exec(data);

@@ -15,6 +15,7 @@
 char	**ft_get_spllited_string(char *str)
 {
 	char	**get_spllited_string;
+
 	// get_spllited_string = malloc(sizeof(char *) * ft_strlen(str));
 	// if(!get_spllited_string)
 	// 	return (NULL);

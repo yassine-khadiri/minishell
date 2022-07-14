@@ -6,22 +6,26 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/21 19:26:41 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 16:42:42 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	minishel_start(t_data *data)
+void	minishel_start(t_data *data, t_token *tokens, t_env *lenv)
 {
 	while (1)
 	{
 		ft_ctl_c();
 		ft_ctl_slash();
-		data->command_buf = readline(BLU"minishell> "WHT);
+		data->command_buf = readline(BLU "minishell> " WHT);
 		ft_ctl_d(data);
 		if (ft_strlen(data->command_buf) > 0)
 		{
+			data->token_res = ft_tokenizer(&tokens, data->command_buf);
+			data->syntax_res = syntax_errors(data->token_res);
+			if ((data->syntax_res) != 1)
+				ft_parse(tokens, lenv);
 			execution(data);
 			add_history(data->command_buf);
 		}

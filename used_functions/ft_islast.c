@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-t_token *is_last(t_token *last)
+t_token	*is_last(t_token *last)
 {
 	if (last == NULL)
 		return (NULL);

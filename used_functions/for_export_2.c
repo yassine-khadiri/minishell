@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/06 14:53:34 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 17:53:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void	sort_data(t_data *data, int len, int step)
 
 void	display_export(t_data *data)
 {
-	int		i;
-	int		len;
-	int		step;
-	// char	*mssj = NULL;
+	int	i;
+	int	len;
+	int	step;
 
+	// char	*mssj = NULL;
 	step = 0;
 	len = 0;
 	while (data->env[len])
@@ -62,21 +62,22 @@ void	display_export(t_data *data)
 		// printf("%s\n", extract_var_name(data->env[i++]));
 		// mssj = ft_strjoin(extract_var_name(data->env[i++]), "=");
 		// mssj = ft_strjoin(mssj, "\"");
-		// mssj = ft_strjoin(mssj, get_val_env_var(data->env, extract_var_name(data->env[i++])));
-		// mssj = ft_strjoin(mssj, "\"");
-		// printf("declare -x %s\n", mssj);
-		// mssj = NULL;
-		// bash: syntax error
-		printf("declare -x %s\n", data->env[i++]);
+		// mssj = ft_strjoin(mssj, get_val_env_var(data->env,
+					extract_var_name(data->env[i++]);
+					// mssj = ft_strjoin(mssj, "\"");
+					// printf("declare -x %s\n", mssj);
+					// mssj = NULL;
+					// bash: syntax error
+					printf("declare -x %s\n", data->env[i++]);
 	}
 }
 
 char	*ignore_something(char *var_name)
 {
-	char	*new_var;
-	bool	val;
-	int		i;
-	int		j;
+	char *new_var;
+	bool val;
+	int i;
+	int j;
 
 	i = -1;
 	j = -1;

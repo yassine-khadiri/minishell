@@ -12,9 +12,9 @@
 
 #include "../minishell.h"
 
-char *verify_rdr(t_data *data)
+char	*verify_rdr(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!data->spllited_cmd_buf)

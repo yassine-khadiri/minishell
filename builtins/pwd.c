@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-int ft_pwd(t_data *data)
+int	ft_pwd(t_data *data)
 {
 	printf("%s\n", getcwd(data->getpath, sizeof(data->getpath)));
 	return (0);

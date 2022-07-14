@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-void handler(int signm)
+void	handler(int signm)
 {
 	if (signm == SIGINT)
 	{
@@ -23,7 +23,7 @@ void handler(int signm)
 	}
 }
 
-void ft_ctl_c(void)
+void	ft_ctl_c(void)
 {
 	signal(SIGINT, handler);
 }

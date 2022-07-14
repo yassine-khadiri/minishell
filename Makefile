@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/14 16:19:52 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/07/14 17:52:44 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC = minishell.c \
 	used_functions/ft_isdigit.c \
 	used_functions/ft_substr.c \
 	used_functions/ft_strndup.c \
-	parsing/add_back.c \
+	used_functions/add_back.c \
 	parsing/initialize_tokens.c \
 	parsing/tokenizing.c \
 	parsing/tokenizing_utils.c \

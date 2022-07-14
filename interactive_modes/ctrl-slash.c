@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-void ft_ctl_slash(void)
+void	ft_ctl_slash(void)
 {
 	signal(SIGQUIT, SIG_IGN);
 }

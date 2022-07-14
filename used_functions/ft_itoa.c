@@ -29,9 +29,9 @@ static size_t	ft_nb_len(long nb)
 
 char	*ft_itoa(int n)
 {
-	long	len;
-	char	*str;
-	long	nb;
+	long len;
+	char *str;
+	long nb;
 
 	nb = n;
 	len = ft_nb_len(nb);

@@ -12,11 +12,11 @@
 
 #include "../minishell.h"
 
-char *ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int len_s1;
-	int i;
-	char *tab;
+	int		len_s1;
+	int		i;
+	char	*tab;
 
 	if (!s1 || !s2)
 		return (NULL);

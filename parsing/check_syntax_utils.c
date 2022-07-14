@@ -6,20 +6,22 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:08:26 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 16:20:00 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 17:33:38 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int none_error(t_token *tokens, t_token *head)
+int	none_error(t_token *tokens, t_token *head)
 {
-	int result;
+	int	result;
+
 	(void)head;
 	result = 0;
 	if (tokens->next->type == PIPE || tokens->next->type == SEMICOLON)
 	{
-		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT, tokens->next->value);
+		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
+			tokens->next->value);
 		result = 1;
 	}
 	else if (tokens->next->type == N_line)
@@ -28,10 +30,12 @@ int none_error(t_token *tokens, t_token *head)
 	}
 	return (result);
 }
-int redir_error(t_token *tokens, t_token *head)
+
+int	redir_error(t_token *tokens, t_token *head)
 {
+	int	result;
+
 	(void)head;
-	int result;
 	result = 0;
 	if (tokens->next->type != WORD)
 	{
@@ -41,20 +45,23 @@ int redir_error(t_token *tokens, t_token *head)
 	}
 	return (result);
 }
-int pipe_error(t_token *tokens, t_token *head)
-{
-	(void)head;
-	int result;
 
+int	pipe_error(t_token *tokens, t_token *head)
+{
+	int	result;
+
+	(void)head;
 	result = 0;
 	if (tokens->next->type == PIPE || tokens->next->type == SEMICOLON)
 	{
-		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT, tokens->next->value);
+		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
+			tokens->next->value);
 		result = 1;
 	}
 	else if (tokens->next->type == N_line)
 	{
-		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT, tokens->next->value);
+		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
+			tokens->next->value);
 		result = 1;
 	}
 	return (result);

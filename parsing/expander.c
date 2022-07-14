@@ -6,17 +6,17 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:11:05 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 16:20:01 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 17:35:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char *after_dollar_value(char *command1, int i)
+char	*after_dollar_value(char *command1, int i)
 {
-	char *after_dollar;
-	int j;
-	int start;
+	char	*after_dollar;
+	int		j;
+	int		start;
 
 	j = 0;
 	start = i;
@@ -26,10 +26,10 @@ char *after_dollar_value(char *command1, int i)
 	return (after_dollar);
 }
 
-size_t dollar_val(char **comd, char *name, char *old_comd, t_env *envl)
+size_t	dollar_val(char **comd, char *name, char *old_comd, t_env *envl)
 {
-	char *tmp;
-	int len;
+	char	*tmp;
+	int		len;
 
 	len = 0;
 	while (envl != NULL)
@@ -41,7 +41,7 @@ size_t dollar_val(char **comd, char *name, char *old_comd, t_env *envl)
 			tmp = ft_strjoin(old_comd, envl->value);
 			free(*(comd));
 			*(comd) = tmp;
-			break;
+			break ;
 		}
 		else
 		{
@@ -55,7 +55,7 @@ size_t dollar_val(char **comd, char *name, char *old_comd, t_env *envl)
 	return (len);
 }
 
-void ft_new_str(char *str, int index)
+void	ft_new_str(char *str, int index)
 {
 	while (str[index] != '\0')
 	{
@@ -64,17 +64,17 @@ void ft_new_str(char *str, int index)
 	}
 }
 
-char *get_dollar_name(char *command, int *j)
+char	*get_dollar_name(char *command, int *j)
 {
-	char *name;
-	char *ptr;
-	char *tmp;
-	int i;
+	char	*name;
+	char	*ptr;
+	char	*tmp;
+	int		i;
 
 	i = *j;
 	name = ft_strdup("");
-
-	while (command[i] != '\0' && (ft_isalnum(command[i]) == 1 || command[i] == '_'))
+	while (command[i] != '\0' && (ft_isalnum(command[i]) == 1
+			|| command[i] == '_'))
 	{
 		ptr = ft_substr(command, i, 1);
 		tmp = ft_strjoin(name, ptr);
@@ -87,10 +87,10 @@ char *get_dollar_name(char *command, int *j)
 	return (name);
 }
 
-char *check_name_hdc(char *buffer, int *k)
+char	*check_name_hdc(char *buffer, int *k)
 {
-	char *name;
-	int i;
+	char	*name;
+	int		i;
 
 	i = *k;
 	if (ft_isalnum(buffer[i + 1]) == 1 || buffer[i + 1] == '_')
@@ -105,17 +105,21 @@ char *check_name_hdc(char *buffer, int *k)
 	*k = i;
 	return (name);
 }
-char *expand_herdocs(char *buffer, t_env *lenv)
+
+char	*expand_herdocs(char *buffer, t_env *lenv)
 {
-	char *before_dollar;
-	char *env_name;
-	char *after_dollar;
-	int i = 0;
-	size_t len;
+	char	*before_dollar;
+	char	*env_name;
+	char	*after_dollar;
+	int		i;
+	size_t	len;
+
+	i = 0;
 	before_dollar = ft_strdup("");
 	while (buffer[i] != '\0')
 	{
-		if (buffer[i] == '$' && (ft_isalnum(buffer[i + 1]) == 1 || buffer[i + 1] == '_'))
+		if (buffer[i] == '$' && (ft_isalnum(buffer[i + 1]) == 1 || buffer[i
+				+ 1] == '_'))
 		{
 			before_dollar = ft_substr(buffer, 0, i);
 			env_name = check_name_hdc(buffer, &i);
@@ -128,7 +132,8 @@ char *expand_herdocs(char *buffer, t_env *lenv)
 	}
 	return (buffer);
 }
-char *treat_heredocs(char *delimeter, t_env *lenv)
+
+char	*treat_heredocs(char *delimeter, t_env *lenv)
 {
 	char *line;
 	char *buffer;
@@ -138,7 +143,7 @@ char *treat_heredocs(char *delimeter, t_env *lenv)
 	{
 		line = readline(BLU ">" WHT);
 		if (ft_strcmp(line, delimeter) == 0)
-			break;
+			break ;
 		line = ft_strjoin(line, "\n");
 		buffer = ft_strjoin(buffer, line);
 		// free(line);

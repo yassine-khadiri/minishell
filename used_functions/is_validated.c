@@ -33,10 +33,9 @@ int	is_validated(char *var_name, char *env_var)
 	j = 0;
 	while (var_name[j])
 		j++;
-	if (check_equal_sign(env_var)
-		&& var_name[--j] == '+'
+	if (check_equal_sign(env_var) && var_name[--j] == '+'
 		&& var_name[--j] != '+')
-			i++;
+		i++;
 	if (ft_strlen(var_name) == i)
 		return (1);
 	return (0);

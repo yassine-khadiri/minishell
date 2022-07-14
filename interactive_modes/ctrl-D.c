@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-void ft_ctl_d(t_data *cmds)
+void	ft_ctl_d(t_data *cmds)
 {
 	if (!cmds->command_buf)
 	{

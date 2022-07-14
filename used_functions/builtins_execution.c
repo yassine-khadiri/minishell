@@ -14,7 +14,7 @@
 
 int	print_err_mssj(t_data *data, int index)
 {
-	if(data->spllited_cmd_buf[index + 1])
+	if (data->spllited_cmd_buf[index + 1])
 	{
 		printf("Invalid Command :)\n");
 		return (1);
@@ -29,7 +29,6 @@ int	builtins_execution(t_data *data)
 
 	i = 0;
 	val = false;
-
 	while (data->spllited_cmd_buf[i])
 	{
 		if (!ft_strcmp(data->spllited_cmd_buf[i], "pwd"))
@@ -38,7 +37,8 @@ int	builtins_execution(t_data *data)
 		{
 			edit_pwd(env);
 			if (chdir(data->spllited_cmd_buf[++i]) == -1)
-				printf("cd: %s: No such file or directory\n", data->spllited_cmd_buf[i]);
+				printf("cd: %s: No such file or directory\n",
+						data->spllited_cmd_buf[i]);
 		}*/
 		else if (!ft_strcmp(data->spllited_cmd_buf[i], "echo"))
 			return (ft_echo(data, i));
@@ -50,10 +50,10 @@ int	builtins_execution(t_data *data)
 			return (ft_env(data->env));
 		else if (!ft_strcmp(data->spllited_cmd_buf[i], "exit"))
 		{
-			if(!print_err_mssj(data, i))
+			if (!print_err_mssj(data, i))
 			{
 				printf("exit\n");
-				exit(0);	
+				exit(0);
 			}
 		}
 		else if (!verify_rdr(data))

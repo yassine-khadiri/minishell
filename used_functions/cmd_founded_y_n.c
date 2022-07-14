@@ -35,8 +35,8 @@ int	quotes_count(char *cmd)
 	quotes_end = 0;
 	while (cmd[quotes_start] && cmd[quotes_start] == '"')
 		quotes_start++;
-	while (cmd[ft_strlen(cmd) - quotes_end - 1]
-		&& (cmd[ft_strlen(cmd) - quotes_end - 1] == '"'))
+	while (cmd[ft_strlen(cmd) - quotes_end - 1] && (cmd[ft_strlen(cmd)
+			- quotes_end - 1] == '"'))
 		quotes_end++;
 	if (quotes_start == quotes_end)
 		return (1);
@@ -76,6 +76,6 @@ int	cmd_founded_y_n(t_data *data)
 	}
 	if (result == -1)
 		printf(WHT "minishell : %s: command not found\n" BLU,
-			data->spllited_cmd_buf[0]);
+				data->spllited_cmd_buf[0]);
 	return (free(path), result);
 }

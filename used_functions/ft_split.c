@@ -41,7 +41,7 @@ static int	word_length(const char *str, char c)
 	int	len;
 
 	len = 0;
-	while (str[len] != c && str[len] != '\0' )
+	while (str[len] != c && str[len] != '\0')
 		len++;
 	return (len);
 }

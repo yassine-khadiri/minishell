@@ -12,26 +12,27 @@
 
 #include "../minishell.h"
 
-int get_size_splited_cmd(char **data)
+int	get_size_splited_cmd(char **data)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (!data)
 		return (0);
 	while (data[len])
 	{
-		if (!ft_strcmp(data[len], ">") || !ft_strcmp(data[len], ">>") || !ft_strcmp(data[len], "<"))
-			break;
+		if (!ft_strcmp(data[len], ">") || !ft_strcmp(data[len], ">>")
+			|| !ft_strcmp(data[len], "<"))
+			break ;
 		len++;
 	}
 	return (len);
 }
 
-char **get_splitted_cmd(char **data)
+char	**get_splitted_cmd(char **data)
 {
-	char **splitted_cmd;
-	int i;
+	char	**splitted_cmd;
+	int		i;
 
 	i = 0;
 	splitted_cmd = malloc(get_size_splited_cmd(data) * sizeof(char *));
@@ -39,10 +40,11 @@ char **get_splitted_cmd(char **data)
 		return (NULL);
 	while (data[i])
 	{
-		if (!ft_strcmp(data[i], ">") || !ft_strcmp(data[i], ">>") || !ft_strcmp(data[i], "<"))
+		if (!ft_strcmp(data[i], ">") || !ft_strcmp(data[i], ">>")
+			|| !ft_strcmp(data[i], "<"))
 		{
 			splitted_cmd[i] = NULL;
-			break;
+			break ;
 		}
 		splitted_cmd[i] = data[i];
 		i++;
@@ -50,11 +52,11 @@ char **get_splitted_cmd(char **data)
 	return (splitted_cmd);
 }
 
-void exec(t_data *data)
+void	exec(t_data *data)
 {
-	int pid;
-	int i;
-	char *path;
+	int		pid;
+	int		i;
+	char	*path;
 
 	i = 0;
 	while (data->splitted_path[i])
@@ -65,7 +67,8 @@ void exec(t_data *data)
 		{
 			pid = fork();
 			if (pid == 0)
-				execve(path, get_splitted_cmd(data->spllited_cmd_buf), data->env);
+				execve(path, get_splitted_cmd(data->spllited_cmd_buf),
+						data->env);
 			else
 				waitpid(pid, NULL, 0);
 		}
@@ -73,14 +76,16 @@ void exec(t_data *data)
 	}
 }
 
-const char *get_file_name(t_data *data)
+const char	*get_file_name(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (data->spllited_cmd_buf[i])
 	{
-		if (!ft_strcmp(data->spllited_cmd_buf[i], ">") || !ft_strcmp(data->spllited_cmd_buf[i], ">>") || !ft_strcmp(data->spllited_cmd_buf[i], "<"))
+		if (!ft_strcmp(data->spllited_cmd_buf[i], ">")
+			|| !ft_strcmp(data->spllited_cmd_buf[i], ">>")
+			|| !ft_strcmp(data->spllited_cmd_buf[i], "<"))
 		{
 			data->fd_name = data->spllited_cmd_buf[++i];
 			return (data->fd_name);
@@ -90,11 +95,11 @@ const char *get_file_name(t_data *data)
 	return (NULL);
 }
 
-void output_rdr_std_appnd(t_data *data, int flag)
+void	output_rdr_std_appnd(t_data *data, int flag)
 {
-	int fd;
-	get_file_name(data);
+	int	fd;
 
+	get_file_name(data);
 	if (flag == 0x0008)
 		fd = open(data->fd_name, O_CREAT | O_RDWR | O_APPEND, 0777);
 	else
@@ -102,7 +107,7 @@ void output_rdr_std_appnd(t_data *data, int flag)
 	if (fd == -1)
 	{
 		printf(RED "minishell: %s: No such file or directory\n", data->fd_name);
-		return;
+		return ;
 	}
 	dup2(fd, 1);
 	exec(data);

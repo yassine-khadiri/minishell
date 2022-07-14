@@ -30,7 +30,7 @@ char	*extract_var_name(char *string)
 {
 	char	*extr_var_name;
 	int		i;
-	
+
 	i = check_equal_sign(string);
 	if (i)
 		extr_var_name = malloc(sizeof(char) * i);
@@ -65,7 +65,7 @@ int	check_dash_err(char *env_var)
 		if (env_var[i] == '-')
 			return (1);
 		i++;
-	}	
+	}
 	return (0);
 }
 

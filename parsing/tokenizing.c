@@ -12,13 +12,13 @@
 
 #include "../minishell.h"
 
-t_token *ft_tokenizer(t_token **tokens, char *str)
+t_token	*ft_tokenizer(t_token **tokens, char *str)
 {
-	int i;
+	int	i;
+	int	temp;
 
 	i = 0;
-	int temp = 0;
-
+	temp = 0;
 	*tokens = initialize_list();
 	while (str[i])
 	{

@@ -6,15 +6,16 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 16:20:04 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 17:39:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_redirection *initalize_redirections(int type, char *value, t_env *lenv)
+t_redirection	*initalize_redirections(int type, char *value, t_env *lenv)
 {
-	t_redirection *redirection;
+	t_redirection	*redirection;
+
 	redirection = malloc(sizeof(t_redirection));
 	if (!redirection)
 		return (NULL);
@@ -26,26 +27,26 @@ t_redirection *initalize_redirections(int type, char *value, t_env *lenv)
 	return (redirection);
 }
 
-void push_redirections(t_redirection **head, t_redirection *new_redirection)
+void	push_redirections(t_redirection **head, t_redirection *new_redirection)
 {
-	t_redirection *_head;
+	t_redirection	*_head;
 
 	if (!head || !new_redirection)
-		return;
+		return ;
 	_head = *head;
 	if (!_head)
 	{
 		*head = new_redirection;
-		return;
+		return ;
 	}
 	while (_head->next)
 		_head = _head->next;
 	_head->next = new_redirection;
 }
 
-int tab_size(char **cmd_args)
+int	tab_size(char **cmd_args)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (cmd_args[i] != NULL)
@@ -53,25 +54,25 @@ int tab_size(char **cmd_args)
 	return (i);
 }
 
-void add_separator(t_command *cmd, t_token *tokens)
+void	add_separator(t_command *cmd, t_token *tokens)
 {
 	if (tokens->type == PIPE)
 	{
-
 		cmd->separator = e_pipe;
 	}
 	else if (tokens->type == N_line)
 	{
-
 		cmd->separator = e_line;
 	}
 }
 
-t_command *initialize_command(char **cmd_args, t_redirection *redirections, t_token *tokens)
+t_command	*initialize_command(char **cmd_args, t_redirection *redirections,
+		t_token *tokens)
 {
-	t_command *first_command;
-	int size;
-	int i;
+	t_command	*first_command;
+	int			size;
+	int			i;
+
 	first_command = malloc(sizeof(t_command));
 	i = 0;
 	first_command->command = NULL;
@@ -89,22 +90,20 @@ t_command *initialize_command(char **cmd_args, t_redirection *redirections, t_to
 	first_command->redirection = redirections;
 	add_separator(first_command, tokens);
 	first_command->next = NULL;
-
 	return (first_command);
 }
 
-void fill_command(t_command **head, t_command *command)
+void	fill_command(t_command **head, t_command *command)
 {
-
-	t_command *_head;
+	t_command	*_head;
 
 	if (!head || !command)
-		return;
+		return ;
 	_head = *head;
 	if (!_head)
 	{
 		*head = command;
-		return;
+		return ;
 	}
 	while (_head->next)
 		_head = _head->next;

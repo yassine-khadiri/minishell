@@ -12,9 +12,9 @@
 
 #include "../minishell.h"
 
-int ft_env(char **env)
+int	ft_env(char **env)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (env[i])
