@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:15:00 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/05 19:15:18 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 18:03:44 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static size_t	ft_nb_len(long nb)
 
 char	*ft_itoa(int n)
 {
-	long len;
-	char *str;
-	long nb;
+	long	len;
+	char	*str;
+	long	nb;
 
 	nb = n;
 	len = ft_nb_len(nb);

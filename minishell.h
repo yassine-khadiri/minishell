@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/14 17:50:33 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/14 18:13:57 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@
 # define CYN "\e[0;36m"
 # define WHT "\e[0;37m"
 
-#include <unistd.h>
-#include <stdio.h>
-#include <termios.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <signal.h>
-#include <fcntl.h>
-#include <string.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <termios.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <signal.h>
+# include <fcntl.h>
+# include <string.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
 typedef struct s_token
 {
@@ -134,7 +134,8 @@ void						push_redirections(t_redirection **head,
 								t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
 t_command					*initialize_command(char **cmd_args,
-								t_redirection *redirections, t_token *tokens);
+								t_redirection *redirections,
+								t_token *tokens);
 void						fill_command(t_command **head, t_command *command);
 char						*after_dollar_value(char *command1, int i);
 size_t						dollar_val(char **comd, char *name, char *old_comd,
