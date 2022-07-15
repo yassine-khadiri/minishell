@@ -6,13 +6,13 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 17:39:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:22:57 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_redirection	*initalize_redirections(int type, char *value, t_env *lenv)
+t_redirection	*init_rdr(int type, char *value, t_env *lenv)
 {
 	t_redirection	*redirection;
 
@@ -27,7 +27,7 @@ t_redirection	*initalize_redirections(int type, char *value, t_env *lenv)
 	return (redirection);
 }
 
-void	push_redirections(t_redirection **head, t_redirection *new_redirection)
+void	push_rdr(t_redirection **head, t_redirection *new_redirection)
 {
 	t_redirection	*_head;
 
@@ -66,7 +66,7 @@ void	add_separator(t_command *cmd, t_token *tokens)
 	}
 }
 
-t_command	*initialize_command(char **cmd_args, t_redirection *redirections,
+t_command	*init_cmd(char **cmd_args, t_redirection *redirections,
 		t_token *tokens)
 {
 	t_command	*first_command;
@@ -93,7 +93,7 @@ t_command	*initialize_command(char **cmd_args, t_redirection *redirections,
 	return (first_command);
 }
 
-void	fill_command(t_command **head, t_command *command)
+void	fill_cmd(t_command **head, t_command *command)
 {
 	t_command	*_head;
 

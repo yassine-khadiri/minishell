@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/07 15:02:26 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:42:06 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	pipe_founded(t_data *data)
 	int	i;
 
 	i = 0;
-	while (data->spllited_cmd_buf[i])
+	while (data->cmd->command[i])
 	{
-		if (!ft_strcmp(data->spllited_cmd_buf[i], "|"))
+		if (!ft_strcmp(data->cmd->command[i], "|"))
 			return (1);
 		i++;
 	}
@@ -52,8 +52,8 @@ int	cmd_founded_y_n(t_data *data)
 	path = NULL;
 	result = -1;
 	i = 0;
-	if (quotes_count(data->spllited_cmd_buf[0]))
-		data->spllited_cmd_buf[0] = ft_strtrim(data->spllited_cmd_buf[0], "\"");
+	if (quotes_count(data->cmd->command[0]))
+		data->cmd->command[0] = ft_strtrim(data->cmd->command[0], "\"");
 	else
 	{
 		printf("Syntax Error\n");
@@ -61,12 +61,12 @@ int	cmd_founded_y_n(t_data *data)
 	}
 	while (data->splitted_path[i])
 	{
-		if (!ft_strcmp(data->spllited_cmd_buf[0], "export")
-			|| !ft_strcmp(data->spllited_cmd_buf[0], "unset")
-			|| !ft_strcmp(data->spllited_cmd_buf[0], "exit"))
+		if (!ft_strcmp(data->cmd->command[0], "export")
+			|| !ft_strcmp(data->cmd->command[0], "unset")
+			|| !ft_strcmp(data->cmd->command[0], "exit"))
 			return (0);
 		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, data->spllited_cmd_buf[0]);
+		path = ft_strjoin(path, data->cmd->command[0]);
 		if (access(path, X_OK) != -1)
 		{
 			result = 0;
@@ -76,6 +76,6 @@ int	cmd_founded_y_n(t_data *data)
 	}
 	if (result == -1)
 		printf(WHT "minishell : %s: command not found\n" BLU,
-				data->spllited_cmd_buf[0]);
+				data->cmd->command[0]);
 	return (free(path), result);
 }

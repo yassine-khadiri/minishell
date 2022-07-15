@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/15 13:12:12 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:38:12 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,73 +47,68 @@ void	display_commands(t_command *comd)
 
 t_command	*ft_parse(t_data *data)
 {
-	t_token	*current_token;
-	t_token	*first_word;
+	t_token	*curr_token;
+	t_token	*f1_word;
 	int		i;
 	int		size;
 
-	current_token = data->tokens;
-	while (current_token)
-	{
-		printf("%s\n", current_token->value);
-		current_token = current_token->next;
-	}
+	curr_token = data->tokens;
 	size = 0;
-	while (current_token && current_token->type != N_line
-		&& current_token->type != PIPE)
+	while (curr_token && curr_token->type != N_line
+		&& curr_token->type != PIPE)
 	{
-		printf("HERE!\n");
-		if ((current_token->type == HERDOC || current_token->type == APPEND
-				|| current_token->type == REDIN
-				|| current_token->type == REDOUT)
-			&& current_token->next->type == WORD)
-			current_token = current_token->next->next;
-		if (current_token && (current_token->type == WORD
-				|| current_token->type == DBQUOTE
-				|| current_token->type == QUOTE))
+		if ((curr_token->type == HERDOC || curr_token->type == APPEND
+				|| curr_token->type == REDIN
+				|| curr_token->type == REDOUT)
+			&& curr_token->next->type == WORD)
+			curr_token = curr_token->next->next;
+		if (curr_token && (curr_token->type == WORD
+				|| curr_token->type == DBQUOTE
+				|| curr_token->type == QUOTE))
 		{
 			size++;
-			current_token = current_token->next;
+			curr_token = curr_token->next;
 		}
-		if (current_token->type == NONE)
-			current_token = current_token->next;
+		if (curr_token->type == NONE)
+			curr_token = curr_token->next;
 	}
-	data->cmd->command = (char **)malloc(sizeof(char *) * (size + 1));
-	if (!data->cmd->command)
+	data->cmd = malloc(sizeof(t_command));
+	data->cmd->command = malloc(sizeof(char *) * (size + 1));
+	if (!data->cmd || !data->cmd->command)
 		return (NULL);
 	i = 0;
-	first_word = data->tokens;
-	while (first_word)
+	f1_word = data->tokens;
+	while (f1_word)
 	{
-		while (first_word && first_word->type != N_line
-			&& first_word->type != PIPE)
+		while (f1_word && f1_word->type != N_line
+			&& f1_word->type != PIPE)
 		{
-			if (first_word->type == HERDOC || first_word->type == APPEND
-				|| first_word->type == REDIN || first_word->type == REDOUT)
+			if (f1_word->type == HERDOC || f1_word->type == APPEND
+				|| f1_word->type == REDIN || f1_word->type == REDOUT)
 			{
 				// push redirections
-				push_redirections(&data->rdr,
-					initalize_redirections(first_word->type,
-						first_word->next->value,
+				push_rdr(&data->rdr,
+					init_rdr(f1_word->type,
+						f1_word->next->value,
 						data->lenv));
-				first_word = first_word->next->next;
+				f1_word = f1_word->next->next;
 			}
-			else if (first_word && (first_word->type == WORD
-					|| first_word->type == DBQUOTE
-					|| first_word->type == QUOTE))
+			else if (f1_word && (f1_word->type == WORD
+					|| f1_word->type == DBQUOTE
+					|| f1_word->type == QUOTE))
 			{
-				data->cmd->command[i++] = ft_strdup(first_word->value);
-				first_word = first_word->next;
+				data->cmd->command[i++] = ft_strdup(f1_word->value);
+				f1_word = f1_word->next;
 			}
-			if (first_word->type == NONE)
-				first_word = first_word->next;
+			if (f1_word->type == NONE)
+				f1_word = f1_word->next;
 		}
 		data->cmd->command[i] = NULL;
-		if (first_word->type == PIPE || first_word->type == N_line)
-			fill_command(&data->cmd, initialize_command(data->cmd->command,
-					data->rdr, first_word));
-		first_word = first_word->next;
+		if (f1_word->type == PIPE || f1_word->type == N_line)
+			fill_cmd(&data->cmd, init_cmd(data->cmd->command,
+					data->rdr, f1_word));
+		f1_word = f1_word->next;
 	}
-	// display_commands(cmd);
+	display_commands(data->cmd);
 	return (NULL);
 }

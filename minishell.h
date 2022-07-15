@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 13:10:37 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:22:51 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,15 +131,15 @@ t_token						*create_token(int type, char *value);
 int							none_error(t_token *tokens, t_token *head);
 int							redir_error(t_token *tokens, t_token *head);
 int							pipe_error(t_token *tokens, t_token *head);
-t_redirection				*initalize_redirections(int type, char *value,
+t_redirection				*init_rdr(int type, char *value,
 								t_env *lenv);
-void						push_redirections(t_redirection **head,
+void						push_rdr(t_redirection **head,
 								t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
-t_command					*initialize_command(char **cmd_args,
+t_command					*init_cmd(char **cmd_args,
 								t_redirection *redirections,
 								t_token *tokens);
-void						fill_command(t_command **head, t_command *command);
+void						fill_cmd(t_command **head, t_command *command);
 char						*after_dollar_value(char *command1, int i);
 size_t						dollar_val(char **comd, char *name, char *old_comd,
 								t_env *envl);
@@ -155,7 +155,7 @@ int							semicolon(t_token **tokens, char *str);
 void						free_list(t_token *lst);
 int							redir_error(t_token *tokens, t_token *head);
 t_command					*ft_parse(t_data *data);
-void						push_redirections(t_redirection **head,
+void						push_rdr(t_redirection **head,
 								t_redirection *new_redirection);
 t_redirection				*initalize_redirections(int type, char *value,
 								t_env *lenv);

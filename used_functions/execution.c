@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/01 11:53:38 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:45:29 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	edit_pwd(char **env)
 
 void	execution(t_data *data)
 {
-	data->spllited_cmd_buf = ft_get_spllited_string(data->command_buf);
+	// data->spllited_cmd_buf = ft_get_spllited_string(data->command_buf);
 	if (cmd_founded_y_n(data) == -1)
 		return ;
 	if (pipe_founded(data) && ft_pipe(data))

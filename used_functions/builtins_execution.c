@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/02 12:26:20 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:43:27 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_err_mssj(t_data *data, int index)
 {
-	if (data->spllited_cmd_buf[index + 1])
+	if (data->cmd->command[index + 1])
 	{
 		printf("Invalid Command :)\n");
 		return (1);
@@ -29,26 +29,26 @@ int	builtins_execution(t_data *data)
 
 	i = 0;
 	val = false;
-	while (data->spllited_cmd_buf[i])
+	while (data->cmd->command[i])
 	{
-		if (!ft_strcmp(data->spllited_cmd_buf[i], "pwd"))
+		if (!ft_strcmp(data->cmd->command[i], "pwd"))
 			return (ft_pwd(data));
-		/*else if (!ft_strcmp(data->spllited_cmd_buf[i], "cd"))
+		/*else if (!ft_strcmp(data->cmd->command[i], "cd"))
 		{
 			edit_pwd(env);
-			if (chdir(data->spllited_cmd_buf[++i]) == -1)
+			if (chdir(data->cmd->command[++i]) == -1)
 				printf("cd: %s: No such file or directory\n",
-						data->spllited_cmd_buf[i]);
+						data->cmd->command[i]);
 		}*/
-		else if (!ft_strcmp(data->spllited_cmd_buf[i], "echo"))
+		else if (!ft_strcmp(data->cmd->command[i], "echo"))
 			return (ft_echo(data, i));
-		else if (!ft_strcmp(data->spllited_cmd_buf[i], "export"))
+		else if (!ft_strcmp(data->cmd->command[i], "export"))
 			return (ft_export(data));
-		else if (!ft_strcmp(data->spllited_cmd_buf[i], "unset"))
+		else if (!ft_strcmp(data->cmd->command[i], "unset"))
 			return (ft_unset(data, i));
-		else if (!ft_strcmp(data->spllited_cmd_buf[i], "env"))
+		else if (!ft_strcmp(data->cmd->command[i], "env"))
 			return (ft_env(data->env));
-		else if (!ft_strcmp(data->spllited_cmd_buf[i], "exit"))
+		else if (!ft_strcmp(data->cmd->command[i], "exit"))
 		{
 			if (!print_err_mssj(data, i))
 			{
