@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/14 16:33:34 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:24:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ int	main(int argc, char **argv, char **env)
 	t_data	*data;
 	t_token	*tokens;
 	t_env	*lenv;
+	t_command	*cmd;
 
 	tokens = NULL;
 	lenv = NULL;
 	lenv = create_env_list(lenv, env);
 	data = malloc(sizeof(t_data));
-	if (!data)
+	cmd = malloc(sizeof(t_command));
+	if (!data || !cmd)
 		return (0);
 	data_initializer(data, env);
 	(void)argv;
@@ -56,6 +58,6 @@ int	main(int argc, char **argv, char **env)
 		exit(1);
 	}
 	setup_term();
-	minishel_start(data, tokens, lenv);
+	minishel_start(data);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/14 16:42:42 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:29:51 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	minishel_start(t_data *data, t_token *tokens, t_env *lenv)
+void	minishel_start(t_data *data)
 {
 	while (1)
 	{
@@ -22,10 +22,10 @@ void	minishel_start(t_data *data, t_token *tokens, t_env *lenv)
 		ft_ctl_d(data);
 		if (ft_strlen(data->command_buf) > 0)
 		{
-			data->token_res = ft_tokenizer(&tokens, data->command_buf);
-			data->syntax_res = syntax_errors(data->token_res);
+			data->tokens = ft_tokenizer(&data->tokens, data->command_buf);
+			data->syntax_res = syntax_errors(data->tokens);
 			if ((data->syntax_res) != 1)
-				ft_parse(tokens, lenv);
+				ft_parse(data);
 			execution(data);
 			add_history(data->command_buf);
 		}

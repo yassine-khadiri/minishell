@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/14 18:13:57 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 13:10:37 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,62 +34,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-typedef struct s_token
-{
-	int						type;
-	char					*value;
-	struct s_token			*next;
-	struct s_token			*prev;
-}							t_token;
-
-typedef struct s_global
-{
-	int						_stdin;
-	int						_stdout;
-}							t_global;
-
-typedef struct s_data
-{
-	char					*command_buf;
-	char					**spllited_cmd_buf;
-	char					getpath[1000];
-	char					**env;
-	char					**splitted_path;
-	int						new_index;
-	const char				*fd_name;
-	int						syntax_res;
-	t_token					*token_res;
-	t_global				g_std;
-}							t_data;
-
-typedef struct s_redirection
-{
-	int						type;
-	char					*file;
-	struct s_redirection	*next;
-}							t_redirection;
-
-typedef enum e_sep
-{
-	e_pipe,
-	e_line,
-}							t_sep;
-
-typedef struct s_command
-{
-	char					**command;
-	t_redirection			*redirection;
-	t_sep					separator;
-	struct s_command		*next;
-}							t_command;
-
-typedef struct s_env
-{
-	char					*name;
-	char					*value;
-	struct s_env			*next;
-}							t_env;
-
 typedef enum e_tokens
 {
 	NONE,
@@ -106,6 +50,65 @@ typedef enum e_tokens
 	N_line,
 	SEMICOLON,
 }							t_types;
+
+typedef enum e_sep
+{
+	e_pipe,
+	e_line,
+}							t_sep;
+
+typedef struct s_token
+{
+	int						type;
+	char					*value;
+	struct s_token			*next;
+	struct s_token			*prev;
+}							t_token;
+
+typedef struct s_global
+{
+	int						_stdin;
+	int						_stdout;
+}							t_global;
+
+typedef struct s_redirection
+{
+	int						type;
+	char					*file;
+	struct s_redirection	*next;
+}							t_redirection;
+
+typedef struct s_command
+{
+	char					**command;
+	t_redirection			*redirection;
+	t_sep					separator;
+	struct s_command		*next;
+}							t_command;
+
+typedef struct s_env
+{
+	char					*name;
+	char					*value;
+	struct s_env			*next;
+}							t_env;
+
+typedef struct s_data
+{
+	char					*command_buf;
+	char					**spllited_cmd_buf;
+	char					getpath[1000];
+	char					**env;
+	char					**splitted_path;
+	int						new_index;
+	const char				*fd_name;
+	int						syntax_res;
+	t_token					*tokens;
+	t_command				*cmd;
+	t_redirection			*rdr;
+	t_env					*lenv;
+	t_global				g_std;
+}							t_data;
 
 // used_functions :)
 int							ft_isdigit(int c);
@@ -151,7 +154,7 @@ t_token						*new_line(char *n_type, char *value);
 int							semicolon(t_token **tokens, char *str);
 void						free_list(t_token *lst);
 int							redir_error(t_token *tokens, t_token *head);
-t_command					*ft_parse(t_token *tokens, t_env *lenv);
+t_command					*ft_parse(t_data *data);
 void						push_redirections(t_redirection **head,
 								t_redirection *new_redirection);
 t_redirection				*initalize_redirections(int type, char *value,
@@ -163,8 +166,7 @@ t_token						*create_token(int type, char *value);
 t_token						*ft_tokenizer(t_token **tokens, char *str);
 char						*ft_substr(char const *s, unsigned int start,
 								size_t len);
-void						minishel_start(t_data *data, t_token *tokens,
-								t_env *lenv);
+void						minishel_start(t_data *data);
 int							ft_strlen(const char *s);
 int							ft_isalpha(int c);
 int							ft_isdigit(int c);
