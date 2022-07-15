@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/14 17:53:17 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 13:24:21 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,21 @@ void	display_export(t_data *data)
 		// mssj = ft_strjoin(extract_var_name(data->env[i++]), "=");
 		// mssj = ft_strjoin(mssj, "\"");
 		// mssj = ft_strjoin(mssj, get_val_env_var(data->env,
-					extract_var_name(data->env[i++]);
-					// mssj = ft_strjoin(mssj, "\"");
-					// printf("declare -x %s\n", mssj);
-					// mssj = NULL;
-					// bash: syntax error
-					printf("declare -x %s\n", data->env[i++]);
+		extract_var_name(data->env[i++]);
+		// mssj = ft_strjoin(mssj, "\"");
+		// printf("declare -x %s\n", mssj);
+		// mssj = NULL;
+		// bash: syntax error
+		printf("declare -x %s\n", data->env[i++]);
 	}
 }
 
 char	*ignore_something(char *var_name)
 {
-	char *new_var;
-	bool val;
-	int i;
-	int j;
+	char	*new_var;
+	bool	val;
+	int		i;
+	int		j;
 
 	i = -1;
 	j = -1;

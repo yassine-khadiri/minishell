@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/14 16:20:07 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/15 13:18:51 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	exec(t_data *data)
 			pid = fork();
 			if (pid == 0)
 				execve(path, get_splitted_cmd(data->spllited_cmd_buf),
-						data->env);
+					data->env);
 			else
 				waitpid(pid, NULL, 0);
 		}
