@@ -6,109 +6,107 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/15 18:08:18 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 17:24:41 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	display_commands(t_command *comd)
+void            display_commands(t_command *comd)
 {
-	t_redirection	*curr_redir;
-	t_command		*new_list;
-	int				j;
-
-	new_list = comd;
-	printf("\e[1;33mall commands: \e[0m");
-	while (new_list != NULL)
-	{
+    t_redirection *curr_redir;
+    t_command *new_list;
+    new_list = comd;
+    printf("\e[1;33mall commands: \e[0m\n");
+    while (new_list != NULL)
+    {
 		printf("command: ");
-		if (new_list->command != NULL)
-		{
-			j = 0;
-			while (new_list->command[j] != NULL)
-			{
-				printf("[%s]", new_list->command[j]);
-				j++;
-			}
-		}
-		printf("\n");
-		curr_redir = new_list->redirection;
-		while (curr_redir != NULL)
-		{
-			printf("type: {%d} file: {%s}\n", curr_redir->type,
-				curr_redir->file);
-			curr_redir = curr_redir->next;
-		}
+        while (new_list->cmdline != NULL)
+        {
+            
+				printf("[%s]", new_list->cmdline->cmd);
+				new_list->cmdline = new_list->cmdline->next;
+        }
+        printf("\n");
+        curr_redir = new_list->redirection;
+        while (curr_redir != NULL)
+        {
+			printf("type: {%d} file: {%s}\n",curr_redir->type, curr_redir->file);
+            curr_redir = curr_redir->next;
+        }
 		printf("separator: {%d}\n", new_list->separator);
-		new_list = new_list->next;
-	}
+        new_list = new_list->next;
+    }
 }
 
-t_command	*ft_parse(t_data *data)
-{
-	t_token	*curr_token;
-	t_token	*f1_word;
-	int		i;
-	int		size;
-
-	curr_token = data->tokens;
-	size = 0;
-	while (curr_token && curr_token->type != N_line
-		&& curr_token->type != PIPE)
-	{
-		if ((curr_token->type == HERDOC || curr_token->type == APPEND
-				|| curr_token->type == REDIN
-				|| curr_token->type == REDOUT)
-			&& curr_token->next->type == WORD)
-			curr_token = curr_token->next->next;
-		if (curr_token && (curr_token->type == WORD
-				|| curr_token->type == DBQUOTE
-				|| curr_token->type == QUOTE))
-		{
-			size++;
-			curr_token = curr_token->next;
-		}
-		if (curr_token->type == NONE)
-			curr_token = curr_token->next;
-	}
-	data->cmd = malloc(sizeof(t_command));
-	data->cmd->command = malloc(sizeof(char *) * (size + 1));
-	if (!data->cmd || !data->cmd->command)
+t_cmdline *init_subcmd(char *cmd)
+{ 
+	t_cmdline *sub_cmd;
+		sub_cmd = malloc(sizeof(t_cmdline));
+	if(!sub_cmd)
 		return (NULL);
-	i = 0;
-	f1_word = data->tokens;
-	while (f1_word)
+	sub_cmd->cmd = cmd;
+	sub_cmd->next = NULL;
+	return(sub_cmd);	
+}
+
+void fill_subcmd(t_cmdline **head, t_cmdline *sub_cmd)
+{
+	t_cmdline  *_head;
+
+	if (!head)
+		return ;
+	_head = *head;
+	if (!_head)
 	{
-		while (f1_word && f1_word->type != N_line
-			&& f1_word->type != PIPE)
+		*head = sub_cmd;
+		return ;
+	}
+	while (_head->next) {
+		_head = _head->next;
+	}
+	_head->next = sub_cmd;
+}
+
+t_command *ft_parse(t_data *data)
+{
+	
+	t_token *first_word;
+	t_command *cmd;
+	t_redirection *redirections;
+	t_cmdline *cmdline;
+	int i;
+	int size;
+	size = 0;
+	i = 0;
+	first_word = data->tokens;
+	cmd = NULL;
+	while (first_word)
+	{
+		cmdline = NULL;
+		redirections = NULL;
+		while (first_word && first_word->type != N_line && first_word->type != PIPE)
 		{
-			if (f1_word->type == HERDOC || f1_word->type == APPEND
-				|| f1_word->type == REDIN || f1_word->type == REDOUT)
+			if(first_word->type == HERDOC || first_word->type == APPEND
+				|| first_word->type == REDIN || first_word->type == REDOUT)
 			{
 				// push redirections
-				push_rdr(&data->rdr,
-					init_rdr(f1_word->type,
-						f1_word->next->value,
-						data->lenv));
-				f1_word = f1_word->next->next;
+				push_redirections (&redirections, initalize_redirections(first_word->type, first_word->next->value, data->lenv));
+				first_word = first_word->next->next;
 			}
-			else if (f1_word && (f1_word->type == WORD
-					|| f1_word->type == DBQUOTE
-					|| f1_word->type == QUOTE))
+			else if (first_word && (first_word->type == WORD || first_word->type == DBQUOTE
+				|| first_word->type == QUOTE))
 			{
-				data->cmd->command[i++] = ft_strdup(f1_word->value);
-				f1_word = f1_word->next;
+				fill_subcmd(&cmdline, init_subcmd(first_word->value));
+				first_word = first_word->next;
 			}
-			if (f1_word->type == NONE)
-				f1_word = f1_word->next;
+			if (first_word->type == NONE)
+				first_word = first_word->next;
 		}
-		data->cmd->command[i] = NULL;
-		if (f1_word->type == PIPE || f1_word->type == N_line)
-			fill_cmd(&data->cmd, init_cmd(data->cmd->command,
-					data->rdr, f1_word));
-		f1_word = f1_word->next;
+		if (first_word->type == PIPE || first_word->type == N_line)
+			fill_command(&cmd, initialize_command(cmdline, redirections, first_word));
+		first_word = first_word->next;
 	}
-	display_commands(data->cmd);
+	display_commands(cmd);
 	return (NULL);
 }

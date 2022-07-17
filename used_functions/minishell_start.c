@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 12:29:51 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 19:32:50 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ void	minishel_start(t_data *data)
 			data->tokens = ft_tokenizer(&data->tokens, data->command_buf);
 			data->syntax_res = syntax_errors(data->tokens);
 			if ((data->syntax_res) != 1)
+			{
 				ft_parse(data);
-			execution(data);
-			add_history(data->command_buf);
+				execution(data);
+				add_history(data->command_buf);
+			}
 		}
 	}
 }

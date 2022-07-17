@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/16 20:09:21 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:51:21 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,20 +101,20 @@ int	ft_echo(t_data *data, int index)
 
 	mode = '\n';
 	len = 0;
-	while (data->spllited_cmd_buf[++len])
+	while (data->arr_cmds[++len])
 		;
 	get_mssjs = (char **)malloc(sizeof(char *) * len);
 	if (!get_mssjs)
 		return (0);
 	index++;
-	if (!data->spllited_cmd_buf[index])
+	if (!data->arr_cmds[index])
 	{
 		printf("\n");
 		return (0);
 	}
 	i = 0;
-	while (data->spllited_cmd_buf[index])
-		get_mssjs[i++] = ft_strdup(ft_strtrim(data->spllited_cmd_buf[index++],
+	while (data->arr_cmds[index])
+		get_mssjs[i++] = ft_strdup(ft_strtrim(data->arr_cmds[index++],
 					"\""));
 	get_mssjs[i] = NULL;
 	i = 0;

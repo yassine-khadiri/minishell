@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 15:44:32 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:33:13 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	execution_other_builtins(t_data *data)
 	while (data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, data->cmd->command[0]);
+		path = ft_strjoin(path, data->arr_cmds[0]);
 		if (!access(path, X_OK))
 		{
 			pid = fork(); // don't forget protection
 			if (pid == 0)
-				execve(path, data->cmd->command, data->env);
+				execve(path, data->arr_cmds, data->env);
 			else
 				waitpid(pid, NULL, 0);
 		}

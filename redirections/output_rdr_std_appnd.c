@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 17:03:00 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:50:04 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ void	exec(t_data *data)
 	while (data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, data->cmd->command[0]);
+		path = ft_strjoin(path, data->arr_cmds[0]);
 		if (!access(path, X_OK))
 		{
 			pid = fork();
 			if (pid == 0)
-				execve(path, get_splitted_cmd(data->cmd->command),
+				execve(path, get_splitted_cmd(data->arr_cmds),
 					data->env);
 			else
 				waitpid(pid, NULL, 0);
@@ -81,13 +81,13 @@ const char	*get_file_name(t_data *data)
 	int	i;
 
 	i = 0;
-	while (data->cmd->command[i])
+	while (data->arr_cmds[i])
 	{
-		if (!ft_strcmp(data->cmd->command[i], ">")
-			|| !ft_strcmp(data->cmd->command[i], ">>")
-			|| !ft_strcmp(data->cmd->command[i], "<"))
+		if (!ft_strcmp(data->arr_cmds[i], ">")
+			|| !ft_strcmp(data->arr_cmds[i], ">>")
+			|| !ft_strcmp(data->arr_cmds[i], "<"))
 		{
-			data->fd_name = data->cmd->command[++i];
+			data->fd_name = data->arr_cmds[++i];
 			return (data->fd_name);
 		}
 		i++;

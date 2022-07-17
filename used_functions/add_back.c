@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 19:06:52 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 17:30:38 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:20:01 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,5 @@ void	add_back(t_token **lst, t_token *new)
 		new->prev = temp;
 	}
 }
+
+

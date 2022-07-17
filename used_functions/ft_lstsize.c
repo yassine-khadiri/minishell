@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.c                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 15:56:08 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/17 18:51:32 by ykhadiri         ###   ########.fr       */
+/*   Created: 2022/07/17 18:20:19 by ykhadiri          #+#    #+#             */
+/*   Updated: 2022/07/17 18:20:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_unset(t_data *data, int index)
+int	ft_lstsize(t_cmdline *lst)
 {
-	int		i;
-	char	*var_name;
+	int	count;
 
-	var_name = ft_strdup(data->arr_cmds[++index]);
-	i = 0;
-	while (data->env[i])
+	count = 0;
+	if (lst == NULL)
+		return (0);
+	while (lst)
 	{
-		if (!ft_strcmp(extract_var_name(data->env[i]), var_name))
-		{
-			while (data->env[i])
-			{
-				data->env[i] = data->env[i + 1];
-				i++;
-			}
-			data->env[i] = NULL;
-			break ;
-		}
-		i++;
+		count++;
+		lst = lst->next;
 	}
-	return (0);
+	return (count);
 }

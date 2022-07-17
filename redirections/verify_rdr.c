@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:37:26 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 15:43:56 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:50:19 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ char	*verify_rdr(t_data *data)
 	int	i;
 
 	i = 0;
-	if (!data->cmd->command)
+	if (!data->arr_cmds)
 		return (0);
-	while (data->cmd->command[i])
+	while (data->arr_cmds[i])
 	{
-		if (!ft_strcmp(data->cmd->command[i], "<"))
+		if (!ft_strcmp(data->arr_cmds[i], "<"))
 			return ("<");
-		else if (!ft_strcmp(data->cmd->command[i], ">"))
+		else if (!ft_strcmp(data->arr_cmds[i], ">"))
 			return (">");
-		else if (!ft_strcmp(data->cmd->command[i], ">>"))
+		else if (!ft_strcmp(data->arr_cmds[i], ">>"))
 			return (">>");
 		i++;
 	}

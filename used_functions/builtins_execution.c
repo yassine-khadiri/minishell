@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 15:43:27 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:32:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_err_mssj(t_data *data, int index)
 {
-	if (data->cmd->command[index + 1])
+	if (data->arr_cmds[index + 1])
 	{
 		printf("Invalid Command :)\n");
 		return (1);
@@ -29,26 +29,26 @@ int	builtins_execution(t_data *data)
 
 	i = 0;
 	val = false;
-	while (data->cmd->command[i])
+	while (data->arr_cmds[i])
 	{
-		if (!ft_strcmp(data->cmd->command[i], "pwd"))
+		if (!ft_strcmp(data->arr_cmds[i], "pwd"))
 			return (ft_pwd(data));
-		/*else if (!ft_strcmp(data->cmd->command[i], "cd"))
+		/*else if (!ft_strcmp(data->arr_cmds[i], "cd"))
 		{
 			edit_pwd(env);
-			if (chdir(data->cmd->command[++i]) == -1)
+			if (chdir(data->arr_cmds[++i]) == -1)
 				printf("cd: %s: No such file or directory\n",
-						data->cmd->command[i]);
+						data->arr_cmds[i]);
 		}*/
-		else if (!ft_strcmp(data->cmd->command[i], "echo"))
+		else if (!ft_strcmp(data->arr_cmds[i], "echo"))
 			return (ft_echo(data, i));
-		else if (!ft_strcmp(data->cmd->command[i], "export"))
+		else if (!ft_strcmp(data->arr_cmds[i], "export"))
 			return (ft_export(data));
-		else if (!ft_strcmp(data->cmd->command[i], "unset"))
+		else if (!ft_strcmp(data->arr_cmds[i], "unset"))
 			return (ft_unset(data, i));
-		else if (!ft_strcmp(data->cmd->command[i], "env"))
+		else if (!ft_strcmp(data->arr_cmds[i], "env"))
 			return (ft_env(data->env));
-		else if (!ft_strcmp(data->cmd->command[i], "exit"))
+		else if (!ft_strcmp(data->arr_cmds[i], "exit"))
 		{
 			if (!print_err_mssj(data, i))
 			{

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 16:20:05 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:51:06 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	execution_pipe_cmd(t_data *data, char *cmd)
 		path = ft_strjoin(*data->splitted_path, "/");
 		path = ft_strjoin(path, spllited_cmd[0]);
 		if (!access(path, X_OK))
-			execve(path, data->spllited_cmd_buf, data->env);
+			execve(path, data->arr_cmds, data->env);
 		i++;
 	}
 }
@@ -65,7 +65,7 @@ int	ft_pipe(t_data *data)
 	int		pid1;
 	int		pid2;
 
-	cmds_arr = get_cmds(data->spllited_cmd_buf);
+	cmds_arr = get_cmds(data->arr_cmds);
 	// while (*cmds_arr)
 	// 	printf("%s\n", *cmds_arr++);
 	printf("%s\n", cmds_arr[0]);

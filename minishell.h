@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 15:22:51 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:31:30 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,15 @@ typedef struct s_redirection
 	struct s_redirection	*next;
 }							t_redirection;
 
+typedef struct s_cmdline
+{
+    char *cmd;
+    struct s_cmdline *next;
+}   t_cmdline;
+
 typedef struct s_command
 {
-	char					**command;
+	t_cmdline				*cmdline;
 	t_redirection			*redirection;
 	t_sep					separator;
 	struct s_command		*next;
@@ -96,7 +102,7 @@ typedef struct s_env
 typedef struct s_data
 {
 	char					*command_buf;
-	char					**spllited_cmd_buf;
+	char					**arr_cmds;
 	char					getpath[1000];
 	char					**env;
 	char					**splitted_path;
@@ -131,15 +137,11 @@ t_token						*create_token(int type, char *value);
 int							none_error(t_token *tokens, t_token *head);
 int							redir_error(t_token *tokens, t_token *head);
 int							pipe_error(t_token *tokens, t_token *head);
-t_redirection				*init_rdr(int type, char *value,
-								t_env *lenv);
-void						push_rdr(t_redirection **head,
-								t_redirection *new_redirection);
+t_redirection				*initalize_redirections(int type, char *value, t_env *lenv);
+void						push_redirections(t_redirection **head, t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
-t_command					*init_cmd(char **cmd_args,
-								t_redirection *redirections,
-								t_token *tokens);
-void						fill_cmd(t_command **head, t_command *command);
+t_command					*initialize_command(t_cmdline *cmdline, t_redirection *redirections, t_token *tokens);
+void						fill_command(t_command **head, t_command *command);
 char						*after_dollar_value(char *command1, int i);
 size_t						dollar_val(char **comd, char *name, char *old_comd,
 								t_env *envl);
@@ -190,6 +192,7 @@ void						exec(t_data *data);
 char						*check_var(char *var_name, char **env);
 void						print_mssj(char *str, char mode);
 char						*ft_itoa(int n);
+int							ft_lstsize(t_cmdline *lst);
 
 // redirections
 // -- output redirection
