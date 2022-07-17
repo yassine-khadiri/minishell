@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/17 17:24:41 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/17 23:41:03 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,14 @@ void fill_subcmd(t_cmdline **head, t_cmdline *sub_cmd)
 	_head->next = sub_cmd;
 }
 
-t_command *ft_parse(t_data *data)
+t_command *ft_parse(t_token *tokens, t_env *lenv)
 {
-	
-	t_token *first_word;
-	t_command *cmd;
-	t_redirection *redirections;
-	t_cmdline *cmdline;
-	int i;
-	int size;
-	size = 0;
-	i = 0;
-	first_word = data->tokens;
+	t_token			*first_word;
+	t_command		*cmd;
+	t_redirection	*redirections;
+	t_cmdline		*cmdline;
+
+	first_word = tokens;
 	cmd = NULL;
 	while (first_word)
 	{
@@ -91,7 +87,7 @@ t_command *ft_parse(t_data *data)
 				|| first_word->type == REDIN || first_word->type == REDOUT)
 			{
 				// push redirections
-				push_redirections (&redirections, initalize_redirections(first_word->type, first_word->next->value, data->lenv));
+				push_redirections (&redirections, initalize_redirections(first_word->type, first_word->next->value, lenv));
 				first_word = first_word->next->next;
 			}
 			else if (first_word && (first_word->type == WORD || first_word->type == DBQUOTE
@@ -107,6 +103,6 @@ t_command *ft_parse(t_data *data)
 			fill_command(&cmd, initialize_command(cmdline, redirections, first_word));
 		first_word = first_word->next;
 	}
-	display_commands(cmd);
-	return (NULL);
+	// display_commands(cmd);
+	return (cmd);
 }
