@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/17 18:32:50 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:48:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	quotes_count(char *cmd)
 	return (0);
 }
 
-int	cmd_founded_y_n(t_data *data)
+int	cmd_founded_y_n(t_data *data, t_command *cmd)
 {
 	char	*path;
 	int		result;
@@ -52,8 +52,8 @@ int	cmd_founded_y_n(t_data *data)
 	path = NULL;
 	result = -1;
 	i = 0;
-	if (quotes_count(data->arr_cmds[0]))
-		data->arr_cmds[0] = ft_strtrim(data->arr_cmds[0], "\"");
+	if (quotes_count(cmd->cmd_array[i]))
+		cmd->cmd_array[0] = ft_strtrim(cmd->cmd_array[i], "\"");
 	else
 	{
 		printf("Syntax Error\n");
@@ -61,12 +61,12 @@ int	cmd_founded_y_n(t_data *data)
 	}
 	while (data->splitted_path[i])
 	{
-		if (!ft_strcmp(data->arr_cmds[0], "export")
-			|| !ft_strcmp(data->arr_cmds[0], "unset")
-			|| !ft_strcmp(data->arr_cmds[0], "exit"))
+		if (!ft_strcmp(cmd->cmd_array[0], "export")
+			|| !ft_strcmp(cmd->cmd_array[0], "unset")
+			|| !ft_strcmp(cmd->cmd_array[0], "exit"))
 			return (0);
 		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, data->arr_cmds[0]);
+		path = ft_strjoin(path, cmd->cmd_array[0]);
 		if (access(path, X_OK) != -1)
 		{
 			result = 0;
@@ -76,6 +76,6 @@ int	cmd_founded_y_n(t_data *data)
 	}
 	if (result == -1)
 		printf(WHT "minishell : %s: command not found\n" BLU,
-				data->arr_cmds[0]);
+				cmd->cmd_array[0]);
 	return (free(path), result);
 }

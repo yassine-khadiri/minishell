@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 00:14:22 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:33:47 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,17 +185,17 @@ char						*ft_strjoin_space(char *s1, char *s2);
 char						*ft_strjoin(char *s1, char *s2);
 void						execution(t_data *data, t_command *cmd);
 char						**ft_split(const char *s, char c);
-void						execution_other_builtins(t_data *data);
+void						execution_other_builtins(t_data *data, t_command *cmd);
 char						**ft_get_spllited_path_env(t_data *data);
 char						*get_val_env_var(char **env, char *env_variable);
 int							ft_pipe(t_data *data);
-int							cmd_founded_y_n(t_data *data);
+int							cmd_founded_y_n(t_data *data, t_command *cmd);
 int							pipe_founded(t_data *data);
 void						exec(t_data *data);
 char						*check_var(char *var_name, char **env);
 void						print_mssj(char *str, char mode);
 char						*ft_itoa(int n);
-int							ft_lstsize(t_command *lst);
+int							ft_lstsize(t_cmdline *lst);
 
 // redirections
 // -- output redirection
@@ -213,7 +213,7 @@ void						ft_ctl_c(void);
 void						ft_ctl_d(t_data *cmds);
 void						ft_ctl_slash(void);
 
-int							builtins_execution(t_data *data);
+int							builtins_execution(t_data *data, t_command *cmd);
 
 // pwd Command :)
 int							ft_pwd(t_data *data);

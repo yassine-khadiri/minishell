@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 00:22:39 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:59:29 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	fill_struct(t_command *cmd)
 
 	while (cmd)
 	{	
-		cmd->cmd_array  = malloc(sizeof(char *) * (ft_lstsize(cmd) + 1));
+		cmdline = cmd->cmdline;
+		cmd->cmd_array  = malloc(sizeof(char *) * (ft_lstsize(cmdline) + 1));
 		if (!cmd->cmd_array)
 			exit(1); // remove later
-		cmdline = cmd->cmdline;
 		i = 0;
 		while (cmdline)
 		{
@@ -56,28 +56,26 @@ void	fill_struct(t_command *cmd)
 
 void	execution(t_data *data, t_command *cmd)
 {
-	// printf("HERE0\n");
-	// printf("%d\n", ft_lstsize(data->cmd->cmdline));
-	// data->arr_cmds = malloc(sizeof(char *) * ft_lstsize(data->cmd->cmdline));
-	// if (!data->arr_cmds)
-	// 	return (NULL);
-	// printf("%p\n", cmd); //NULL why hh
-	// printf("%p\n", cmd->cmdline);
-	(void) data;
+	// (void) data;
 	fill_struct(cmd);
-	while (cmd) {
-		for (int i = 0; cmd->cmd_array[i]; i++)
-			printf("%s ", cmd->cmd_array[i]);
-		if (cmd->next)
-			printf("| ");
-		cmd = cmd->next;
-	}
-	// printf("HERE2\n");
-	// printf("HERE1\n");
-	// if (cmd_founded_y_n(data) == -1)
-	// 	return ;
+	// int i;
+	// t_command *tmp;
+	// tmp = cmd;
+	// while (tmp) {
+	// 	for (i= 0; tmp->cmd_array[i]; i++)
+	// 	{
+			
+	// 		printf("%s\n", tmp->cmd_array[i]);
+	// 	}
+	// 	printf("%s\n", tmp->cmd_array[i]);
+	// 	if (tmp->next)
+	// 		printf("| ");
+	// 	tmp = tmp->next;
+	// }
+	if (cmd_founded_y_n(data, cmd) == -1)
+		return ;
 	// if (pipe_founded(data) && ft_pipe(data))
 	// 	return ;
 	// rdr_execution(data);
-	// builtins_execution(data);
+	builtins_execution(data, cmd);
 }

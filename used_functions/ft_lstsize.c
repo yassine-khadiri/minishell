@@ -6,13 +6,13 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:20:19 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/17 23:59:10 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:39:46 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_lstsize(t_command *lst)
+int	ft_lstsize(t_cmdline *lst)
 {
 	int	count;
 

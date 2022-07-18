@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/17 18:33:13 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 14:43:18 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**ft_get_spllited_path_env(t_data *data)
 	return (data->splitted_path);
 }
 
-void	execution_other_builtins(t_data *data)
+void	execution_other_builtins(t_data *data, t_command *cmd)
 {
 	char	*path;
 	int		pid;
@@ -42,12 +42,12 @@ void	execution_other_builtins(t_data *data)
 	while (data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, data->arr_cmds[0]);
+		path = ft_strjoin(path, cmd->cmd_array[0]);
 		if (!access(path, X_OK))
 		{
 			pid = fork(); // don't forget protection
 			if (pid == 0)
-				execve(path, data->arr_cmds, data->env);
+				execve(path, cmd->cmd_array, data->env);
 			else
 				waitpid(pid, NULL, 0);
 		}
