@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/17 18:51:21 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:25:32 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ void	check_dollars(char *str)
 	dollar_count = 0;
 	while (str[i])
 	{
-		if ((str[i] == '$' && str[i + 1] == '$') || (str[i] == '$' && str[i
-				+ 1] == '\0'))
+		if ((str[i] == '$' && str[i + 1] == '$') || (str[i] == '$' && str[i + 1] == '\0'))
 		{
 			dollars_arr[i] = '$';
 			dollar_count++;

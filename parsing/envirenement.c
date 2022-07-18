@@ -38,8 +38,8 @@ void	add_env_node(t_env *env_l, char *name, char *value)
 
 t_env	*create_env_list(t_env *l_env, char **env)
 {
-	char **str;
-	int i;
+	char	**str;
+	int		i;
 
 	i = 0;
 	if (env[i])

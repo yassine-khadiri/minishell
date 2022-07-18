@@ -135,8 +135,8 @@ char	*expand_herdocs(char *buffer, t_env *lenv)
 
 char	*treat_heredocs(char *delimeter, t_env *lenv)
 {
-	char *line;
-	char *buffer;
+	char	*line;
+	char	*buffer;
 
 	buffer = ft_strdup("");
 	while (1)

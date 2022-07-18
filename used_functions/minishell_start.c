@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/17 23:22:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:11:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	minishel_start(t_data *data)
 {
 	t_command	*cmd;
+
 	while (1)
 	{
 		ft_ctl_c();

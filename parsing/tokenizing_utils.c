@@ -6,24 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:04:51 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 16:20:05 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:32:55 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-// int is_space(t_token **tokens, char *str)
-// {
-//     // printf("space\n");
-//     int i;
-
-//     i = 0;
-//     if (!str)
-//         return (0);
-//     while(str[i] == ' ')
-//         i++;
-//     add_back (tokens, create_token(WSPACE, ft_strdup(" ")));
-//     return (i);
-// }
 
 int	is_pipe(t_token **tokens, char *str)
 {
@@ -150,7 +137,8 @@ int	word(t_token **tokens, char *str)
 
 int	semicolon(t_token **tokens, char *str)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	if (!str)
 		return (0);

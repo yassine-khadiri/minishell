@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:55:23 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/05 20:06:03 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:27:58 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ char	**ft_analayzer(t_data *data, char *str, char *string)
 			to_display = dollar_analayzer(data, str);
 			data->new_index = i;
 			character_analayzer(str + i, to_display, data->new_index, data->env,
-					string);
+				string);
 			break ;
 		}
 		i++;

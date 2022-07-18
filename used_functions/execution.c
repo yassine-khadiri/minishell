@@ -38,11 +38,11 @@ int	fill_struct(t_command *cmd)
 	t_cmdline	*cmdline;
 
 	while (cmd)
-	{	
+	{
 		cmdline = cmd->cmdline;
-		cmd->cmd_array  = malloc(sizeof(char *) * (ft_lstsize(cmdline) + 1));
+		cmd->cmd_array = malloc(sizeof(char *) * (ft_lstsize(cmdline) + 1));
 		if (!cmd->cmd_array)
-			return(0);
+			return (0);
 		i = 0;
 		while (cmdline)
 		{
@@ -65,7 +65,6 @@ void	execution(t_data *data, t_command *cmd)
 	// while (tmp) {
 	// 	for (i= 0; tmp->cmd_array[i]; i++)
 	// 	{
-			
 	// 		printf("%s\n", tmp->cmd_array[i]);
 	// 	}
 	// 	printf("%s\n", tmp->cmd_array[i]);

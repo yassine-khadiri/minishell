@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 14:33:47 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:18:10 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ typedef struct s_redirection
 
 typedef struct s_cmdline
 {
-    char *cmd;
-    struct s_cmdline *next;
-}   t_cmdline;
+	char					*cmd;
+	struct s_cmdline		*next;
+}							t_cmdline;
 
 typedef struct s_command
 {
@@ -138,12 +138,14 @@ t_token						*create_token(int type, char *value);
 int							none_error(t_token *tokens, t_token *head);
 int							redir_error(t_token *tokens, t_token *head);
 int							pipe_error(t_token *tokens, t_token *head);
-t_redirection				*initalize_redirections(int type, char *value, t_env *lenv);
-void						push_redirections(t_redirection **head, t_redirection *new_redirection);
+t_redirection				*initalize_redirections(int type, char *value,
+								t_env *lenv);
+void						push_redirections(t_redirection **head,
+								t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
-// void						add_separator(t_data *data);
-t_command					*initialize_command(t_cmdline *cmdline, t_redirection *redirections, t_token *tokens);
-// t_command					*initialize_command(t_data *data);
+t_command					*initialize_command(t_cmdline *cmdline,
+								t_redirection *redirections,
+								t_token *tokens);
 void						fill_command(t_command **head, t_command *command);
 char						*after_dollar_value(char *command1, int i);
 size_t						dollar_val(char **comd, char *name, char *old_comd,
@@ -159,7 +161,6 @@ t_token						*new_line(char *n_type, char *value);
 int							semicolon(t_token **tokens, char *str);
 void						free_list(t_token *lst);
 int							redir_error(t_token *tokens, t_token *head);
-// t_command					*ft_parse(t_data *data);
 void						push_rdr(t_redirection **head,
 								t_redirection *new_redirection);
 t_redirection				*initalize_redirections(int type, char *value,
@@ -185,7 +186,8 @@ char						*ft_strjoin_space(char *s1, char *s2);
 char						*ft_strjoin(char *s1, char *s2);
 void						execution(t_data *data, t_command *cmd);
 char						**ft_split(const char *s, char c);
-void						execution_other_builtins(t_data *data, t_command *cmd);
+void						execution_other_builtins(t_data *data,
+								t_command *cmd);
 char						**ft_get_spllited_path_env(t_data *data);
 char						*get_val_env_var(char **env, char *env_variable);
 int							ft_pipe(t_data *data);

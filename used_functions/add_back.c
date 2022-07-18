@@ -25,5 +25,3 @@ void	add_back(t_token **lst, t_token *new)
 		new->prev = temp;
 	}
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 13:48:20 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:26:43 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	quotes_count(char *cmd)
 	while (cmd[quotes_start] && cmd[quotes_start] == '"')
 		quotes_start++;
 	while (cmd[ft_strlen(cmd) - quotes_end - 1] && (cmd[ft_strlen(cmd)
-			- quotes_end - 1] == '"'))
+				- quotes_end - 1] == '"'))
 		quotes_end++;
 	if (quotes_start == quotes_end)
 		return (1);
@@ -76,6 +76,6 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 	}
 	if (result == -1)
 		printf(WHT "minishell : %s: command not found\n" BLU,
-				cmd->cmd_array[0]);
+			cmd->cmd_array[0]);
 	return (free(path), result);
 }
