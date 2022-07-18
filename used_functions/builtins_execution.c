@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 13:53:09 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:10:43 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	builtins_execution(t_data *data, t_command *cmd)
 						cmd->cmd_array[i]);
 		}*/
 		else if (!ft_strcmp(cmd->cmd_array[i], "echo"))
-			return (ft_echo(data, i));
+			return (ft_echo(data, cmd, i));
 		else if (!ft_strcmp(cmd->cmd_array[i], "export"))
 			return (ft_export(data));
 		else if (!ft_strcmp(cmd->cmd_array[i], "unset"))

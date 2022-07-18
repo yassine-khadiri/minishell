@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 15:18:10 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 20:32:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_env
 typedef struct s_data
 {
 	char					*command_buf;
-	char					**arr_cmds;
+	char					**arr_cmds; // try to remove this shit hh!
 	char					getpath[1000];
 	char					**env;
 	char					**splitted_path;
@@ -117,6 +117,7 @@ typedef struct s_data
 }							t_data;
 
 // used_functions :)
+int							check_env_var(char *env_var);
 t_command					*ft_parse(t_token *tokens, t_env *lenv);
 int							ft_isdigit(int c);
 int							ft_isalnum(int c);
@@ -221,7 +222,7 @@ int							builtins_execution(t_data *data, t_command *cmd);
 int							ft_pwd(t_data *data);
 
 // echo Command :)
-int							ft_echo(t_data *data, int index);
+int							ft_echo(t_data *data, t_command *cmd, int index);
 int							check_dollar_sign(char *str, char *string,
 								char **env);
 char						**ft_analayzer(t_data *data, char *str,
