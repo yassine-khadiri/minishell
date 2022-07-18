@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 14:59:29 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:08:11 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	edit_pwd(char **env)
 	old_pwd = get_val_env_var(env, "OLDPWD");
 }
 
-void	fill_struct(t_command *cmd)
+int	fill_struct(t_command *cmd)
 {
 	int			i;
 	t_cmdline	*cmdline;
@@ -42,7 +42,7 @@ void	fill_struct(t_command *cmd)
 		cmdline = cmd->cmdline;
 		cmd->cmd_array  = malloc(sizeof(char *) * (ft_lstsize(cmdline) + 1));
 		if (!cmd->cmd_array)
-			exit(1); // remove later
+			return(0);
 		i = 0;
 		while (cmdline)
 		{
@@ -52,6 +52,7 @@ void	fill_struct(t_command *cmd)
 		cmd->cmd_array[i] = NULL;
 		cmd = cmd->next;
 	}
+	return (0);
 }
 
 void	execution(t_data *data, t_command *cmd)
