@@ -6,51 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 17:42:30 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:57:07 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	get_size_splited_cmd(char **data)
-{
-	int	len;
-
-	len = 0;
-	if (!data)
-		return (0);
-	while (data[len])
-	{
-		if (!ft_strcmp(data[len], ">") || !ft_strcmp(data[len], ">>")
-			|| !ft_strcmp(data[len], "<"))
-			break ;
-		len++;
-	}
-	return (len);
-}
-
-char	**get_splitted_cmd(char **data)
-{
-	char	**splitted_cmd;
-	int		i;
-
-	i = 0;
-	splitted_cmd = malloc(get_size_splited_cmd(data) * sizeof(char *));
-	if (!splitted_cmd)
-		return (NULL);
-	while (data[i])
-	{
-		if (!ft_strcmp(data[i], ">") || !ft_strcmp(data[i], ">>")
-			|| !ft_strcmp(data[i], "<"))
-		{
-			splitted_cmd[i] = NULL;
-			break ;
-		}
-		splitted_cmd[i] = data[i];
-		i++;
-	}
-	return (splitted_cmd);
-}
 
 void	exec(t_data *data, t_command *cmd)
 {
@@ -75,24 +35,6 @@ void	exec(t_data *data, t_command *cmd)
 	}
 }
 
-const char	*get_file_name(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->arr_cmds[i])
-	{
-		if (!ft_strcmp(data->arr_cmds[i], ">")
-			|| !ft_strcmp(data->arr_cmds[i], ">>")
-			|| !ft_strcmp(data->arr_cmds[i], "<"))
-		{
-			data->fd_name = data->arr_cmds[++i];
-			return (data->fd_name);
-		}
-		i++;
-	}
-	return (NULL);
-}
 
 void	output_rdr_std_appnd(t_data *data, t_command *cmd, int flag)
 {

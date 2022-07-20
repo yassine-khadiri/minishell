@@ -6,22 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 14:52:34 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:57:32 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char	**ft_get_spllited_string(char *str)
-{
-	char	**get_spllited_string;
-
-	// get_spllited_string = malloc(sizeof(char *) * ft_strlen(str));
-	// if(!get_spllited_string)
-	// 	return (NULL);
-	get_spllited_string = ft_split(str, ' ');
-	return (get_spllited_string);
-}
 
 void	edit_pwd(char **env)
 {

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 17:42:59 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:56:43 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,8 +206,6 @@ int							ft_lstsize(t_cmdline *lst);
 void						output_rdr_std_appnd(t_data *data, t_command *cmd, int flag);
 char						*verify_rdr(t_data *data);
 int							rdr_execution(t_data *data, t_command *cmd);
-char						**get_splitted_cmd(char **data);
-const char					*get_file_name(t_data *data);
 
 // -- output redirection
 void						input_rdr_std_appnd(t_data *data, t_command *cmd);
