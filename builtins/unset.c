@@ -6,18 +6,18 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:56:08 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/17 18:51:32 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:16:05 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_unset(t_data *data, int index)
+int	ft_unset(t_data *data, t_command *cmd, int index)
 {
 	int		i;
 	char	*var_name;
 
-	var_name = ft_strdup(data->arr_cmds[++index]);
+	var_name = ft_strdup(cmd->cmd_array[++index]);
 	i = 0;
 	while (data->env[i])
 	{
@@ -33,5 +33,5 @@ int	ft_unset(t_data *data, int index)
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }

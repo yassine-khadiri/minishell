@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 17:57:32 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:57:21 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	fill_struct(t_command *cmd)
 
 void	execution(t_data *data, t_command *cmd)
 {
-	// (void) data;
 	fill_struct(cmd);
 	// int i;
 	// t_command *tmp;
@@ -63,16 +62,16 @@ void	execution(t_data *data, t_command *cmd)
 	// }
 	// int i = 0;
 	// tmp = cmd;
-	// while (tmp->redirection) {
+	// while (cmd) {
 	// 	// for (i = 0; tmp->redirection; i++)
 	// 	// {
-	// 		printf("%d\n", tmp->separator);
+	// 	printf("%d\n", cmd->separator);
 	// 		// data->fd_names[i++] = tmp->redirection->file;
 	// 	// }
 	// 	// printf("%s\n", tmp->redirection->file);
 	// 	// if (tmp->next)
 	// 	// 	printf("| ");
-	// 	tmp->redirection = tmp->redirection->next;
+	// 	cmd = cmd->next;
 	// }
 	// data->fd_names[i] = NULL;
 	// printf("%s\n", data->fd_names[0]);
@@ -80,6 +79,8 @@ void	execution(t_data *data, t_command *cmd)
 		return ;
 	// if (pipe_founded(data) && ft_pipe(data))
 	// 	return ;
-	rdr_execution(data, cmd);
-	builtins_execution(data, cmd);
+	if (rdr_execution(data, cmd)
+		|| builtins_execution(data, cmd))
+		return ;
+	execution_other_builtins(data, cmd);
 }

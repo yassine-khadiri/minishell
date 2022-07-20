@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 17:44:03 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:16:41 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ int	print_err_mssj(t_command *cmd, int index)
 int	builtins_execution(t_data *data, t_command *cmd)
 {
 	int	i;
-	int	val;
 
 	i = 0;
-	val = false;
 	while (cmd->cmd_array[i])
 	{
 		if (!ft_strcmp(cmd->cmd_array[i], "pwd"))
@@ -43,9 +41,9 @@ int	builtins_execution(t_data *data, t_command *cmd)
 		else if (!ft_strcmp(cmd->cmd_array[i], "echo"))
 			return (ft_echo(data, cmd, i));
 		else if (!ft_strcmp(cmd->cmd_array[i], "export"))
-			return (ft_export(data));
+			return (ft_export(data, cmd));
 		else if (!ft_strcmp(cmd->cmd_array[i], "unset"))
-			return (ft_unset(data, i));
+			return (ft_unset(data, cmd, i));
 		else if (!ft_strcmp(cmd->cmd_array[i], "env"))
 			return (ft_env(data->env));
 		else if (!ft_strcmp(cmd->cmd_array[i], "exit"))
@@ -56,12 +54,7 @@ int	builtins_execution(t_data *data, t_command *cmd)
 				exit(0);
 			}
 		}
-		else if (!verify_rdr(data))
-		{
-			execution_other_builtins(data, cmd);
-			break ;
-		}
 		i++;
 	}
-	return (val);
+	return (0);
 }

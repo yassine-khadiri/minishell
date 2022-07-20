@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 21:00:26 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:08:49 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,23 +113,23 @@ void	exec_export(t_data *data, char *var_name)
 	}
 }
 
-int	ft_export(t_data *data)
+int	ft_export(t_data *data, t_command *cmd)
 {
 	int		i;
 	char	*var_name;
 
-	if (!ft_strcmp(data->arr_cmds[0], "export")
-		&& !data->arr_cmds[1])
+	if (!ft_strcmp(cmd->cmd_array[0], "export")
+		&& !cmd->cmd_array[1])
 	{
 		display_export(data);
 		return (0);
 	}
 	i = 1;
-	while (data->arr_cmds[i])
+	while (cmd->cmd_array[i])
 	{
-		var_name = ft_strdup(data->arr_cmds[i]);
+		var_name = ft_strdup(cmd->cmd_array[i]);
 		exec_export(data, var_name);
 		i++;
 	}
-	return (0);
+	return (1);
 }

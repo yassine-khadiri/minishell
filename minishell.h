@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 17:56:43 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:16:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ char						*ft_strjoin_space(char *s1, char *s2);
 char						*ft_strjoin(char *s1, char *s2);
 void						execution(t_data *data, t_command *cmd);
 char						**ft_split(const char *s, char c);
-void						execution_other_builtins(t_data *data,
+int						execution_other_builtins(t_data *data,
 								t_command *cmd);
 char						**ft_get_spllited_path_env(t_data *data);
 char						*get_val_env_var(char **env, char *env_variable);
@@ -230,7 +230,7 @@ char						**dollar_analayzer(t_data *data, char *str);
 
 // export Command :)
 int							get_env_size(char **env);
-int							ft_export(t_data *data);
+int							ft_export(t_data *data, t_command *cmd);
 char						*extract_var_name(char *string);
 char						*ignore_something(char *var_name);
 int							check_equal_sign(char *env_var);
@@ -239,7 +239,7 @@ void						display_export(t_data *data);
 int							check_dash_err(char *env_var);
 
 // unset Command :)
-int							ft_unset(t_data *data, int index);
+int							ft_unset(t_data *data, t_command *cmd, int index);
 
 // env Command :)
 int							ft_env(char **env);

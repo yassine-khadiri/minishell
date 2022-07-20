@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 14:03:09 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:56:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,5 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 		index++;
 	}
 	printf("\n");
-	return (0);
+	return (1);
 }

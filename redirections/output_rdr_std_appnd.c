@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 17:57:07 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:02:02 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	exec(t_data *data, t_command *cmd)
 		i++;
 	}
 }
-
 
 void	output_rdr_std_appnd(t_data *data, t_command *cmd, int flag)
 {
