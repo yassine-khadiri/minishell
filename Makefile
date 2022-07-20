@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/18 21:05:10 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/07/20 17:44:29 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,6 @@ SRC = minishell.c \
 	used_functions/ft_lstsize.c \
 	redirections/output_rdr_std_appnd.c \
 	redirections/input_rdr_std_appnd.c \
-	redirections/verify_rdr.c \
 	builtins/export.c \
 	pipes/pipe.c \
 	builtins/echo.c \

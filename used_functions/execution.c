@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/18 15:08:11 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:52:34 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,25 @@ void	execution(t_data *data, t_command *cmd)
 	// 		printf("| ");
 	// 	tmp = tmp->next;
 	// }
+	// int i = 0;
+	// tmp = cmd;
+	// while (tmp->redirection) {
+	// 	// for (i = 0; tmp->redirection; i++)
+	// 	// {
+	// 		printf("%d\n", tmp->separator);
+	// 		// data->fd_names[i++] = tmp->redirection->file;
+	// 	// }
+	// 	// printf("%s\n", tmp->redirection->file);
+	// 	// if (tmp->next)
+	// 	// 	printf("| ");
+	// 	tmp->redirection = tmp->redirection->next;
+	// }
+	// data->fd_names[i] = NULL;
+	// printf("%s\n", data->fd_names[0]);
 	if (cmd_founded_y_n(data, cmd) == -1)
 		return ;
 	// if (pipe_founded(data) && ft_pipe(data))
 	// 	return ;
-	// rdr_execution(data);
+	rdr_execution(data, cmd);
 	builtins_execution(data, cmd);
 }

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/19 21:13:57 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:03:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,23 +92,13 @@ void	print_mssj(char *str, char mode)
 int	ft_echo(t_data *data, t_command *cmd, int index)
 {
 	(void)data;
-	// int	dollars_count = 0;
-	// char	**get_mssjs;
-	// int		i;
-	// int		j;
 	char	*string;
 	int		len;
 	char	mode;
 	char	*mssj;
-	// char	*dollars_arr;
-	// int	i;
 
 	mode = '\n';
 	len = 0;
-	// while (cmd->cmd_array[++len]);
-	// get_mssjs = (char **)malloc(sizeof(char *) * len);
-	// if (!get_mssjs)
-	// 	return (0);
 	index++;
 	if (!cmd->cmd_array[index])
 	{
@@ -117,9 +107,7 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 	}
 	while (cmd->cmd_array[index])
 	{
-		// mssj = malloc(sizeof(char) * ft_strlen(cmd->cmd_array[index]));
 		mssj = ft_strdup("");
-		// printf("#%s\n", mssj);
 		string = malloc(sizeof(char) * ft_strlen(cmd->cmd_array[index]));
 		if (!string)
 			return (0);
@@ -129,7 +117,6 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 		{
 			if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i + 1] != '$')
 			{
-				// bool	check_execution = false;
 					i++;
 				while (cmd->cmd_array[index][i])
 				{
@@ -137,12 +124,7 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 					while (cmd->cmd_array[index][i] && cmd->cmd_array[index][i] != '$')
 						string[j++] = cmd->cmd_array[index][i++];
 					string[j] = '\0';
-					// printf("%s\n", string);
-					// if (check_env_var(string))
-					// 	mssj = ft_strjoin(mssj, get_val_env_var(data->env, string));
-					// else
 						mssj = ft_strjoin(mssj, check_res(string, data->env));
-						// mssj = ft_strdup(check_res(string, data->env));
 					i++;
 				}
 			}
@@ -164,7 +146,7 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 				j = 0;
 				while (cmd->cmd_array[index][i])
 				{
-					if (cmd->cmd_array[index][i] == '$')
+					if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i + 1] != '$')
 						break ;
 					mssj[j++] = cmd->cmd_array[index][i++];
 				}
