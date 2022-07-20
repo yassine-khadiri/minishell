@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 18:57:21 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:55:15 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	execution(t_data *data, t_command *cmd)
 	fill_struct(cmd);
 	// int i;
 	// t_command *tmp;
-	// tmp = cmd;
 	// while (tmp) {
 	// 	for (i= 0; tmp->cmd_array[i]; i++)
 	// 	{
@@ -60,7 +59,6 @@ void	execution(t_data *data, t_command *cmd)
 	// 		printf("| ");
 	// 	tmp = tmp->next;
 	// }
-	// int i = 0;
 	// tmp = cmd;
 	// while (cmd) {
 	// 	// for (i = 0; tmp->redirection; i++)
@@ -77,6 +75,17 @@ void	execution(t_data *data, t_command *cmd)
 	// printf("%s\n", data->fd_names[0]);
 	if (cmd_founded_y_n(data, cmd) == -1)
 		return ;
+	int i = 0;
+	while (cmd->cmd_array[i])
+	{
+		if(!ft_strcmp(cmd->cmd_array[i], "$?"))
+		{
+			printf("%d", g_dollar_question);
+			g_dollar_question = 0;
+			i++;
+		}
+		i++;
+	}
 	// if (pipe_founded(data) && ft_pipe(data))
 	// 	return ;
 	if (rdr_execution(data, cmd)

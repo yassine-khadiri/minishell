@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 19:16:25 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:45:30 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+	int 					g_dollar_question;
 
 typedef enum e_tokens
 {
