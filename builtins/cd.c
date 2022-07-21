@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 23:04:29 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 15:01:42 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:17:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	get_old_pwd(t_data *data)
 
 int	edit_pwd(t_data *data)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	get_old_pwd(data);
@@ -42,15 +42,16 @@ int	edit_pwd(t_data *data)
 	{
 		if (!ft_strcmp(extract_var_name(data->env[i]), "PWD"))
 			data->env[i] = ft_strjoin("PWD=",
-					getcwd(data->getpath, sizeof(data->getpath)));
+										getcwd(data->getpath,
+												sizeof(data->getpath)));
 	}
 	return (0);
 }
 
 int	ft_cd(t_data *data, t_command *cmd, int index)
 {
-	data->old_pwd = malloc(sizeof(char)
-			* ft_strlen(getcwd(data->getpath, sizeof(data->getpath))));
+	data->old_pwd = malloc(sizeof(char) * ft_strlen(getcwd(data->getpath,
+					sizeof(data->getpath))));
 	if (!data->old_pwd)
 		return (0);
 	data->old_pwd = getcwd(data->getpath, sizeof(data->getpath));

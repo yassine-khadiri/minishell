@@ -70,7 +70,8 @@ void	check_dollars(char *str)
 	dollar_count = 0;
 	while (str[i])
 	{
-		if ((str[i] == '$' && str[i + 1] == '$') || (str[i] == '$' && str[i + 1] == '\0'))
+		if ((str[i] == '$' && str[i + 1] == '$') || (str[i] == '$' && str[i
+				+ 1] == '\0'))
 		{
 			dollars_arr[i] = '$';
 			dollar_count++;
@@ -91,12 +92,14 @@ void	print_mssj(char *str, char mode)
 
 int	ft_echo(t_data *data, t_command *cmd, int index)
 {
-	(void)data;
 	char	*string;
 	int		len;
 	char	mode;
 	char	*mssj;
+	int		i;
+	int		j;
 
+	(void)data;
 	mode = '\n';
 	len = 0;
 	index++;
@@ -111,32 +114,36 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 		string = malloc(sizeof(char) * ft_strlen(cmd->cmd_array[index]));
 		if (!string)
 			return (0);
-		int	i = 0;
-		int	j = 0;
+		i = 0;
+		j = 0;
 		while (cmd->cmd_array[index][i])
 		{
-			if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i + 1] != '$')
+			if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i
+				+ 1] != '$')
 			{
-					i++;
+				i++;
 				while (cmd->cmd_array[index][i])
 				{
 					j = 0;
-					while (cmd->cmd_array[index][i] && cmd->cmd_array[index][i] != '$')
+					while (cmd->cmd_array[index][i]
+						&& cmd->cmd_array[index][i] != '$')
 						string[j++] = cmd->cmd_array[index][i++];
 					string[j] = '\0';
-						mssj = ft_strjoin(mssj, check_res(string, data->env));
+					mssj = ft_strjoin(mssj, check_res(string, data->env));
 					i++;
 				}
 			}
-			else if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i + 1] == '$')
+			else if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i
+					+ 1] == '$')
 			{
 				j = 0;
 				while (cmd->cmd_array[index][i])
 				{
-					if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i] != '$')
+					if (cmd->cmd_array[index][i] == '$'
+						&& cmd->cmd_array[index][i] != '$')
 					{
 						mssj[j] = '\0';
-						break;
+						break ;
 					}
 					mssj[j++] = cmd->cmd_array[index][i++];
 				}
@@ -146,7 +153,8 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 				j = 0;
 				while (cmd->cmd_array[index][i])
 				{
-					if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i + 1] != '$')
+					if (cmd->cmd_array[index][i] == '$'
+						&& cmd->cmd_array[index][i + 1] != '$')
 						break ;
 					mssj[j++] = cmd->cmd_array[index][i++];
 				}

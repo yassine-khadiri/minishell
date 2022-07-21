@@ -6,12 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 01:25:26 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:16:46 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
 void	minishel_start(t_data *data)
 {
 	t_command	*cmd;
@@ -26,12 +25,15 @@ void	minishel_start(t_data *data)
 		if (ft_strlen(data->command_buf) > 0)
 		{
 			data->tokens = ft_tokenizer(&data->tokens, data->command_buf);
-			data->syntax_res = syntax_errors(data->tokens);
-			if ((data->syntax_res) != 1)
+			if (data->tokens)
 			{
-				cmd = ft_parse(data->tokens, data->lenv);
-				execution(data, cmd);
-				add_history(data->command_buf);
+				data->syntax_res = syntax_errors(data->tokens);
+				if ((data->syntax_res) != 1)
+				{
+					cmd = ft_parse(data->tokens, data->lenv);
+					execution(data, cmd);
+					add_history(data->command_buf);
+				}
 			}
 		}
 	}

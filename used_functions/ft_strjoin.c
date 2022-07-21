@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:02:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/19 20:51:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:18:49 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[i] != '\0')
 		tab[len_s1++] = s2[i++];
 	tab[len_s1] = '\0';
-	// free(s1);
 	return (tab);
 }

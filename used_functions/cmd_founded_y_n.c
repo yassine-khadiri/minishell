@@ -6,20 +6,20 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 01:14:47 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:28:16 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	pipe_founded(t_data *data)
+int	pipe_founded(t_command *cmd)
 {
 	int	i;
 
 	i = 0;
-	while (data->arr_cmds[i])
+	while (cmd->cmd_array[i])
 	{
-		if (!ft_strcmp(data->arr_cmds[i], "|"))
+		if (!ft_strcmp(cmd->cmd_array[i], "|"))
 			return (1);
 		i++;
 	}

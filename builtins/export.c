@@ -46,11 +46,11 @@ int	update_val(char **env, char *var_name)
 	while (env[i])
 	{
 		if (!ft_strncmp(extract_var_name(env[i]),
-				extract_var_name(var_name),
-				ft_strlen(extract_var_name(env[i])))
-			&& ft_strlen(extract_var_name(var_name))
-			- ft_strlen(extract_var_name(env[i])) == 1
-			&& var_name[ft_strlen(extract_var_name(var_name)) - 1] == '+')
+						extract_var_name(var_name),
+						ft_strlen(extract_var_name(env[i]))) &&
+			ft_strlen(extract_var_name(var_name))
+				- ft_strlen(extract_var_name(env[i])) == 1
+				&& var_name[ft_strlen(extract_var_name(var_name)) - 1] == '+')
 		{
 			if (!update_append(env[i], var_name))
 				return (0);
@@ -58,7 +58,7 @@ int	update_val(char **env, char *var_name)
 			return (1);
 		}
 		else if (!ft_strcmp(extract_var_name(env[i]),
-				extract_var_name(var_name)))
+							extract_var_name(var_name)))
 		{
 			if (check_equal_sign(var_name))
 			{
@@ -84,7 +84,7 @@ int	check_env_var(char *env_var)
 	if (!ft_strcmp(extracted_var, "_"))
 		return (-1);
 	else if (check_dash_err(extracted_var) || !is_validated(extracted_var,
-			env_var))
+				env_var))
 		return (1);
 	return (0);
 }
@@ -118,8 +118,7 @@ int	ft_export(t_data *data, t_command *cmd)
 	int		i;
 	char	*var_name;
 
-	if (!ft_strcmp(cmd->cmd_array[0], "export")
-		&& !cmd->cmd_array[1])
+	if (!ft_strcmp(cmd->cmd_array[0], "export") && !cmd->cmd_array[1])
 	{
 		display_export(data);
 		return (0);

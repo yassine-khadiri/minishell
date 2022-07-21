@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:22:28 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 18:49:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:19:03 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ int	rdr_execution(t_data *data, t_command *cmd)
 			output_rdr_std_appnd(data, cmd, O_TRUNC);
 		else if (!ft_strcmp(verify_rdr(data), ">>"))
 			output_rdr_std_appnd(data, cmd, O_APPEND);
-		// else if (!ft_strcmp(verify_rdr(data, cmd), "<<"))
-		// 	output_rdr_std_appnd(data, O_APPEND);
 	}
 	return (check_exec);
 }
