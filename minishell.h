@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 00:45:30 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/21 01:11:10 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-	int 					g_dollar_question;
 
+int			g_dollar_question;
 typedef enum e_tokens
 {
 	NONE,
@@ -106,6 +106,7 @@ typedef struct s_data
 	char					*command_buf;
 	char					**arr_cmds; // try to remove this shit hh!
 	char					getpath[1000];
+	char					*old_pwd;
 	char					**env;
 	char					**splitted_path;
 	int						new_index;
@@ -229,6 +230,10 @@ char						**ft_analayzer(t_data *data, char *str,
 								char *string);
 char						**dollar_analayzer(t_data *data, char *str);
 
+// cd Command :)
+int							ft_cd(t_data *data, t_command *cmd, int index);
+int							edit_pwd(t_data *data);
+
 // export Command :)
 int							get_env_size(char **env);
 int							ft_export(t_data *data, t_command *cmd);
@@ -238,6 +243,7 @@ int							check_equal_sign(char *env_var);
 char						*update_append(char *env, char *var_name);
 void						display_export(t_data *data);
 int							check_dash_err(char *env_var);
+int							update_val(char **env, char *var_name);
 
 // unset Command :)
 int							ft_unset(t_data *data, t_command *cmd, int index);

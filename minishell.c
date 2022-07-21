@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 00:51:49 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/21 01:09:21 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	data_initializer(t_data *data, char **env)
 int	main(int argc, char **argv, char **env)
 {
 	t_data	*data;
-	
+
 	data = malloc(sizeof(t_data));
-	
 	if (!data)
 		return (0);
 	data_initializer(data, env);

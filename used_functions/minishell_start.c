@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_start.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 00:50:33 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/21 00:22:19 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	minishel_start(t_data *data)
 	{
 		ft_ctl_c();
 		ft_ctl_slash();
+		data->old_pwd = malloc(sizeof(char) * ft_strlen(getcwd(data->getpath, sizeof(data->getpath))));
+		// if (!data->old_pwd)
+		// 	return (0);
+		data->old_pwd = getcwd(data->getpath, sizeof(data->getpath));
 		data->command_buf = readline(BLU "minishell> " WHT);
 		ft_ctl_d(data);
 		if (ft_strlen(data->command_buf) > 0)

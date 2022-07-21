@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 00:55:15 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/21 01:10:18 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void	edit_pwd(char **env)
-{
-	char	*pwd;
-	char	*old_pwd;
-
-	pwd = get_val_env_var(env, "PWD");
-	old_pwd = get_val_env_var(env, "OLDPWD");
-}
 
 int	fill_struct(t_command *cmd)
 {
@@ -49,6 +40,7 @@ void	execution(t_data *data, t_command *cmd)
 	fill_struct(cmd);
 	// int i;
 	// t_command *tmp;
+	// tmp = cmd;
 	// while (tmp) {
 	// 	for (i= 0; tmp->cmd_array[i]; i++)
 	// 	{
@@ -59,6 +51,7 @@ void	execution(t_data *data, t_command *cmd)
 	// 		printf("| ");
 	// 	tmp = tmp->next;
 	// }
+	// int i = 0;
 	// tmp = cmd;
 	// while (cmd) {
 	// 	// for (i = 0; tmp->redirection; i++)
@@ -88,6 +81,7 @@ void	execution(t_data *data, t_command *cmd)
 	}
 	// if (pipe_founded(data) && ft_pipe(data))
 	// 	return ;
+	// edit_pwd(data);
 	if (rdr_execution(data, cmd)
 		|| builtins_execution(data, cmd))
 		return ;

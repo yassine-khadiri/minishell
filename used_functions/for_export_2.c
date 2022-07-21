@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 13:24:21 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:50:30 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	display_export(t_data *data)
 	int	len;
 	int	step;
 
-	// char	*mssj = NULL;
+	// char	*mssj;
 	step = 0;
 	len = 0;
 	while (data->env[len])
@@ -62,8 +62,7 @@ void	display_export(t_data *data)
 		// printf("%s\n", extract_var_name(data->env[i++]));
 		// mssj = ft_strjoin(extract_var_name(data->env[i++]), "=");
 		// mssj = ft_strjoin(mssj, "\"");
-		// mssj = ft_strjoin(mssj, get_val_env_var(data->env,
-		extract_var_name(data->env[i++]);
+		// mssj = ft_strjoin(mssj, get_val_env_var(data->env, extract_var_name(data->env[i++])));
 		// mssj = ft_strjoin(mssj, "\"");
 		// printf("declare -x %s\n", mssj);
 		// mssj = NULL;

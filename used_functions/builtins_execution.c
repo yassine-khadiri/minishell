@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 19:16:41 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/20 23:31:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,8 @@ int	builtins_execution(t_data *data, t_command *cmd)
 	{
 		if (!ft_strcmp(cmd->cmd_array[i], "pwd"))
 			return (ft_pwd(data));
-		/*else if (!ft_strcmp(cmd->cmd_array[i], "cd"))
-		{
-			edit_pwd(env);
-			if (chdir(cmd->cmd_array[++i]) == -1)
-				printf("cd: %s: No such file or directory\n",
-						cmd->cmd_array[i]);
-		}*/
+		else if (!ft_strcmp(cmd->cmd_array[i], "cd"))
+			return (ft_cd(data, cmd, i));
 		else if (!ft_strcmp(cmd->cmd_array[i], "echo"))
 			return (ft_echo(data, cmd, i));
 		else if (!ft_strcmp(cmd->cmd_array[i], "export"))
