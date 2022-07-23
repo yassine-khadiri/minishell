@@ -1,0 +1,4 @@
+-rwxr-xr-x   1 ykhadiri  candidate  88736 Jul 23 02:52 minishell
+-rw-r--r--   1 ykhadiri  candidate   1739 Jul 21 01:09 minishell.c
+-rw-r--r--   1 ykhadiri  candidate   7737 Jul 23 02:03 minishell.h
+-rw-r--r--   1 ykhadiri  candidate   6224 Jul 23 02:52 minishell.o

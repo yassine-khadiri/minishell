@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 01:27:03 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 03:06:58 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,9 +187,9 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 		printf("\n");
 		return (0);
 	}
-	printf("%d\n", index);
-	if (check_dash_n(cmd, index))
-		index = check_dash_n(cmd, index);
+	// printf("%d\n", index);
+	// if (check_dash_n(cmd, index))
+	// 	index = check_dash_n(cmd, index);
 	while (cmd->cmd_array[index])
 	{
 		mssj = ft_strdup("");

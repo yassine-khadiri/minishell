@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 02:50:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 03:33:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,9 @@ void	execution(t_data *data, t_command *cmd)
 		}
 		i++;
 	}
-	// printf("%d\n", pipe_founded(data->tokens));
-	if (pipe_founded(data->tokens) && ft_pipe(data, cmd))
-		return ;
-	if (rdr_execution(data, cmd) || builtins_execution(data, cmd))
-		return ;
+	if ((pipe_founded(data->tokens) && ft_pipe(data, cmd))
+		|| rdr_execution(data, cmd)
+		|| builtins_execution(data, cmd))
+			return ;
 	execution_other_builtins(data, cmd);
 }
