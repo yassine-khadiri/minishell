@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 17:57:55 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 02:50:14 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,24 @@ void	execution(t_data *data, t_command *cmd)
 	// }
 	// data->fd_names[i] = NULL;
 	// printf("%s\n", data->fd_names[0]);
-	if (cmd_founded_y_n(data, cmd) == -1)
-		return ;
+	// i = 0;
+	// while (cmd)
+	// {
+	// 	printf("%s\n", cmd->cmd_array[i++]);
+	// 	if(!cmd->cmd_array[i])
+	// 	{
+	// 		i = 0;
+	// 		cmd = cmd->next;
+	// 	}
+	// }
+	// while (data->tokens)
+	// {
+		
+	// 		printf("%s\n", data->tokens->value);
+	// 	data->tokens = data->tokens->next;
+	// }
+	// if (cmd_founded_y_n(data, cmd) == -1)
+	// 	return ;
 	i = 0;
 	while (cmd->cmd_array[i])
 	{
@@ -79,8 +95,9 @@ void	execution(t_data *data, t_command *cmd)
 		}
 		i++;
 	}
-	// if (pipe_founded(data) && ft_pipe(data))
-	// 	return ;
+	// printf("%d\n", pipe_founded(data->tokens));
+	if (pipe_founded(data->tokens) && ft_pipe(data, cmd))
+		return ;
 	if (rdr_execution(data, cmd) || builtins_execution(data, cmd))
 		return ;
 	execution_other_builtins(data, cmd);

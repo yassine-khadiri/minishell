@@ -6,14 +6,37 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/15 13:19:25 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/22 19:45:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_exit(void)
+int	ft_isnumber(char *str)
 {
+	int	i;
+
+	i = 0;
+	while (ft_isdigit(str[i]))
+		i++;
+	if(ft_strlen(str) == i)
+		return (1);
+	return (0);
+}
+
+int	ft_exit(t_command *cmd)
+{
+	int	i;
+
+	i = 0;
+	while (cmd->cmd_array[++i])
+	{
+		if (!ft_isnumber(cmd->cmd_array[i]))
+		{
+			printf(RED"minishell: exit: %s: numeric argument required\n", cmd->cmd_array[i]);
+			return (-1);
+		}
+	}
 	printf("exit\n");
 	return (0);
 }

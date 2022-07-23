@@ -6,18 +6,40 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 23:31:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/22 21:50:54 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	print_err_mssj(t_command *cmd, int index)
+// int	print_err_mssj(t_command *cmd, int index)
+// {
+// 	if (cmd->cmd_array[index + 1])
+// 	{
+// 		printf("Invalid Command :)\n");
+// 		return (1);
+// 	}
+// 	return (0);
+// }
+int	check_options(t_command *cmd)
 {
-	if (cmd->cmd_array[index + 1])
+	int	i;
+
+	i = 0;
+	if (!ft_strcmp(cmd->cmd_array[i], "pwd")
+		|| !ft_strcmp(cmd->cmd_array[i], "cd")
+		|| !ft_strcmp(cmd->cmd_array[i], "export")
+		|| !ft_strcmp(cmd->cmd_array[i], "unset")
+		|| !ft_strcmp(cmd->cmd_array[i], "env")
+		|| !ft_strcmp(cmd->cmd_array[i], "exit"))
 	{
-		printf("Invalid Command :)\n");
-		return (1);
+		if (!cmd->cmd_array[i + 1])
+			return (0);
+		else if (cmd->cmd_array[i + 1][0] == '-')
+		{
+			printf(RED"%s Command Must Works Without Options\n", cmd->cmd_array[i]);
+			return (1);
+		}
 	}
 	return (0);
 }
@@ -27,6 +49,8 @@ int	builtins_execution(t_data *data, t_command *cmd)
 	int	i;
 
 	i = 0;
+	if (check_options(cmd))
+		return (0);
 	while (cmd->cmd_array[i])
 	{
 		if (!ft_strcmp(cmd->cmd_array[i], "pwd"))
@@ -43,11 +67,13 @@ int	builtins_execution(t_data *data, t_command *cmd)
 			return (ft_env(data->env));
 		else if (!ft_strcmp(cmd->cmd_array[i], "exit"))
 		{
-			if (!print_err_mssj(cmd, i))
-			{
-				printf("exit\n");
+			// if (!print_err_mssj(cmd, i))
+			// {
+			// 	printf("exit\n");
+			// 	exit(0);
+			// }
+			if (!ft_exit(cmd))
 				exit(0);
-			}
 		}
 		i++;
 	}

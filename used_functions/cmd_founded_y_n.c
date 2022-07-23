@@ -6,22 +6,19 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 15:28:16 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 01:53:14 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	pipe_founded(t_command *cmd)
+int	pipe_founded(t_token *tokens)
 {
-	int	i;
-
-	i = 0;
-	while (cmd->cmd_array[i])
+	while (tokens)
 	{
-		if (!ft_strcmp(cmd->cmd_array[i], "|"))
+		if (!ft_strcmp(tokens->value, "|"))
 			return (1);
-		i++;
+		tokens = tokens->next;
 	}
 	return (0);
 }

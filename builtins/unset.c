@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 15:56:08 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 19:16:05 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/22 21:48:59 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,24 @@ int	ft_unset(t_data *data, t_command *cmd, int index)
 	int		i;
 	char	*var_name;
 
-	var_name = ft_strdup(cmd->cmd_array[++index]);
-	i = 0;
-	while (data->env[i])
+	while (cmd->cmd_array[++index])
 	{
-		if (!ft_strcmp(extract_var_name(data->env[i]), var_name))
+		i = 0;
+		var_name = ft_strdup(cmd->cmd_array[index]);
+		while (data->env[i])
 		{
-			while (data->env[i])
+			if (!ft_strcmp(extract_var_name(data->env[i]), var_name))
 			{
-				data->env[i] = data->env[i + 1];
-				i++;
+				while (data->env[i])
+				{
+					data->env[i] = data->env[i + 1];
+					i++;
+				}
+				data->env[i] = NULL;
+				break ;
 			}
-			data->env[i] = NULL;
-			break ;
+			i++;
 		}
-		i++;
 	}
 	return (1);
 }

@@ -6,69 +6,37 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/21 16:54:27 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 02:45:44 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include<stdio.h>
 
-char	**get_cmd(char *str)
-{
-	char	**splitted_cmd;
-
-	splitted_cmd = ft_split(str, ' ');
-	return (splitted_cmd);
-}
-
-void	execution_pipe_cmd(t_data *data, char *cmd)
+void	execution_pipe_cmd(t_data *data, t_command *cmd)
 {
 	char	*path;
-	char	**spllited_cmd;
 	int		i;
 
 	i = 0;
-	printf("%s\n", cmd);
-	cmd = ft_strtrim(cmd, " ");
-	spllited_cmd = get_cmd(cmd);
-	// printf("%s\n", spllited_cmd[0]);
+	// puts(cmd->cmd_array[0]);
 	while (*data->splitted_path[i])
 	{
-		path = ft_strjoin(*data->splitted_path, "/");
-		path = ft_strjoin(path, spllited_cmd[0]);
+		path = ft_strjoin(data->splitted_path[i], "/");
+		path = ft_strjoin(path, cmd->cmd_array[0]);
+		// puts(path);
 		if (!access(path, X_OK))
-			execve(path, data->arr_cmds, data->env);
+			execve(path, cmd->cmd_array, data->env);
 		i++;
 	}
 }
 
-char	**get_cmds(char **str)
+int	ft_pipe(t_data *data, t_command *cmd)
 {
-	int		i;
-	char	**get_cmds;
-	char	*cmds;
-
-	i = 2;
-	cmds = ft_strjoin_space(str[0], str[1]);
-	while (str[i])
-	{
-		cmds = ft_strjoin_space(cmds, str[i]);
-		i++;
-	}
-	get_cmds = ft_split(cmds, '|');
-	return (get_cmds);
-}
-
-int	ft_pipe(t_data *data)
-{
-	char	**cmds_arr;
 	int		fd[2];
 	int		pid1;
 	int		pid2;
 
-	cmds_arr = get_cmds(data->arr_cmds);
-	// while (*cmds_arr)
-	// 	printf("%s\n", *cmds_arr++);
-	printf("%s\n", cmds_arr[0]);
 	if (pipe(fd) == -1)
 		return (0);
 	pid1 = fork();
@@ -79,7 +47,7 @@ int	ft_pipe(t_data *data)
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
 		close(fd[1]);
-		execution_pipe_cmd(data, cmds_arr[0]);
+		execution_pipe_cmd(data, cmd);
 	}
 	pid2 = fork();
 	if (pid2 < 0)
@@ -89,11 +57,11 @@ int	ft_pipe(t_data *data)
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[0]);
 		close(fd[1]);
-		execution_pipe_cmd(data, cmds_arr[1]);
+		execution_pipe_cmd(data, cmd->next);
 	}
 	close(fd[0]);
 	close(fd[1]);
-	waitpid(pid1, NULL, 0);
-	waitpid(pid2, NULL, 0);
+	waitpid(-1, NULL, 0);
+	waitpid(-1, NULL, 0);
 	return (1);
 }

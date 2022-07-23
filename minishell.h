@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 19:04:07 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 02:03:14 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,9 +194,9 @@ int	execution_other_builtins(t_data *data,
 								t_command *cmd);
 char						**ft_get_spllited_path_env(t_data *data);
 char						*get_val_env_var(char **env, char *env_variable);
-int							ft_pipe(t_data *data);
+int							ft_pipe(t_data *data, t_command *cmd);
 int							cmd_founded_y_n(t_data *data, t_command *cmd);
-int							pipe_founded(t_command *cmd);
+int							pipe_founded(t_token *tokens);
 void						exec(t_data *data, t_command *cmd);
 char						*check_var(char *var_name, char **env);
 void						print_mssj(char *str, char mode);
@@ -248,5 +248,5 @@ int							ft_unset(t_data *data, t_command *cmd, int index);
 int							ft_env(char **env);
 
 // exit Command :)
-int							ft_exit(void);
+int							ft_exit(t_command *cmd);
 #endif
