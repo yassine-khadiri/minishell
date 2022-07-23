@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 16:47:31 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:42:51 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ void						push_rdr(t_redirection **head,
 t_redirection				*initalize_redirections(int type, char *value,
 								t_env *lenv);
 int							ft_quotes(char *string);
+int							tab_size(char **cmd_args);
 t_token						*is_last(t_token *last);
 void						add_back(t_token **lst, t_token *new);
 t_token						*create_token(int type, char *value);

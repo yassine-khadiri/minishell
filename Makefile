@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/23 16:59:20 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/07/23 17:43:27 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ SRC = minishell.c \
 	parsing/check_syntax.c \
 	parsing/check_syntax_utils.c \
 	parsing/parser.c \
-	parsing/parser_utils.c \
+	parsing/parser_utils_1.c \
+	parsing/parser_utils_2.c \
 	parsing/envirenement.c \
 	parsing/expander.c \
 	used_functions/ft_split.c \

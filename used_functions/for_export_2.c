@@ -6,38 +6,44 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 16:46:28 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:38:04 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+void	sort_data_helper(t_data *data, int i)
+{
+	char	*tmp;
+	int		j;
+
+	j = 0;
+	while (data->env[i][j])
+	{
+		if (data->env[i][j] == data->env[i + 1][j])
+			j++;
+		else if (data->env[i][j] > data->env[i + 1][j])
+		{
+			tmp = data->env[i];
+			data->env[i] = data->env[i + 1];
+			data->env[i + 1] = tmp;
+			break ;
+		}
+		else
+			break ;
+	}
+}
+
 void	sort_data(t_data *data, int len, int step)
 {
 	int		i;
-	int		j;
-	char	*tmp;
 
 	while (step < len - 1)
 	{
 		i = 0;
 		while (i < len - step - 1)
 		{
-			j = 0;
-			while (data->env[i][j])
-			{
-				if (data->env[i][j] == data->env[i + 1][j])
-					j++;
-				else if (data->env[i][j] > data->env[i + 1][j])
-				{
-					tmp = data->env[i];
-					data->env[i] = data->env[i + 1];
-					data->env[i + 1] = tmp;
-					break ;
-				}
-				else
-					break ;
-			}
+			sort_data_helper(data, i);
 			i++;
 		}
 		step++;
@@ -50,7 +56,6 @@ void	display_export(t_data *data)
 	int	len;
 	int	step;
 
-	// char	*mssj;
 	step = 0;
 	len = 0;
 	while (data->env[len])
@@ -59,16 +64,9 @@ void	display_export(t_data *data)
 	i = 0;
 	while (data->env[i])
 	{
-		// printf("%s\n", extract_var_name(data->env[i++]));
-		// mssj = ft_strjoin(extract_var_name(data->env[i++]), "=");
-		// mssj = ft_strjoin(mssj, "\"");
-		// mssj = ft_strjoin(mssj, get_val_env_var(data->env,
-				extract_var_name(data->env[i++]);
-		// mssj = ft_strjoin(mssj, "\"");
-		// printf("declare -x %s\n", mssj);
-		// mssj = NULL;
-		// bash: syntax error
-		printf("declare -x %s\n", data->env[i++]);
+		printf("declare -x %s=\"%s\"\n", extract_var_name(data->env[i]),
+			get_val_env_var(data->env, extract_var_name(data->env[i])));
+		i++;
 	}
 }
 
