@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 02:03:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:47:31 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,10 @@ typedef struct s_data
 {
 	char					*command_buf;
 	char					getpath[1000];
-	char					**arr_cmds;  //try to remove thi sshit hh
 	char					*old_pwd;
 	char					**env;
 	char					**splitted_path;
-	int						new_index;
-	const char				*fd_name;
-	const char				*fd_names[1000];
+	char					mode;
 	int						syntax_res;
 	t_token					*tokens;
 	t_command				*cmd;
@@ -144,10 +141,10 @@ int							redir_error(t_token *tokens, t_token *head);
 int							pipe_error(t_token *tokens, t_token *head);
 t_redirection				*initalize_redirections(int type, char *value,
 								t_env *lenv);
-void	push_redirections(t_redirection **head,
-						t_redirection *new_redirection);
+void						push_redirections(t_redirection **head,
+								t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
-t_command	*initialize_command(t_cmdline *cmdline,
+t_command					*initialize_command(t_cmdline *cmdline,
 								t_redirection *redirections,
 								t_token *tokens);
 void						fill_command(t_command **head, t_command *command);
@@ -165,8 +162,8 @@ t_token						*new_line(char *n_type, char *value);
 int							semicolon(t_token **tokens, char *str);
 void						free_list(t_token *lst);
 int							redir_error(t_token *tokens, t_token *head);
-void	push_rdr(t_redirection **head,
-				t_redirection *new_redirection);
+void						push_rdr(t_redirection **head,
+								t_redirection *new_redirection);
 t_redirection				*initalize_redirections(int type, char *value,
 								t_env *lenv);
 int							ft_quotes(char *string);
@@ -190,7 +187,7 @@ char						*ft_strjoin_space(char *s1, char *s2);
 char						*ft_strjoin(char *s1, char *s2);
 void						execution(t_data *data, t_command *cmd);
 char						**ft_split(const char *s, char c);
-int	execution_other_builtins(t_data *data,
+int							execution_other_builtins(t_data *data,
 								t_command *cmd);
 char						**ft_get_spllited_path_env(t_data *data);
 char						*get_val_env_var(char **env, char *env_variable);
@@ -225,6 +222,7 @@ int							ft_pwd(t_data *data);
 
 // echo Command :)
 int							ft_echo(t_data *data, t_command *cmd, int index);
+char						*check_res(char *var_name, char **env);
 
 // cd Command :)
 int							ft_cd(t_data *data, t_command *cmd, int index);

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 19:50:30 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:46:28 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	display_export(t_data *data)
 		// printf("%s\n", extract_var_name(data->env[i++]));
 		// mssj = ft_strjoin(extract_var_name(data->env[i++]), "=");
 		// mssj = ft_strjoin(mssj, "\"");
-		// mssj = ft_strjoin(mssj, get_val_env_var(data->env, extract_var_name(data->env[i++])));
+		// mssj = ft_strjoin(mssj, get_val_env_var(data->env,
+				extract_var_name(data->env[i++]);
 		// mssj = ft_strjoin(mssj, "\"");
 		// printf("declare -x %s\n", mssj);
 		// mssj = NULL;

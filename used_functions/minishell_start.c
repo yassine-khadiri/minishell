@@ -6,11 +6,12 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 19:16:46 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:39:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
 void	minishel_start(t_data *data)
 {
 	t_command	*cmd;

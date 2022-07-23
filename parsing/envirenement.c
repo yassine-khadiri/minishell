@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:07:10 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 17:35:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:05:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,13 @@ t_env	*create_env_list(t_env *l_env, char **env)
 	i = 0;
 	if (env[i])
 	{
-		//*lenv = (t_env *)malloc(sizeof(t_env));
 		str = ft_split(env[i], '=');
 		l_env = initial_env_node(str[0], str[1]);
-		//(*lenv)->name = str[0];
-		//(*lenv)->value = str[1];
-		// free(str);
 	}
 	while (env[i])
 	{
-		//(*lenv)->next = malloc(sizeof(t_env));
-		//(*lenv) = (*lenv)->next;
 		str = ft_split(env[i], '=');
 		add_env_node(l_env, str[0], str[1]);
-		//(*lenv)->name = str[0];
-		//(*lenv)->value = str[1];
-		// free(str);
 		i++;
 	}
 	return (l_env);

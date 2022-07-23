@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   for_echo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 16:50:13 by ykhadiri         ###   ########.fr       */
+/*   Created: 2022/07/23 16:37:45 by ykhadiri          #+#    #+#             */
+/*   Updated: 2022/07/23 16:38:05 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_isnumber(char *str)
+char	*get_val_env_var1(char **env, char *env_variable)
 {
 	int	i;
 
 	i = 0;
-	while (ft_isdigit(str[i]))
+	while (env[i])
+	{
+		if (!ft_strcmp(extract_var_name(env[i]), env_variable))
+			return (env[i] + ft_strlen(env_variable) + 1);
 		i++;
-	if (ft_strlen(str) == i)
-		return (1);
-	return (0);
+	}
+	return (NULL);
 }
 
-int	ft_exit(t_command *cmd)
+char	*check_res(char *var_name, char **env)
 {
-	int	i;
-
-	i = 0;
-	printf("exit\n");
-	while (cmd->cmd_array[++i])
-	{
-		if (!ft_isnumber(cmd->cmd_array[i]))
-			printf(RED "minishell: exit: %s: numeric argument required\n",
-				cmd->cmd_array[i]);
-	}
-	return (0);
+	if (get_val_env_var1(env, var_name))
+		var_name = get_val_env_var1(env, var_name);
+	else
+		var_name = "";
+	return (var_name);
 }

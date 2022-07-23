@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 23:04:29 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 15:17:09 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:48:51 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	edit_pwd(t_data *data)
 	{
 		if (!ft_strcmp(extract_var_name(data->env[i]), "PWD"))
 			data->env[i] = ft_strjoin("PWD=",
-										getcwd(data->getpath,
-												sizeof(data->getpath)));
+					getcwd(data->getpath,
+						sizeof(data->getpath)));
 	}
 	return (0);
 }

@@ -6,21 +6,12 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/22 21:50:54 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:40:41 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// int	print_err_mssj(t_command *cmd, int index)
-// {
-// 	if (cmd->cmd_array[index + 1])
-// 	{
-// 		printf("Invalid Command :)\n");
-// 		return (1);
-// 	}
-// 	return (0);
-// }
 int	check_options(t_command *cmd)
 {
 	int	i;
@@ -37,7 +28,8 @@ int	check_options(t_command *cmd)
 			return (0);
 		else if (cmd->cmd_array[i + 1][0] == '-')
 		{
-			printf(RED"%s Command Must Works Without Options\n", cmd->cmd_array[i]);
+			printf(RED"%s Command Must Works Without Options\n",
+				cmd->cmd_array[i]);
 			return (1);
 		}
 	}
@@ -67,11 +59,6 @@ int	builtins_execution(t_data *data, t_command *cmd)
 			return (ft_env(data->env));
 		else if (!ft_strcmp(cmd->cmd_array[i], "exit"))
 		{
-			// if (!print_err_mssj(cmd, i))
-			// {
-			// 	printf("exit\n");
-			// 	exit(0);
-			// }
 			if (!ft_exit(cmd))
 				exit(0);
 		}

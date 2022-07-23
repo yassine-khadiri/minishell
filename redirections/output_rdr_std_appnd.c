@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 18:02:02 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:42:13 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void	output_rdr_std_appnd(t_data *data, t_command *cmd, int flag)
 	while (cmd->redirection)
 	{
 		if (flag == 0x0008)
-			fd = open(cmd->redirection->file, O_CREAT | O_RDWR | O_APPEND, 0777);
+			fd = open(cmd->redirection->file,
+					O_CREAT | O_RDWR | O_APPEND, 0777);
 		else
 			fd = open(cmd->redirection->file, O_CREAT | O_RDWR | O_TRUNC, 0777);
 		if (fd == -1)
 		{
-			printf(RED "minishell: %s: No such file or directory\n", cmd->redirection->file);
+			printf(RED "minishell: %s: No such file or directory\n",
+				cmd->redirection->file);
 			return ;
 		}
 		cmd->redirection = cmd->redirection->next;

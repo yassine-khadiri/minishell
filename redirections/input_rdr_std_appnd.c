@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:33:56 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 17:50:30 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:43:08 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	input_rdr_std_appnd(t_data *data, t_command *cmd)
 		fd = open(cmd->redirection->file, O_RDONLY, 0777);
 		if (fd == -1)
 		{
-			printf(RED "minishell: %s: No such file or directory\n", cmd->redirection->file);
+			printf(RED "minishell: %s: No such file or directory\n",
+				cmd->redirection->file);
 			return ;
 		}
 		cmd->redirection = cmd->redirection->next;

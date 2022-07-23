@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 19:08:49 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 16:51:54 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int	update_val(char **env, char *var_name)
 	while (env[i])
 	{
 		if (!ft_strncmp(extract_var_name(env[i]),
-						extract_var_name(var_name),
-						ft_strlen(extract_var_name(env[i]))) &&
-			ft_strlen(extract_var_name(var_name))
-				- ft_strlen(extract_var_name(env[i])) == 1
-				&& var_name[ft_strlen(extract_var_name(var_name)) - 1] == '+')
+				extract_var_name(var_name),
+				ft_strlen(extract_var_name(env[i])))
+			&& ft_strlen(extract_var_name(var_name))
+			- ft_strlen(extract_var_name(env[i])) == 1
+			&& var_name[ft_strlen(extract_var_name(var_name)) - 1] == '+')
 		{
 			if (!update_append(env[i], var_name))
 				return (0);
@@ -58,7 +58,7 @@ int	update_val(char **env, char *var_name)
 			return (1);
 		}
 		else if (!ft_strcmp(extract_var_name(env[i]),
-							extract_var_name(var_name)))
+				extract_var_name(var_name)))
 		{
 			if (check_equal_sign(var_name))
 			{
@@ -84,7 +84,7 @@ int	check_env_var(char *env_var)
 	if (!ft_strcmp(extracted_var, "_"))
 		return (-1);
 	else if (check_dash_err(extracted_var) || !is_validated(extracted_var,
-				env_var))
+			env_var))
 		return (1);
 	return (0);
 }
