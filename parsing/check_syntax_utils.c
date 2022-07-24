@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_syntax_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:08:26 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/23 16:53:04 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/24 15:24:06 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ int	redir_error(t_token *tokens, t_token *head)
 
 	(void)head;
 	result = 0;
-	if (tokens->next->type != WORD)
+	if (tokens->next->type != WORD
+		&& tokens->next->type != DBQUOTE
+		&& tokens->next->type != QUOTE)
 	{
 		printf("%s\n", tokens->next->value);
 		printf("minishell: syntax error\n");

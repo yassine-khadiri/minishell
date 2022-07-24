@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/23 15:18:06 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/24 14:03:30 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,13 @@ int	ft_pipe(t_data *data, t_command *cmd)
 	waitpid(-1, NULL, 0);
 	return (1);
 }
+// int ft_pipe(t_data *data, t_command *cmd)
+// {
+// 	int fd[2];
+// 	int pid;
+// 	if(cmd->next)
+// 	{
+// 		if(pipe(fd) == -1)
+// 			return (0);
+// 	}
+// }
