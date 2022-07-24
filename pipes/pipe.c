@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/24 14:03:30 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/24 20:51:29 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ void	execution_pipe_cmd(t_data *data, t_command *cmd)
 	int		i;
 
 	i = 0;
-	// puts(cmd->cmd_array[0]);
 	while (*data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
 		path = ft_strjoin(path, cmd->cmd_array[0]);
-		// puts(path);
 		if (!access(path, X_OK))
 			execve(path, cmd->cmd_array, data->env);
 		i++;
@@ -65,13 +63,3 @@ int	ft_pipe(t_data *data, t_command *cmd)
 	waitpid(-1, NULL, 0);
 	return (1);
 }
-// int ft_pipe(t_data *data, t_command *cmd)
-// {
-// 	int fd[2];
-// 	int pid;
-// 	if(cmd->next)
-// 	{
-// 		if(pipe(fd) == -1)
-// 			return (0);
-// 	}
-// }

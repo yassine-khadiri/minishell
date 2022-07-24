@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:22:28 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/24 19:22:46 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/24 20:58:27 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*expand_herdocs(char *buffer, t_env *lenv)
 	while (buffer[i] != '\0')
 	{
 		if (buffer[i] == '$' && (ft_isalnum(buffer[i + 1]) == 1 || buffer[i
-				+ 1] == '_'))
+					+ 1] == '_'))
 		{
 			before_dollar = ft_substr(buffer, 0, i);
 			env_name = check_name_hdc(buffer, &i);
@@ -52,6 +52,7 @@ char	*treat_heredocs(char *delimeter, t_env *lenv)
 			break ;
 		line = ft_strjoin(line, "\n");
 		buffer = ft_strjoin(buffer, line);
+		// free(line);
 	}
 	buffer = expand_herdocs(buffer, lenv);
 	return (buffer);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:11:05 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/24 19:21:44 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/24 20:59:08 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ char	*get_dollar_name(char *command, int *j)
 	{
 		ptr = ft_substr(command, i, 1);
 		tmp = ft_strjoin(name, ptr);
+		// free(name);
 		name = tmp;
+		// free(ptr );
 		i++;
 	}
 	*j = i;
@@ -93,9 +95,7 @@ char	*check_name_hdc(char *buffer, int *k)
 	if (ft_isalnum(buffer[i + 1]) == 1 || buffer[i + 1] == '_')
 		ft_new_str(buffer, i);
 	if (ft_isdigit(buffer[i]) == 1)
-	{
 		name = ft_substr(buffer, i++, 1);
-	}
 	else
 		name = get_dollar_name(buffer, &i);
 	*k = i;
