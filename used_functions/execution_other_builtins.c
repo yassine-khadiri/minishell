@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/20 18:31:49 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/24 23:19:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 		path = ft_strjoin(path, cmd->cmd_array[0]);
 		if (!access(path, X_OK))
 		{
-			pid = fork(); // don't forget protection
-			if (pid == 0)
+			pid = fork();
+			if (pid < 0)
+				return (0);
+			else if (pid == 0)
 				execve(path, cmd->cmd_array, data->env);
 			else
 				waitpid(pid, NULL, 0);

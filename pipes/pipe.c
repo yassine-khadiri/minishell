@@ -6,27 +6,33 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/24 20:51:29 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/24 23:16:57 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 #include<stdio.h>
 
-void	execution_pipe_cmd(t_data *data, t_command *cmd)
+int	execution_pipe_cmd(t_data *data, t_command *cmd)
 {
 	char	*path;
 	int		i;
 
 	i = 0;
-	while (*data->splitted_path[i])
+	if(rdr_execution(data, cmd))
+		return (0);
+	else
 	{
-		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, cmd->cmd_array[0]);
-		if (!access(path, X_OK))
-			execve(path, cmd->cmd_array, data->env);
-		i++;
+		while (data->splitted_path[i])
+		{
+			path = ft_strjoin(data->splitted_path[i], "/");
+			path = ft_strjoin(path, cmd->cmd_array[0]);
+			if (!access(path, X_OK))
+				execve(path, cmd->cmd_array, data->env);
+			i++;
+		}
 	}
+	return (0);
 }
 
 int	ft_pipe(t_data *data, t_command *cmd)

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 13:43:42 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 18:28:22 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/24 22:22:13 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	ft_ctl_d(t_data *cmds)
 {
 	if (!cmds->command_buf)
 	{
-		printf("\033[11C\033[1Aexit\n");
+		// printf("\033[11C\033[1Aexit\n");
+		printf("exit\n");
 		exit(0);
 	}
 }

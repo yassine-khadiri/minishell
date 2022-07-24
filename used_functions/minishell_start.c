@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 16:39:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/24 22:22:36 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	minishel_start(t_data *data)
 	{
 		ft_ctl_c();
 		ft_ctl_slash();
-		data->old_pwd = getcwd(data->getpath, sizeof(data->getpath));
 		data->command_buf = readline(BLU "minishell> " WHT);
 		ft_ctl_d(data);
 		if (ft_strlen(data->command_buf) > 0)
