@@ -1,4 +1,3 @@
-// cd ./git ==> Segfault
 
 // DB, Single Quotes like "c""h""o"
 
@@ -8,7 +7,4 @@
 
 // cd -
 
-/*
-	export
-	cd
-*/
+// Herdoc Doesn't print any fucking thing 
