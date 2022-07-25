@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_execution.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 00:44:38 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 20:04:51 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,36 +36,42 @@ int	check_options(t_command *cmd)
 	return (0);
 }
 
+int	exec_builts(t_data *data, t_command *cmd, int index)
+{
+	if (!ft_strcmp(cmd->cmd_array[index], "pwd"))
+		return (ft_pwd(data));
+	else if (!ft_strcmp(cmd->cmd_array[index], "cd"))
+		return (ft_cd(data, cmd, index));
+	else if (!ft_strcmp(cmd->cmd_array[index], "echo"))
+		return (ft_echo(data, cmd, index));
+	else if (!ft_strcmp(cmd->cmd_array[index], "export"))
+		return (ft_export(data, cmd));
+	else if (!ft_strcmp(cmd->cmd_array[index], "unset"))
+		return (ft_unset(data, cmd, index));
+	else if (!ft_strcmp(cmd->cmd_array[index], "env"))
+		return (ft_env(data->env));
+	else if (!ft_strcmp(cmd->cmd_array[index], "exit"))
+	{
+		if (!ft_exit(cmd))
+			exit(0);
+	}
+	return (0);
+}
+
 int	builtins_execution(t_data *data, t_command *cmd)
 {
 	int	i;
+	int	ret;
 
 	i = 0;
 	if (check_options(cmd))
 		return (0);
 	while (cmd->cmd_array[i])
 	{
-		if (!ft_strcmp(cmd->cmd_array[i], "pwd"))
-			return (ft_pwd(data));
-		else if (!ft_strcmp(cmd->cmd_array[i], "cd"))
-			return (ft_cd(data, cmd, i));
-		else if (!ft_strcmp(cmd->cmd_array[i], "echo"))
-			return (ft_echo(data, cmd, i));
-		else if (!ft_strcmp(cmd->cmd_array[i], "export"))
-			return (ft_export(data, cmd));
-		else if (!ft_strcmp(cmd->cmd_array[i], "unset"))
-			return (ft_unset(data, cmd, i));
-		else if (!ft_strcmp(cmd->cmd_array[i], "env"))
-			return (ft_env(data->env));
-		else if (!ft_strcmp(cmd->cmd_array[i], "exit"))
-		{
-			if (!ft_exit(cmd))
-			{
-				// free(data);
-				exit(0);
-			}
-		}
-		i++;
+		ret = exec_builts(data, cmd, i);
+		if (ret == 0)
+			i++;
+		return (ret);
 	}
 	return (0);
 }

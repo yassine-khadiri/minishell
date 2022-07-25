@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_founded_y_n.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 03:09:35 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:53:09 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,12 @@ int	pipe_founded(t_token *tokens)
 	return (0);
 }
 
-// int	quotes_count(char *cmd)
-// {
-// 	int	quotes_start;
-// 	int	quotes_end;
-
-// 	quotes_start = 0;
-// 	quotes_end = 0;
-// 	while (cmd[quotes_start] && cmd[quotes_start] == '"')
-// 		quotes_start++;
-// 	while (cmd[ft_strlen(cmd) - quotes_end - 1] && (cmd[ft_strlen(cmd)
-// 				- quotes_end - 1] == '"'))
-// 		quotes_end++;
-// 	if (quotes_start == quotes_end)
-// 		return (1);
-// 	return (0);
-// }
+void	print_not_found(t_command **cmd)
+{
+	printf (WHT "minishell : %s: command not found\n" BLU,
+		(*cmd)->cmd_array[0]);
+	g_dollar_question = 127;
+}
 
 int	cmd_founded_y_n(t_data *data, t_command *cmd)
 {
@@ -49,13 +39,6 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 	path = NULL;
 	result = -1;
 	i = 0;
-	// if (quotes_count(cmd->cmd_array[i]))
-	// 	cmd->cmd_array[0] = ft_strtrim(cmd->cmd_array[i], "\"");
-	// else
-	// {
-	// 	printf("Syntax Error\n");
-	// 	return (0);
-	// }
 	while (data->splitted_path[i])
 	{
 		if (!ft_strcmp(cmd->cmd_array[0], "export")
@@ -72,10 +55,6 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 		i++;
 	}
 	if (result == -1)
-	{
-		printf(WHT "minishell : %s: command not found\n" BLU,
-			cmd->cmd_array[0]);
-		g_dollar_question = 127;
-	}
+		print_not_found (&cmd);
 	return (free(path), result);
 }
