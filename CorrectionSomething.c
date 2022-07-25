@@ -3,8 +3,8 @@
 
 // update pro. _= in export/env
 
-// > a > a > a ==> segfault
-
 // cd -
 
 // Herdoc Doesn't print any fucking thing 
+
+// minishell must run from fucking itself

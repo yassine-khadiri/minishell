@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 00:13:28 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:47:23 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct s_data
 	char					**splitted_path;
 	char					mode;
 	int						syntax_res;
+	int						fd[2];
 	t_token					*tokens;
 	t_command				*cmd;
 	t_env					*lenv;
