@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 19:23:58 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 22:12:00 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct s_data
 	int						fd[2];
 	int						pid1;
 	int						pid2;
+	int						g_index;
 	t_token					*tokens;
 	t_command				*cmd;
 	t_env					*lenv;

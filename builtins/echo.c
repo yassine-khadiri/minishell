@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 21:59:21 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/25 22:21:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int		g_index;
-
-char	*case_1(char **env, t_command *cmd, int index, int i, char *str)
+char	*case_1(t_data *data, t_command *cmd, int index, int i, char *str)
 {
 	char	*mssj;
 	int		j;
@@ -27,14 +25,14 @@ char	*case_1(char **env, t_command *cmd, int index, int i, char *str)
 		while (cmd->cmd_array[index][i] && cmd->cmd_array[index][i] != '$')
 			str[j++] = cmd->cmd_array[index][i++];
 		str[j] = '\0';
-		mssj = ft_strjoin(mssj, check_res(str, env));
+		mssj = ft_strjoin(mssj, check_res(str, data->env));
 		i++;
 	}
-	g_index = i;
+	data->g_index = i;
 	return (mssj);
 }
 
-char	*case_2(t_command *cmd, int index, int i)
+char	*case_2(t_data *data, t_command *cmd, int index, int i)
 {
 	char	*mssj;
 	int		j;
@@ -50,11 +48,11 @@ char	*case_2(t_command *cmd, int index, int i)
 		}
 		mssj[j++] = cmd->cmd_array[index][i++];
 	}
-	g_index = i;
+	data->g_index = i;
 	return (mssj);
 }
 
-char	*case_3(t_command *cmd, int index, int i)
+char	*case_3(t_data *data, t_command *cmd, int index, int i)
 {
 	char	*mssj;
 	int		j;
@@ -68,7 +66,7 @@ char	*case_3(t_command *cmd, int index, int i)
 			break ;
 		mssj[j++] = cmd->cmd_array[index][i++];
 	}
-	g_index = i;
+	data->g_index = i;
 	mssj[j] = '\0';
 	return (mssj);
 }
@@ -121,18 +119,20 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 		string = malloc(sizeof(char) * ft_strlen(cmd->cmd_array[index]));
 		if (!string)
 			return (0);
-		g_index = 0;
-		while (cmd->cmd_array[index][g_index])
+		data->g_index = 0;
+		while (cmd->cmd_array[index][data->g_index])
 		{
-			if (cmd->cmd_array[index][g_index] == '$'
-				&& cmd->cmd_array[index][g_index + 1] != '$')
-				mssj = ft_strjoin(mssj, case_1(data->env, cmd, index, g_index,
-							string));
-			else if (cmd->cmd_array[index][g_index] == '$'
-					&& cmd->cmd_array[index][g_index + 1] == '$')
-				mssj = ft_strjoin(mssj, case_2(cmd, index, g_index));
+			if (cmd->cmd_array[index][data->g_index] == '$'
+				&& cmd->cmd_array[index][data->g_index + 1] != '$')
+				mssj = ft_strjoin(mssj, case_1(data, cmd, index,
+							data->g_index, string));
+			else if (cmd->cmd_array[index][data->g_index] == '$'
+					&& cmd->cmd_array[index][data->g_index + 1] == '$')
+				mssj = ft_strjoin(mssj, case_2(data, cmd,
+							index, data->g_index));
 			else
-				mssj = ft_strjoin(mssj, case_3(cmd, index, g_index));
+				mssj = ft_strjoin(mssj, case_3(data, cmd,
+							index, data->g_index));
 		}
 		printf("%s ", mssj);
 		index++;
