@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/24 23:19:56 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 03:46:16 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,7 @@ void	execution(t_data *data, t_command *cmd)
 		|| rdr_execution(data, cmd)
 		|| builtins_execution(data, cmd))
 			return ;
+	if (builtins_execution(data, cmd))
+		return ;
 	execution_other_builtins(data, cmd);
 }

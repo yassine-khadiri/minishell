@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 23:04:29 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 16:48:51 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 04:27:05 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ int	get_old_pwd(t_data *data)
 	int		i;
 
 	i = -1;
+	tmp = NULL;
 	while (data->env[++i])
 	{
 		if (!ft_strcmp(extract_var_name(data->env[i]), "PWD"))
 			tmp = ft_strjoin("OLD", data->env[i]);
-		else if (!ft_strcmp(extract_var_name(data->env[i]), "OLDPWD"))
+		else if (tmp && !ft_strcmp(extract_var_name(data->env[i]), "OLDPWD"))
 		{
 			if (ft_strcmp(tmp, data->env[i]))
 				data->env[i] = tmp;
@@ -59,7 +60,7 @@ int	ft_cd(t_data *data, t_command *cmd, int index)
 		cmd->cmd_array[index + 1] = "/Users/ykhadiri";
 	if (chdir(cmd->cmd_array[index + 1]) == -1)
 	{
-		printf("cd: %s: No such file or directory\n", cmd->cmd_array[index]);
+		printf("cd: %s: No such file or directory\n", cmd->cmd_array[index + 1]);
 		return (0);
 	}
 	edit_pwd(data);
