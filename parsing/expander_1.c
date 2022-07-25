@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:22:28 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/24 20:58:27 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 21:58:55 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	*treat_heredocs(char *delimeter, t_env *lenv)
 			break ;
 		line = ft_strjoin(line, "\n");
 		buffer = ft_strjoin(buffer, line);
-		// free(line);
 	}
 	buffer = expand_herdocs(buffer, lenv);
 	return (buffer);

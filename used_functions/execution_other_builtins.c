@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_other_builtins.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 16:08:32 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 21:57:59 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 				exit(1);
 			}
 			waitpid(pid, NULL, 0);
-			break;
+			break ;
 		}
 		i++;
 	}

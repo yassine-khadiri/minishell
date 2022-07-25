@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:11:05 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/24 20:59:08 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 22:04:02 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ char	*get_dollar_name(char *command, int *j)
 	{
 		ptr = ft_substr(command, i, 1);
 		tmp = ft_strjoin(name, ptr);
-		// free(name);
 		name = tmp;
-		// free(ptr );
 		i++;
 	}
 	*j = i;

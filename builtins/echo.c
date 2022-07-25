@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 16:31:19 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/25 21:59:21 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,6 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 				mssj = ft_strjoin(mssj, case_3(cmd, index, g_index));
 		}
 		printf("%s ", mssj);
-		// free(mssj);
-		// free(string);
 		index++;
 	}
 	printf("%c", data->mode);
