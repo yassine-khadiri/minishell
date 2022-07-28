@@ -8,11 +8,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Wed Jul 27 22:42:28 2022
+# Make data base, printed on Thu Jul 28 21:22:10 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -42,21 +41,21 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 23)
-CFLAGS = -Wall -Wextra 
+CFLAGS = -Wall -Wextra -Werror -g
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cdrc0033f3/T/vscode-ipc-aa3a082f-eba1-4cba-af4e-5ee30e8108fc.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cdrc0033f3/T/vscode-ipc-faf055a0-ae91-47d2-a2f1-7cf17d58b0fc.sock
 # environment
 VSCODE_CWD = /
 # environment
-PATH = /Users/hbouqssi/scripts:/Users/hbouqssi/goinfre/.brew/bin:/Users/hbouqssi/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PATH = /Users/hbouqssi/goinfre/homebrew/bin:/Users/hbouqssi/scripts:/Users/hbouqssi/goinfre/.brew/bin:/Users/hbouqssi/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-LaunchInstanceID = E8A63A6F-034A-4FCF-990D-C390FC9DFDB2
+LaunchInstanceID = F2E7BE35-4F43-460B-B2C5-B4F465F9B93D
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -68,7 +67,7 @@ MAG = \033[0;35m
 # makefile (from `Makefile', line 15)
 GRN = \033[0;32m
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.Ooj7pXtGk3/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.YcbN50dtBb/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -140,7 +139,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000004.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000003.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -162,7 +161,7 @@ LC_ALL = C
 # makefile (from `Makefile', line 16)
 YEL = \033[0;33m
 # environment
-SECURITYSESSIONID = 186cd
+SECURITYSESSIONID = 186a8
 # automatic
 ^F = $(notdir $^)
 # default
@@ -176,7 +175,7 @@ WHT = \033[0;37m
 # environment
 LANG = C
 # environment
-VSCODE_PID = 18186
+VSCODE_PID = 2156
 # variable set hash-table stats:
 # Load=82/1024=8%, Rehash=0, Collisions=3/116=3%
 
@@ -186,10 +185,11 @@ VSCODE_PID = 18186
 
 # Directories
 
-# . (device 16777225, inode 958526): 17 files, no impossibilities.
+# . (device 16777225, inode 958526): 22 files, no impossibilities.
 # used_functions (device 16777225, inode 958766): 51 files, no impossibilities so far.
+# parsing (device 16777225, inode 958748): 25 files, no impossibilities so far.
 
-# 68 files, no impossibilities in 2 directories.
+# 98 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -203,46 +203,119 @@ VSCODE_PID = 18186
 # Files
 
 # Not a target:
+parsing/tokenizing.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 17:57:31
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
 used_functions/for_export_1.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-used_functions/ft_strcmp.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_strcmp.o: used_functions/ft_strcmp.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_strcmp'
+#  Last modified 2022-07-28 19:00:16
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
-used_functions/ft_strndup.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/tokenizing_utils_2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 00:32:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-used_functions/ft_strncmp.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/initialize_tokens.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 22:20:19
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+used_functions/ft_strndup.o: used_functions/ft_strndup.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_strndup'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
-used_functions/add_back.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/envirenement.c:
+#  Implicit rule search has been done.
+ 
+#  Last modified 2022-07-28 20:15:21
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-parsing/check_syntax_utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_strncmp.o: used_functions/ft_strncmp.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_strncmp'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
-# Not a target:
-used_functions/ft_isalnum.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/add_back.o: used_functions/add_back.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/add_back'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+parsing/check_syntax_utils.o: parsing/check_syntax_utils.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/check_syntax_utils'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+used_functions/ft_isalnum.o: used_functions/ft_isalnum.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_isalnum'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 all: minishell
 #  Command-line target.
@@ -254,16 +327,31 @@ all: minishell
 # Load=0/32=0%, Rehash=0, Collisions=0/6=0%
 
 # Not a target:
+used_functions/execution.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 20:24:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
 builtins/pwd.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-used_functions/ft_strdup.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_strdup.o: used_functions/ft_strdup.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_strdup'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
 builtins/cd.o:
@@ -271,11 +359,17 @@ builtins/cd.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-parsing/expander.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/expander.o: parsing/expander.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/expander'
+#  Last modified 2022-07-28 19:00:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
 pipes/pipe.o:
@@ -285,7 +379,6 @@ pipes/pipe.o:
 
 # Not a target:
 redirections/output_rdr_std_appnd.o:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -293,23 +386,35 @@ redirections/output_rdr_std_appnd.o:
 # Not a target:
 used_functions/minishell_start.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-27 22:42:12
+#  Last modified 2022-07-28 20:19:40
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-parsing/parser_utils_1.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/parser_utils_1.o: parsing/parser_utils_1.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/parser_utils_1'
+#  Last modified 2022-07-28 19:00:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
-# Not a target:
-used_functions/ft_islast.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_islast.o: used_functions/ft_islast.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_islast'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
 interactive_modes/ctrl-D.o:
@@ -336,25 +441,46 @@ builtins/export.o:
 #  File has not been updated.
 
 # Not a target:
-Makefile:
+used_functions/ft_substr.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-27 22:16:20
+#  Last modified 2022-07-25 19:50:47
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-parsing/expander_1.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 19:40:27
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-used_functions/ft_strtrim.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/expander_1.o: parsing/expander_1.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/expander_1'
+#  Last modified 2022-07-28 19:00:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+used_functions/ft_strtrim.o: used_functions/ft_strtrim.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_strtrim'
+#  Last modified 2022-07-28 19:00:16
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
 redirections/input_rdr_std_appnd.o:
@@ -362,21 +488,70 @@ redirections/input_rdr_std_appnd.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-parsing/parser.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/parser.o: parsing/parser.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/parser'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
-parsing/parser_utils_2.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/is_validated.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+parsing/parser_utils_2.o: parsing/parser_utils_2.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/parser_utils_2'
+#  Last modified 2022-07-28 19:00:18
+#  File has been updated.
+#  Successfully updated.
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+# Not a target:
+used_functions/ft_strndup.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+used_functions/ft_strncmp.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+used_functions/add_back.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 minishell: minishell.o used_functions/minishell_start.o used_functions/ft_strlen.o used_functions/is_validated.o used_functions/ft_strtrim.o used_functions/ft_strcmp.o used_functions/ft_strncmp.o used_functions/ft_strdup.o used_functions/ft_strjoin_space.o used_functions/ft_strjoin.o used_functions/ft_isalnum.o used_functions/ft_islast.o used_functions/ft_isdigit.o used_functions/ft_substr.o used_functions/ft_strndup.o used_functions/add_back.o parsing/initialize_tokens.o parsing/tokenizing.o parsing/tokenizing_utils_1.o parsing/tokenizing_utils_2.o parsing/check_syntax.o parsing/check_syntax_utils.o parsing/parser.o parsing/parser_utils_1.o parsing/parser_utils_2.o parsing/envirenement.o parsing/expander.o parsing/expander_1.o used_functions/ft_split.o used_functions/ft_itoa.o used_functions/execution_other_builtins.o used_functions/execution.o used_functions/rdr_execution.o used_functions/cmd_founded_y_n.o used_functions/builtins_execution.o used_functions/for_export_1.o used_functions/for_export_2.o used_functions/ft_lstsize.o redirections/output_rdr_std_appnd.o redirections/input_rdr_std_appnd.o builtins/export.o pipes/pipe.o builtins/echo.o used_functions/for_echo.o builtins/cd.o builtins/pwd.o builtins/unset.o builtins/env.o builtins/exit.o interactive_modes/ctrl-D.o interactive_modes/ctrl-C.o interactive_modes/ctrl-slash.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-07-27 22:41:47
+#  Last modified 2022-07-28 20:22:46
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
@@ -389,7 +564,19 @@ minishell: minishell.o used_functions/minishell_start.o used_functions/ft_strlen
 minishell.o: minishell.c minishell.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `minishell'
-#  Last modified 2022-07-27 22:09:43
+#  Last modified 2022-07-28 20:19:04
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+parsing/check_syntax.o: parsing/check_syntax.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/check_syntax'
+#  Last modified 2022-07-28 19:00:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -399,10 +586,22 @@ minishell.o: minishell.c minishell.h
 	
 
 # Not a target:
-parsing/check_syntax.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_isalnum.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+used_functions/ft_strcmp.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 used_functions/for_echo.o:
@@ -410,11 +609,17 @@ used_functions/for_echo.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-used_functions/ft_itoa.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_itoa.o: used_functions/ft_itoa.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_itoa'
+#  Last modified 2022-07-28 19:00:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 fclean: clean
 #  Implicit rule search has not been done.
@@ -424,29 +629,80 @@ fclean: clean
 	@$(RM) $(NAME)
 	
 
-# Not a target:
-used_functions/ft_strlen.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_strlen.o: used_functions/ft_strlen.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_strlen'
+#  Last modified 2022-07-28 19:00:16
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
-used_functions/ft_isdigit.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/expander.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 22:04:02
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+used_functions/ft_isdigit.o: used_functions/ft_isdigit.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_isdigit'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+parsing/tokenizing_utils_1.o: parsing/tokenizing_utils_1.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/tokenizing_utils_1'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+used_functions/ft_strjoin_space.o: used_functions/ft_strjoin_space.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_strjoin_space'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
-parsing/tokenizing_utils_1.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/parser_utils_1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-used_functions/ft_strjoin_space.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_islast.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 used_functions/builtins_execution.o:
@@ -473,16 +729,38 @@ builtins/exit.o:
 #  File has not been updated.
 
 # Not a target:
-used_functions/ft_strjoin.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_strlen.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-used_functions/ft_split.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_strjoin.o: used_functions/ft_strjoin.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_strjoin'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+used_functions/ft_split.o: used_functions/ft_split.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_split'
+#  Last modified 2022-07-28 19:00:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
 used_functions/rdr_execution.o:
@@ -490,17 +768,29 @@ used_functions/rdr_execution.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-used_functions/execution_other_builtins.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/execution_other_builtins.o: used_functions/execution_other_builtins.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/execution_other_builtins'
+#  Last modified 2022-07-28 19:00:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
-# Not a target:
-used_functions/is_validated.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/is_validated.o: used_functions/is_validated.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/is_validated'
+#  Last modified 2022-07-28 19:00:16
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 re: fclean all
 #  Implicit rule search has not been done.
@@ -508,10 +798,25 @@ re: fclean all
 #  File has not been updated.
 
 # Not a target:
-parsing/tokenizing.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/expander_1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 21:58:55
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+parsing/tokenizing.o: parsing/tokenizing.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/tokenizing'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 clean:
 #  Implicit rule search has not been done.
@@ -522,17 +827,47 @@ clean:
 	@echo "${RED}Done!"
 	
 
-# Not a target:
-parsing/tokenizing_utils_2.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/tokenizing_utils_2.o: parsing/tokenizing_utils_2.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/tokenizing_utils_2'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
-parsing/initialize_tokens.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_strtrim.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+parsing/initialize_tokens.o: parsing/initialize_tokens.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/initialize_tokens'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
+# Not a target:
+parsing/check_syntax_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 22:23:00
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 interactive_modes/ctrl-slash.o:
@@ -541,26 +876,89 @@ interactive_modes/ctrl-slash.o:
 #  File has not been updated.
 
 # Not a target:
+parsing/parser.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 17:26:57
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
 builtins/unset.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-parsing/envirenement.o:
- 
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/envirenement.o: parsing/envirenement.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parsing/envirenement'
+#  Last modified 2022-07-28 20:15:33
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
-used_functions/execution.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+parsing/parser_utils_2.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+used_functions/execution.o: used_functions/execution.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/execution'
+#  Last modified 2022-07-28 20:22:46
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := used_functions/execution.o
+# automatic
+# % := 
+# automatic
+# * := used_functions/execution
+# automatic
+# + := used_functions/execution.c minishell.h
+# automatic
+# | := 
+# automatic
+# < := used_functions/execution.c
+# automatic
+# ^ := used_functions/execution.c minishell.h
+# automatic
+# ? := used_functions/execution.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
 
 # Not a target:
 minishell.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 20:18:36
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+parsing/check_syntax.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-27 22:46:57
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+used_functions/ft_itoa.c:
 #  Implicit rule search has been done.
 #  Last modified 2022-07-25 19:50:47
 #  File has been updated.
@@ -571,36 +969,48 @@ minishell.c:
 used_functions/minishell_start.o: used_functions/minishell_start.c minishell.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `used_functions/minishell_start'
-#  Last modified 2022-07-27 22:32:42
+#  Last modified 2022-07-28 20:19:43
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := used_functions/minishell_start.o
-# automatic
-# % := 
-# automatic
-# * := used_functions/minishell_start
-# automatic
-# + := used_functions/minishell_start.c minishell.h
-# automatic
-# | := 
-# automatic
-# < := used_functions/minishell_start.c
-# automatic
-# ^ := used_functions/minishell_start.c minishell.h
-# automatic
-# ? := used_functions/minishell_start.c
+#  Successfully updated.
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 #  commands to execute (from `Makefile', line 82):
 	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
 	
+
+# Not a target:
+used_functions/ft_isdigit.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+parsing/tokenizing_utils_1.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-28 17:26:57
+ 
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 used_functions/for_export_2.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+# Not a target:
+used_functions/ft_strjoin_space.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 minishell.h:
@@ -611,11 +1021,53 @@ minishell.h:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
+used_functions/ft_substr.o: used_functions/ft_substr.c minishell.h
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `used_functions/ft_substr'
+#  Last modified 2022-07-28 19:00:17
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 82):
+	@$(CC) $(CFLAGS) -I $(shell brew --prefix readline)/include -c $< -o $@
+	
+
 # Not a target:
-used_functions/ft_substr.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+used_functions/ft_strdup.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+used_functions/ft_strjoin.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+used_functions/ft_split.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 19:50:47
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+used_functions/execution_other_builtins.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-25 21:57:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 used_functions/ft_lstsize.o:
@@ -636,7 +1088,7 @@ interactive_modes/ctrl-C.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=7/142=5%
+# Load=93/1024=9%, Rehash=0, Collisions=19/322=6%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -648,6 +1100,6 @@ interactive_modes/ctrl-C.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Jul 27 22:42:28 2022
+# Finished Make data base on Thu Jul 28 21:22:10 2022
 
  

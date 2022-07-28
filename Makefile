@@ -6,7 +6,7 @@
 #    By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/27 22:16:20 by hbouqssi         ###   ########.fr        #
+#    Updated: 2022/07/28 19:40:27 by hbouqssi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CYN = \033[0;36m
 WHT = \033[0;37m
 NAME = minishell
 CC = cc 
-CFLAGS = -Wall -Wextra #-Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
 SRC = minishell.c \
