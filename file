@@ -2,8 +2,8 @@ CorrectionSomething.c
 Makefile
 README.md
 builtins
+file
 interactive_modes
-lkhra
 minishell
 minishell.c
 minishell.h
@@ -11,13 +11,6 @@ minishell.o
 parsing
 pipes
 redirections
-se
 test
-test1
 test2
-test34
 used_functions
-wq1
-zbb
-zbii
-zbohammi

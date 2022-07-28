@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   output_rdr_std_appnd.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 00:00:12 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:58:22 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	exec(t_data *data, t_command *cmd)
 void	output_rdr_std_appnd(t_data *data, t_command *cmd, int flag)
 {
 	int	fd;
-
 	while (cmd->redirection)
 	{
 		if (flag == 0x0008)

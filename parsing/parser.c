@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/28 01:04:59 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:11:23 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	push_cmd_and_redir(t_token **tokens, t_env *lenv, t_cmdline **cmdline,
 				initalize_redirections((*tokens)->type, (*tokens)->next->next->value, lenv));
 			(*tokens) = (*tokens)->next->next;
 		}
-		else if ((*tokens) && ((*tokens)->type == WORD || (*tokens)->type == DBQUOTE || (*tokens)->type == QUOTE || (*tokens)->type == WSPACE))
+		else if ((*tokens) && ((*tokens)->type == WORD || (*tokens)->type == WSPACE))
 			fill_subcmd(&(*cmdline), init_subcmd((*tokens)->value));
 		(*tokens) = (*tokens)->next;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_founded_y_n.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 01:12:42 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:17:22 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,34 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 	path = NULL;
 	result = -1;
 	i = 0;
-	
-    
+	// while (ft_strcmp(cmd->cmd_array[i++], " "));
+	// char *command;
+	// command = malloc(sizeof(char) * 1000);
+	// command = cmd->cmd_array[0];
+	// while (cmd->cmd_array[i])
+	// 	i++;
+	// if (i > 1)
+	// {
+	// 	i = 0;
+	// 	while (cmd->cmd_array[i])
+	// 	{
+	// 		if (!ft_strcmp(cmd->cmd_array[i], " "))
+	// 		{
+	// 			command[i] = '\0';
+	// 			break;
+	// 		}
+	// 		command[i] = cmd->cmd_array[i][0];
+	// 		i++;
+	// 	}
+	// }
+	// i = 0;
+	// while (cmd->cmd_array[i]  && data->tokens->type == 7)
+	// {
+	// 	command[i] = cmd->cmd_array[i][0];
+	// 	i++;
+	// }
+	// puts(command);
+	i = 0;
 	while (data->splitted_path[i])
 	{
 		if (!ft_strcmp(cmd->cmd_array[0], "export")
