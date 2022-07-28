@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_tokens.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:06:40 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 17:36:29 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/27 22:20:19 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_token	*initialize_list(void)
 
 t_token	*create_token(int type, char *value)
 {
+	
 	t_token	*tokens;
 
 	tokens = (t_token *)malloc(sizeof(t_token));

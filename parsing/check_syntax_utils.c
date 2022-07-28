@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:08:26 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/24 15:24:06 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/27 22:23:00 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int	redir_error(t_token *tokens, t_token *head)
 
 	(void)head;
 	result = 0;
-	if (tokens->next->type != WORD
-		&& tokens->next->type != DBQUOTE
-		&& tokens->next->type != QUOTE)
+	if (tokens->next->next->type != WORD
+		&& tokens->next->next->type != DBQUOTE
+		&& tokens->next->next->type != QUOTE)
 	{
-		printf("%s\n", tokens->next->value);
+		printf("%s\n", tokens->next->next->value);
 		printf("minishell: syntax error\n");
 		g_dollar_question = 258;
 		result = 1;

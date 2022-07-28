@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 16:50:13 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/28 01:41:18 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_exit(t_command *cmd)
 		if (!ft_isnumber(cmd->cmd_array[i]))
 			printf(RED "minishell: exit: %s: numeric argument required\n",
 				cmd->cmd_array[i]);
+		if (!ft_strcmp(cmd->cmd_array[i], " "))
+			++i;
 	}
 	return (0);
 }

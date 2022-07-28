@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing_utils_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:04:51 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/23 17:03:02 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:32:47 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,17 @@ int	is_redout(t_token **tokens, char *str)
 	else
 		add_back(tokens, create_token(REDOUT, ft_strdup(">")));
 	return (1);
+}
+
+int is_space(t_token **tokens, char *str)
+{
+    int i;
+
+    i = 0;
+    if (!str)
+        return (0);
+    while(str[i] == ' ')
+        i++;
+    add_back (tokens, create_token(WSPACE, ft_strdup(" ")));
+    return (i);
 }

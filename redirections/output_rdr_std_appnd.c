@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 21:58:13 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:00:12 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void	exec(t_data *data, t_command *cmd)
 	char	*path;
 
 	i = 0;
+	// while (cmd->cmd_array[i])
+	// {
+	// 	puts(cmd->cmd_array[i]);
+	// 	if (!ft_strcmp(cmd->cmd_array[i], cmd->redirection->next->file))
+	// 		break;
+	// 	i++;
+	// }
 	while (data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");

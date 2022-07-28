@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/24 19:18:31 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:38:00 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	sub_tokens(t_token **tokens, int *i, char *str)
 {
-	while (str[*i] == ' ' || str[*i] == '\t')
-		*i += 1;
+	// while (str[*i] == ' ' || str[*i] == '\t')
+	// 	i += 1;
+	
 	if (str[*i] == '|')
 		*i += is_pipe(tokens, &str[*i]);
 	else if (str[*i] == '<')
@@ -24,6 +25,8 @@ void	sub_tokens(t_token **tokens, int *i, char *str)
 		*i += is_redout(tokens, &str[*i]);
 	else if (str[*i] == ';')
 		*i += semicolon(tokens, &str[*i]);
+	else if (str[*i] == ' ')
+		*i += is_space(tokens, &str[*i]);
 }
 
 int	for_dbquotes(t_token **tokens, int *i, char *str, int *temp)
@@ -65,5 +68,12 @@ t_token	*ft_tokenizer(t_token **tokens, char *str)
 			i += word(tokens, &str[i]);
 	}
 	add_back(tokens, create_token(N_line, ft_strdup("NEWLINE")));
+	// while(tokens != NULL)
+    //    {
+    //       printf("type :    |%d|\n", (*tokens)->type);
+    //       printf("Value :   |%s|\n", (*tokens)->value);
+    //       printf("--------\n");
+    //       (*tokens) = (*tokens)->next;
+    //    }
 	return (*tokens);
 }
