@@ -3,14 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 20:24:30 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 21:38:06 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+char	*check_quotes(char *cmd)
+{
+	int		i;
+	int		j;
+	char	quote_symbol;
+	char	*res;
+	char	*command;
+
+	res = malloc(sizeof(char) * 1000);
+	command = malloc(sizeof(char) * 1000);
+	i = 0;
+	while (cmd[i])
+	{
+		j = 0;
+		if (cmd[i] == '"' || cmd[i] == '\'')
+		{
+			quote_symbol = cmd[i];
+			i++;
+			while (cmd[i])
+			{
+				if (cmd[i] == quote_symbol)
+				{
+					i++;
+					command[j] = '\0';
+					quote_symbol = 0;
+					break;
+				}
+				command[j++] = cmd[i++];
+			}
+			if (quote_symbol == 0)
+				j = 0;
+			else
+			{
+				write(2, RED"Syntax Error\n", 21);
+				return (0);
+			}
+		}
+		else
+		{
+			while (cmd[i] && cmd[i] != '\'' && cmd[i] != '"')
+				command[j++] = cmd[i++];
+		}
+		res = ft_strjoin(res, command);
+	};
+	return (res);
+}
 
 int	fill_struct(t_command *cmd)
 {
@@ -30,7 +77,7 @@ int	fill_struct(t_command *cmd)
 				cmdline = cmdline->next;
 			if (cmdline)
 			{
-				cmd->cmd_array[i++] = ft_strtrim(cmdline->cmd, "\"");
+				cmd->cmd_array[i++] = check_quotes(cmdline->cmd);
 				cmdline = cmdline->next;
 			}
 		}
@@ -46,8 +93,6 @@ void	execution(t_data *data, t_command *cmd)
 
 	fill_struct(cmd);
 	i = 0;
-	// while (cmd->cmd_array[i])
-	// 	puts(cmd->cmd_array[i++]);
 	while (cmd->cmd_array[i])
 	{
 		if (!ft_strcmp(cmd->cmd_array[i], "$?"))

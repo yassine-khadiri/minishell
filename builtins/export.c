@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:59:22 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 01:17:53 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 21:37:24 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int	ft_export(t_data *data, t_command *cmd)
 	int		i;
 	char	*var_name;
 
-	if (!ft_strcmp(cmd->cmd_array[0], "export") && !cmd->cmd_array[2])
+	if (!ft_strcmp(cmd->cmd_array[0], "export") && !cmd->cmd_array[1])
 	{
 		display_export(data);
 		return (0);
@@ -110,8 +110,6 @@ int	ft_export(t_data *data, t_command *cmd)
 	i = 1;
 	while (cmd->cmd_array[i])
 	{
-		if (!ft_strcmp(cmd->cmd_array[i], " "))
-			i++;
 		var_name = ft_strdup(cmd->cmd_array[i]);
 		exec_export(data, var_name);
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_start.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 20:19:40 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 21:41:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	minishel_start(t_data *data)
 
 	while (1)
 	{
-		// sleep(5);
 		ft_ctl_c();
 		ft_ctl_slash();
 		data->command_buf = readline(BLU "minishell> " WHT);
