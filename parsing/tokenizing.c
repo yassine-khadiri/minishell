@@ -14,7 +14,8 @@
 
 void	sub_tokens(t_token **tokens, int *i, char *str)
 {
-	
+	while(str[*i] == ' ' || str[*i] == '\t')
+		*i += 1;
 	if (str[*i] == '|')
 		*i += is_pipe(tokens, &str[*i]);
 	else if (str[*i] == '<')
@@ -23,8 +24,8 @@ void	sub_tokens(t_token **tokens, int *i, char *str)
 		*i += is_redout(tokens, &str[*i]);
 	else if (str[*i] == ';')
 		*i += semicolon(tokens, &str[*i]);
-	else if (str[*i] == ' ')
-		*i += is_space(tokens, &str[*i]);
+	// else if (str[*i] == ' ')
+	// 	*i += is_space(tokens, &str[*i]);
 }
 
 t_token	*ft_tokenizer(t_token **tokens, char *str)

@@ -19,13 +19,6 @@ void	exec(t_data *data, t_command *cmd)
 	char	*path;
 
 	i = 0;
-	// while (cmd->cmd_array[i])
-	// {
-	// 	puts(cmd->cmd_array[i]);
-	// 	if (!ft_strcmp(cmd->cmd_array[i], cmd->redirection->next->file))
-	// 		break;
-	// 	i++;
-	// }
 	while (data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
@@ -34,7 +27,10 @@ void	exec(t_data *data, t_command *cmd)
 		{
 			pid = fork();
 			if (pid == 0)
+			{
 				execve(path, cmd->cmd_array, data->env);
+				exit(1);
+			}
 			else
 				waitpid(pid, NULL, 0);
 		}
@@ -45,6 +41,7 @@ void	exec(t_data *data, t_command *cmd)
 void	output_rdr_std_appnd(t_data *data, t_command *cmd, int flag)
 {
 	int	fd;
+
 	while (cmd->redirection)
 	{
 		if (flag == 0x0008)

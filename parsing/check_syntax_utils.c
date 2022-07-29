@@ -36,11 +36,9 @@ int	redir_error(t_token *tokens, t_token *head)
 
 	(void)head;
 	result = 0;
-	if (tokens->next->next->type != WORD
-		&& tokens->next->next->type != DBQUOTE
-		&& tokens->next->next->type != QUOTE)
+	if (tokens->next->type != WORD)
 	{
-		printf("%s\n", tokens->next->next->value);
+		printf("%s\n", tokens->next->value);
 		printf("minishell: syntax error\n");
 		g_dollar_question = 258;
 		result = 1;
@@ -54,14 +52,9 @@ int	pipe_error(t_token *tokens, t_token *head)
 
 	(void)head;
 	result = 0;
-	if (tokens->next->type == PIPE || tokens->next->type == SEMICOLON)
-	{
-		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
-			tokens->next->value);
-		g_dollar_question = 258;
-		result = 1;
-	}
-	else if (tokens->next->type == N_line)
+	if (tokens->next->type == PIPE
+		|| tokens->next->type == SEMICOLON
+		|| tokens->next->type == N_line)
 	{
 		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
 			tokens->next->value);

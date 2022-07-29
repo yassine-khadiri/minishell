@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 21:38:06 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/30 00:45:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ int	fill_struct(t_command *cmd)
 		i = 0;
 		while (cmdline)
 		{
-			if (!ft_strcmp(cmdline->cmd, " "))
-				cmdline = cmdline->next;
-			if (cmdline)
-			{
+			// if (!ft_strcmp(cmdline->cmd, " "))
+			// 	cmdline = cmdline->next;
+			// if (cmdline)
+			// {
 				cmd->cmd_array[i++] = check_quotes(cmdline->cmd);
 				cmdline = cmdline->next;
-			}
+			// }
 		}
 		cmd->cmd_array[i] = NULL;
 		cmd = cmd->next;
@@ -92,6 +92,7 @@ void	execution(t_data *data, t_command *cmd)
 	int	i;
 
 	fill_struct(cmd);
+	// puts("HERE");
 	i = 0;
 	while (cmd->cmd_array[i])
 	{

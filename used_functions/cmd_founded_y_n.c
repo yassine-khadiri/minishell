@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/29 01:06:48 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/30 00:47:04 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ int	check_executable_files(t_data *data, t_command *cmd)
 			write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
 			write(2, ": No such file or directory\n"BLU, 36);
 		}
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	cmd_founded_y_n(t_data *data, t_command *cmd)

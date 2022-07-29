@@ -6,3 +6,4 @@
 // Herdoc Doesn't print any fucking thing 
 
 // bin/ls 
+// blaan echo  

@@ -1,0 +1,17 @@
+CorrectionSomething.c
+Makefile
+README.md
+builtins
+file1
+interactive_modes
+minishell
+minishell.c
+minishell.h
+minishell.o
+parsing
+pipes
+redirections
+test
+test45
+test56
+used_functions
