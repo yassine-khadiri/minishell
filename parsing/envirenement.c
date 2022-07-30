@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:07:10 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/28 20:15:21 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/30 01:01:24 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void free_tab(char **tab)
 		free(tab[i++]);
 	free(tab);
 }
+
 t_env	*create_env_list(t_env *l_env, char **env)
 {
 	char	**str;

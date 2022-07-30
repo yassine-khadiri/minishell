@@ -4,6 +4,8 @@ README.md
 builtins
 file1
 interactive_modes
+log
+log1
 minishell
 minishell.c
 minishell.h
@@ -11,7 +13,6 @@ minishell.o
 parsing
 pipes
 redirections
-test
-test45
-test56
+test1
+test2
 used_functions

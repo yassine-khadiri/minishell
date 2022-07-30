@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 22:12:00 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/30 04:58:43 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-int							g_dollar_question;
+int				g_dollar_question;
+
 typedef enum e_tokens
 {
 	NONE,
@@ -114,6 +115,7 @@ typedef struct s_data
 	int						pid1;
 	int						pid2;
 	int						g_index;
+	int						status;
 	t_token					*tokens;
 	t_command				*cmd;
 	t_env					*lenv;
@@ -204,6 +206,8 @@ char						*check_var(char *var_name, char **env);
 void						print_mssj(char *str, char mode);
 char						*ft_itoa(int n);
 int							ft_lstsize(t_cmdline *lst);
+void						free_tab(char **tab);
+char						*ft_strrchr(const char *s, int c);
 
 // redirections
 // -- output redirection

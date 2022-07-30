@@ -1,6 +1,7 @@
 {
 	"makefile.extensionOutputFolder": "./.vscode",
 	"files.associations": {
-		"__locale": "c"
+		"__locale": "c",
+		"minishell.h": "c"
 	}
 }

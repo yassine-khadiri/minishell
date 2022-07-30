@@ -1,0 +1,186 @@
+==31825== Memcheck, a memory error detector
+==31825== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==31825== Using Valgrind-3.19.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
+==31825== Command: ./minishell
+==31825== Parent PID: 11323
+==31825== 
+==31825== Invalid write of size 8
+==31825==    at 0x100004609: add_to_table (ft_split.c:70)
+==31825==    by 0x100004435: ft_split (ft_split.c:87)
+==31825==    by 0x10000493F: ft_get_spllited_path_env (execution_other_builtins.c:31)
+==31825==    by 0x100001D4E: data_initializer (minishell.c:36)
+==31825==    by 0x100001DEB: main (minishell.c:48)
+==31825==  Address 0x1008b4a80 is 80 bytes inside a block of size 81 alloc'd
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x100004405: ft_split (ft_split.c:84)
+==31825==    by 0x10000493F: ft_get_spllited_path_env (execution_other_builtins.c:31)
+==31825==    by 0x100001D4E: data_initializer (minishell.c:36)
+==31825==    by 0x100001DEB: main (minishell.c:48)
+==31825== 
+==31825== Invalid write of size 8
+==31825==    at 0x100004609: add_to_table (ft_split.c:70)
+==31825==    by 0x100004435: ft_split (ft_split.c:87)
+==31825==    by 0x100003E1F: create_env_list (envirenement.c:56)
+==31825==    by 0x100001D74: data_initializer (minishell.c:37)
+==31825==    by 0x100001DEB: main (minishell.c:48)
+==31825==  Address 0x1008b4e70 is 16 bytes inside a block of size 17 alloc'd
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x100004405: ft_split (ft_split.c:84)
+==31825==    by 0x100003E1F: create_env_list (envirenement.c:56)
+==31825==    by 0x100001D74: data_initializer (minishell.c:37)
+==31825==    by 0x100001DEB: main (minishell.c:48)
+==31825== 
+==31825== Conditional jump or move depends on uninitialised value(s)
+==31825==    at 0x100003DA0: free_tab (envirenement.c:43)
+==31825==    by 0x100003E43: create_env_list (envirenement.c:58)
+==31825==    by 0x100001D74: data_initializer (minishell.c:37)
+==31825==    by 0x100001DEB: main (minishell.c:48)
+==31825== 
+==31825== Invalid write of size 8
+==31825==    at 0x100004609: add_to_table (ft_split.c:70)
+==31825==    by 0x100004435: ft_split (ft_split.c:87)
+==31825==    by 0x100003E71: create_env_list (envirenement.c:62)
+==31825==    by 0x100001D74: data_initializer (minishell.c:37)
+==31825==    by 0x100001DEB: main (minishell.c:48)
+==31825==  Address 0x1008b4fd0 is 16 bytes inside a block of size 17 alloc'd
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x100004405: ft_split (ft_split.c:84)
+==31825==    by 0x100003E71: create_env_list (envirenement.c:62)
+==31825==    by 0x100001D74: data_initializer (minishell.c:37)
+==31825==    by 0x100001DEB: main (minishell.c:48)
+==31825== 
+==31825== Conditional jump or move depends on uninitialised value(s)
+==31825==    at 0x100003DA0: free_tab (envirenement.c:43)
+==31825==    by 0x100003E95: create_env_list (envirenement.c:64)
+==31825==    by 0x100001D74: data_initializer (minishell.c:37)
+==31825==    by 0x100001DEB: main (minishell.c:48)
+==31825== 
+==31825== Conditional jump or move depends on uninitialised value(s)
+==31825==    at 0x100001F6A: ft_strlen (ft_strlen.c:22)
+==31825==    by 0x10000278B: ft_strjoin (ft_strjoin.c:23)
+==31825==    by 0x100004C55: check_quotes (execution.c:57)
+==31825==    by 0x100004CFD: fill_struct (execution.c:80)
+==31825==    by 0x100004D78: execution (execution.c:94)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== Conditional jump or move depends on uninitialised value(s)
+==31825==    at 0x100001F6A: ft_strlen (ft_strlen.c:22)
+==31825==    by 0x10000279D: ft_strjoin (ft_strjoin.c:24)
+==31825==    by 0x100004C55: check_quotes (execution.c:57)
+==31825==    by 0x100004CFD: fill_struct (execution.c:80)
+==31825==    by 0x100004D78: execution (execution.c:94)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== Conditional jump or move depends on uninitialised value(s)
+==31825==    at 0x1000027EC: ft_strjoin (ft_strjoin.c:28)
+==31825==    by 0x100004C55: check_quotes (execution.c:57)
+==31825==    by 0x100004CFD: fill_struct (execution.c:80)
+==31825==    by 0x100004D78: execution (execution.c:94)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== Conditional jump or move depends on uninitialised value(s)
+==31825==    at 0x10000282C: ft_strjoin (ft_strjoin.c:34)
+==31825==    by 0x100004C55: check_quotes (execution.c:57)
+==31825==    by 0x100004CFD: fill_struct (execution.c:80)
+==31825==    by 0x100004D78: execution (execution.c:94)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 
+==31825== HEAP SUMMARY:
+==31825==     in use at exit: 304,040 bytes in 458 blocks
+==31825==   total heap usage: 735 allocs, 277 frees, 324,869 bytes allocated
+==31825== 
+==31825== 3 bytes in 1 blocks are definitely lost in loss record 4 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x10015ECDC: xmalloc (in /goinfre/hbouqssi/homebrew/Cellar/readline/8.1.2/lib/libreadline.8.1.dylib)
+==31825==    by 0x10013CD29: readline_internal_teardown (in /goinfre/hbouqssi/homebrew/Cellar/readline/8.1.2/lib/libreadline.8.1.dylib)
+==31825==    by 0x10013C858: readline (in /goinfre/hbouqssi/homebrew/Cellar/readline/8.1.2/lib/libreadline.8.1.dylib)
+==31825==    by 0x100001E61: minishel_start (minishell_start.c:23)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 16 bytes in 1 blocks are definitely lost in loss record 18 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x100003725: init_subcmd (parser.c:18)
+==31825==    by 0x10000391A: push_cmd_and_redir (parser.c:60)
+==31825==    by 0x1000039B7: ft_parse (parser.c:79)
+==31825==    by 0x100001F02: minishel_start (minishell_start.c:33)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 19 (16 direct, 3 indirect) bytes in 1 blocks are definitely lost in loss record 19 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x100004CBC: fill_struct (execution.c:70)
+==31825==    by 0x100004D78: execution (execution.c:94)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 112 (32 direct, 80 indirect) bytes in 1 blocks are definitely lost in loss record 48 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x100002CE1: initialize_list (initialize_tokens.c:19)
+==31825==    by 0x100002F72: ft_tokenizer (tokenizing.c:38)
+==31825==    by 0x100001E9F: minishel_start (minishell_start.c:27)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 157 bytes in 7 blocks are definitely lost in loss record 53 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x1000027B4: ft_strjoin (ft_strjoin.c:24)
+==31825==    by 0x1000053E0: cmd_founded_y_n (cmd_founded_y_n.c:82)
+==31825==    by 0x100004E03: execution (execution.c:107)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 157 bytes in 7 blocks are definitely lost in loss record 54 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x1000027B4: ft_strjoin (ft_strjoin.c:24)
+==31825==    by 0x1000049AF: execution_other_builtins (execution_other_builtins.c:44)
+==31825==    by 0x100004E8C: execution (execution.c:113)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 163 bytes in 6 blocks are definitely lost in loss record 55 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x1000027B4: ft_strjoin (ft_strjoin.c:24)
+==31825==    by 0x1000053F8: cmd_founded_y_n (cmd_founded_y_n.c:83)
+==31825==    by 0x100004E03: execution (execution.c:107)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 171 bytes in 7 blocks are definitely lost in loss record 56 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x1000027B4: ft_strjoin (ft_strjoin.c:24)
+==31825==    by 0x1000049C7: execution_other_builtins (execution_other_builtins.c:45)
+==31825==    by 0x100004E8C: execution (execution.c:113)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 1,000 bytes in 1 blocks are definitely lost in loss record 70 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x100004A85: check_quotes (execution.c:23)
+==31825==    by 0x100004CFD: fill_struct (execution.c:80)
+==31825==    by 0x100004D78: execution (execution.c:94)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== 1,000 bytes in 1 blocks are definitely lost in loss record 71 of 115
+==31825==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==31825==    by 0x100004A93: check_quotes (execution.c:24)
+==31825==    by 0x100004CFD: fill_struct (execution.c:80)
+==31825==    by 0x100004D78: execution (execution.c:94)
+==31825==    by 0x100001F13: minishel_start (minishell_start.c:34)
+==31825==    by 0x100001E27: main (minishell.c:56)
+==31825== 
+==31825== LEAK SUMMARY:
+==31825==    de: 2,715 bytes ifinitely lostn 33 blocks
+==31825==    indirectly lost: 83 bytes in 6 blocks
+==31825==      possibly lost: 0 bytes in 0 blocks
+==31825==    still reachable: 287,275 bytes in 258 blocks
+==31825==         suppressed: 13,967 bytes in 161 blocks
+==31825== Reachable blocks (those to which a pointer was found) are not shown.
+==31825== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==31825== 
+==31825== Use --track-origins=yes to see where uninitialised values come from
+==31825== For lists of detected and suppressed errors, rerun with: -s
+==31825== ERROR SUMMARY: 81 errors from 19 contexts (suppressed: 4 from 4)

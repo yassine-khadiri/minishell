@@ -3,14 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_start.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 21:41:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/30 05:49:15 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void free_cmd(t_command *cmd, t_token *tokens)
+{
+	void *tmp;
+
+// 	while (cmd)
+// 	{
+// 		printf("%p\n", cmd->redirection);
+// 		printf("%p\n", cmd->cmdline);
+// 		fflush(stdout);
+// 		while (cmd->redirection)
+// 		{
+// 			tmp = cmd->redirection;
+// 			cmd->redirection = cmd->redirection->next;
+// 			free(tmp);
+// 		}
+// 		while (cmd->cmdline)
+// 		{
+// 			tmp = cmd->cmdline;
+// 			cmd->cmdline = cmd->cmdline->next;
+// 			free(tmp);
+// 		}
+		free_tab(cmd->cmd_array);
+		tmp = cmd;
+		cmd = cmd->next;
+		free(tmp);
+		while (tokens)
+		{
+			tmp = tokens->value;
+			free(tmp);
+			tmp = tokens;
+			free(tmp);
+			tokens = tokens->next;
+		}
+// 	}
+}
 
 void	minishel_start(t_data *data)
 {
@@ -36,5 +72,7 @@ void	minishel_start(t_data *data)
 				add_history(data->command_buf);
 			}
 		}
+		free(data->command_buf);
+		// free_cmd(cmd, data->tokens);
 	}
 }

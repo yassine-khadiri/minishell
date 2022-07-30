@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/25 21:58:31 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/30 04:26:07 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 int	execution_pipe_cmd(t_data *data, t_command *cmd)
 {
 	char	*path;
+	char	*tmp;
 	int		i;
 
 	i = 0;
+	if (rdr_execution(data, cmd))
+		return (0);
 	while (data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, cmd->cmd_array[0]);
+		tmp = path;
+		free(path);
+		path = ft_strjoin(tmp, cmd->cmd_array[0]);
 		if (!access(path, X_OK))
 			execve(path, cmd->cmd_array, data->env);
 		i++;

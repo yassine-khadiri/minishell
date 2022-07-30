@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_rdr_std_appnd.c                              :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/13 10:33:56 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 01:41:39 by hbouqssi         ###   ########.fr       */
+/*   Created: 2022/07/30 04:55:47 by hbouqssi          #+#    #+#             */
+/*   Updated: 2022/07/30 04:56:08 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	input_rdr_std_appnd(t_data *data, t_command *cmd)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	fd;
-	t_redirection *red;
+	int	i;
 
-	red = cmd->redirection;
-	while (red)
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		fd = open(red->file, O_RDONLY, 0777);
-		if (fd == -1)
-		{
-			printf(RED "minishell: %s: No such file or directory\n",
-				red->file);
-			return ;
-		}
-		red = red->next;
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i--;
 	}
-	dup2(fd, 0);
-	exec(data, cmd);
-	dup2(data->g_std._stdin, 0);
-	close(fd);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/28 17:57:31 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/30 01:00:33 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sub_tokens(t_token **tokens, int *i, char *str)
 	else if (str[*i] == ';')
 		*i += semicolon(tokens, &str[*i]);
 	// else if (str[*i] == ' ')
-	// 	*i += is_space(tokens, &str[*i]);
+	// 	i += is_space(tokens, &str[*i]);
 }
 
 t_token	*ft_tokenizer(t_token **tokens, char *str)

@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 21:57:59 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/30 04:19:17 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	**ft_get_spllited_path_env(t_data *data)
 int	execution_other_builtins(t_data *data, t_command *cmd)
 {
 	char	*path;
+	char	*tmp;
 	int		pid;
 	int		i;
 
@@ -42,7 +43,9 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 	while (data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, cmd->cmd_array[0]);
+		tmp = path;
+		free(tmp);
+		path = ft_strjoin(tmp, cmd->cmd_array[0]);
 		if (!access(path, X_OK))
 		{
 			pid = fork();
@@ -53,7 +56,8 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 				execve(path, cmd->cmd_array, data->env);
 				exit(1);
 			}
-			waitpid(pid, NULL, 0);
+			waitpid(pid, &data->status, 0);
+			g_dollar_question = WEXITSTATUS(data->status); 
 			break ;
 		}
 		i++;
