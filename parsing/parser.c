@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/31 01:13:06 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/28 01:04:59 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	fill_subcmd(t_cmdline **head, t_cmdline *sub_cmd)
 	_head->next = sub_cmd;
 }
 
-void	push_cmd_and_redir(t_token **tokens,t_cmdline **cmdline,
+void	push_cmd_and_redir(t_token **tokens, t_env *lenv, t_cmdline **cmdline,
 		t_redirection **redirections)
 {
 	while (*tokens && (*tokens)->type != N_line
@@ -52,20 +52,16 @@ void	push_cmd_and_redir(t_token **tokens,t_cmdline **cmdline,
 			|| (*tokens)->type == REDIN || (*tokens)->type == REDOUT)
 		{
 			push_redirections(&(*redirections),
-				initalize_redirections((*tokens)->type, (*tokens)->next->value));
+				initalize_redirections((*tokens)->type, (*tokens)->next->next->value, lenv));
 			(*tokens) = (*tokens)->next->next;
 		}
-		else if ((*tokens) && (*tokens)->type == WORD)
-		{
+		else if ((*tokens) && ((*tokens)->type == WORD || (*tokens)->type == DBQUOTE || (*tokens)->type == QUOTE || (*tokens)->type == WSPACE))
 			fill_subcmd(&(*cmdline), init_subcmd((*tokens)->value));
-				(*tokens) = (*tokens)->next;
-		}
-		if ((*tokens)->type == NONE)
-			(*tokens) = (*tokens)->next;
+		(*tokens) = (*tokens)->next;
 	}
 }
 
-t_command	*ft_parse(t_token *tokens)
+t_command	*ft_parse(t_token *tokens, t_env *lenv)
 {
 	t_command		*cmd;
 	t_redirection	*redirections;
@@ -76,7 +72,7 @@ t_command	*ft_parse(t_token *tokens)
 	{
 		cmdline = NULL;
 		redirections = NULL;
-		push_cmd_and_redir(&tokens,&cmdline, &redirections);
+		push_cmd_and_redir(&tokens, lenv, &cmdline, &redirections);
 		if (tokens->type == PIPE || tokens->type == N_line)
 		{
 			fill_command(&cmd, initialize_command(cmdline, redirections,

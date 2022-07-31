@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:04:51 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/28 17:04:21 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:02:21 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,43 +26,43 @@ int	not_word(char c, char *str)
 	return (1);
 }
 
-// int	db_quote(t_token **tokens, char *str)
-// {
-// 	int	i;
+int	db_quote(t_token **tokens, char *str)
+{
+	int	i;
 
-// 	i = 1;
-// 	if (!str)
-// 		return (0);
-// 	if (str[i])
-// 	{
-// 		while (str[i] && str[i] != '"')
-// 			i++;
-// 	}
-// 	if (str[i] && str[i] == '"')
-// 		add_back(tokens, create_token(DBQUOTE, ft_strndup(str + 1, i - 1)));
-// 	else
-// 		return (-1);
-// 	return (i + 1);
-// }
+	i = 1;
+	if (!str)
+		return (0);
+	if (str[i])
+	{
+		while (str[i] && str[i] != '"')
+			i++;
+	}
+	if (str[i] && str[i] == '"')
+		add_back(tokens, create_token(DBQUOTE, ft_strndup(str + 1, i - 1)));
+	else
+		return (-1);
+	return (i + 1);
+}
 
-// int	quote(t_token **tokens, char *str)
-// {
-// 	int	i;
+int	quote(t_token **tokens, char *str)
+{
+	int	i;
 
-// 	i = 1;
-// 	if (!str)
-// 		return (0);
-// 	if (str[i])
-// 	{
-// 		while (str[i] && str[i] != '\'')
-// 			i++;
-// 	}
-// 	if (str[i] && str[i] == '\'')
-// 		add_back(tokens, create_token(DBQUOTE, ft_strndup(str + 1, i - 1)));
-// 	else
-// 		return (-1);
-// 	return (i + 1);
-// }
+	i = 1;
+	if (!str)
+		return (0);
+	if (str[i])
+	{
+		while (str[i] && str[i] != '\'')
+			i++;
+	}
+	if (str[i] && str[i] == '\'')
+		add_back(tokens, create_token(DBQUOTE, ft_strndup(str + 1, i - 1)));
+	else
+		return (-1);
+	return (i + 1);
+}
 
 int	word(t_token **tokens, char *str)
 {
@@ -71,7 +71,7 @@ int	word(t_token **tokens, char *str)
 	if (!str)
 		return (0);
 	i = 0;
-	while (str[i] != '\0' && not_word(str[i], " |<>"))
+	while (str[i] != '\0' && not_word(str[i], " |\"'<>"))
 		i++;
 	if (i != 0)
 		add_back(tokens, create_token(WORD, ft_strndup(str, i)));

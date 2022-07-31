@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/30 21:53:31 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:43:04 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_redirection	*initalize_redirections(int type, char *value)
+t_redirection	*initalize_redirections(int type, char *value, t_env *lenv)
 {
 	t_redirection	*redirection;
 
@@ -20,7 +20,7 @@ t_redirection	*initalize_redirections(int type, char *value)
 	if (!redirection)
 		return (NULL);
 	if (type == HERDOC)
-		value = treat_heredocs(value);
+		value = treat_heredocs(value, lenv);
 	redirection->type = type;
 	redirection->file = value;
 	redirection->next = NULL;

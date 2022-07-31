@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 23:04:29 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 21:37:39 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/31 17:52:01 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ int	ft_cd(t_data *data, t_command *cmd, int index)
 		cmd->cmd_array[index + 1] = get_val_env_var(data->env, "HOME");
 	if (chdir(cmd->cmd_array[index + 1]) == -1)
 	{
-		printf("cd: %s: No such file or directory\n", cmd->cmd_array[index + 1]);
+		write(2, "cd: ", 19);
+		write(2, &cmd->cmd_array[index + 1], ft_strlen(cmd->cmd_array[index + 1]));
+		write(2, ": No such file or directory\n", 28);
 		return (0);
 	}
 	edit_pwd(data);

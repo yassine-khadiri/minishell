@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 21:55:15 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/31 16:13:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-int				g_dollar_question;
-
+int							g_dollar_question;
 typedef enum e_tokens
 {
 	NONE,
@@ -114,8 +113,8 @@ typedef struct s_data
 	int						fd[2];
 	int						pid1;
 	int						pid2;
-	int						g_index;
 	int						status;
+	int						g_index;
 	t_token					*tokens;
 	t_command				*cmd;
 	t_env					*lenv;
@@ -124,7 +123,7 @@ typedef struct s_data
 
 // used_functions :)
 int							check_env_var(char *env_var);
-t_command					*ft_parse(t_token *tokens);
+t_command					*ft_parse(t_token *tokens, t_env *lenv);
 int							ft_isdigit(int c);
 int							ft_isalnum(int c);
 t_env						*initial_env_node(char *name, char *value);
@@ -145,7 +144,8 @@ t_token						*create_token(int type, char *value);
 int							none_error(t_token *tokens, t_token *head);
 int							redir_error(t_token *tokens, t_token *head);
 int							pipe_error(t_token *tokens, t_token *head);
-t_redirection				*initalize_redirections(int type, char *value);
+t_redirection				*initalize_redirections(int type, char *value,
+								t_env *lenv);
 void						push_redirections(t_redirection **head,
 								t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
@@ -160,7 +160,7 @@ void						ft_new_str(char *str, int index);
 char						*get_dollar_name(char *command, int *j);
 char						*check_name_hdc(char *buffer, int *k);
 char						*expand_herdocs(char *buffer, t_env *lenv);
-char						*treat_heredocs(char *delimeter);
+char						*treat_heredocs(char *delimeter, t_env *lenv);
 char						*ft_strndup(const char *s1, int size);
 int							syntax_errors(t_token *tokens);
 t_token						*new_line(char *n_type, char *value);
@@ -169,6 +169,8 @@ void						free_list(t_token *lst);
 int							redir_error(t_token *tokens, t_token *head);
 void						push_rdr(t_redirection **head,
 								t_redirection *new_redirection);
+t_redirection				*initalize_redirections(int type, char *value,
+								t_env *lenv);
 int							ft_quotes(char *string);
 int							tab_size(char **cmd_args);
 t_token						*is_last(t_token *last);
@@ -203,9 +205,7 @@ char						*check_var(char *var_name, char **env);
 void						print_mssj(char *str, char mode);
 char						*ft_itoa(int n);
 int							ft_lstsize(t_cmdline *lst);
-void						free_tab(char **tab);
 char						*ft_strrchr(const char *s, int c);
-char						*check_res(char *var_name, char **env);
 
 // redirections
 // -- output redirection

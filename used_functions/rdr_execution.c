@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rdr_execution.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:22:28 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 22:52:36 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/31 17:31:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*verify_rdr(t_data *data)
 {
 	t_token	*tokens;
-
+	
 	tokens = data->tokens;
 	if (!tokens)
 		return (0);

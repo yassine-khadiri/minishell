@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/30 01:47:05 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:42:20 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void	add_separator(t_command *cmd, t_token *tokens)
 {
 	if (tokens->type == PIPE)
+	{
 		cmd->separator = e_pipe;
+	}
 	else if (tokens->type == N_line)
+	{
 		cmd->separator = e_line;
+	}
 }
 
 t_command	*initialize_command(t_cmdline *cmdline, t_redirection *redirections,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_execution.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 21:40:17 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/28 01:25:14 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	builtins_execution(t_data *data, t_command *cmd)
 
 	i = 0;
 	if (check_options(cmd))
-		return (1);
+		return (0);
 	while (cmd->cmd_array[i])
 	{
 		ret = exec_builts(data, cmd, i);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 23:57:37 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:10:46 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	if (argc > 1)
 	{
-		write(2, RED"The Program Works Without Args\n", 39);
+		printf(RED "The Program Works Without Args\n");
 		exit(1);
 	}
 	setup_term();
 	minishel_start(data);
-	exit(0);
+	return (0);
 }

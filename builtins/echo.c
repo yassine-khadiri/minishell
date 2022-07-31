@@ -6,70 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 00:54:18 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/31 16:33:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char	*case_1(t_data *data, t_command *cmd, int index, int i, char *str)
-{
-	char	*mssj;
-	int		j;
-
-	mssj = ft_strdup("");
-	i++;
-	while (cmd->cmd_array[index][i])
-	{
-		j = 0;
-		while (cmd->cmd_array[index][i] && cmd->cmd_array[index][i] != '$')
-			str[j++] = cmd->cmd_array[index][i++];
-		str[j] = '\0';
-		mssj = ft_strjoin(mssj, check_res(str, data->env));
-		i++;
-	}
-	data->g_index = i;
-	return (mssj);
-}
-
-char	*case_2(t_data *data, t_command *cmd, int index, int i)
-{
-	char	*mssj;
-	int		j;
-
-	mssj = ft_strdup("");
-	j = 0;
-	while (cmd->cmd_array[index][i])
-	{
-		if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i] != '$')
-		{
-			mssj[j] = '\0';
-			break ;
-		}
-		mssj[j++] = cmd->cmd_array[index][i++];
-	}
-	data->g_index = i;
-	return (mssj);
-}
-
-char	*case_3(t_data *data, t_command *cmd, int index, int i)
-{
-	char	*mssj;
-	int		j;
-
-	mssj = ft_strdup("");
-	j = 0;
-	while (cmd->cmd_array[index][i])
-	{
-		if (cmd->cmd_array[index][i] == '$' && cmd->cmd_array[index][i
-			+ 1] != '$')
-			break ;
-		mssj[j++] = cmd->cmd_array[index][i++];
-	}
-	data->g_index = i;
-	mssj[j] = '\0';
-	return (mssj);
-}
 
 int	check_dash_n(t_data *data, t_command *cmd, int i)
 {
@@ -100,9 +41,7 @@ int	check_dash_n(t_data *data, t_command *cmd, int i)
 
 int	ft_echo(t_data *data, t_command *cmd, int index)
 {
-	char	*string;
 	int		len;
-	char	*mssj;
 
 	data->mode = '\n';
 	len = 0;
@@ -115,26 +54,7 @@ int	ft_echo(t_data *data, t_command *cmd, int index)
 	index = check_dash_n(data, cmd, index);
 	while (cmd->cmd_array[index])
 	{
-		mssj = ft_strdup("");
-		string = malloc(sizeof(char) * ft_strlen(cmd->cmd_array[index]));
-		if (!string)
-			return (0);
-		data->g_index = 0;
-		while (cmd->cmd_array[index][data->g_index])
-		{
-			if (cmd->cmd_array[index][data->g_index] == '$'
-				&& cmd->cmd_array[index][data->g_index + 1] != '$')
-				mssj = ft_strjoin(mssj, case_1(data, cmd, index,
-							data->g_index, string));
-			else if (cmd->cmd_array[index][data->g_index] == '$'
-					&& cmd->cmd_array[index][data->g_index + 1] == '$')
-				mssj = ft_strjoin(mssj, case_2(data, cmd,
-							index, data->g_index));
-			else
-				mssj = ft_strjoin(mssj, case_3(data, cmd,
-							index, data->g_index));
-		}
-		printf("%s ", mssj);
+		printf("%s ", cmd->cmd_array[index]);
 		index++;
 	}
 	printf("%c", data->mode);

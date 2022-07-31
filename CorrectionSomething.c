@@ -1,10 +1,10 @@
 
+// DB, Single Quotes like "c""h""o"
+
 // update pro. _= in export/env
+
+// cd -
 
 // Herdoc Doesn't print any fucking thing 
 
-// bin/ls 
-
-// PROBLEM f echo | test this : echo "hello world" im okeay
-
-// export test="testing this $HOME"
+// minishell must run from fucking itself

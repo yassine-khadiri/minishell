@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/30 04:26:07 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/31 16:36:35 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include<stdio.h>
 
 int	execution_pipe_cmd(t_data *data, t_command *cmd)
 {
@@ -106,9 +107,6 @@ int	ft_pipe(t_data *data, t_command *cmd)
 	exec2(data, cmd, tmp, in);
 	return (1);
 }
-
-
-
 
 // int	execution_pipe_cmd(t_data *data, t_command *cmd)
 // {

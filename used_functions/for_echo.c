@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:37:45 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/23 16:38:05 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/31 16:23:49 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ char	*get_val_env_var1(char **env, char *env_variable)
 
 char	*check_res(char *var_name, char **env)
 {
-	if (get_val_env_var1(env, var_name))
-		var_name = get_val_env_var1(env, var_name);
+	if (get_val_env_var1(env, var_name + 1))
+		var_name = get_val_env_var1(env, var_name + 1);
 	else
 		var_name = "";
 	return (var_name);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   envirenement.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:07:10 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/30 01:01:24 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/23 17:05:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,6 @@ void	add_env_node(t_env *env_l, char *name, char *value)
 	new_env->next->value = value;
 	new_env->next->next = NULL;
 }
-void free_tab(char **tab)
-{
-	int i;
-	
-	i = 0;
-	while(tab[i])
-		free(tab[i++]);
-	free(tab);
-}
 
 t_env	*create_env_list(t_env *l_env, char **env)
 {
@@ -54,14 +45,12 @@ t_env	*create_env_list(t_env *l_env, char **env)
 	if (env[i])
 	{
 		str = ft_split(env[i], '=');
-		l_env = initial_env_node(str[0], str[0]);
-		free_tab(str);
+		l_env = initial_env_node(str[0], str[1]);
 	}
 	while (env[i])
 	{
 		str = ft_split(env[i], '=');
-		add_env_node(l_env, str[0], str[0]);
-		free_tab(str);
+		add_env_node(l_env, str[0], str[1]);
 		i++;
 	}
 	return (l_env);

@@ -58,15 +58,15 @@ int	is_redout(t_token **tokens, char *str)
 	return (1);
 }
 
-// int is_space(t_token **tokens, char *str)
-// {
-//     int i;
+int is_space(t_token **tokens, char *str)
+{
+    int i;
 
-//     i = 0;
-//     if (!str)
-//         return (0);
-//     while(str[i] == ' ')
-//         i++;
-//     add_back (tokens, create_token(WSPACE, ft_strdup(" ")));
-//     return (i);
-// }
+    i = 0;
+    if (!str)
+        return (0);
+    while(str[i] == ' ')
+        i++;
+    add_back (tokens, create_token(WSPACE, ft_strdup(" ")));
+    return (i);
+}
