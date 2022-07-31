@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 03:13:39 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/31 01:05:05 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ char	*check_quotes(char *cmd)
 	int		j;
 	char	quote_symbol;
 	char	*res;
-	char	*tmp;
 	char	*command;
 
 	res = malloc(sizeof(char) * 1000);
@@ -55,9 +54,7 @@ char	*check_quotes(char *cmd)
 			while (cmd[i] && cmd[i] != '\'' && cmd[i] != '"')
 				command[j++] = cmd[i++];
 		}
-		tmp = res;
-		free(res);
-		res = ft_strjoin(tmp, command);
+		res = ft_strjoin(res, command);
 	}
 	return (res);
 }
@@ -106,6 +103,6 @@ void	execution(t_data *data, t_command *cmd)
 		|| rdr_execution(data, cmd)
 		|| builtins_execution(data, cmd))
 		return ;
-	free(data->tokens);
+	// free(data->tokens);
 	execution_other_builtins(data, cmd);
 }

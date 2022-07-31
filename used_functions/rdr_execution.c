@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rdr_execution.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:22:28 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/24 21:23:19 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/30 22:52:36 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 char	*verify_rdr(t_data *data)
 {
-	if (!data->tokens)
+	t_token	*tokens;
+
+	tokens = data->tokens;
+	if (!tokens)
 		return (0);
-	while (data->tokens)
+	while (tokens)
 	{
-		if (!ft_strcmp(data->tokens->value, "<")
-			|| !ft_strcmp(data->tokens->value, ">")
-			|| !ft_strcmp(data->tokens->value, ">>")
-			|| !ft_strcmp(data->tokens->value, "<<"))
-			return (data->tokens->value);
+		if (!ft_strcmp(tokens->value, "<")
+			|| !ft_strcmp(tokens->value, ">")
+			|| !ft_strcmp(tokens->value, ">>")
+			|| !ft_strcmp(tokens->value, "<<"))
+			return (tokens->value);
 		else
-			data->tokens = data->tokens->next;
+			tokens = tokens->next;
 	}
 	return (0);
 }

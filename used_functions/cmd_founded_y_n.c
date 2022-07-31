@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 05:48:19 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/30 23:29:48 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,15 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 			return (0);
 		path = ft_strjoin(data->splitted_path[i], "/");
 		tmp = path;
-		free(path);
 		path = ft_strjoin(tmp, cmd->cmd_array[0]);
+		free(tmp);
 		if (access(path, X_OK) != -1)
 		{
+			free(path);
 			result = 0;
 			break ;
 		}
+		free(path);
 		i++;
 	}
 	if (result == -1)
@@ -137,5 +139,5 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 		write(2, ": command not found\n"BLU, 28);
 		g_dollar_question = 127;
 	}
-	return (free(path), result);
+	return (result);
 }

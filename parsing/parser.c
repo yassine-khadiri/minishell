@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/30 01:37:36 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/31 01:13:06 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	fill_subcmd(t_cmdline **head, t_cmdline *sub_cmd)
 	_head->next = sub_cmd;
 }
 
-void	push_cmd_and_redir(t_token **tokens, t_env *lenv, t_cmdline **cmdline,
+void	push_cmd_and_redir(t_token **tokens,t_cmdline **cmdline,
 		t_redirection **redirections)
 {
 	while (*tokens && (*tokens)->type != N_line
@@ -52,7 +52,7 @@ void	push_cmd_and_redir(t_token **tokens, t_env *lenv, t_cmdline **cmdline,
 			|| (*tokens)->type == REDIN || (*tokens)->type == REDOUT)
 		{
 			push_redirections(&(*redirections),
-				initalize_redirections((*tokens)->type, (*tokens)->next->value, lenv));
+				initalize_redirections((*tokens)->type, (*tokens)->next->value));
 			(*tokens) = (*tokens)->next->next;
 		}
 		else if ((*tokens) && (*tokens)->type == WORD)
@@ -65,7 +65,7 @@ void	push_cmd_and_redir(t_token **tokens, t_env *lenv, t_cmdline **cmdline,
 	}
 }
 
-t_command	*ft_parse(t_token *tokens, t_env *lenv)
+t_command	*ft_parse(t_token *tokens)
 {
 	t_command		*cmd;
 	t_redirection	*redirections;
@@ -76,7 +76,7 @@ t_command	*ft_parse(t_token *tokens, t_env *lenv)
 	{
 		cmdline = NULL;
 		redirections = NULL;
-		push_cmd_and_redir(&tokens, lenv, &cmdline, &redirections);
+		push_cmd_and_redir(&tokens,&cmdline, &redirections);
 		if (tokens->type == PIPE || tokens->type == N_line)
 		{
 			fill_command(&cmd, initialize_command(cmdline, redirections,

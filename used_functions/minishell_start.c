@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 05:49:15 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/31 02:30:26 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,19 @@
 void free_cmd(t_command *cmd, t_token *tokens)
 {
 	void *tmp;
-
-// 	while (cmd)
-// 	{
-// 		printf("%p\n", cmd->redirection);
-// 		printf("%p\n", cmd->cmdline);
-// 		fflush(stdout);
-// 		while (cmd->redirection)
-// 		{
-// 			tmp = cmd->redirection;
-// 			cmd->redirection = cmd->redirection->next;
-// 			free(tmp);
-// 		}
-// 		while (cmd->cmdline)
-// 		{
-// 			tmp = cmd->cmdline;
-// 			cmd->cmdline = cmd->cmdline->next;
-// 			free(tmp);
-// 		}
-		free_tab(cmd->cmd_array);
+	while (tokens)
+	{
+		tmp = tokens;
+		tokens = tokens->next;
+		free(((t_token*)tmp)->value);
+		free(tmp);
+	}
+	while (cmd)
+	{
 		tmp = cmd;
 		cmd = cmd->next;
 		free(tmp);
-		while (tokens)
-		{
-			tmp = tokens->value;
-			free(tmp);
-			tmp = tokens;
-			free(tmp);
-			tokens = tokens->next;
-		}
-// 	}
+	}
 }
 
 void	minishel_start(t_data *data)
@@ -66,8 +48,9 @@ void	minishel_start(t_data *data)
 				data->syntax_res = syntax_errors(data->tokens);
 				if ((data->syntax_res) != 1)
 				{
-					cmd = ft_parse(data->tokens, data->lenv);
+					cmd = ft_parse(data->tokens);
 					execution(data, cmd);
+
 				}
 				add_history(data->command_buf);
 			}

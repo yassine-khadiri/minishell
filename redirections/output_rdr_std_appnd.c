@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 04:27:25 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/30 23:46:56 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	exec(t_data *data, t_command *cmd)
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
 		tmp = path;
-		free(tmp);
+		free(path);
 		path = ft_strjoin(tmp, cmd->cmd_array[0]);
 		if (!access(path, X_OK))
 		{
@@ -32,14 +32,16 @@ void	exec(t_data *data, t_command *cmd)
 			if (pid == 0)
 			{
 				execve(path, cmd->cmd_array, data->env);
+				free(path);
 				exit(1);
 			}
 			waitpid(pid, &data->status, 0);
-			g_dollar_question = WEXITSTATUS(data->status); 
+			g_dollar_question = WEXITSTATUS(data->status);
 			break ;
 		}
 		i++;
 	}
+	free(path);
 }
 
 void	output_rdr_std_appnd(t_data *data, t_command *cmd, int flag)

@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/30 04:18:55 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/07/30 23:57:37 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ int	main(int argc, char **argv, char **env)
 	}
 	setup_term();
 	minishel_start(data);
-	return (0);
+	exit(0);
 }

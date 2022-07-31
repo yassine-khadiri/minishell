@@ -6,7 +6,7 @@
 #    By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/30 05:29:56 by hbouqssi         ###   ########.fr        #
+#    Updated: 2022/07/30 21:56:11 by hbouqssi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ SRC = minishell.c \
 	parsing/parser_utils_2.c \
 	parsing/envirenement.c \
 	parsing/expander.c \
-	parsing/expander_1.c\
 	used_functions/ft_split.c \
 	used_functions/ft_strrchr.c \
 	used_functions/ft_itoa.c \
