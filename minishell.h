@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/31 16:13:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/31 19:00:23 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ void						print_mssj(char *str, char mode);
 char						*ft_itoa(int n);
 int							ft_lstsize(t_cmdline *lst);
 char						*ft_strrchr(const char *s, int c);
+char						*check_quotes(char *cmd);
 
 // redirections
 // -- output redirection

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_start.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/31 16:19:51 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/07/31 19:10:31 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@ void	minishel_start(t_data *data)
 		if (ft_strlen(data->command_buf) > 0)
 		{
 			data->tokens = ft_tokenizer(&data->tokens, data->command_buf);
-			// while (data->tokens)
-			// {
-			// 	puts(data->tokens->value);
-			// 	data->tokens = data->tokens->next;
-			// }
 			if (data->tokens)
 			{
 				data->syntax_res = syntax_errors(data->tokens);
