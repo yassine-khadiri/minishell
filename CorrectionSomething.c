@@ -8,3 +8,6 @@
 // Herdoc Doesn't print any fucking thing 
 
 // minishell must run from fucking itself
+
+
+// cat | cat | ls ==> a lot of fucking problems
