@@ -6,11 +6,44 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/02 22:41:05 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/03 00:58:47 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+char	*check_remove_dollars(char **env, char *cmd)
+{
+	char	*var_name;
+	char	*res;
+	int		i;
+	int		j;
+	int		dollar_counter;
+
+	i = 0;
+	var_name = malloc(sizeof(char) * 1000);
+	res = malloc(sizeof(char) * ft_strlen(cmd));
+	while (cmd[i])
+	{
+			j = 0;
+			dollar_counter = 0;
+			while (cmd[i] && cmd[i] == '$')
+			{
+				dollar_counter++;
+				var_name[j++] = cmd[i++];
+			}
+			while (cmd[i] && cmd[i] != '$')
+				var_name[j++] = cmd[i++];
+			var_name[j] = '\0';
+			if (dollar_counter > 1 || dollar_counter == 0
+				|| (dollar_counter == 1 && !var_name[dollar_counter]))
+				res = ft_strjoin(res, var_name);
+			else
+				res = ft_strjoin(res, check_res(var_name, env));
+	}
+	res[ft_strlen(res)] = '\0';
+	return (res);
+}
 
 
 t_token *ft_tokenizer(t_token **tokens, char *str)
@@ -88,12 +121,12 @@ char    **final_tokens(t_token **token, char **env)
     t_token *new_tokens = NULL;
     while (tokens)
     {
-        if (tokens->type == DBQUOTE || tokens->type == WORD)
+        if (tokens->type == DBQUOTE || tokens->type == WORD  || tokens->type == QUOTE)
         {
             tmp = malloc(sizeof(char) * c_q_word(tokens));
             if (!tmp)
-                return (0);
-            while (tokens && (tokens->type == DBQUOTE || tokens->type == WORD))
+                return (0); 
+            while (tokens && (tokens->type == DBQUOTE || tokens->type == WORD || tokens->type == QUOTE))
             {
                 if (tokens->type == WORD)
                 {
@@ -102,7 +135,8 @@ char    **final_tokens(t_token **token, char **env)
                     else
                         tokens->value = check_remove_dollars(env, tokens->value);
                 }
-                // else
+                else if (tokens->type == DBQUOTE)
+                    tokens->value = check_remove_dollars(env, tokens->value);
                 tmp = ft_strjoin(tmp, tokens->value);
                 tokens = tokens->next;
             }

@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:04:51 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/01 21:59:13 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 23:10:56 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int quote(t_token **tokens, char *str)
             i++;
     }
     if (str[i] && str[i] == '\'')
-        add_back(tokens, create_token(DBQUOTE, ft_strndup(str + 1, i - 1)));
+        add_back(tokens, create_token(QUOTE, ft_strndup(str + 1, i - 1)));
     else
         return (-1);
     return (i + 1);

@@ -9,4 +9,3 @@
 
 //bash: /bin/env: No such file or directory
 // echo $?
-// echo '$PWD'
