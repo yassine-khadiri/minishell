@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/31 19:00:23 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 00:30:52 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,7 @@ char						*ft_itoa(int n);
 int							ft_lstsize(t_cmdline *lst);
 char						*ft_strrchr(const char *s, int c);
 char						*check_quotes(char *cmd);
+char						**final_tokens(t_token **token);
 
 // redirections
 // -- output redirection

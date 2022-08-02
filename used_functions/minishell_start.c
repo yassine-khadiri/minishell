@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/31 19:10:31 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 02:08:44 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ void	minishel_start(t_data *data)
 		if (ft_strlen(data->command_buf) > 0)
 		{
 			data->tokens = ft_tokenizer(&data->tokens, data->command_buf);
+			final_tokens(&data->tokens);
+			// while(data->tokens != NULL)
+			// {
+			// 	printf("[ type :  |%d| ]  \n", data->tokens->type);
+			// 	printf("[ Value : |%s| ]  \n", data->tokens->value);
+			// 	printf("\n");
+			// 	data->tokens = data->tokens->next;
+			// }
 			if (data->tokens)
 			{
 				data->syntax_res = syntax_errors(data->tokens);
@@ -55,6 +63,6 @@ void	minishel_start(t_data *data)
 			add_history(data->command_buf);
 		}
 	}
-	free(data->command_buf);
+	// free(data->command_buf);
 	// free_cmd(cmd, data->tokens);
 }

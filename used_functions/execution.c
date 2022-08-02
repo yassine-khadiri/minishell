@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/31 18:49:44 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 02:09:23 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,14 +106,11 @@ int	fill_struct(t_data *data, t_command *cmd)
 		i = 0;
 		while (cmdline)
 		{
-			if (!ft_strcmp(cmdline->cmd, " "))
-				cmdline = cmdline->next;
-			if (cmdline)
-			{
-				// cmd->cmd_array[i++] = cmdline->cmd;
+			// if (!ft_strcmp(cmdline->cmd, " "))
+			// 	cmdline = cmdline->next;
+		
 				cmd->cmd_array[i++] = check_remove_dollars(data, cmdline->cmd);
 				cmdline = cmdline->next;
-			}
 		}
 		cmd->cmd_array[i] = NULL;
 		cmd = cmd->next;
@@ -121,9 +118,10 @@ int	fill_struct(t_data *data, t_command *cmd)
 	return (0);
 }
 
+
 void	execution(t_data *data, t_command *cmd)
 {
-	int	i;
+	int	i = 0;
 
 	fill_struct(data, cmd);
 	i = 0;

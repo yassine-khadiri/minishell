@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/28 01:04:59 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 02:03:32 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	push_cmd_and_redir(t_token **tokens, t_env *lenv, t_cmdline **cmdline,
 			|| (*tokens)->type == REDIN || (*tokens)->type == REDOUT)
 		{
 			push_redirections(&(*redirections),
-				initalize_redirections((*tokens)->type, (*tokens)->next->next->value, lenv));
-			(*tokens) = (*tokens)->next->next;
+				initalize_redirections((*tokens)->type, (*tokens)->next->value, lenv));
+			(*tokens) = (*tokens)->next;
 		}
-		else if ((*tokens) && ((*tokens)->type == WORD || (*tokens)->type == DBQUOTE || (*tokens)->type == QUOTE || (*tokens)->type == WSPACE))
+		else if ((*tokens) && ((*tokens)->type == WORD ||(*tokens)->type == WSPACE))
 			fill_subcmd(&(*cmdline), init_subcmd((*tokens)->value));
 		(*tokens) = (*tokens)->next;
 	}
