@@ -6,13 +6,13 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/02 02:09:23 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 22:23:00 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*check_remove_dollars(t_data *data, char *cmd)
+char	*check_remove_dollars(char **env, char *cmd)
 {
 	char	*var_name;
 	char	*res;
@@ -39,7 +39,7 @@ char	*check_remove_dollars(t_data *data, char *cmd)
 				|| (dollar_counter == 1 && !var_name[dollar_counter]))
 				res = ft_strjoin(res, var_name);
 			else
-				res = ft_strjoin(res, check_res(var_name, data->env));
+				res = ft_strjoin(res, check_res(var_name, env));
 	}
 	res[ft_strlen(res)] = '\0';
 	return (res);
@@ -92,7 +92,7 @@ char	*check_quotes(char *cmd)
 	return (res);
 }
 
-int	fill_struct(t_data *data, t_command *cmd)
+int	fill_struct(t_command *cmd)
 {
 	int			i;
 	t_cmdline	*cmdline;
@@ -109,7 +109,8 @@ int	fill_struct(t_data *data, t_command *cmd)
 			// if (!ft_strcmp(cmdline->cmd, " "))
 			// 	cmdline = cmdline->next;
 		
-				cmd->cmd_array[i++] = check_remove_dollars(data, cmdline->cmd);
+				// cmd->cmd_array[i++] = check_remove_dollars(data->env, cmdline->cmd);
+				cmd->cmd_array[i++] = cmdline->cmd;
 				cmdline = cmdline->next;
 		}
 		cmd->cmd_array[i] = NULL;
@@ -123,7 +124,7 @@ void	execution(t_data *data, t_command *cmd)
 {
 	int	i = 0;
 
-	fill_struct(data, cmd);
+	fill_struct(cmd);
 	i = 0;
 	while (cmd->cmd_array[i])
 	{

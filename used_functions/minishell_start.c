@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/02 02:08:44 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 22:34:57 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	minishel_start(t_data *data)
 		if (ft_strlen(data->command_buf) > 0)
 		{
 			data->tokens = ft_tokenizer(&data->tokens, data->command_buf);
-			final_tokens(&data->tokens);
+			final_tokens(&data->tokens, data->env);
 			// while(data->tokens != NULL)
 			// {
 			// 	printf("[ type :  |%d| ]  \n", data->tokens->type);

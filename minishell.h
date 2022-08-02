@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/02 19:39:06 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/02 22:11:57 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,8 @@ char						*ft_itoa(int n);
 int							ft_lstsize(t_cmdline *lst);
 char						*ft_strrchr(const char *s, int c);
 char						*check_quotes(char *cmd);
-char						**final_tokens(t_token **token);
+char						**final_tokens(t_token **token, char **env);
+char						*check_remove_dollars(char **env, char *cmd);
 
 // redirections
 // -- output redirection

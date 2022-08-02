@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/02 01:49:46 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 22:41:05 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int c_q_word(t_token *token)
     return (len);
 }
 
-char    **final_tokens(t_token **token)
+char    **final_tokens(t_token **token, char **env)
 {
     t_token *tokens;
     int     i;
@@ -95,6 +95,14 @@ char    **final_tokens(t_token **token)
                 return (0);
             while (tokens && (tokens->type == DBQUOTE || tokens->type == WORD))
             {
+                if (tokens->type == WORD)
+                {
+                    if (!ft_strcmp(tokens->value, "$") && tokens->next->type == DBQUOTE)
+                        tokens->value = ft_strtrim(tokens->value, "$");
+                    else
+                        tokens->value = check_remove_dollars(env, tokens->value);
+                }
+                // else
                 tmp = ft_strjoin(tmp, tokens->value);
                 tokens = tokens->next;
             }
