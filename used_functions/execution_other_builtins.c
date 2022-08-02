@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/31 16:13:19 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/02 19:44:11 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,10 @@ char	**ft_get_spllited_path_env(t_data *data)
 	data->splitted_path = ft_split(get_val_env_var(data->env, "PATH"), ':');
 	return (data->splitted_path);
 }
-
 int	execution_other_builtins(t_data *data, t_command *cmd)
 {
 	char	*path;
 	char	*tmp;
-	int		pid;
 	int		i;
 
 	i = 0;
@@ -48,17 +46,22 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 		free(tmp);
 		if (!access(path, X_OK))
 		{
-			pid = fork();
-			if (pid < 0)
+			data->pid1 = fork();
+			if (data->pid1 < 0)
 				return (free(path), 0);
-			if (pid == 0)
+			signal(SIGINT, SIG_IGN);
+			if (data->pid1 == 0)
 			{
+				signal(SIGINT, SIG_DFL);
 				execve(path, cmd->cmd_array, data->env);
 				free(path);
 				exit(1);
 			}
 			free(path);
-			waitpid(pid, &data->status, 0);
+			waitpid(data->pid1, &data->status, 0);
+			if (data->status == 2)
+				printf("\n");
+			signal(SIGINT, handler);
 			g_dollar_question = WEXITSTATUS(data->status); 
 			break ;
 		}

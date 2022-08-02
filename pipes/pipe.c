@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/01 23:50:11 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/02 19:59:38 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	execution_pipe_cmd(t_data *data, t_command *cmd)
 	int		i;
 
 	i = 0;
-	if (rdr_execution(data, cmd))
+	if (rdr_execution(data, cmd)
+		|| !ft_export(data, cmd))
 		return (0);
 	while (data->splitted_path[i])
 	{
@@ -62,7 +63,6 @@ int	exec1(t_data *data, t_command *cmd, int in)
 
 void	exec2(t_data *data, t_command *cmd, t_command *tmp, int in)
 {
-	// printf("%s\n",  );
 	if (data->pid2 == 0)
 	{
 		if (in != 0)
@@ -105,6 +105,8 @@ int	ft_pipe(t_data *data, t_command *cmd)
 	if (data->pid2 < 0)
 		return (0);
 	exec2(data, cmd, tmp, in);
+	// close(data->pid1);
+	// close(data->pid2);
 	return (1);
 }
 
