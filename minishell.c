@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 16:10:46 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/03 03:24:59 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	data_initializer(t_data *data, char **env)
 	else
 		data->env = env;
 	data->splitted_path = ft_get_spllited_path_env(data);
-	data->lenv = create_env_list(data->lenv, data->env);
+	// data->lenv = create_env_list(data->lenv, data->env);
 	g_dollar_question = 0;
 }
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
+#    By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/07/31 16:02:58 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/08/03 03:19:19 by hbouqssi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CYN = \033[0;36m
 WHT = \033[0;37m
 NAME = minishell
 CC = cc 
-CFLAGS = -Wall -Wextra #-Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
 SRC = minishell.c \
@@ -48,8 +48,6 @@ SRC = minishell.c \
 	parsing/parser.c \
 	parsing/parser_utils_1.c \
 	parsing/parser_utils_2.c \
-	parsing/envirenement.c \
-	parsing/expander.c \
 	parsing/expander_1.c\
 	used_functions/ft_split.c \
 	used_functions/ft_itoa.c \

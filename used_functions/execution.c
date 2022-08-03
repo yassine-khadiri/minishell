@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 00:31:53 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/03 03:13:13 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,8 @@ int	fill_struct(t_command *cmd)
 
 void	execution(t_data *data, t_command *cmd)
 {
-	int	i = 0;
 
 	fill_struct(cmd);
-	// while (cmd->cmd_array[i])
-	// 	puts(cmd->cmd_array[i++]);
-	i = 0;
-	while (cmd->cmd_array[i])
-	{
-		if (!ft_strcmp(cmd->cmd_array[i], "$?"))
-		{
-			printf("%d", g_dollar_question);
-			g_dollar_question = 0;
-			i++;
-		}
-		i++;
-	}
 	if (cmd_founded_y_n(data, cmd) == -1
 		|| (pipe_founded(data->tokens) && ft_pipe(data, cmd))
 		|| rdr_execution(data, cmd)
