@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/03 00:58:47 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:06:23 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,9 @@ char    **final_tokens(t_token **token, char **env)
             {
                 if (tokens->type == WORD)
                 {
-                    if (!ft_strcmp(tokens->value, "$") && tokens->next->type == DBQUOTE)
+                    if (!ft_strcmp(tokens->value, "$")
+                        && (tokens->next->type == DBQUOTE
+                        || tokens->next->type == QUOTE))
                         tokens->value = ft_strtrim(tokens->value, "$");
                     else
                         tokens->value = check_remove_dollars(env, tokens->value);
