@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/02 19:44:11 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:24:46 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	**ft_get_spllited_path_env(t_data *data)
 	data->splitted_path = ft_split(get_val_env_var(data->env, "PATH"), ':');
 	return (data->splitted_path);
 }
+
 int	execution_other_builtins(t_data *data, t_command *cmd)
 {
 	char	*path;
@@ -62,7 +63,7 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 			if (data->status == 2)
 				printf("\n");
 			signal(SIGINT, handler);
-			g_dollar_question = WEXITSTATUS(data->status); 
+			g_dollar_question = WEXITSTATUS(data->status);
 			break ;
 		}
 		free(path);

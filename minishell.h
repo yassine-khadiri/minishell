@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 03:23:13 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:43:54 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,7 @@ int							ft_lstsize(t_cmdline *lst);
 char						*ft_strrchr(const char *s, int c);
 char						**final_tokens(t_token **token, char **env);
 void						data_initializer(t_data *data, char **env);
+void						handler(int signm);
 
 // redirections
 // -- output redirection
@@ -253,5 +254,4 @@ int							ft_env(char **env);
 
 // exit Command :)
 int							ft_exit(t_command *cmd);
-void	handler(int signm);
 #endif

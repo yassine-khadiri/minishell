@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/25 03:38:25 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:16:14 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	sort_data_helper(t_data *data, int i)
 
 void	sort_data(t_data *data, int len, int step)
 {
-	int		i;
+	int	i;
 
 	while (step < len - 1)
 	{

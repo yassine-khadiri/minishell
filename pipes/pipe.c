@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
-#include<stdio.h>
+#include <stdio.h>
 
 int	execution_pipe_cmd(t_data *data, t_command *cmd)
 {
@@ -20,8 +20,7 @@ int	execution_pipe_cmd(t_data *data, t_command *cmd)
 	int		i;
 
 	i = 0;
-	if (rdr_execution(data, cmd)
-		|| !ft_export(data, cmd))
+	if (rdr_execution(data, cmd) || !ft_export(data, cmd))
 		return (0);
 	while (data->splitted_path[i])
 	{

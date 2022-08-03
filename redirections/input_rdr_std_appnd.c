@@ -14,8 +14,8 @@
 
 void	input_rdr_std_appnd(t_data *data, t_command *cmd)
 {
-	int	fd;
-	t_redirection *red;
+	int				fd;
+	t_redirection	*red;
 
 	red = cmd->redirection;
 	while (red)
@@ -23,7 +23,7 @@ void	input_rdr_std_appnd(t_data *data, t_command *cmd)
 		fd = open(red->file, O_RDONLY, 0777);
 		if (fd == -1)
 		{
-			write(2, RED"minishell: ", 19);
+			write(2, RED "minishell: ", 19);
 			write(2, &red->file, ft_strlen(red->file));
 			write(2, ": No such file or directory\n", 28);
 			return ;
@@ -35,4 +35,3 @@ void	input_rdr_std_appnd(t_data *data, t_command *cmd)
 	dup2(data->g_std._stdin, 0);
 	close(fd);
 }
-

@@ -27,7 +27,7 @@
 // 		if (buffer[i] == '$' && (ft_isalnum(buffer[i + 1]) == 1 || buffer[i
 // 					+ 1] == '_'))
 // 		{
-			
+
 // 		}
 // 		i++;
 // 	}

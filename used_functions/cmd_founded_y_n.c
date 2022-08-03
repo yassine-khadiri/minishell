@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/31 17:49:06 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:26:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	pipe_founded(t_token *tokens)
 
 void	print_not_found(t_command **cmd)
 {
-	printf (WHT "minishell : %s: command not found\n" BLU,
+	printf(WHT "minishell : %s: command not found\n" BLU,
 		(*cmd)->cmd_array[0]);
 	g_dollar_question = 127;
 }
@@ -40,7 +40,8 @@ char	*extract_path(t_command *cmd)
 	command = malloc(sizeof(char *) * ft_strlen(cmd->cmd_array[0]));
 	if (!command)
 		return (NULL);
-	size = ft_strlen(cmd->cmd_array[0]) - ft_strlen(ft_strrchr(cmd->cmd_array[0], '/'));
+	size = ft_strlen(cmd->cmd_array[0])
+		- ft_strlen(ft_strrchr(cmd->cmd_array[0], '/'));
 	while (cmd->cmd_array[0][i] && i < size)
 	{
 		command[i] = cmd->cmd_array[0][i];
@@ -54,6 +55,7 @@ int	check_executable_files(t_data *data, t_command *cmd)
 {
 	int		pid;
 	char	*path;
+
 	path = NULL;
 	if (cmd->cmd_array[0][0] == '/')
 	{
@@ -67,7 +69,7 @@ int	check_executable_files(t_data *data, t_command *cmd)
 				return (0);
 			if (pid == 0)
 			{
-				execve(path, cmd->cmd_array, data->env);;
+				execve(path, cmd->cmd_array, data->env);
 				exit(1);
 			}
 			waitpid(pid, NULL, 0);
@@ -93,9 +95,9 @@ int	check_executable_files(t_data *data, t_command *cmd)
 		}
 		else
 		{
-			write(2, RED"minishell: ", 19);
+			write(2, RED "minishell: ", 19);
 			write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
-			write(2, ": No such file or directory\n"BLU, 36);
+			write(2, ": No such file or directory\n" BLU, 36);
 		}
 		return (1);
 	}
@@ -134,9 +136,9 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 	}
 	if (result == -1)
 	{
-		write(2, RED"minishell: ", 19);
+		write(2, RED "minishell: ", 19);
 		write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
-		write(2, ": command not found\n"BLU, 28);
+		write(2, ": command not found\n" BLU, 28);
 		g_dollar_question = 127;
 	}
 	return (result);

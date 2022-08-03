@@ -12,14 +12,15 @@
 
 #include "../minishell.h"
 
-void free_cmd(t_command *cmd, t_token *tokens)
+void	free_cmd(t_command *cmd, t_token *tokens)
 {
-	void *tmp;
+	void	*tmp;
+
 	while (tokens)
 	{
 		tmp = tokens;
 		tokens = tokens->next;
-		free(((t_token*)tmp)->value);
+		free(((t_token *)tmp)->value);
 		free(tmp);
 	}
 	while (cmd)

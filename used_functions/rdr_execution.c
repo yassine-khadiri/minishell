@@ -15,16 +15,15 @@
 char	*verify_rdr(t_data *data)
 {
 	t_token	*tokens;
-	
+
 	tokens = data->tokens;
 	if (!tokens)
 		return (0);
 	while (tokens)
 	{
-		if (!ft_strcmp(tokens->value, "<")
-			|| !ft_strcmp(tokens->value, ">")
-			|| !ft_strcmp(tokens->value, ">>")
-			|| !ft_strcmp(tokens->value, "<<"))
+		if (!ft_strcmp(tokens->value, "<") || !ft_strcmp(tokens->value, ">")
+			|| !ft_strcmp(tokens->value, ">>") || !ft_strcmp(tokens->value,
+				"<<"))
 			return (tokens->value);
 		else
 			tokens = tokens->next;

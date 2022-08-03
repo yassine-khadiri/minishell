@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 20:47:34 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/02 01:43:15 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:18:39 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	check_err(t_token *tokens, t_token *head)
 {
 	int	result;
+
 	result = 0;
 	if (tokens->type == NONE)
 		result = none_error(tokens, head);
@@ -30,7 +31,7 @@ int	syntax_errors(t_token *head)
 {
 	t_token	*tokens;
 	int		result;
-	
+
 	tokens = head;
 	result = 0;
 	while (tokens->type != N_line)

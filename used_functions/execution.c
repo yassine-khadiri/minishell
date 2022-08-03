@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 03:13:13 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:10:04 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	fill_struct(t_command *cmd)
 		i = 0;
 		while (cmdline)
 		{
-			// puts(cmdline->cmd);
 			cmd->cmd_array[i++] = cmdline->cmd;
 			cmdline = cmdline->next;
 		}
@@ -36,14 +35,11 @@ int	fill_struct(t_command *cmd)
 	return (0);
 }
 
-
 void	execution(t_data *data, t_command *cmd)
 {
-
 	fill_struct(cmd);
-	if (cmd_founded_y_n(data, cmd) == -1
-		|| (pipe_founded(data->tokens) && ft_pipe(data, cmd))
-		|| rdr_execution(data, cmd)
+	if (cmd_founded_y_n(data, cmd) == -1 || (pipe_founded(data->tokens)
+			&& ft_pipe(data, cmd)) || rdr_execution(data, cmd)
 		|| builtins_execution(data, cmd))
 		return ;
 	if (builtins_execution(data, cmd))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_execution.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/28 01:25:14 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:16:47 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@ int	check_options(t_command *cmd)
 	int	i;
 
 	i = 0;
-	if (!ft_strcmp(cmd->cmd_array[i], "pwd")
-		|| !ft_strcmp(cmd->cmd_array[i], "cd")
-		|| !ft_strcmp(cmd->cmd_array[i], "export")
+	if (!ft_strcmp(cmd->cmd_array[i], "pwd") || !ft_strcmp(cmd->cmd_array[i],
+			"cd") || !ft_strcmp(cmd->cmd_array[i], "export")
 		|| !ft_strcmp(cmd->cmd_array[i], "unset")
-		|| !ft_strcmp(cmd->cmd_array[i], "env")
-		|| !ft_strcmp(cmd->cmd_array[i], "exit"))
+		|| !ft_strcmp(cmd->cmd_array[i], "env") || !ft_strcmp(cmd->cmd_array[i],
+			"exit"))
 	{
 		if (!cmd->cmd_array[i + 1])
 			return (0);
 		else if (cmd->cmd_array[i + 1][0] == '-')
 		{
-			printf(RED"%s Command Must Works Without Options\n",
+			printf(RED "%s Command Must Works Without Options\n",
 				cmd->cmd_array[i]);
 			return (1);
 		}

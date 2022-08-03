@@ -28,7 +28,6 @@ t_token	*initialize_list(void)
 
 t_token	*create_token(int type, char *value)
 {
-	
 	t_token	*tokens;
 
 	tokens = (t_token *)malloc(sizeof(t_token));
