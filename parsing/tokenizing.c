@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/03 19:24:22 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:30:23 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	c_q_word(t_token *token)
 char	**final_tokens(t_token **token, char **env)
 {
 	t_token	*tokens;
-	t_token	*new_tokens;
+	t_token *new_tokens;
 	char	*tmp;
 	int		i;
 

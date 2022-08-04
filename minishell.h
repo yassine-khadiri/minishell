@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 18:43:54 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/04 00:52:29 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct s_data
 	char					*command_buf;
 	char					getpath[1000];
 	char					*old_pwd;
+	char					*buffer_herdoc;
 	char					**env;
 	char					**splitted_path;
 	char					mode;
@@ -123,7 +124,7 @@ typedef struct s_data
 
 // used_functions :)
 int							check_env_var(char *env_var);
-t_command					*ft_parse(t_token *tokens);
+t_command					*ft_parse(t_data *data, t_token *tokens);
 int							ft_isdigit(int c);
 int							ft_isalnum(int c);
 t_env						*initial_env_node(char *name, char *value);
@@ -144,7 +145,7 @@ t_token						*create_token(int type, char *value);
 int							none_error(t_token *tokens, t_token *head);
 int							redir_error(t_token *tokens, t_token *head);
 int							pipe_error(t_token *tokens, t_token *head);
-t_redirection				*initalize_redirections(int type, char *value);
+t_redirection				*initalize_redirections(t_data *data, int type, char *value);
 void						push_redirections(t_redirection **head,
 								t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
@@ -159,7 +160,7 @@ void						ft_new_str(char *str, int index);
 char						*get_dollar_name(char *command, int *j);
 char						*check_name_hdc(char *buffer, int *k);
 char						*expand_herdocs(char *buffer, t_env *lenv);
-char						*treat_heredocs(char *delimeter);
+char						*treat_heredocs(t_data *data, char *delimeter);
 char						*ft_strndup(const char *s1, int size);
 int							syntax_errors(t_token *tokens);
 t_token						*new_line(char *n_type, char *value);
@@ -196,6 +197,9 @@ char						**ft_get_spllited_path_env(t_data *data);
 char						*get_val_env_var(char **env, char *env_variable);
 int							ft_pipe(t_data *data, t_command *cmd);
 int							cmd_founded_y_n(t_data *data, t_command *cmd);
+int							case_1(t_data *data, t_command *cmd, char *path);
+int							case_2(t_data *data, t_command *cmd, char *path);
+char						*extract_path(t_command *cmd);
 int							pipe_founded(t_token *tokens);
 void						exec(t_data *data, t_command *cmd);
 char						*check_var(char *var_name, char **env);
@@ -215,7 +219,7 @@ char						*verify_rdr(t_data *data);
 int							rdr_execution(t_data *data, t_command *cmd);
 
 // -- output redirection
-void						input_rdr_std_appnd(t_data *data, t_command *cmd);
+void						input_rdr_std_appnd(t_data *data, t_command *cmd, char *str);
 
 // interactive_modes :)
 void						ft_ctl_c(void);

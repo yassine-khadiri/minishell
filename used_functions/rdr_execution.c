@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:22:28 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/31 17:31:09 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/04 00:12:34 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	rdr_execution(t_data *data, t_command *cmd)
 	{
 		check_exec = true;
 		if (!ft_strcmp(verify_rdr(data), "<"))
-			input_rdr_std_appnd(data, cmd);
+			input_rdr_std_appnd(data, cmd, "input");
+		else if (!ft_strcmp(verify_rdr(data), "<<"))
+			input_rdr_std_appnd(data, cmd, "herdoc");
 		else if (!ft_strcmp(verify_rdr(data), ">"))
 			output_rdr_std_appnd(data, cmd, O_TRUNC);
 		else if (!ft_strcmp(verify_rdr(data), ">>"))

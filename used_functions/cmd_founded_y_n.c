@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 19:26:33 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:47:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,54 +53,13 @@ char	*extract_path(t_command *cmd)
 
 int	check_executable_files(t_data *data, t_command *cmd)
 {
-	int		pid;
 	char	*path;
 
 	path = NULL;
 	if (cmd->cmd_array[0][0] == '/')
-	{
-		if (!access(cmd->cmd_array[0], X_OK))
-		{
-			path = extract_path(cmd);
-			cmd->cmd_array[0] = (ft_strrchr(cmd->cmd_array[0], '/') + 1);
-			cmd->cmd_array[1] = NULL;
-			pid = fork();
-			if (pid < 0)
-				return (0);
-			if (pid == 0)
-			{
-				execve(path, cmd->cmd_array, data->env);
-				exit(1);
-			}
-			waitpid(pid, NULL, 0);
-		}
-		return (1);
-	}
+		return (case_1(data, cmd, path));
 	else if (cmd->cmd_array[0][0] == '.' && cmd->cmd_array[0][1] == '/')
-	{
-		path = getcwd(data->getpath, sizeof(data->getpath));
-		path = ft_strjoin(path, "/");
-		path = ft_strjoin(path, cmd->cmd_array[0]);
-		if (!access(path, X_OK))
-		{
-			pid = fork();
-			if (pid < 0)
-				return (0);
-			if (pid == 0)
-			{
-				execve(path, cmd->cmd_array, data->env);
-				exit(1);
-			}
-			waitpid(pid, NULL, 0);
-		}
-		else
-		{
-			write(2, RED "minishell: ", 19);
-			write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
-			write(2, ": No such file or directory\n" BLU, 36);
-		}
-		return (1);
-	}
+		return (case_2(data, cmd, path));
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_start.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 03:23:26 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/04 03:32:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	minishel_start(t_data *data)
 				data->syntax_res = syntax_errors(data->tokens);
 				if ((data->syntax_res) != 1)
 				{
-					cmd = ft_parse(data->tokens);
+					cmd = ft_parse(data ,data->tokens);
 					execution(data, cmd);
 				}
 			}
