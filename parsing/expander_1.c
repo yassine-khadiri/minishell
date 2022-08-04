@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:22:28 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/04 03:36:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/04 06:07:15 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,21 @@
 char	*treat_heredocs(t_data *data, char *delimeter)
 {
 	char	*line;
-
+	int		fd;
+	t_redirection *red = NULL;
 	data->buffer_herdoc =ft_strdup("");
 	while (1)
 	{
 		line = readline(BLU "> " WHT);
 		if (ft_strcmp(line, delimeter) == 0)
+		{
 			break ;
+		}
 		line = ft_strjoin(line, "\n");
-		data->buffer_herdoc =ft_strjoin(data->buffer_herdoc, line);
+		data->buffer_herdoc = ft_strjoin(data->buffer_herdoc, line);
 	}
-	// buffedata->r = expand_herdocs(buffer);
-	return (data->buffer_herdoc);
+	// ! daba khas had lcontent li kayn f buffer_herdoc tlo7ha f dak lfile libghina ncreeyiwh temporarly ( /tmp/chi_9lwa)
+	// !!!!!!!!!! ana jrrebt walakin mabghach itkriya liya lfile f /tmp/...
+	
+	return (delimeter); //!!     -----   returnit 'delimeter' li howa smiya ta3 lfile litikoun gddam hado "<<"
 }
