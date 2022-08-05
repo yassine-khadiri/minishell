@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 19:21:46 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/05 05:43:00 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_exit(t_command *cmd)
 				cmd->cmd_array[i]);
 		if (!ft_strcmp(cmd->cmd_array[i], " "))
 			++i;
+		else
+			g_dollar_question = atoi(cmd->cmd_array[i]);
 	}
 	return (0);
 }

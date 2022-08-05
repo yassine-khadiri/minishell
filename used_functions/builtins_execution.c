@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 19:16:47 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/05 05:41:49 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	exec_builts(t_data *data, t_command *cmd, int index)
 	else if (!ft_strcmp(cmd->cmd_array[index], "exit"))
 	{
 		if (!ft_exit(cmd))
-			exit(0);
+			exit(g_dollar_question);
 	}
 	return (0);
 }
