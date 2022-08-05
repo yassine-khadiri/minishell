@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/04 00:52:29 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/05 01:24:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,6 @@ int							case_1(t_data *data, t_command *cmd, char *path);
 int							case_2(t_data *data, t_command *cmd, char *path);
 char						*extract_path(t_command *cmd);
 int							pipe_founded(t_token *tokens);
-void						exec(t_data *data, t_command *cmd);
 char						*check_var(char *var_name, char **env);
 void						print_mssj(char *str, char mode);
 char						*ft_itoa(int n);

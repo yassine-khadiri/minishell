@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:22:28 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/04 06:07:15 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/04 19:16:27 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,14 @@
 char	*treat_heredocs(t_data *data, char *delimeter)
 {
 	char	*line;
-	int		fd;
-	t_redirection *red = NULL;
+	// int		fd;
+	// t_redirection *red = NULL;
 	data->buffer_herdoc =ft_strdup("");
 	while (1)
 	{
 		line = readline(BLU "> " WHT);
 		if (ft_strcmp(line, delimeter) == 0)
-		{
 			break ;
-		}
 		line = ft_strjoin(line, "\n");
 		data->buffer_herdoc = ft_strjoin(data->buffer_herdoc, line);
 	}

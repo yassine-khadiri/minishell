@@ -1,3 +1,4 @@
+ls
 CorrectionSomething.c
 Makefile
 README.md
@@ -11,5 +12,4 @@ parsing
 pipes
 redirections
 test
-tmmm
 used_functions

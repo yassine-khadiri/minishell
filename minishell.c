@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 18:44:55 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/04 23:31:56 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	setup_term(void)
 
 void	data_initializer(t_data *data, char **env)
 {
-	data->g_std._stdin = dup(0);
-	data->g_std._stdout = dup(1);
+	data->g_std._stdin = dup(STDIN_FILENO);
+	data->g_std._stdout = dup(STDOUT_FILENO);
 	if (!env[0])
 	{
 		data->env = malloc(sizeof(char *) * 2);
