@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing_utils_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:04:51 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/01 21:58:07 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/05 05:33:10 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_redin(t_token **tokens, char *str)
 		return (0);
 	if (str[i + 1] == '<')
 	{
-		add_back(tokens, create_token(HERDOC, ft_strdup("<<")));
+		add_back(tokens, create_token(HERDOC, ft_strdup("<")));
 		return (2);
 	}
 	else

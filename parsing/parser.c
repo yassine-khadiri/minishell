@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/04 00:50:05 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/05 05:30:39 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	push_cmd_and_redir(t_data *data, t_token **tokens, t_cmdline **cmdline,
 			|| (*tokens)->type == REDIN || (*tokens)->type == REDOUT)
 		{
 			push_redirections(&(*redirections),
-				initalize_redirections(data, (*tokens)->type,
+				initalize_redirections(data, *cmdline, (*tokens)->type,
 					(*tokens)->next->value));
 			(*tokens) = (*tokens)->next;
 		}

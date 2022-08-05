@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/05 01:24:09 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/05 03:13:46 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,13 @@ typedef struct s_data
 	char					**splitted_path;
 	char					mode;
 	int						syntax_res;
+	char					*file_path;
 	int						fd[2];
 	int						pid1;
 	int						pid2;
 	int						status;
 	int						g_index;
+	int	fd_h;
 	t_token					*tokens;
 	t_command				*cmd;
 	t_env					*lenv;
@@ -145,7 +147,7 @@ t_token						*create_token(int type, char *value);
 int							none_error(t_token *tokens, t_token *head);
 int							redir_error(t_token *tokens, t_token *head);
 int							pipe_error(t_token *tokens, t_token *head);
-t_redirection				*initalize_redirections(t_data *data, int type, char *value);
+t_redirection				*initalize_redirections(t_data *data, t_cmdline *cmd, int type, char *value);
 void						push_redirections(t_redirection **head,
 								t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
@@ -209,6 +211,7 @@ char						*ft_strrchr(const char *s, int c);
 char						**final_tokens(t_token **token, char **env);
 void						data_initializer(t_data *data, char **env);
 void						handler(int signm);
+char						*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir);
 
 // redirections
 // -- output redirection
