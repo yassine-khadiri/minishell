@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/05 05:49:40 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/05 17:32:32 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@ int	ft_isnumber(char *str)
 	return (0);
 }
 
+int	set_res(t_command *cmd, int index)
+{
+	int	i;
+
+	i = 0;
+	while (cmd->cmd_array[++index])
+		i++;
+	if (i > 1)
+	{
+		printf("minishell: exit: too many arguments\n");
+		return (1);
+	}
+	if (i == 0)
+		g_dollar_question = ft_atoi(cmd->cmd_array[1]);
+	return (0);
+}
+
 int	ft_exit(t_command *cmd)
 {
 	int	i;
@@ -33,12 +50,13 @@ int	ft_exit(t_command *cmd)
 	while (cmd->cmd_array[++i])
 	{
 		if (!ft_isnumber(cmd->cmd_array[i]))
+		{
 			printf(RED "minishell: exit: %s: numeric argument required\n",
 				cmd->cmd_array[i]);
-		if (!ft_strcmp(cmd->cmd_array[i], " "))
-			++i;
+			break ;
+		}
 		else
-			g_dollar_question = ft_atoi(cmd->cmd_array[i]);
+			return (set_res(cmd, i));
 	}
 	return (0);
 }
