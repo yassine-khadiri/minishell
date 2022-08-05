@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/05 05:49:40 by hbouqssi         ###   ########.fr       */
+/*   Created: 2022/08/05 05:47:43 by hbouqssi          #+#    #+#             */
+/*   Updated: 2022/08/05 05:48:22 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	ft_isnumber(char *str)
+int	ft_atoi(const char *str)
 {
+	int	b;
+	int	res;
 	int	i;
 
 	i = 0;
-	while (ft_isdigit(str[i]))
-		i++;
-	if (ft_strlen(str) == i)
-		return (1);
-	return (0);
-}
-
-int	ft_exit(t_command *cmd)
-{
-	int	i;
-
-	i = 0;
-	printf("exit\n");
-	while (cmd->cmd_array[++i])
+	b = 1;
+	res = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
+		str++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (!ft_isnumber(cmd->cmd_array[i]))
-			printf(RED "minishell: exit: %s: numeric argument required\n",
-				cmd->cmd_array[i]);
-		if (!ft_strcmp(cmd->cmd_array[i], " "))
-			++i;
-		else
-			g_dollar_question = ft_atoi(cmd->cmd_array[i]);
+		if (str[i] == '-')
+			b *= -1;
+		i++;
 	}
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - '0';
+		i++;
+	}
+	return (res * b);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
+#    By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/08/03 19:44:13 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/08/05 05:49:08 by hbouqssi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC = minishell.c \
 	used_functions/ft_strtrim.c \
 	used_functions/ft_strcmp.c \
 	used_functions/ft_strncmp.c \
+	used_functions/ft_atoi.c \
 	used_functions/ft_strdup.c \
 	used_functions/ft_strjoin_space.c \
 	used_functions/ft_strjoin.c \
