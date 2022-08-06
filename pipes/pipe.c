@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/02 19:59:38 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:23:01 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ int	execution_pipe_cmd(t_data *data, t_command *cmd)
 	int		i;
 
 	i = 0;
-	if (rdr_execution(data, cmd) || !ft_export(data, cmd))
+	if (!ft_strcmp(cmd->cmd_array[0], "export"))
+	{
+		ft_export(data, cmd);
+		return (0);
+	}
+	if (rdr_execution(data, cmd))
 		return (0);
 	while (data->splitted_path[i])
 	{

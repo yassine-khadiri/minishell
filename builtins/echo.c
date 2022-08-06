@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 12:28:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/06 18:07:07 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:09:49 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ int	check_dash_n(t_data *data, t_command *cmd, int i)
 	{
 		if (!ft_strcmp(cmd->cmd_array[i], "-n"))
 			i++;
-		if (cmd->cmd_array[i] && cmd->cmd_array[i][0] == '-' && cmd->cmd_array[i][1] == 'n')
+		if (cmd->cmd_array[i] && cmd->cmd_array[i][0] == '-'
+			&& cmd->cmd_array[i][1] == 'n')
 		{
 			j = 0;
-			while (cmd->cmd_array[i][++j] == 'n');
+			while (cmd->cmd_array[i][++j] == 'n')
+				;
 			if (ft_strlen(cmd->cmd_array[i]) == j)
 				i++;
 			else
