@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/03 19:30:23 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/06 03:45:18 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*check_remove_dollars(char **env, char *cmd)
 {
 	char	*var_name;
 	char	*res;
+	char	*cp_res;
 	int		i;
 	int		j;
 	int		dollar_counter;
@@ -23,6 +24,9 @@ char	*check_remove_dollars(char **env, char *cmd)
 	i = 0;
 	var_name = malloc(sizeof(char) * 1000);
 	res = malloc(sizeof(char) * ft_strlen(cmd));
+	if (!var_name || !res)
+		return (0);
+	cp_res = res;
 	while (cmd[i])
 	{
 		j = 0;
@@ -37,12 +41,13 @@ char	*check_remove_dollars(char **env, char *cmd)
 		var_name[j] = '\0';
 		if (dollar_counter > 1 || dollar_counter == 0 || (dollar_counter == 1
 				&& !var_name[dollar_counter]))
-			res = ft_strjoin(res, var_name);
+			cp_res = ft_strjoin(cp_res, var_name);
 		else
-			res = ft_strjoin(res, check_res(var_name, env));
+			cp_res = ft_strjoin(cp_res, check_res(var_name, env));
 	}
-	res[ft_strlen(res)] = '\0';
-	return (res);
+	cp_res[ft_strlen(cp_res)] = '\0';
+	free(res);
+	return (cp_res);
 }
 
 t_token	*ft_tokenizer(t_token **tokens, char *str)
@@ -111,7 +116,7 @@ char	**final_tokens(t_token **token, char **env)
 {
 	t_token	*tokens;
 	t_token *new_tokens;
-	char	*tmp;
+	char	*tmp, *cp_tmp;
 	int		i;
 
 	tokens = *token;
@@ -125,6 +130,7 @@ char	**final_tokens(t_token **token, char **env)
 			tmp = malloc(sizeof(char) * c_q_word(tokens));
 			if (!tmp)
 				return (0);
+			cp_tmp = tmp;
 			while (tokens && (tokens->type == DBQUOTE || tokens->type == WORD
 					|| tokens->type == QUOTE))
 			{
@@ -145,11 +151,11 @@ char	**final_tokens(t_token **token, char **env)
 				}
 				else if (tokens->type == DBQUOTE)
 					tokens->value = check_remove_dollars(env, tokens->value);
-				tmp = ft_strjoin(tmp, tokens->value);
+				cp_tmp = ft_strjoin(cp_tmp, tokens->value);
 				tokens = tokens->next;
 			}
-			// free(tmp);
-			add_back(&new_tokens, create_token(WORD, tmp));
+			free(tmp);
+			add_back(&new_tokens, create_token(WORD, cp_tmp));
 		}
 		if (tokens->type != WSPACE)
 			add_back(&new_tokens, create_token(tokens->type, tokens->value));
