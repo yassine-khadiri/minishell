@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/05 05:48:51 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/06 19:01:21 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct s_data
 	int						g_index;
 	int	fd_h;
 	t_token					*tokens;
+	t_token					*tokens_res;
 	t_command				*cmd;
 	t_env					*lenv;
 	t_global				g_std;

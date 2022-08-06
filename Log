@@ -1,0 +1,97 @@
+==4045== Memcheck, a memory error detector
+==4045== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4045== Using Valgrind-3.19.0.GIT-lbmacos and LibVEX; rerun with -h for copyright info
+==4045== Command: ./minishell
+==4045== Parent PID: 89388
+==4045== 
+--4045-- run: /usr/bin/dsymutil "./minishell"
+==4045== Invalid write of size 8
+==4045==    at 0x1000048F9: add_to_table (ft_split.c:70)
+==4045==    by 0x100004725: ft_split (ft_split.c:87)
+==4045==    by 0x100004CAF: ft_get_spllited_path_env (execution_other_builtins.c:31)
+==4045==    by 0x10000175E: data_initializer (minishell.c:36)
+==4045==    by 0x1000017CB: main (minishell.c:48)
+==4045==  Address 0x1008b4a90 is 80 bytes inside a block of size 81 alloc'd
+==4045==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==4045==    by 0x1000046F5: ft_split (ft_split.c:84)
+==4045==    by 0x100004CAF: ft_get_spllited_path_env (execution_other_builtins.c:31)
+==4045==    by 0x10000175E: data_initializer (minishell.c:36)
+==4045==    by 0x1000017CB: main (minishell.c:48)
+==4045== 
+==4045== Conditional jump or move depends on uninitialised value(s)
+==4045==    at 0x1000019BA: ft_strlen (ft_strlen.c:22)
+==4045==    by 0x10000238B: ft_strjoin (ft_strjoin.c:23)
+==4045==    by 0x100002BCE: check_remove_dollars (tokenizing.c:46)
+==4045==    by 0x10000312D: final_tokens (tokenizing.c:152)
+==4045==    by 0x1000018E7: minishel_start (minishell_start.c:47)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045== 
+==4045== Conditional jump or move depends on uninitialised value(s)
+==4045==    at 0x1000023EC: ft_strjoin (ft_strjoin.c:28)
+==4045==    by 0x100002BCE: check_remove_dollars (tokenizing.c:46)
+==4045==    by 0x10000312D: final_tokens (tokenizing.c:152)
+==4045==    by 0x1000018E7: minishel_start (minishell_start.c:47)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045== 
+==4045== Invalid read of size 1
+==4045==    at 0x1000019B3: ft_strlen (ft_strlen.c:22)
+==4045==    by 0x10000238B: ft_strjoin (ft_strjoin.c:23)
+==4045==    by 0x100003176: final_tokens (tokenizing.c:157)
+==4045==    by 0x1000018E7: minishel_start (minishell_start.c:47)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045==  Address 0x100903560 is 0 bytes after a block of size 0 alloc'd
+==4045==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==4045==    by 0x100002FF3: final_tokens (tokenizing.c:133)
+==4045==    by 0x1000018E7: minishel_start (minishell_start.c:47)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045== 
+==4045== Invalid read of size 1
+==4045==    at 0x1000023E5: ft_strjoin (ft_strjoin.c:28)
+==4045==    by 0x100003176: final_tokens (tokenizing.c:157)
+==4045==    by 0x1000018E7: minishel_start (minishell_start.c:47)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045==  Address 0x100903560 is 0 bytes after a block of size 0 alloc'd
+==4045==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==4045==    by 0x100002FF3: final_tokens (tokenizing.c:133)
+==4045==    by 0x1000018E7: minishel_start (minishell_start.c:47)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045== 
+==4045== 
+==4045== HEAP SUMMARY:
+==4045==     in use at exit: 301,167 bytes in 421 blocks
+==4045==   total heap usage: 635 allocs, 214 frees, 324,565 bytes allocated
+==4045== 
+==4045== 22 bytes in 4 blocks are definitely lost in loss record 21 of 116
+==4045==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==4045==    by 0x1000027FA: ft_strndup (ft_strndup.c:20)
+==4045==    by 0x10000334C: word (tokenizing_utils_1.c:39)
+==4045==    by 0x100002E9A: ft_tokenizer (tokenizing.c:97)
+==4045==    by 0x1000018BF: minishel_start (minishell_start.c:46)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045== 
+==4045== 120 (40 direct, 80 indirect) bytes in 1 blocks are definitely lost in loss record 54 of 116
+==4045==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==4045==    by 0x100003FDD: initialize_command (parser_utils_1.c:33)
+==4045==    by 0x100003F42: ft_parse (parser.c:80)
+==4045==    by 0x100001938: minishel_start (minishell_start.c:60)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045== 
+==4045== 346 (64 direct, 282 indirect) bytes in 2 blocks are definitely lost in loss record 70 of 116
+==4045==    at 0x10012B545: malloc (in /goinfre/hbouqssi/homebrew/Cellar/valgrind/HEAD-6ff08b6/libexec/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==4045==    by 0x100002911: initialize_list (initialize_tokens.c:19)
+==4045==    by 0x100002C72: ft_tokenizer (tokenizing.c:63)
+==4045==    by 0x1000018BF: minishel_start (minishell_start.c:46)
+==4045==    by 0x1000017FE: main (minishell.c:56)
+==4045== 
+==4045== LEAK SUMMARY:
+==4045==    definitely lost: 126 bytes in 7 blocks
+==4045==    indirectly lost: 362 bytes in 18 blocks
+==4045==      possibly lost: 0 bytes in 0 blocks
+==4045==    still reachable: 286,712 bytes in 235 blocks
+==4045==         suppressed: 13,967 bytes in 161 blocks
+==4045== Reachable blocks (those to which a pointer was found) are not shown.
+==4045== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==4045== 
+==4045== Use --track-origins=yes to see where uninitialised values come from
+==4045== For lists of detected and suppressed errors, rerun with: -s
+==4045== ERROR SUMMARY: 20 errors from 8 contexts (suppressed: 4 from 4)

@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/06 03:45:18 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:33:41 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*check_remove_dollars(char **env, char *cmd)
 {
 	char	*var_name;
+	char 	*cp_var_name;
 	char	*res;
 	char	*cp_res;
 	int		i;
@@ -27,6 +28,7 @@ char	*check_remove_dollars(char **env, char *cmd)
 	if (!var_name || !res)
 		return (0);
 	cp_res = res;
+	cp_var_name = var_name;
 	while (cmd[i])
 	{
 		j = 0;
@@ -34,18 +36,19 @@ char	*check_remove_dollars(char **env, char *cmd)
 		while (cmd[i] && cmd[i] == '$')
 		{
 			dollar_counter++;
-			var_name[j++] = cmd[i++];
+			cp_var_name[j++] = cmd[i++];
 		}
 		while (cmd[i] && cmd[i] != '$')
-			var_name[j++] = cmd[i++];
-		var_name[j] = '\0';
+			cp_var_name[j++] = cmd[i++];
+		cp_var_name[j] = '\0';
 		if (dollar_counter > 1 || dollar_counter == 0 || (dollar_counter == 1
-				&& !var_name[dollar_counter]))
-			cp_res = ft_strjoin(cp_res, var_name);
+				&& !cp_var_name[dollar_counter]))
+			cp_res = ft_strjoin(cp_res, cp_var_name);
 		else
-			cp_res = ft_strjoin(cp_res, check_res(var_name, env));
+			cp_res = ft_strjoin(cp_res, check_res(cp_var_name, env));
 	}
 	cp_res[ft_strlen(cp_res)] = '\0';
+	free(var_name);
 	free(res);
 	return (cp_res);
 }

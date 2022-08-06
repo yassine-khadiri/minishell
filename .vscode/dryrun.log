@@ -7,19 +7,15 @@ cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strlen.c -o used_functions/ft_strlen.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/is_validated.c -o used_functions/is_validated.o
- 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strtrim.c -o used_functions/ft_strtrim.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strcmp.c -o used_functions/ft_strcmp.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strncmp.c -o used_functions/ft_strncmp.o
- 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_atoi.c -o used_functions/ft_atoi.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strdup.c -o used_functions/ft_strdup.o
- 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strjoin_space.c -o used_functions/ft_strjoin_space.o
- 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strjoin.c -o used_functions/ft_strjoin.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_isalnum.c -o used_functions/ft_isalnum.o
@@ -29,11 +25,8 @@ cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_isdigit.c -o used_functions/ft_isdigit.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_substr.c -o used_functions/ft_substr.o
- 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strndup.c -o used_functions/ft_strndup.o
- 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/add_back.c -o used_functions/add_back.o
- 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/initialize_tokens.c -o parsing/initialize_tokens.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/tokenizing.c -o parsing/tokenizing.o
@@ -67,25 +60,35 @@ cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/rdr_execution.c -o used_functions/rdr_execution.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/cmd_founded_y_n.c -o used_functions/cmd_founded_y_n.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/for_cmd_founded_y_n.c -o used_functions/for_cmd_founded_y_n.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/builtins_execution.c -o used_functions/builtins_execution.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/for_export_1.c -o used_functions/for_export_1.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/for_export_2.c -o used_functions/for_export_2.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_lstsize.c -o used_functions/ft_lstsize.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c redirections/output_rdr_std_appnd.c -o redirections/output_rdr_std_appnd.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c redirections/input_rdr_std_appnd.c -o redirections/input_rdr_std_appnd.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/export.c -o builtins/export.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c pipes/pipe.c -o pipes/pipe.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/echo.c -o builtins/echo.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/for_echo.c -o used_functions/for_echo.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/cd.c -o builtins/cd.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/pwd.c -o builtins/pwd.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/unset.c -o builtins/unset.o
+ 
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/env.c -o builtins/env.o
  
 cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/exit.c -o builtins/exit.o
