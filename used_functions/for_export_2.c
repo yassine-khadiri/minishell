@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/03 19:16:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/07 22:11:41 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void	sort_data(t_data *data, int len, int step)
 
 void	display_export(t_data *data)
 {
-	int	i;
-	int	len;
-	int	step;
+	int		i;
+	int		len;
+	int		step;
+	char	*tmp;
 
 	step = 0;
 	len = 0;
@@ -64,8 +65,10 @@ void	display_export(t_data *data)
 	i = 0;
 	while (data->env[i])
 	{
-		printf("declare -x %s=\"%s\"\n", extract_var_name(data->env[i]),
-			get_val_env_var(data->env, extract_var_name(data->env[i])));
+		tmp = extract_var_name(data->env[i]);
+		printf("declare -x %s=\"%s\"\n", tmp,
+			get_val_env_var(data->env, tmp));
+		free(tmp);
 		i++;
 	}
 }
@@ -95,5 +98,6 @@ char	*ignore_something(char *var_name)
 	new_var[++j] = '\0';
 	if (val)
 		return (new_var);
+	free(new_var);
 	return (NULL);
 }

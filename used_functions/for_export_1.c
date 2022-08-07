@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:12 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/06 14:48:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/07 21:10:42 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ char	*extract_var_name(char *string)
 		}
 		i++;
 	}
-	extr_var_name = string;
-	return (extr_var_name);
+	free(extr_var_name);
+	return (string);
 }
 
 int	check_dash_err(char *env_var)

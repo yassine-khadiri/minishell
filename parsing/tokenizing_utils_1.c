@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing_utils_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:04:51 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/02 23:10:56 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/07 20:47:01 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	not_word(char c, char *str)
 int	word(t_token **tokens, char *str)
 {
 	static int	i;
+	// char		*tmp;
 
 	if (!str)
 		return (0);
@@ -36,7 +37,11 @@ int	word(t_token **tokens, char *str)
 	while (str[i] != '\0' && not_word(str[i], " |\"'<>"))
 		i++;
 	if (i != 0)
+	{
+		// tmp = ft_strndup(str, i);
 		add_back(tokens, create_token(WORD, ft_strndup(str, i)));
+		// free(tmp);
+	}
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 00:34:29 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/07 21:29:02 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void	free_cmd(t_command *cmd, t_token *tokens)
 		free(((t_token *)tmp)->value);
 		free(tmp);
 	}
-	while (cmd)
-	{
-		tmp = cmd;
-		cmd = cmd->next;
-		free(tmp);
-	}
+	(void)cmd;
+	// while (cmd)
+	// {
+	// 	tmp = cmd;
+	// 	cmd = cmd->next;
+	// 	free(tmp);
+	// }
 }
 
 void	minishel_start(t_data *data)
@@ -63,7 +64,7 @@ void	minishel_start(t_data *data)
 			}
 			add_history(data->command_buf);
 		}
+		// free_cmd(cmd, data->tokens);
 	}
 	// free(data->command_buf);
-	// free_cmd(cmd, data->tokens);
 }

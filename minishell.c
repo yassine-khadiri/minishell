@@ -6,11 +6,19 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 01:02:44 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/07 22:13:50 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	free_data(t_data *data)
+{
+	while (*data->splitted_path)
+		free(*data->splitted_path++);
+	free(data->splitted_path);
+	free(data);
+}
 
 void	setup_term(void)
 {
@@ -54,5 +62,6 @@ int	main(int argc, char **argv, char **env)
 	}
 	setup_term();
 	minishel_start(data);
+	// free_data(data);
 	return (0);
 }

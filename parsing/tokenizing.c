@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/06 03:45:18 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/07 20:46:04 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	free_tokens(t_token *tokens)
+{
+	void	*tmp;
+
+	while (tokens)
+	{
+		tmp = tokens;
+		tokens = tokens->next;
+		free(((t_token *)tmp)->value);
+		free(tmp);
+	}
+}
 
 char	*check_remove_dollars(char **env, char *cmd)
 {
@@ -47,6 +60,7 @@ char	*check_remove_dollars(char **env, char *cmd)
 	}
 	cp_res[ft_strlen(cp_res)] = '\0';
 	free(res);
+	free(var_name);
 	return (cp_res);
 }
 
@@ -162,7 +176,7 @@ char	**final_tokens(t_token **token, char **env)
 		if (tokens)
 			tokens = tokens->next;
 	}
-	// free tokens // *token
+	// free_tokens(tokens);
 	*token = new_tokens;
 	return (NULL);
 }
