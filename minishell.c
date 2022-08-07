@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/04 23:31:56 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:02:44 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	data_initializer(t_data *data, char **env)
 	}
 	else
 		data->env = env;
-	data->splitted_path = ft_get_spllited_path_env(data);
+	// data->splitted_path = ft_get_spllited_path_env(data);
 	// data->lenv = create_env_list(data->lenv, data->env);
 	g_dollar_question = 0;
 }

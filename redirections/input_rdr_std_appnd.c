@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:33:56 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/05 05:35:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/06 18:27:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	input_rdr_std_appnd(t_data *data, t_command *cmd, char *str)
 {
 	int				fd;
-	(void)str;
 	t_redirection	*red;
 
 	red = cmd->redirection;

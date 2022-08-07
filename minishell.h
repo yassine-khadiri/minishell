@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/06 19:01:21 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:10:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ typedef struct s_data
 	int						g_index;
 	int	fd_h;
 	t_token					*tokens;
-	t_token					*tokens_res;
 	t_command				*cmd;
 	t_env					*lenv;
 	t_global				g_std;
@@ -214,6 +213,7 @@ char						**final_tokens(t_token **token, char **env);
 void						data_initializer(t_data *data, char **env);
 void						handler(int signm);
 char						*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir);
+int							error_mssj(t_data *data, t_command *cmd);
 
 // redirections
 // -- output redirection

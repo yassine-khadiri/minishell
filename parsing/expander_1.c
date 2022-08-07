@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 19:22:28 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/05 19:16:02 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/06 23:58:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,50 @@
 
 char	*expand_readline_herdoc(char **env, char *cmd)
 {
-	char	*var_name;
+	char	*tmp;
 	char	*res;
 	int		i;
 	int		j;
 	int		dollar_counter;
 
 	i = 0;
-	var_name = malloc(sizeof(char) * 1000);
-	res = malloc(sizeof(char) * ft_strlen(cmd));
+	tmp = malloc(sizeof(char) * 1000);
+	res = malloc(sizeof(char) * 1000);
 	while (cmd[i])
 	{
 		j = 0;
 		dollar_counter = 0;
+		if (cmd[i] != '$')
+		{
+			while (cmd[i] && cmd[i] != '$')
+				tmp[j++] = cmd[i++];
+			tmp[j] = '\0';
+			res = ft_strjoin(res, tmp);
+			
+			if (!cmd[i + 1])
+			{
+				res[ft_strlen(res)] = '\0';
+				return (res);
+			}
+		}
+		j = 0;
 		while (cmd[i] && cmd[i] == '$')
 		{
-			if (cmd[i + 1] == '"')
-			{
-				res = cmd;
-				return(res);
-			}
 			dollar_counter++;
-			var_name[j++] = cmd[i++];
+			tmp[j++] = cmd[i++];
 		}
 		while (cmd[i] && cmd[i] != '$')
-			var_name[j++] = cmd[i++];
-		var_name[j] = '\0';
+		{
+			if (!ft_isalnum(cmd[i]))
+				break ;
+			tmp[j++] = cmd[i++];
+		}
+		tmp[j] = '\0';
 		if (dollar_counter > 1 || dollar_counter == 0 || (dollar_counter == 1
-				&& !var_name[dollar_counter]))
-					res = ft_strjoin(res, var_name);
+				&& !tmp[dollar_counter]))
+					res = ft_strjoin(res, tmp);
 		else
-			res = ft_strjoin(res, check_res(var_name, env));
+			res = ft_strjoin(res, check_res(tmp, env));
 	}
 	res[ft_strlen(res)] = '\0';
 	return (res);	
@@ -53,8 +66,20 @@ char	*expand_readline_herdoc(char **env, char *cmd)
 char	*treat_heredocs(t_data *data, char *delimeter)
 {
 	char	*line;
+	// int		i;
 
-	data->buffer_herdoc =ft_strdup("");
+	data->buffer_herdoc = ft_strdup("");
+	// i = 0;
+	// while (data->env[i])
+	// {
+	// 	if(!ft_strcmp(get_val_env_var(data->env, extract_var_name(data->env[i])), delimeter))
+	// 	{
+	// 		delimeter = extract_var_name(data->env[i]);
+	// 		break ;
+	// 	}
+	// 	i++;
+	// }
+	// puts(delimeter);
 	while (1)
 	{
 		line = readline(BLU "> " WHT);

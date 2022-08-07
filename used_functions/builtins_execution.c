@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/05 05:41:49 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/07 01:24:55 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ int	exec_builts(t_data *data, t_command *cmd, int index)
 	else if (!ft_strcmp(cmd->cmd_array[index], "unset"))
 		return (ft_unset(data, cmd, index));
 	else if (!ft_strcmp(cmd->cmd_array[index], "env"))
+	{
+		if (!data->splitted_path)
+			return (0);
 		return (ft_env(data->env));
+	}
 	else if (!ft_strcmp(cmd->cmd_array[index], "exit"))
 	{
 		if (!ft_exit(cmd))
