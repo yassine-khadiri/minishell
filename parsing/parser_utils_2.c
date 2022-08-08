@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/05 05:31:08 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/08 02:06:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ char	*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir)
 	return (data->file_path);
 }
 
-t_redirection	*initalize_redirections(t_data *data, t_cmdline *cmd, int type, char *value)
+t_redirection	*initalize_redirections(t_data *data,
+						t_cmdline *cmd, int type, char *value)
 {
 	t_redirection	*redirection;
 
@@ -52,7 +53,6 @@ t_redirection	*initalize_redirections(t_data *data, t_cmdline *cmd, int type, ch
 	}
 	redirection->type = type;
 	redirection->file = value;
-	
 	redirection->next = NULL;
 	return (redirection);
 }

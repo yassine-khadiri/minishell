@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/07 20:46:04 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/08 01:39:02 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*check_remove_dollars(char **env, char *cmd)
 {
 	char	*var_name;
 	char	*res;
-	char	*cp_res;
+	char	*tmp;
 	int		i;
 	int		j;
 	int		dollar_counter;
@@ -39,7 +39,6 @@ char	*check_remove_dollars(char **env, char *cmd)
 	res = malloc(sizeof(char) * ft_strlen(cmd));
 	if (!var_name || !res)
 		return (0);
-	cp_res = res;
 	while (cmd[i])
 	{
 		j = 0;
@@ -52,16 +51,17 @@ char	*check_remove_dollars(char **env, char *cmd)
 		while (cmd[i] && cmd[i] != '$')
 			var_name[j++] = cmd[i++];
 		var_name[j] = '\0';
+		tmp = res;
 		if (dollar_counter > 1 || dollar_counter == 0 || (dollar_counter == 1
 				&& !var_name[dollar_counter]))
-			cp_res = ft_strjoin(cp_res, var_name);
+			res = ft_strjoin(tmp, var_name);
 		else
-			cp_res = ft_strjoin(cp_res, check_res(var_name, env));
+			res = ft_strjoin(tmp, check_res(var_name, env));
+		free(var_name);
+		free(tmp);
 	}
-	cp_res[ft_strlen(cp_res)] = '\0';
-	free(res);
-	free(var_name);
-	return (cp_res);
+	res[ft_strlen(res)] = '\0';
+	return (res);
 }
 
 t_token	*ft_tokenizer(t_token **tokens, char *str)
@@ -107,7 +107,7 @@ t_token	*ft_tokenizer(t_token **tokens, char *str)
 		else if (not_word(str[i], " |\"<'>;"))
 			i += word(tokens, &str[i]);
 	}
-	add_back(tokens, create_token(N_line, ft_strdup("NEWLINE")));
+	add_back(tokens, create_token(N_line, "NEWLINE"));
 	return (*tokens);
 }
 
@@ -176,7 +176,7 @@ char	**final_tokens(t_token **token, char **env)
 		if (tokens)
 			tokens = tokens->next;
 	}
-	// free_tokens(tokens);
+	free_tokens(*token);
 	*token = new_tokens;
 	return (NULL);
 }

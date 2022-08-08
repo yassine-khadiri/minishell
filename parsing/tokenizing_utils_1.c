@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:04:51 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/07 20:47:01 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/08 02:23:52 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,22 @@ int	not_word(char c, char *str)
 int	word(t_token **tokens, char *str)
 {
 	static int	i;
-	// char		*tmp;
+	char		*tmp;
+	tmp = NULL;
 
 	if (!str)
 		return (0);
 	i = 0;
 	while (str[i] != '\0' && not_word(str[i], " |\"'<>"))
 		i++;
+	
 	if (i != 0)
 	{
-		// tmp = ft_strndup(str, i);
-		add_back(tokens, create_token(WORD, ft_strndup(str, i)));
-		// free(tmp);
+		tmp = ft_strndup(str, i);
+		add_back(tokens, create_token(WORD, tmp));
 	}
+	if (tmp)
+		free(tmp);
 	return (i);
 }
 

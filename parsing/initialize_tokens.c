@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_tokens.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:06:40 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/27 22:20:19 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/08 02:19:28 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_token	*create_token(int type, char *value)
 	if (!tokens)
 		return (NULL);
 	tokens->type = type;
-	tokens->value = value;
+	tokens->value = ft_strdup(value);
 	tokens->next = NULL;
 	tokens->prev = NULL;
 	return (tokens);

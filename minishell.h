@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 01:10:25 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/08 00:43:24 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ void						data_initializer(t_data *data, char **env);
 void						handler(int signm);
 char						*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir);
 int							error_mssj(t_data *data, t_command *cmd);
+void						free_tokens(t_token *tokens);
 
 // redirections
 // -- output redirection

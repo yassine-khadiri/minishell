@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 22:13:50 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/08 02:25:22 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_data(t_data *data)
 {
-	while (*data->splitted_path)
-		free(*data->splitted_path++);
+	while (data->splitted_path && *(data->splitted_path))
+		free(*(data->splitted_path)++);
 	free(data->splitted_path);
 	free(data);
 }
@@ -62,6 +62,6 @@ int	main(int argc, char **argv, char **env)
 	}
 	setup_term();
 	minishel_start(data);
-	// free_data(data);
+	free_data(data);
 	return (0);
 }

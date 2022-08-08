@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 21:29:02 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/08 02:24:15 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ void	minishel_start(t_data *data)
 {
 	t_command	*cmd;
 
+	cmd = NULL;
 	while (1)
 	{
 		ft_ctl_c();
 		ft_ctl_slash();
+		// data->command_buf = ft_strdup("ls -all > test");
 		data->command_buf = readline(BLU "minishell> " WHT);
 		ft_ctl_d(data);
 		if (ft_strlen(data->command_buf) > 0)
@@ -65,6 +67,7 @@ void	minishel_start(t_data *data)
 			add_history(data->command_buf);
 		}
 		// free_cmd(cmd, data->tokens);
+		free(data->command_buf);
+		// break;
 	}
-	// free(data->command_buf);
 }
