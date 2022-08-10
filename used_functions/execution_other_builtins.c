@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:46:13 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:06:42 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 			if (data->status == 2)
 				printf("\n");
 			signal(SIGINT, handler);
-			g_dollar_question = WEXITSTATUS(data->status);
+			g_tools.g_dollar_question = WEXITSTATUS(data->status);
 			break ;
 		}
 		i++;

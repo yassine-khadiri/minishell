@@ -6,24 +6,28 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:12 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:45:25 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:01:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	check_equal_sign(char *env_var)
+char	*get_extr_var_name(char *string, char *extr_var_name)
 {
 	int	i;
 
-	i = 1;
-	while (env_var[i])
+	i = 0;
+	while (string[i])
 	{
-		if (env_var[i] == '=')
-			return (i);
+		extr_var_name[i] = string[i];
+		if (string[i] == '=')
+		{
+			extr_var_name[i] = '\0';
+			return (extr_var_name);
+		}
 		i++;
 	}
-	return (0);
+	return (string);
 }
 
 char	*extract_var_name(char *string)
@@ -44,18 +48,7 @@ char	*extract_var_name(char *string)
 	}
 	if (!extr_var_name)
 		return (NULL);
-	i = 0;
-	while (string[i])
-	{
-		extr_var_name[i] = string[i];
-		if (string[i] == '=')
-		{
-			extr_var_name[i] = '\0';
-			return (extr_var_name);
-		}
-		i++;
-	}
-	return (string);
+	return (get_extr_var_name(string, extr_var_name));
 }
 
 int	check_dash_err(char *env_var)

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:45:54 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:18:04 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_not_found(t_command **cmd)
 {
 	printf(WHT "minishell : %s: command not found\n" BLU,
 		(*cmd)->cmd_array[0]);
-	g_dollar_question = 127;
+	g_tools.g_dollar_question = 127;
 }
 
 char	*extract_path(t_command *cmd)
@@ -98,7 +98,7 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 		write(2, RED "minishell: ", 19);
 		write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
 		write(2, ": command not found\n" BLU, 28);
-		g_dollar_question = 127;
+		g_tools.g_dollar_question = 127;
 	}
 	return (result);
 }

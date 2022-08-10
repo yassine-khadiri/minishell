@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/10 01:38:44 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:18:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,8 @@ char	**final_tokens(t_token **token, char **env)
 				{
 					if (!ft_strcmp(tokens->value, "$?"))
 					{
-						printf("%d", g_dollar_question);
-						g_dollar_question = 0;
+						printf("%d", g_tools.g_dollar_question);
+						g_tools.g_dollar_question = 0;
 					}
 					if (!ft_strcmp(tokens->value, "$")
 						&& (tokens->next->type == DBQUOTE

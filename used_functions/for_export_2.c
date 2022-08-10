@@ -6,11 +6,25 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:45:34 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:00:24 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	check_equal_sign(char *env_var)
+{
+	int	i;
+
+	i = 1;
+	while (env_var[i])
+	{
+		if (env_var[i] == '=')
+			return (i);
+		i++;
+	}
+	return (0);
+}
 
 void	sort_data_helper(t_data *data, int i)
 {

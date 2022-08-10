@@ -6,13 +6,13 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:53:09 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:18:18 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_globals g_tools = {0, 0};
+t_globals	g_tools = {0, 0};
 
 void	setup_term(void)
 {
@@ -25,18 +25,18 @@ void	setup_term(void)
 
 void	data_initializer(t_data *data, char **env)
 {
-	// data->g_std._stdin = dup(STDIN_FILENO);
-	// data->g_std._stdout = dup(STDOUT_FILENO);
+	data->g_std._stdin = dup(STDIN_FILENO);
+	data->g_std._stdout = dup(STDOUT_FILENO);
 	if (!env[0])
 	{
 		data->env = malloc(sizeof(char *) * 2);
-		add(&g_tools.garbage , data->env);
+		add(&g_tools.garbage, data->env);
 		data->env[0] = "PATH=";
 		data->env[1] = NULL;
 	}
 	else
 		data->env = env;
-	g_dollar_question = 0;
+	g_tools.g_dollar_question = 0;
 }
 
 int	main(int argc, char **argv, char **env)
@@ -44,7 +44,7 @@ int	main(int argc, char **argv, char **env)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
-	add(&g_tools.garbage , data);
+	add(&g_tools.garbage, data);
 	if (!data)
 		return (0);
 	data_initializer(data, env);

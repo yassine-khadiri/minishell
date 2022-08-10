@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:55:47 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:34:55 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-int							g_dollar_question;
 typedef enum e_tokens
 {
 	NONE,
@@ -115,6 +114,8 @@ typedef struct s_data
 	int						fd[2];
 	int						pid1;
 	int						pid2;
+	int						*pids;
+	int						**pipes;
 	int						status;
 	int						g_index;
 	int						fd_h;
@@ -124,7 +125,7 @@ typedef struct s_data
 	t_global				g_std;
 }							t_data;
 
-// Garbage Collector hahah!!!
+// Garbage Collector !!!
 
 typedef struct s_node
 {

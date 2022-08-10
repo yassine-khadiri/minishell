@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 19:42:12 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/09 18:52:29 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:19:00 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	case_2(t_data *data, t_command *cmd, char *path)
 			exit(1);
 		}
 		waitpid(data->pid1, &data->status, 0);
-		g_dollar_question = WEXITSTATUS(data->status);
+		g_tools.g_dollar_question = WEXITSTATUS(data->status);
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:08:26 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/10 01:41:22 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:18:45 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	none_error(t_token *tokens, t_token *head)
 	{
 		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
 			tokens->next->value);
-		g_dollar_question = 258;
+		g_tools.g_dollar_question = 258;
 		result = 1;
 	}
 	else if (tokens->next->type == N_line)
@@ -41,7 +41,7 @@ int	redir_error(t_token *tokens, t_token *head)
 		write(2, "minishell: syntax error '", 25);
 		write(2, tokens->next->value, ft_strlen(tokens->next->value));
 		write(2, "`\n", 2);
-		g_dollar_question = 258;
+		g_tools.g_dollar_question = 258;
 		result = 1;
 	}
 	return (result);
@@ -57,14 +57,14 @@ int	pipe_error(t_token *tokens, t_token *head)
 	{
 		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
 			tokens->next->value);
-		g_dollar_question = 258;
+		g_tools.g_dollar_question = 258;
 		result = 1;
 	}
 	else if (tokens->next->type == N_line)
 	{
 		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
 			tokens->next->value);
-		g_dollar_question = 258;
+		g_tools.g_dollar_question = 258;
 		result = 1;
 	}
 	return (result);

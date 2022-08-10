@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:51:57 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:19:23 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	set_res(t_command *cmd, int index)
 		return (1);
 	}
 	if (i == 0)
-		g_dollar_question = ft_atoi(cmd->cmd_array[1]);
+		g_tools.g_dollar_question = ft_atoi(cmd->cmd_array[1]);
 	return (0);
 }
 
