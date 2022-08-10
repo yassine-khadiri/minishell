@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 19:18:18 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 23:51:35 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	setup_term(void)
 	struct termios	t;
 
 	tcgetattr(0, &t);
-	t.c_lflag &= ~ECHOCTL; // khssk t3raf kifax &=
+	t.c_lflag &= ~ECHOCTL;
 	tcsetattr(0, TCSANOW, &t);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 19:34:55 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 23:33:29 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct s_data
 	int						status;
 	int						g_index;
 	int						fd_h;
+	int						nb_cmds;
 	t_token					*tokens;
 	t_command				*cmd;
 	t_env					*lenv;
@@ -250,6 +251,11 @@ int							rdr_execution(t_data *data, t_command *cmd);
 // -- output redirection
 void						input_rdr_std_appnd(t_data *data, t_command *cmd,
 								char *str);
+
+// pipe Command :)
+int							execution_pipe_cmd(t_data *data, t_command *cmd);
+int							get_nb_cmds(t_command *cmd);
+int							exec1(t_data *data, t_command *cmd, int in);
 
 // interactive_modes :)
 void						ft_ctl_c(void);
