@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 19:15:00 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/14 18:03:44 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:14:07 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char	*ft_itoa(int n)
 	nb = n;
 	len = ft_nb_len(nb);
 	str = (char *)malloc(sizeof(char) * len + 1);
+	add(&g_tools.garbage, str);
 	if (!str)
 		return (NULL);
 	if (nb < 0)

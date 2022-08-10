@@ -6,24 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/08 01:39:02 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:38:44 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void	free_tokens(t_token *tokens)
-{
-	void	*tmp;
-
-	while (tokens)
-	{
-		tmp = tokens;
-		tokens = tokens->next;
-		free(((t_token *)tmp)->value);
-		free(tmp);
-	}
-}
 
 char	*check_remove_dollars(char **env, char *cmd)
 {
@@ -36,7 +23,9 @@ char	*check_remove_dollars(char **env, char *cmd)
 
 	i = 0;
 	var_name = malloc(sizeof(char) * 1000);
+	add(&g_tools.garbage, var_name);
 	res = malloc(sizeof(char) * ft_strlen(cmd));
+	add(&g_tools.garbage, res);
 	if (!var_name || !res)
 		return (0);
 	while (cmd[i])
@@ -57,8 +46,6 @@ char	*check_remove_dollars(char **env, char *cmd)
 			res = ft_strjoin(tmp, var_name);
 		else
 			res = ft_strjoin(tmp, check_res(var_name, env));
-		free(var_name);
-		free(tmp);
 	}
 	res[ft_strlen(res)] = '\0';
 	return (res);
@@ -129,9 +116,9 @@ int	c_q_word(t_token *token)
 char	**final_tokens(t_token **token, char **env)
 {
 	t_token	*tokens;
-	t_token *new_tokens;
-	char	*tmp, *cp_tmp;
+	t_token	*new_tokens;
 	int		i;
+	char	*tmp;
 
 	tokens = *token;
 	new_tokens = NULL;
@@ -142,9 +129,9 @@ char	**final_tokens(t_token **token, char **env)
 			|| tokens->type == QUOTE)
 		{
 			tmp = malloc(sizeof(char) * c_q_word(tokens));
+			add(&g_tools.garbage, tmp);
 			if (!tmp)
 				return (0);
-			cp_tmp = tmp;
 			while (tokens && (tokens->type == DBQUOTE || tokens->type == WORD
 					|| tokens->type == QUOTE))
 			{
@@ -165,18 +152,16 @@ char	**final_tokens(t_token **token, char **env)
 				}
 				else if (tokens->type == DBQUOTE)
 					tokens->value = check_remove_dollars(env, tokens->value);
-				cp_tmp = ft_strjoin(cp_tmp, tokens->value);
+				tmp = ft_strjoin(tmp, tokens->value);
 				tokens = tokens->next;
 			}
-			free(tmp);
-			add_back(&new_tokens, create_token(WORD, cp_tmp));
+			add_back(&new_tokens, create_token(WORD, tmp));
 		}
 		if (tokens->type != WSPACE)
 			add_back(&new_tokens, create_token(tokens->type, tokens->value));
 		if (tokens)
 			tokens = tokens->next;
 	}
-	free_tokens(*token);
 	*token = new_tokens;
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 23:04:28 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/07/14 17:52:26 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:18:35 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	new_length = ft_getlength(s, start, len);
 	dest = (char *)malloc(sizeof(char) * new_length + 1);
+	add(&g_tools.garbage, dest);
 	if (dest == NULL)
 		return (NULL);
 	ft_memcpy(dest, s + start, new_length);

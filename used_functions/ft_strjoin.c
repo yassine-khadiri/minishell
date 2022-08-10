@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:02:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/21 15:18:49 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:18:13 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	len_s1 = ft_strlen(s1);
 	tab = (char *)malloc((len_s1 + ft_strlen(s2) + 1) * sizeof(char));
+	add(&g_tools.garbage, tab);
 	i = 0;
 	if (tab == NULL)
 		return (NULL);

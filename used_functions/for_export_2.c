@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 22:11:41 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:45:34 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,7 @@ void	display_export(t_data *data)
 	while (data->env[i])
 	{
 		tmp = extract_var_name(data->env[i]);
-		printf("declare -x %s=\"%s\"\n", tmp,
-			get_val_env_var(data->env, tmp));
-		free(tmp);
+		printf("declare -x %s=\"%s\"\n", tmp, get_val_env_var(data->env, tmp));
 		i++;
 	}
 }
@@ -84,6 +82,7 @@ char	*ignore_something(char *var_name)
 	j = -1;
 	val = false;
 	new_var = malloc(sizeof(char) * ft_strlen(var_name));
+	add(&g_tools.garbage, new_var);
 	if (!new_var)
 		return (NULL);
 	while (var_name[++i])
@@ -98,6 +97,5 @@ char	*ignore_something(char *var_name)
 	new_var[++j] = '\0';
 	if (val)
 		return (new_var);
-	free(new_var);
 	return (NULL);
 }

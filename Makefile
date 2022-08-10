@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+         #
+#    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/08/05 05:49:08 by hbouqssi         ###   ########.fr        #
+#    Updated: 2022/08/10 00:28:02 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ SRC = minishell.c \
 	interactive_modes/ctrl-D.c \
 	interactive_modes/ctrl-C.c \
 	interactive_modes/ctrl-slash.c \
+	garbage/garbage_collector.c \
 
 OBJ = $(SRC:.c=.o)
 

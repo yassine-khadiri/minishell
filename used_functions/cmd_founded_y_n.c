@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 01:14:38 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:45:54 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*extract_path(t_command *cmd)
 
 	i = 0;
 	command = malloc(sizeof(char *) * ft_strlen(cmd->cmd_array[0]));
+	add(&g_tools.garbage, command);
 	if (!command)
 		return (NULL);
 	size = ft_strlen(cmd->cmd_array[0])
@@ -85,14 +86,11 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 		path = ft_strjoin(data->splitted_path[i], "/");
 		tmp = path;
 		path = ft_strjoin(tmp, cmd->cmd_array[0]);
-		free(tmp);
 		if (access(path, X_OK) != -1)
 		{
-			free(path);
 			result = 0;
 			break ;
 		}
-		free(path);
 		i++;
 	}
 	if (result == -1)

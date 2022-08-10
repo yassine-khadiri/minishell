@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/08 02:06:33 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:21:24 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir)
 	while (red)
 	{
 		data->file_path = malloc(sizeof(char) * (ft_strlen(red->file) + 7));
+		add(&g_tools.garbage, data->file_path);
 		data->file_path = ft_strjoin("/tmp/", ".");
 		data->file_path = ft_strjoin(data->file_path, red->file);
 		data->fd_h = open(data->file_path, O_CREAT | O_RDWR | O_TRUNC, 0777);
@@ -37,11 +38,14 @@ char	*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir)
 }
 
 t_redirection	*initalize_redirections(t_data *data,
-						t_cmdline *cmd, int type, char *value)
+										t_cmdline *cmd,
+										int type,
+										char *value)
 {
 	t_redirection	*redirection;
 
 	redirection = malloc(sizeof(t_redirection));
+	add(&g_tools.garbage, redirection);
 	if (!redirection)
 		return (NULL);
 	if (type == HERDOC)

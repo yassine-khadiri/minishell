@@ -6,19 +6,13 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/08 02:25:22 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:53:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	free_data(t_data *data)
-{
-	while (data->splitted_path && *(data->splitted_path))
-		free(*(data->splitted_path)++);
-	free(data->splitted_path);
-	free(data);
-}
+t_globals g_tools = {0, 0};
 
 void	setup_term(void)
 {
@@ -31,18 +25,17 @@ void	setup_term(void)
 
 void	data_initializer(t_data *data, char **env)
 {
-	data->g_std._stdin = dup(STDIN_FILENO);
-	data->g_std._stdout = dup(STDOUT_FILENO);
+	// data->g_std._stdin = dup(STDIN_FILENO);
+	// data->g_std._stdout = dup(STDOUT_FILENO);
 	if (!env[0])
 	{
 		data->env = malloc(sizeof(char *) * 2);
+		add(&g_tools.garbage , data->env);
 		data->env[0] = "PATH=";
 		data->env[1] = NULL;
 	}
 	else
 		data->env = env;
-	// data->splitted_path = ft_get_spllited_path_env(data);
-	// data->lenv = create_env_list(data->lenv, data->env);
 	g_dollar_question = 0;
 }
 
@@ -51,6 +44,7 @@ int	main(int argc, char **argv, char **env)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
+	add(&g_tools.garbage , data);
 	if (!data)
 		return (0);
 	data_initializer(data, env);
@@ -62,6 +56,6 @@ int	main(int argc, char **argv, char **env)
 	}
 	setup_term();
 	minishel_start(data);
-	free_data(data);
+	free_all(g_tools.garbage);
 	return (0);
 }

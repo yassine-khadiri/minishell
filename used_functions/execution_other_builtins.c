@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 21:47:20 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:46:13 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,18 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 		path = ft_strjoin(data->splitted_path[i], "/");
 		tmp = path;
 		path = ft_strjoin(tmp, cmd->cmd_array[0]);
-		free(tmp);
 		if (!access(path, X_OK))
 		{
 			data->pid1 = fork();
 			if (data->pid1 < 0)
-				return (free(path), 0);
+				return (0);
 			signal(SIGINT, SIG_IGN);
 			if (data->pid1 == 0)
 			{
 				signal(SIGINT, SIG_DFL);
 				execve(path, cmd->cmd_array, data->env);
-				free(path);
 				exit(1);
 			}
-			free(path);
 			waitpid(data->pid1, &data->status, 0);
 			if (data->status == 2)
 				printf("\n");
@@ -66,7 +63,6 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 			g_dollar_question = WEXITSTATUS(data->status);
 			break ;
 		}
-		free(path);
 		i++;
 	}
 	return (1);

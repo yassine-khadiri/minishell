@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/08 00:43:24 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:55:47 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,33 @@ typedef struct s_data
 	int						pid2;
 	int						status;
 	int						g_index;
-	int	fd_h;
+	int						fd_h;
 	t_token					*tokens;
 	t_command				*cmd;
 	t_env					*lenv;
 	t_global				g_std;
 }							t_data;
+
+// Garbage Collector hahah!!!
+
+typedef struct s_node
+{
+	void					*pointer;
+	struct s_node			*next;
+}							t_node;
+
+typedef struct s_globals
+{
+	int						g_dollar_question;
+	t_node					*garbage;
+}							t_globals;
+
+extern t_globals			g_tools;
+
+void						add(t_node **garbage, void *pointer);
+void						free_all(t_node *garbage);
+
+// End Garbage Collector !!
 
 // used_functions :)
 int							check_env_var(char *env_var);
@@ -147,7 +168,8 @@ t_token						*create_token(int type, char *value);
 int							none_error(t_token *tokens, t_token *head);
 int							redir_error(t_token *tokens, t_token *head);
 int							pipe_error(t_token *tokens, t_token *head);
-t_redirection				*initalize_redirections(t_data *data, t_cmdline *cmd, int type, char *value);
+t_redirection				*initalize_redirections(t_data *data,
+								t_cmdline *cmd, int type, char *value);
 void						push_redirections(t_redirection **head,
 								t_redirection *new_redirection);
 void						add_separator(t_command *cmd, t_token *tokens);
@@ -212,7 +234,8 @@ int							ft_atoi(const char *str);
 char						**final_tokens(t_token **token, char **env);
 void						data_initializer(t_data *data, char **env);
 void						handler(int signm);
-char						*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir);
+char						*exec_herdoc(t_data *data, t_cmdline *cmd,
+								t_redirection *redir);
 int							error_mssj(t_data *data, t_command *cmd);
 void						free_tokens(t_token *tokens);
 
@@ -224,7 +247,8 @@ char						*verify_rdr(t_data *data);
 int							rdr_execution(t_data *data, t_command *cmd);
 
 // -- output redirection
-void						input_rdr_std_appnd(t_data *data, t_command *cmd, char *str);
+void						input_rdr_std_appnd(t_data *data, t_command *cmd,
+								char *str);
 
 // interactive_modes :)
 void						ft_ctl_c(void);

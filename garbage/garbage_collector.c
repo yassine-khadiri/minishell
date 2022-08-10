@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   garbage_collector.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 17:52:57 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:17:57 by ykhadiri         ###   ########.fr       */
+/*   Created: 2022/08/10 00:19:48 by ykhadiri          #+#    #+#             */
+/*   Updated: 2022/08/10 01:49:23 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*ft_strdup(const char *s1)
+void	add(t_node **garbage, void *pointer)
 {
-	int		length;
-	int		i;
-	char	*str;
+	t_node	*node;
 
-	length = 0;
-	i = 0;
-	length = ft_strlen(s1);
-	str = (char *)malloc((length + 1) * sizeof(char));
-	add(&g_tools.garbage, str);
-	if (str == NULL)
-		return (NULL);
-	while (i < length)
+	node = malloc(sizeof(t_node));
+	node->pointer = pointer;
+	node->next = *garbage;
+	*garbage = node;
+}
+
+void	free_all(t_node *garbage)
+{
+	void	*tmp;
+
+	tmp = NULL;
+	while (garbage)
 	{
-		str[i] = s1[i];
-		i++;
+		free(garbage->pointer);
+		tmp = garbage;
+		garbage = garbage->next;
+		free(tmp);
 	}
-	str[length] = '\0';
-	return (str);
 }

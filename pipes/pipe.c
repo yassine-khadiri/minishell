@@ -6,12 +6,11 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:42:37 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/06 18:23:01 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 00:30:49 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-#include <stdio.h>
 
 int	execution_pipe_cmd(t_data *data, t_command *cmd)
 {
@@ -31,7 +30,7 @@ int	execution_pipe_cmd(t_data *data, t_command *cmd)
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");
 		tmp = path;
-		free(path);
+		// free(path);
 		path = ft_strjoin(tmp, cmd->cmd_array[0]);
 		if (!access(path, X_OK))
 			execve(path, cmd->cmd_array, data->env);
@@ -46,71 +45,79 @@ int	exec1(t_data *data, t_command *cmd, int in)
 	{
 		if (in != 0)
 		{
-			dup2(in, STDIN_FILENO);
+			if (dup2(in, STDIN_FILENO) == -1)
+			{
+				perror("error");
+				exit(1);
+			}
 			close(in);
 		}
 		if (data->fd[1] != 1)
 		{
-			dup2(data->fd[1], STDOUT_FILENO);
+			if (dup2(data->fd[1], STDOUT_FILENO) == -1)
+			{
+				perror("error");
+				exit(1);
+			}
 			close(data->fd[1]);
 		}
-		execution_pipe_cmd(data, cmd);
-		exit(1);
-	}
-	if (data->pid1 > 0)
-	{
-		close(data->fd[1]);
-		in = data->fd[0];
-	}
-	return (in);
-}
-
-void	exec2(t_data *data, t_command *cmd, t_command *tmp, int in)
-{
-	if (data->pid2 == 0)
-	{
-		if (in != 0)
-			dup2(in, STDIN_FILENO);
-		execution_pipe_cmd(data, cmd);
-		exit(1);
-	}
-	in = 3;
-	if (data->pid2 > 0)
-	{
-		close(data->fd[0]);
-		close(data->fd[1]);
-		while (tmp)
+		for (int fd = 3; fd < 20; ++fd)
 		{
-			close(in);
-			wait(NULL);
-			in++;
-			tmp = tmp->next;
+			close(fd);
 		}
+		execution_pipe_cmd(data, cmd);
+		exit(1);
 	}
+	return (0);
 }
 
 int	ft_pipe(t_data *data, t_command *cmd)
 {
 	t_command	*tmp;
 	int			in;
+	int			pids[1024];
+	int			pipes[1024][2];
+	int			i;
 
-	in = 0;
+	i = 0;
 	tmp = cmd;
 	while (cmd->next)
 	{
-		pipe(data->fd);
+		pipe(pipes[i]);
+		cmd = cmd->next;
+		++i;
+	}
+	i = 0;
+	in = 0;
+	cmd = tmp;
+	while (cmd)
+	{
+		if (cmd->next != NULL)
+			data->fd[1] = pipes[i][1];
+		else
+			data->fd[1] = 1;
 		data->pid1 = fork();
+		pids[i] = data->pid1;
 		if (data->pid1 < 0)
 			return (0);
-		in = exec1(data, cmd, in);
+		if (data->pid1 == 0)
+			exec1(data, cmd, in);
+		if (in != 0)
+			close(in);
+		if (data->fd[1] != 1)
+			close(data->fd[1]);
+		in = pipes[i][0];
 		cmd = cmd->next;
+		++i;
 	}
-	data->pid2 = fork();
-	if (data->pid2 < 0)
-		return (0);
-	exec2(data, cmd, tmp, in);
-	// close(data->pid1);
-	// close(data->pid2);
+	cmd = tmp;
+	i = 0;
+	while (cmd)
+	{
+		waitpid(pids[i], NULL, 0);
+		cmd = cmd->next;
+		++i;
+	}
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:07:47 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/22 11:08:07 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:17:47 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static char	**add_to_table(const char *s, int c, int words, char **arr)
 			s++;
 		len = word_length(s, c);
 		arr[i] = (char *)malloc((len) * sizeof(char) + 1);
+		add(&g_tools.garbage, arr[i]);
 		if (arr == NULL)
 			return (free_table(i, arr));
 		j = 0;
@@ -82,6 +83,7 @@ char	**ft_split(const char *s, char c)
 	i = 0;
 	nb_words = count_words(s, c);
 	res = (char **)malloc((nb_words) * sizeof(char *) + 1);
+	add(&g_tools.garbage, res);
 	if (res == NULL)
 		return (NULL);
 	add_to_table(s, c, nb_words, res);

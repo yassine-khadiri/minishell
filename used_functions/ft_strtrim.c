@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 17:24:23 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/07/14 18:06:34 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:18:27 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
 	tab = (char *)malloc((end - start + 1) * sizeof(char));
+	add(&g_tools.garbage, tab);
 	if (end < start || tab == NULL)
 		return (NULL);
 	while (start < end)

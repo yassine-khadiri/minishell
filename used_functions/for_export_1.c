@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:12 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 21:10:42 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:45:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,15 @@ char	*extract_var_name(char *string)
 
 	i = check_equal_sign(string);
 	if (i)
+	{
 		extr_var_name = malloc(sizeof(char) * i);
+		add(&g_tools.garbage, extr_var_name);
+	}
 	else
+	{
 		extr_var_name = malloc(sizeof(char) * ft_strlen(string) + 1);
+		add(&g_tools.garbage, extr_var_name);
+	}
 	if (!extr_var_name)
 		return (NULL);
 	i = 0;
@@ -49,7 +55,6 @@ char	*extract_var_name(char *string)
 		}
 		i++;
 	}
-	free(extr_var_name);
 	return (string);
 }
 
@@ -78,6 +83,7 @@ char	*exec_update(char *var_name)
 	i = 0;
 	j = 0;
 	next_val = malloc(sizeof(char) * 1000);
+	add(&g_tools.garbage, next_val);
 	if (!next_val)
 		return (NULL);
 	while (var_name[i])

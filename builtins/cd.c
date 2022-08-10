@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 23:04:29 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/07 22:42:01 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/10 01:52:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	get_old_pwd(t_data *data)
 			break ;
 		}
 	}
-	free(tmp_1);
-	free(tmp_2);
 	return (1);
 }
 
@@ -49,12 +47,11 @@ int	edit_pwd(t_data *data)
 		tmp = extract_var_name(data->env[i]);
 		if (!ft_strcmp(tmp, "PWD"))
 		{
-			data->env[i] = ft_strjoin("PWD=",
-					getcwd(data->getpath, sizeof(data->getpath)));
+			data->env[i] = ft_strjoin("PWD=", getcwd(data->getpath,
+						sizeof(data->getpath)));
 			break ;
 		}
 	}
-	free(tmp);
 	return (0);
 }
 
