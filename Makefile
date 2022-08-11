@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
+#    By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/08/11 20:05:18 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/08/12 00:32:42 by hbouqssi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC = minishell.c \
 	parsing/parser_utils_1.c \
 	parsing/parser_utils_2.c \
 	parsing/expander.c\
+	parsing/expander_utils.c\
 	used_functions/ft_split.c \
 	used_functions/ft_itoa.c \
 	used_functions/ft_strrchr.c \

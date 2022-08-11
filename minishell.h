@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/11 20:07:12 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/12 00:36:34 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_data
 	char					**env;
 	char					**splitted_path;
 	char					mode;
+	char					*tmp;
 	int						syntax_res;
 	char					*file_path;
 	int						fd[2];
@@ -118,6 +119,7 @@ typedef struct s_data
 	int						**pipes;
 	int						status;
 	int						g_index;
+	int						dollar_counter;
 	int						fd_h;
 	int						nb_cmds;
 	t_token					*tokens;
@@ -166,6 +168,10 @@ int							word(t_token **tokens, char *str);
 int							dollar(t_token **tokens, char *str);
 int							semicolon(t_token **tokens, char *str);
 t_token						*initialize_list(void);
+char						*crd_res(char *cmd, char *var_name,
+								char *res, char **env);
+char						*expand_readline_herdoc_helper(char *cmd, char *tmp,
+								char *res, t_data *data);
 t_token						*create_token(int type, char *value);
 int							none_error(t_token *tokens, t_token *head);
 int							redir_error(t_token *tokens, t_token *head);
@@ -240,7 +246,8 @@ char						*ft_itoa(int n);
 int							ft_lstsize(t_cmdline *lst);
 char						*ft_strrchr(const char *s, int c);
 int							ft_atoi(const char *str);
-char						**final_tokens(t_token **token, char **env);
+char						**final_tokens(t_data *data,
+								t_token **token, char **env);
 void						data_initializer(t_data *data, char **env);
 void						handler(int signm);
 char						*exec_herdoc(t_data *data, t_cmdline *cmd,
