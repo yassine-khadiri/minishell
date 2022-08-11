@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_founded_y_n.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/11 02:17:22 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:54:10 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@ int	pipe_founded(t_token *tokens)
 		tokens = tokens->next;
 	}
 	return (0);
-}
-
-void	print_not_found(t_command **cmd)
-{
-	printf(WHT "minishell : %s: command not found\n" BLU,
-		(*cmd)->cmd_array[0]);
-	g_tools.g_dollar_question = 127;
 }
 
 char	*extract_path(t_command *cmd)

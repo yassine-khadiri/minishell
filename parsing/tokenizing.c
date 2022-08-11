@@ -3,93 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/11 02:50:41 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/11 20:02:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char	*check_remove_dollars(char **env, char *cmd)
-{
-	char	*var_name;
-	char	*res;
-	char	*tmp;
-	int		i;
-	int		j;
-	int		dollar_counter;
-
-	i = 0;
-	var_name = malloc(sizeof(char) * 1000);
-	add(&g_tools.garbage, var_name);
-	res = malloc(sizeof(char) * ft_strlen(cmd));
-	add(&g_tools.garbage, res);
-	if (!var_name || !res)
-		return (0);
-	while (cmd[i])
-	{
-		j = 0;
-		dollar_counter = 0;
-		while (cmd[i] && cmd[i] == '$')
-		{
-			dollar_counter++;
-			var_name[j++] = cmd[i++];
-		}
-		while (cmd[i] && cmd[i] != '$')
-			var_name[j++] = cmd[i++];
-		var_name[j] = '\0';
-		tmp = res;
-		if (dollar_counter > 1 || dollar_counter == 0 || (dollar_counter == 1
-				&& !var_name[dollar_counter]))
-			res = ft_strjoin(tmp, var_name);
-		else
-			res = ft_strjoin(tmp, check_res(var_name, env));
-	}
-	res[ft_strlen(res)] = '\0';
-	return (res);
-}
-
-void	sub_tokens(t_token **tokens, int *i, char *str)
-{
-	if (str[*i] == '|')
-		*i += is_pipe(tokens, &str[*i]);
-	else if (str[*i] == ' ')
-		*i += is_space(tokens, &str[*i]);
-	else if (str[*i] == '<')
-		*i += is_redin(tokens, &str[*i]);
-	else if (str[*i] == '>')
-		*i += is_redout(tokens, &str[*i]);
-	else if (str[*i] == ';')
-		*i += semicolon(tokens, &str[*i]);
-}
-
-int	for_dbquotes(t_token **tokens, int *i, char *str, int *temp)
-{
-	if (str[*i] == 34)
-	{
-		*temp = db_quote(tokens, &str[*i]);
-		if (*temp == -1)
-			return (42);
-		*i += *temp;
-		return (0);
-	}
-	return (0);
-}
-
-int	for_squotes(t_token **tokens, int *i, char *str, int *temp)
-{
-	if (str[*i] == 39)
-	{
-		*temp = quote(tokens, &str[*i]);
-		if (*temp == -1)
-			return (1337);
-		*i += *temp;
-		return (0);
-	}
-	return (0);
-}
 
 t_token	*ft_tokenizer(t_token **tokens, char *str)
 {
@@ -108,36 +29,11 @@ t_token	*ft_tokenizer(t_token **tokens, char *str)
 		else if (for_squotes (tokens, &i, str, &temp) == 1337)
 			return (printf("minishell: syntax error, Missing S_Quotes\n"),
 				NULL);
-		// if (str[i] == 39)
-		// {
-		// 	temp = quote(tokens, &str[i]);
-		// 	if (temp == -1)
-		// 	{
-		// 		printf("minishell: syntax error, Missing Single Quote\n");
-		// 		return (0);
-		// 	}
-		// 	i += temp;
-		// }
 		else if (not_word(str[i], " |\"<'>;"))
 			i += word(tokens, &str[i]);
 	}
 	add_back(tokens, create_token(N_line, "NEWLINE"));
 	return (*tokens);
-}
-
-int	c_q_word(t_token *token)
-{
-	t_token	*tmp;
-	int		len;
-
-	tmp = token;
-	len = 0;
-	while (tmp && tmp->type == DBQUOTE)
-	{
-		len++;
-		tmp = tmp->next;
-	}
-	return (len);
 }
 
 char	**final_tokens(t_token **token, char **env)

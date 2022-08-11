@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 23:33:29 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/11 20:07:12 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,14 @@ int							tab_size(char **cmd_args);
 t_token						*is_last(t_token *last);
 void						add_back(t_token **lst, t_token *new);
 t_token						*create_token(int type, char *value);
+char						*check_remove_dollars(char **env, char *cmd);
 t_token						*ft_tokenizer(t_token **tokens, char *str);
+int							for_squotes(t_token **tokens, int *i,
+								char *str, int *temp);
+int							for_dbquotes(t_token **tokens, int *i,
+								char *str, int *temp);
+int							c_q_word(t_token *token);
+void						sub_tokens(t_token **tokens, int *i, char *str);
 char						*ft_substr(char const *s, unsigned int start,
 								size_t len);
 void						minishel_start(t_data *data);

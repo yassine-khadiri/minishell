@@ -6,7 +6,7 @@
 #    By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 18:54:21 by ykhadiri          #+#    #+#              #
-#    Updated: 2022/08/10 22:11:14 by ykhadiri         ###   ########.fr        #
+#    Updated: 2022/08/11 20:05:18 by ykhadiri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,12 +44,13 @@ SRC = minishell.c \
 	parsing/tokenizing.c \
 	parsing/tokenizing_utils_1.c \
 	parsing/tokenizing_utils_2.c \
+	parsing/tokenizing_utils_3.c \
 	parsing/check_syntax.c \
 	parsing/check_syntax_utils.c \
 	parsing/parser.c \
 	parsing/parser_utils_1.c \
 	parsing/parser_utils_2.c \
-	parsing/expander_1.c\
+	parsing/expander.c\
 	used_functions/ft_split.c \
 	used_functions/ft_itoa.c \
 	used_functions/ft_strrchr.c \
