@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/10 19:18:33 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/11 02:50:41 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,46 @@ char	*check_remove_dollars(char **env, char *cmd)
 	return (res);
 }
 
+void	sub_tokens(t_token **tokens, int *i, char *str)
+{
+	if (str[*i] == '|')
+		*i += is_pipe(tokens, &str[*i]);
+	else if (str[*i] == ' ')
+		*i += is_space(tokens, &str[*i]);
+	else if (str[*i] == '<')
+		*i += is_redin(tokens, &str[*i]);
+	else if (str[*i] == '>')
+		*i += is_redout(tokens, &str[*i]);
+	else if (str[*i] == ';')
+		*i += semicolon(tokens, &str[*i]);
+}
+
+int	for_dbquotes(t_token **tokens, int *i, char *str, int *temp)
+{
+	if (str[*i] == 34)
+	{
+		*temp = db_quote(tokens, &str[*i]);
+		if (*temp == -1)
+			return (42);
+		*i += *temp;
+		return (0);
+	}
+	return (0);
+}
+
+int	for_squotes(t_token **tokens, int *i, char *str, int *temp)
+{
+	if (str[*i] == 39)
+	{
+		*temp = quote(tokens, &str[*i]);
+		if (*temp == -1)
+			return (1337);
+		*i += *temp;
+		return (0);
+	}
+	return (0);
+}
+
 t_token	*ft_tokenizer(t_token **tokens, char *str)
 {
 	int	i;
@@ -61,36 +101,23 @@ t_token	*ft_tokenizer(t_token **tokens, char *str)
 	*tokens = initialize_list();
 	while (str[i])
 	{
-		if (str[i] == '|')
-			i += is_pipe(tokens, &str[i]);
-		else if (str[i] == ' ')
-			i += is_space(tokens, &str[i]);
-		else if (str[i] == '<')
-			i += is_redin(tokens, &str[i]);
-		else if (str[i] == '>')
-			i += is_redout(tokens, &str[i]);
-		else if (str[i] == ';')
-			i += semicolon(tokens, &str[i]);
-		else if (str[i] == 34)
-		{
-			temp = db_quote(tokens, &str[i]);
-			if (temp == -1)
-			{
-				printf("minishell: syntax error, Missing Double Quote\n");
-				return (0);
-			}
-			i += temp;
-		}
-		else if (str[i] == 39)
-		{
-			temp = quote(tokens, &str[i]);
-			if (temp == -1)
-			{
-				printf("minishell: syntax error, Missing Single Quote\n");
-				return (0);
-			}
-			i += temp;
-		}
+		sub_tokens (tokens, &i, str);
+		if (for_dbquotes (tokens, &i, str, &temp) == 42)
+			return (printf("minishell: syntax error, Missing Db_Quotes\n"),
+				NULL);
+		else if (for_squotes (tokens, &i, str, &temp) == 1337)
+			return (printf("minishell: syntax error, Missing S_Quotes\n"),
+				NULL);
+		// if (str[i] == 39)
+		// {
+		// 	temp = quote(tokens, &str[i]);
+		// 	if (temp == -1)
+		// 	{
+		// 		printf("minishell: syntax error, Missing Single Quote\n");
+		// 		return (0);
+		// 	}
+		// 	i += temp;
+		// }
 		else if (not_word(str[i], " |\"<'>;"))
 			i += word(tokens, &str[i]);
 	}

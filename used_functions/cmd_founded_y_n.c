@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_founded_y_n.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 19:18:04 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/11 02:17:22 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,17 @@ int	check_executable_files(t_data *data, t_command *cmd)
 	return (0);
 }
 
+void	show_err_msg(t_command *cmd)
+{
+	write(2, RED "minishell: ", 19);
+	write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
+	write(2, ": command not found\n" BLU, 28);
+	g_tools.g_dollar_question = 127;
+}
+
 int	cmd_founded_y_n(t_data *data, t_command *cmd)
 {
 	char	*path;
-	char	*tmp;
 	int		result;
 	int		i;
 
@@ -84,8 +91,7 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 			|| check_executable_files(data, cmd))
 			return (0);
 		path = ft_strjoin(data->splitted_path[i], "/");
-		tmp = path;
-		path = ft_strjoin(tmp, cmd->cmd_array[0]);
+		path = ft_strjoin(path, cmd->cmd_array[0]);
 		if (access(path, X_OK) != -1)
 		{
 			result = 0;
@@ -94,11 +100,6 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 		i++;
 	}
 	if (result == -1)
-	{
-		write(2, RED "minishell: ", 19);
-		write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
-		write(2, ": command not found\n" BLU, 28);
-		g_tools.g_dollar_question = 127;
-	}
+		show_err_msg(cmd);
 	return (result);
 }
