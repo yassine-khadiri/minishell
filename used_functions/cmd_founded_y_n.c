@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/12 01:56:43 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/12 03:40:40 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	cmd_found_checker(char *path, t_command *cmd, t_data *data, int i)
 		|| !ft_strcmp(cmd->cmd_array[0], "unset")
 		|| !ft_strcmp(cmd->cmd_array[0], "exit")
 		|| check_executable_files(data, cmd))
-		return (0);
+		return (1);
 	path = ft_strjoin(data->splitted_path[i], "/");
 	path = ft_strjoin(path, cmd->cmd_array[0]);
 	if (access(path, X_OK) != -1)
