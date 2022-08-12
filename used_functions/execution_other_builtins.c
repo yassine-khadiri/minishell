@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_other_builtins.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 22:33:44 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:50:19 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,30 @@ char	**ft_get_spllited_path_env(t_data *data)
 	return (data->splitted_path);
 }
 
+int	ex_other_built(char *path, t_command *cmd, t_data *data)
+{
+	if (!access(path, X_OK))
+	{
+		data->pid1 = fork();
+		if (data->pid1 < 0)
+			return (0);
+		signal(SIGINT, SIG_IGN);
+		if (data->pid1 == 0)
+		{
+			signal(SIGINT, SIG_DFL);
+			execve(path, cmd->cmd_array, data->env);
+			exit(1);
+		}
+		waitpid(data->pid1, &data->status, 0);
+		if (data->status == 2)
+			printf("\n");
+		signal(SIGINT, handler);
+		g_tools.g_dollar_question = WEXITSTATUS(data->status);
+		return (1);
+	}
+	return (0);
+}
+
 int	execution_other_builtins(t_data *data, t_command *cmd)
 {
 	char	*path;
@@ -44,25 +68,8 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 		path = ft_strjoin(data->splitted_path[i], "/");
 		tmp = path;
 		path = ft_strjoin(tmp, cmd->cmd_array[0]);
-		if (!access(path, X_OK))
-		{
-			data->pid1 = fork();
-			if (data->pid1 < 0)
-				return (0);
-			signal(SIGINT, SIG_IGN);
-			if (data->pid1 == 0)
-			{
-				signal(SIGINT, SIG_DFL);
-				execve(path, cmd->cmd_array, data->env);
-				exit(1);
-			}
-			waitpid(data->pid1, &data->status, 0);
-			if (data->status == 2)
-				printf("\n");
-			signal(SIGINT, handler);
-			g_tools.g_dollar_question = WEXITSTATUS(data->status);
+		if (ex_other_built(path, cmd, data))
 			break ;
-		}
 		i++;
 	}
 	return (1);

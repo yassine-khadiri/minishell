@@ -6,7 +6,7 @@
 /*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/12 00:36:34 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:57:14 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ void						free_all(t_node *garbage);
 
 // used_functions :)
 int							check_env_var(char *env_var);
+void						show_err_msg(t_command *cmd);
 t_command					*ft_parse(t_data *data, t_token *tokens);
 int							ft_isdigit(int c);
 int							ft_isalnum(int c);

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/11 01:17:36 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:56:40 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	show_err_msg(t_command *cmd)
+{
+	write(2, RED "minishell: ", 19);
+	write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
+	write(2, ": command not found\n" BLU, 28);
+	g_tools.g_dollar_question = 127;
+}
 
 int	error_mssj(t_data *data, t_command *cmd)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_founded_y_n.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/11 19:54:10 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:56:43 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,18 @@ int	check_executable_files(t_data *data, t_command *cmd)
 	return (0);
 }
 
-void	show_err_msg(t_command *cmd)
+int	cmd_found_checker(char *path, t_command *cmd, t_data *data, int i)
 {
-	write(2, RED "minishell: ", 19);
-	write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
-	write(2, ": command not found\n" BLU, 28);
-	g_tools.g_dollar_question = 127;
+	if (!ft_strcmp(cmd->cmd_array[0], "export")
+		|| !ft_strcmp(cmd->cmd_array[0], "unset")
+		|| !ft_strcmp(cmd->cmd_array[0], "exit")
+		|| check_executable_files(data, cmd))
+		return (0);
+	path = ft_strjoin(data->splitted_path[i], "/");
+	path = ft_strjoin(path, cmd->cmd_array[0]);
+	if (access(path, X_OK) != -1)
+		return (1);
+	return (0);
 }
 
 int	cmd_founded_y_n(t_data *data, t_command *cmd)
@@ -78,16 +84,9 @@ int	cmd_founded_y_n(t_data *data, t_command *cmd)
 		return (result);
 	while (data->splitted_path[i])
 	{
-		if (!ft_strcmp(cmd->cmd_array[0], "export")
-			|| !ft_strcmp(cmd->cmd_array[0], "unset")
-			|| !ft_strcmp(cmd->cmd_array[0], "exit")
-			|| check_executable_files(data, cmd))
-			return (0);
-		path = ft_strjoin(data->splitted_path[i], "/");
-		path = ft_strjoin(path, cmd->cmd_array[0]);
-		if (access(path, X_OK) != -1)
+		if (cmd_found_checker(path, cmd, data, i))
 		{
-			result = 0;
+			result = 1;
 			break ;
 		}
 		i++;

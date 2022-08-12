@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_execution.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/11 01:17:56 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:44:10 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_options(t_command *cmd)
 	return (0);
 }
 
-int	exec_builts(t_data *data, t_command *cmd, int index)
+int	exec_builts_cond(t_command *cmd, t_data *data, int index)
 {
 	if (!ft_strcmp(cmd->cmd_array[index], "pwd"))
 		return (ft_pwd(data));
@@ -47,6 +47,13 @@ int	exec_builts(t_data *data, t_command *cmd, int index)
 			return (1);
 		return (ft_echo(data, cmd, index));
 	}
+	return (0);
+}
+
+int	exec_builts(t_data *data, t_command *cmd, int index)
+{
+	if (exec_builts_cond(cmd, data, index))
+		return (1);
 	else if (!ft_strcmp(cmd->cmd_array[index], "export"))
 		return (ft_export(data, cmd));
 	else if (!ft_strcmp(cmd->cmd_array[index], "unset"))
