@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/10 01:21:24 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 00:06:42 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir)
 		data->file_path = ft_strjoin(data->file_path, red->file);
 		data->fd_h = open(data->file_path, O_CREAT | O_RDWR | O_TRUNC, 0777);
 		write(data->fd_h, data->buffer_herdoc, ft_strlen(data->buffer_herdoc));
-		if (!ft_strcmp(cmd->cmd, "echo"))
+		if (cmd && !ft_strcmp(cmd->cmd, "echo"))
 			printf("\n");
 		if (data->fd_h == -1)
 		{
