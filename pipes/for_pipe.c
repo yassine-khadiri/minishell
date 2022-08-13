@@ -6,11 +6,22 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 22:06:52 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 23:47:15 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/13 03:20:50 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	pipe_founded(t_token *tokens)
+{
+	while (tokens)
+	{
+		if (!ft_strcmp(tokens->value, "|"))
+			return (1);
+		tokens = tokens->next;
+	}
+	return (0);
+}
 
 int	execution_pipe_cmd(t_data *data, t_command *cmd)
 {
@@ -53,10 +64,20 @@ int	get_nb_cmds(t_command *cmd)
 	return (nb_cmds);
 }
 
-int	exec1(t_data *data, t_command *cmd, int in)
+void	close_fds(void)
 {
 	int	fd_number;
 
+	fd_number = 3;
+	while (fd_number <= 1024)
+	{
+		close(fd_number);
+		fd_number++;
+	}
+}
+
+int	exec1(t_data *data, t_command *cmd, int in)
+{
 	if (data->pid1 == 0)
 	{
 		if (in != 0)
@@ -77,18 +98,7 @@ int	exec1(t_data *data, t_command *cmd, int in)
 			}
 			close(data->fd[1]);
 		}
-		fd_number = 3;
-		// while (fd_number <= (data->nb_cmds * 2))
-		while (fd_number <= 1024)
-		{
-			close(fd_number);
-			fd_number++;
-		}
-		// for (int fd = 3; fd < 20; ++fd)
-		// {
-		// 	printf("%d\n", fd);
-		// 	close(fd);
-		// }
+		close_fds();
 		execution_pipe_cmd(data, cmd);
 		exit(1);
 	}

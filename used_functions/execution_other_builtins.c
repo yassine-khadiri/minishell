@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_other_builtins.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/12 01:50:19 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/13 03:04:15 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	execution_other_builtins(t_data *data, t_command *cmd)
 	int		i;
 
 	i = 0;
+	if (!data->splitted_path)
+		return (0);
 	while (data->splitted_path[i])
 	{
 		path = ft_strjoin(data->splitted_path[i], "/");

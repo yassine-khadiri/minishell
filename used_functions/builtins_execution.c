@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_execution.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/12 01:44:10 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/12 23:22:55 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	exec_builts(t_data *data, t_command *cmd, int index)
 	else if (!ft_strcmp(cmd->cmd_array[index], "env"))
 	{
 		if (!data->splitted_path)
-			return (0);
+			return (-1);
 		return (ft_env(data->env));
 	}
 	else if (!ft_strcmp(cmd->cmd_array[index], "exit"))

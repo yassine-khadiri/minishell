@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_founded_y_n.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/12 03:40:40 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/13 03:17:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	pipe_founded(t_token *tokens)
-{
-	while (tokens)
-	{
-		if (!ft_strcmp(tokens->value, "|"))
-			return (1);
-		tokens = tokens->next;
-	}
-	return (0);
-}
 
 char	*extract_path(t_command *cmd)
 {
@@ -71,17 +60,47 @@ int	cmd_found_checker(char *path, t_command *cmd, t_data *data, int i)
 	return (0);
 }
 
+int	check_unset_path(t_data *data, t_command *tmp)
+{
+	int	i;
+
+	if (pipe_founded(data->tokens) && check_builts(tmp->cmd_array[0]))
+	{
+		while (tmp)
+		{
+			i = 0;
+			while (tmp->cmd_array[i])
+			{
+				if (!check_builts(tmp->cmd_array[i]))
+				{
+					error_mssj(data, tmp->cmd_array[i]);
+					return (-1);
+				}
+				i++;
+			}
+			tmp = tmp->next;
+		}
+	}
+	else if (check_builts(tmp->cmd_array[0]))
+		return (1);
+	error_mssj(data, tmp->cmd_array[0]);
+	return (-1);
+}
+
 int	cmd_founded_y_n(t_data *data, t_command *cmd)
 {
-	char	*path;
-	int		result;
-	int		i;
+	char		*path;
+	int			result;
+	int			i;
 
 	path = NULL;
 	result = -1;
 	i = 0;
-	if (error_mssj(data, cmd))
+	if (!data->splitted_path)
+	{
+		check_unset_path(data, cmd);
 		return (result);
+	}
 	while (data->splitted_path[i])
 	{
 		if (cmd_found_checker(path, cmd, data, i))

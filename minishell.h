@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/12 01:57:14 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/13 03:08:53 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ void						free_all(t_node *garbage);
 // End Garbage Collector !!
 
 // used_functions :)
+int							check_builts(char *cmd);
 int							check_env_var(char *env_var);
 void						show_err_msg(t_command *cmd);
 t_command					*ft_parse(t_data *data, t_token *tokens);
@@ -237,6 +238,7 @@ char						**ft_get_spllited_path_env(t_data *data);
 char						*get_val_env_var(char **env, char *env_variable);
 int							ft_pipe(t_data *data, t_command *cmd);
 int							cmd_founded_y_n(t_data *data, t_command *cmd);
+int							pipe_founded(t_token *tokens);
 int							case_1(t_data *data, t_command *cmd, char *path);
 int							case_2(t_data *data, t_command *cmd, char *path);
 char						*extract_path(t_command *cmd);
@@ -253,7 +255,7 @@ void						data_initializer(t_data *data, char **env);
 void						handler(int signm);
 char						*exec_herdoc(t_data *data, t_cmdline *cmd,
 								t_redirection *redir);
-int							error_mssj(t_data *data, t_command *cmd);
+int							error_mssj(t_data *data, char *cmd);
 void						free_tokens(t_token *tokens);
 
 // redirections
