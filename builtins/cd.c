@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 23:04:29 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 01:52:33 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/13 20:24:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 int	get_old_pwd(t_data *data)
 {
-	char	*tmp_1;
-	char	*tmp_2;
+	char	*tmp;
 	int		i;
 
 	i = -1;
-	tmp_1 = NULL;
+	tmp = NULL;
 	while (data->env[++i])
 	{
-		tmp_2 = extract_var_name(data->env[i]);
-		if (!ft_strcmp(tmp_2, "PWD"))
-			tmp_1 = ft_strjoin("OLD", data->env[i]);
-		else if (tmp_1 && !ft_strcmp(tmp_2, "OLDPWD"))
+		if (!ft_strcmp(extract_var_name(data->env[i]), "PWD"))
+			tmp = ft_strjoin("OLD", data->env[i]);
+		else if (tmp && !ft_strcmp(extract_var_name(data->env[i]), "OLDPWD"))
 		{
-			if (ft_strcmp(tmp_1, data->env[i]))
-				data->env[i] = tmp_1;
+			if (ft_strcmp(tmp, data->env[i]))
+				data->env[i] = tmp;
 			break ;
 		}
 	}
@@ -60,7 +58,13 @@ int	ft_cd(t_data *data, t_command *cmd, int index)
 	if (!cmd->cmd_array[index + 1])
 		cmd->cmd_array[index + 1] = get_val_env_var(data->env, "HOME");
 	if (chdir(cmd->cmd_array[index + 1]) == -1)
+	{
+		write(2, RED "minishell: ", 19);
+		write(2, cmd->cmd_array[index + 1],
+			ft_strlen(cmd->cmd_array[index + 1]));
+		write(2, ": No such file or directory\n" BLU, 36);
 		return (0);
+	}
 	edit_pwd(data);
 	return (1);
 }

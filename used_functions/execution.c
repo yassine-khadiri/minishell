@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/13 04:08:32 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/13 22:48:12 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	check_builts(char *cmd)
 {
 	if (!ft_strcmp(cmd, "pwd")
 		|| !ft_strcmp(cmd, "echo")
+		|| !ft_strcmp(cmd, "cd")
 		|| !ft_strcmp(cmd, "export")
 		|| !ft_strcmp(cmd, "unset")
 		|| !ft_strcmp(cmd, "env")

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:59:05 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/13 04:13:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/13 20:00:16 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ex_other_built(char *path, t_command *cmd, t_data *data)
 		if (data->pid1 < 0)
 			return (0);
 		signal(SIGINT, SIG_IGN);
+		signal(SIGQUIT, handler);
 		if (data->pid1 == 0)
 		{
 			signal(SIGINT, SIG_DFL);
@@ -51,6 +52,8 @@ int	ex_other_built(char *path, t_command *cmd, t_data *data)
 			printf("\n");
 		signal(SIGINT, handler);
 		g_tools.g_dollar_question = WEXITSTATUS(data->status);
+		if (data->status == 3)
+			g_tools.g_dollar_question = 131;
 		return (1);
 	}
 	return (0);

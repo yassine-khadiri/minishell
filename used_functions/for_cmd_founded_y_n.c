@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 19:42:12 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 19:19:00 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/13 19:23:31 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ int	case_1(t_data *data, t_command *cmd, char *path)
 			execve(path, cmd->cmd_array, data->env);
 			exit(1);
 		}
-		waitpid(data->pid1, NULL, 0);
+		waitpid(data->pid1, &data->status, 0);
+		g_tools.g_dollar_question = WEXITSTATUS(data->status);
 	}
+	else
+		show_err_msg(cmd);
 	return (1);
 }
 
@@ -51,10 +54,6 @@ int	case_2(t_data *data, t_command *cmd, char *path)
 		g_tools.g_dollar_question = WEXITSTATUS(data->status);
 	}
 	else
-	{
-		write(2, RED "minishell: ", 19);
-		write(2, cmd->cmd_array[0], ft_strlen(cmd->cmd_array[0]));
-		write(2, ": No such file or directory\n" BLU, 36);
-	}
+		show_err_msg(cmd);
 	return (1);
 }
