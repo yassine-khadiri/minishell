@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/13 03:17:25 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/13 18:32:51 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,10 @@ int	check_unset_path(t_data *data, t_command *tmp)
 			tmp = tmp->next;
 		}
 	}
-	else if (check_builts(tmp->cmd_array[0]))
+	else if (check_builts(tmp->cmd_array[0]) && rdr_execution(data, tmp))
+	{
 		return (1);
+	}
 	error_mssj(data, tmp->cmd_array[0]);
 	return (-1);
 }

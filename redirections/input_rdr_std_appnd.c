@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:33:56 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 19:03:32 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/13 18:36:23 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	input_rdr_std_appnd(t_data *data, t_command *cmd, char *str)
 {
 	int				fd;
+	t_command		*tmp;
 	t_redirection	*red;
 
 	red = cmd->redirection;
+	tmp = cmd;
 	while (red)
 	{
 		if (!ft_strcmp(str, "herdoc"))
@@ -34,7 +36,7 @@ void	input_rdr_std_appnd(t_data *data, t_command *cmd, char *str)
 		red = red->next;
 	}
 	dup2(fd, 0);
-	execution_other_builtins(data, cmd);
+	exec_rdr(data, tmp);
 	dup2(data->g_std._stdin, 0);
 	close(fd);
 }
