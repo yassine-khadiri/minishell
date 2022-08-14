@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 18:25:11 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 20:45:30 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct s_global
 {
 	int						_stdin;
 	int						_stdout;
+	int						_redout;
+	int						_redin;
 }							t_global;
 
 typedef struct s_redirection
