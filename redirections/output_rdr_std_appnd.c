@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 22:06:58 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:27:00 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	exec_rdr(t_data *data, t_command *tmp)
 		execution_other_builtins(data, tmp);
 }
 
-void	output_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red, int flag)
+int	output_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red, int flag)
 {
-	// int				fd;
 	t_command		*tmp;
 
 	tmp = cmd;
@@ -38,12 +37,13 @@ void	output_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red, int 
 			if (data->fd_reds == -1)
 			{
 				perror(ft_strjoin("minishell: ", red->file));
-				break ;
+				return (-1);
 			}
 		}
 		else
-			break ;
+			return (0);
 		red = red->next;
 	}
 	data->g_std._redout = data->fd_reds;
+	return (1);
 }

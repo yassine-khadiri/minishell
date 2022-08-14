@@ -6,15 +6,14 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:33:56 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 22:06:28 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:27:14 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	input_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red)
+int	input_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red)
 {
-	// int				fd;
 	t_command		*tmp;
 
 	tmp = cmd;
@@ -31,12 +30,13 @@ void	input_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red)
 			if (data->fd_reds == -1)
 			{
 				perror(ft_strjoin("minishell: ", red->file));
-				return ;
+				return (-1);
 			}
 		}
 		else
-			break ;
+			return (0);
 		red = red->next;
 	}
 	data->g_std._redin = data->fd_reds;
+	return (1);
 }
