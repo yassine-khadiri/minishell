@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:22:28 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 21:30:01 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:10:05 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,16 @@ int	rdr_execution(t_data *data, t_command *cmd)
 			}
 			red = red->next;
 		}
-		dup2(data->g_std._redin, 0);
-		dup2(data->g_std._redout, 1);
-		exec_rdr(data, tmp);
-		dup2(data->g_std._stdin, 0);
-		dup2(data->g_std._stdout, 1);
-		// if (getres1)
-		// 	close(data->g_std._redin);
-		// close(data->g_std._redout);
+		if (data->fd_reds != -1)
+		{	
+			dup2(data->g_std._redin, 0);
+			dup2(data->g_std._redout, 1);
+			exec_rdr(data, tmp);
+			dup2(data->g_std._stdin, 0);
+			dup2(data->g_std._stdout, 1);
+			close(data->g_std._redin);
+			close(data->g_std._redout);
+		}
 		return (1);
 	}	
 	return (0);

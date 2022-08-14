@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 20:45:30 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:06:08 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ typedef struct s_data
 	int						syntax_res;
 	char					*file_path;
 	int						fd[2];
-	int						fd_input;
+	int						fd_reds;
 	int						pid1;
 	int						pid2;
 	int						*pids;
