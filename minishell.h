@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 03:05:34 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 18:25:11 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ typedef struct s_data
 	int						syntax_res;
 	char					*file_path;
 	int						fd[2];
+	int						fd_input;
 	int						pid1;
 	int						pid2;
 	int						*pids;
@@ -261,13 +262,12 @@ void						free_tokens(t_token *tokens);
 
 // redirections
 // -- output redirection
-void						output_rdr_std_appnd(t_data *data, t_command *cmd,
-								int flag);
+void	output_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red, int flag);
 int							found_rdr(t_command *cmd);
 int							rdr_execution(t_data *data, t_command *cmd);
 
 // -- output redirection
-void						input_rdr_std_appnd(t_data *data, t_command *cmd);
+void						input_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red);
 
 // pipe Command :)
 int							execution_pipe_cmd(t_data *data, t_command *cmd);

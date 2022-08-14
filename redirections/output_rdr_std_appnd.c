@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 04:00:50 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 17:48:25 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,41 @@ void	exec_rdr(t_data *data, t_command *tmp)
 		execution_other_builtins(data, tmp);
 }
 
-void	output_rdr_std_appnd(t_data *data, t_command *cmd, int flag)
+void	output_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red, int flag)
 {
 	int				fd;
 	t_command		*tmp;
-	t_redirection	*red;
 
 	tmp = cmd;
-	red = cmd->redirection;
+	// printf("%d\n", red->type);
 	while (red)
 	{
-		if (flag == 0x0008)
-			fd = open(red->file,
-					O_CREAT | O_RDWR | O_APPEND, 0777);
-		else
-			fd = open(red->file, O_CREAT | O_RDWR | O_TRUNC, 0777);
-		if (fd == -1)
+		if (red->type == 4 || red->type == 6)
 		{
-			perror(ft_strjoin("minishell: ", red->file));
-			return ;
+			if (flag == 0x0008)
+				fd = open(red->file,
+						O_CREAT | O_RDWR | O_APPEND, 0777);
+			else
+				fd = open(red->file, O_CREAT | O_RDWR | O_TRUNC, 0777);
+			if (fd == -1)
+			{
+				perror(ft_strjoin("minishell: ", red->file));
+				return ;
+			}
 		}
+		else
+			break ;
 		red = red->next;
 	}
-	dup2(fd, 1);
+	// if (data->fd_input)
+	// {
+	// 	dup2();
+	// }
+	// else
+	// {
+	dup2(fd, 1);	
 	exec_rdr(data, tmp);
 	dup2(data->g_std._stdout, 1);
 	close(fd);
+	// }
 }
