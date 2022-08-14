@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:36:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/06/09 14:30:22 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 23:18:29 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strlen(const char *s)
 	len = 0;
 	if (!s)
 		return (0);
-	while (s[len] != '\0')
+	while (s[len])
 		len++;
 	return (len);
 }

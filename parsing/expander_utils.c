@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 23:50:41 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/12 00:45:07 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/15 00:02:06 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*crd_res(char *cmd, char *var_name, char *res, char **env)
 				&& !var_name[dollar_counter]))
 			res = ft_strjoin(res, var_name);
 		else
-			res = ft_strjoin(res, check_res(var_name, env));
+			res = ft_strjoin(res, check_res(ft_strtrim(var_name, " "), env));
 	}
 	return (res);
 }

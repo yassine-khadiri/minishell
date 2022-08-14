@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/14 04:15:00 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 23:17:59 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ t_redirection	*initalize_redirections(t_data *data,
 	t_redirection	*redirection;
 
 	redirection = malloc(sizeof(t_redirection));
-	add(&g_tools.garbage, redirection);
 	if (!redirection)
 		return (NULL);
+	add(&g_tools.garbage, redirection);
 	if (type == HERDOC)
 	{
 		type = REDIN;
