@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:33:56 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 22:27:14 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:34:31 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	input_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red)
 	while (red)
 	{
 		if (data->fd_h)
-		{ 
+		{
 			data->fd_reds = data->fd_h;
 			break ;
 		}

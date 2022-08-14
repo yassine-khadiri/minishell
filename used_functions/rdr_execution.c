@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:22:28 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 22:28:37 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:32:40 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 int	found_rdr(t_command *cmd)
 {
 	t_redirection	*tmp;
+	int				file_number;
 
 	tmp = cmd->redirection;
-	int	number;
 	if (!tmp)
 		return (0);
-	else if (tmp->type == 4) // append
-		number = 4;
-	else if (tmp->type == 5) // stdin && herdoc (< && <<)
-		number = 5;
-	else if (tmp->type == 6) // stdout
-		number = 6;
+	else if (tmp->type == 4)
+		file_number = 4;
+	else if (tmp->type == 5)
+		file_number = 5;
+	else if (tmp->type == 6)
+		file_number = 6;
 	else
-		number = 0;
-	return (number);
+		file_number = 0;
+	return (file_number);
 }
 
 int	rdr_execution(t_data *data, t_command *cmd)
@@ -46,16 +46,19 @@ int	rdr_execution(t_data *data, t_command *cmd)
 		{
 			if (red->type == 4)
 			{
+				// append 
 				if (output_rdr_std_appnd(data, cmd, red, O_TRUNC) == -1)
 					break ;
 			}
 			else if (red->type == 5)
 			{
+				// stdin && herdoc (< && <<)
 				if (input_rdr_std_appnd(data, cmd, red) == -1)
 					break ;
 			}
 			else if (red->type == 6)
 			{
+				// stdout
 				if (output_rdr_std_appnd(data, cmd, red, O_TRUNC) == -1)
 					break ;
 			}

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 22:25:13 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 22:35:19 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,12 +264,14 @@ void						free_tokens(t_token *tokens);
 
 // redirections
 // -- output redirection
-int							output_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red, int flag);
+int							output_rdr_std_appnd(t_data *data, t_command *cmd,
+								t_redirection *red, int flag);
 int							found_rdr(t_command *cmd);
 int							rdr_execution(t_data *data, t_command *cmd);
 
-// -- output redirection
-int							input_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red);
+// -- input redirection
+int							input_rdr_std_appnd(t_data *data, t_command *cmd,
+								t_redirection *red);
 
 // pipe Command :)
 int							execution_pipe_cmd(t_data *data, t_command *cmd);
