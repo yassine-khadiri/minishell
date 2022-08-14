@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 17:49:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/13 22:48:12 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 03:05:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	execution(t_data *data, t_command *cmd)
 	data->splitted_path = ft_get_spllited_path_env(data);
 	if (check_builts(cmd->cmd_array[0])
 		&& !pipe_founded(data->tokens)
-		&& !verify_rdr(data))
+		&& !found_rdr(cmd))
 	{
 		builtins_execution(data, cmd);
 		return ;

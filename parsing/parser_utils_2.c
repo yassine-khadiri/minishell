@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/14 00:06:42 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/14 04:15:00 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir)
 	while (red)
 	{
 		data->file_path = malloc(sizeof(char) * (ft_strlen(red->file) + 7));
+		if (!data->file_path)
+			return (NULL);
 		add(&g_tools.garbage, data->file_path);
 		data->file_path = ft_strjoin("/tmp/", ".");
 		data->file_path = ft_strjoin(data->file_path, red->file);

@@ -1,0 +1,17 @@
+Makefile
+README.md
+builtins
+g
+garbage
+h
+interactive_modes
+minishell
+minishell.c
+minishell.h
+minishell.o
+parsing
+pipes
+redirections
+t
+test
+used_functions
