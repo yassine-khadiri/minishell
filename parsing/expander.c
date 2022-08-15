@@ -55,8 +55,8 @@ char	*treat_heredocs(t_data *data, char *delimeter)
 		line = readline(BLU "> " WHT);
 		if (!ft_strcmp(line, delimeter))
 			break ;
-		// line = ft_strjoin(expand_readline_herdoc(data, line), "\n");
-		line = ft_strjoin(line, "\n");
+		line = ft_strjoin(expand_readline_herdoc(data, line), "\n");
+		// line = ft_strjoin(line, "\n");
 		data->buffer_herdoc = ft_strjoin(data->buffer_herdoc, line);
 	}
 	// puts(data->buffer_herdoc);

@@ -1,0 +1,84 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/hbouqssi/Desktop/minishell'
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c minishell.c -o minishell.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/minishell_start.c -o used_functions/minishell_start.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strlen.c -o used_functions/ft_strlen.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/is_validated.c -o used_functions/is_validated.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strtrim.c -o used_functions/ft_strtrim.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strcmp.c -o used_functions/ft_strcmp.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strncmp.c -o used_functions/ft_strncmp.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_atoi.c -o used_functions/ft_atoi.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strdup.c -o used_functions/ft_strdup.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strjoin_space.c -o used_functions/ft_strjoin_space.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strjoin.c -o used_functions/ft_strjoin.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_isalnum.c -o used_functions/ft_isalnum.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_islast.c -o used_functions/ft_islast.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_isdigit.c -o used_functions/ft_isdigit.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_substr.c -o used_functions/ft_substr.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strndup.c -o used_functions/ft_strndup.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/add_back.c -o used_functions/add_back.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/initialize_tokens.c -o parsing/initialize_tokens.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/tokenizing.c -o parsing/tokenizing.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/tokenizing_utils_1.c -o parsing/tokenizing_utils_1.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/tokenizing_utils_2.c -o parsing/tokenizing_utils_2.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/tokenizing_utils_3.c -o parsing/tokenizing_utils_3.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/check_syntax.c -o parsing/check_syntax.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/check_syntax_utils.c -o parsing/check_syntax_utils.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/parser.c -o parsing/parser.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/parser_utils_1.c -o parsing/parser_utils_1.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/parser_utils_2.c -o parsing/parser_utils_2.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/expander.c -o parsing/expander.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c parsing/expander_utils.c -o parsing/expander_utils.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_split.c -o used_functions/ft_split.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_itoa.c -o used_functions/ft_itoa.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_strrchr.c -o used_functions/ft_strrchr.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/execution_other_builtins.c -o used_functions/execution_other_builtins.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/execution.c -o used_functions/execution.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/rdr_execution.c -o used_functions/rdr_execution.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/cmd_founded_y_n.c -o used_functions/cmd_founded_y_n.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/for_cmd_founded_y_n.c -o used_functions/for_cmd_founded_y_n.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/builtins_execution.c -o used_functions/builtins_execution.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/for_export_1.c -o used_functions/for_export_1.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/for_export_2.c -o used_functions/for_export_2.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/ft_lstsize.c -o used_functions/ft_lstsize.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c redirections/output_rdr_std_appnd.c -o redirections/output_rdr_std_appnd.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c redirections/input_rdr_std_appnd.c -o redirections/input_rdr_std_appnd.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/export.c -o builtins/export.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c pipes/pipe.c -o pipes/pipe.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c pipes/for_pipe.c -o pipes/for_pipe.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/echo.c -o builtins/echo.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c used_functions/for_echo.c -o used_functions/for_echo.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/cd.c -o builtins/cd.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/pwd.c -o builtins/pwd.o
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/unset.c -o builtins/unset.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/env.c -o builtins/env.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c builtins/exit.c -o builtins/exit.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c interactive_modes/ctrl-D.c -o interactive_modes/ctrl-D.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c interactive_modes/ctrl-C.c -o interactive_modes/ctrl-C.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c interactive_modes/ctrl-slash.c -o interactive_modes/ctrl-slash.o
+ 
+cc  -Wall -Wextra -Werror -g -I /goinfre/hbouqssi/homebrew/opt/readline/include -c garbage/garbage_collector.c -o garbage/garbage_collector.o
+ 
+cc  minishell.o used_functions/minishell_start.o used_functions/ft_strlen.o used_functions/is_validated.o used_functions/ft_strtrim.o used_functions/ft_strcmp.o used_functions/ft_strncmp.o used_functions/ft_atoi.o used_functions/ft_strdup.o used_functions/ft_strjoin_space.o used_functions/ft_strjoin.o used_functions/ft_isalnum.o used_functions/ft_islast.o used_functions/ft_isdigit.o used_functions/ft_substr.o used_functions/ft_strndup.o used_functions/add_back.o parsing/initialize_tokens.o parsing/tokenizing.o parsing/tokenizing_utils_1.o parsing/tokenizing_utils_2.o parsing/tokenizing_utils_3.o parsing/check_syntax.o parsing/check_syntax_utils.o parsing/parser.o parsing/parser_utils_1.o parsing/parser_utils_2.o parsing/expander.o parsing/expander_utils.o used_functions/ft_split.o used_functions/ft_itoa.o used_functions/ft_strrchr.o used_functions/execution_other_builtins.o used_functions/execution.o used_functions/rdr_execution.o used_functions/cmd_founded_y_n.o used_functions/for_cmd_founded_y_n.o used_functions/builtins_execution.o used_functions/for_export_1.o used_functions/for_export_2.o used_functions/ft_lstsize.o redirections/output_rdr_std_appnd.o redirections/input_rdr_std_appnd.o builtins/export.o pipes/pipe.o pipes/for_pipe.o builtins/echo.o used_functions/for_echo.o builtins/cd.o builtins/pwd.o builtins/unset.o builtins/env.o builtins/exit.o interactive_modes/ctrl-D.o interactive_modes/ctrl-C.o interactive_modes/ctrl-slash.o garbage/garbage_collector.o -L /goinfre/hbouqssi/homebrew/opt/readline/lib -lreadline -o minishell
+echo "\033[0;33mDone!"
+make: Leaving directory `/Users/hbouqssi/Desktop/minishell'
+ 

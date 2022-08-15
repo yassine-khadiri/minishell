@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_rdr_std_appnd.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:33:56 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 23:44:52 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/15 14:06:48 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	input_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red)
 		if (red->type == 5)
 		{
 			if (data->fd_h)
+			{
 				data->fd_reds = data->fd_h;
+			}
 			else
 			{
 				data->fd_reds = open(red->file, O_RDONLY, 0777);

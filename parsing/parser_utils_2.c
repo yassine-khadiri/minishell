@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:09:55 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/14 23:17:59 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/15 14:38:30 by hbouqssi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 char	*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir)
 {
+	int				pip[2];
 	t_redirection	*red;
 
+	pipe(pip);
 	red = redir;
 	while (red)
 	{
@@ -25,8 +27,9 @@ char	*exec_herdoc(t_data *data, t_cmdline *cmd, t_redirection *redir)
 		add(&g_tools.garbage, data->file_path);
 		data->file_path = ft_strjoin("/tmp/", ".");
 		data->file_path = ft_strjoin(data->file_path, red->file);
-		data->fd_h = open(data->file_path, O_CREAT | O_RDWR | O_TRUNC, 0777);
-		write(data->fd_h, data->buffer_herdoc, ft_strlen(data->buffer_herdoc));
+		data->fd_h = pip[0];
+		write(pip[1], data->buffer_herdoc, ft_strlen(data->buffer_herdoc));
+		close(pip[1]);
 		if (cmd && !ft_strcmp(cmd->cmd, "echo"))
 			printf("\n");
 		if (data->fd_h == -1)

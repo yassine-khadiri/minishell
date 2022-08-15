@@ -1,11 +1,10 @@
 Makefile
 README.md
 builtins
-g
+file1
+file2
 garbage
-h
 interactive_modes
-j
 minishell
 minishell.c
 minishell.h
@@ -13,5 +12,5 @@ minishell.o
 parsing
 pipes
 redirections
-test
+txt
 used_functions
