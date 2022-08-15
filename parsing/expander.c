@@ -25,7 +25,6 @@ char	*check_remove_dollars(char **env, char *cmd)
 	add(&g_tools.garbage, res);
 	res = crd_res(cmd, var_name, res, env);
 	res[ft_strlen(res)] = '\0';
-	// puts(res);
 	return (res);
 }
 
