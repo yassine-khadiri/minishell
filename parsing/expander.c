@@ -45,7 +45,7 @@ char	*checker_case_1(t_data *data, char *tmp, char *cmd, char *res)
 			return (res);
 		}
 	}
-	return (NULL);
+	return (res);
 }
 
 char	*checker_case_2(t_data *data, char *tmp, char *cmd)
@@ -65,7 +65,6 @@ char	*checker_case_2(t_data *data, char *tmp, char *cmd)
 		tmp[j++] = cmd[data->g_index++];
 	}
 	tmp[j] = '\0';
-	puts(tmp);
 	return (tmp);
 }
 
@@ -76,6 +75,10 @@ char	*expand_readline_herdoc(t_data *data, char *cmd)
 
 	tmp = malloc(sizeof(char) * 1000);
 	res = malloc(sizeof(char) * 1000);
+	if (!res || !tmp)
+		return (NULL);
+	add(&g_tools.garbage, tmp);
+	add(&g_tools.garbage, res);
 	data->g_index = 0;
 	while (cmd[data->g_index])
 	{
@@ -89,7 +92,7 @@ char	*expand_readline_herdoc(t_data *data, char *cmd)
 		else
 			res = ft_strjoin(res, check_res(tmp, data->env));
 	}
-	// res[ft_strlen(res)] = '\0';
+	res[ft_strlen(res)] = '\0';
 	return (res);
 }
 
