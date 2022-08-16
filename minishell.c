@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/16 01:02:00 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 04:24:48 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	main(int argc, char **argv, char **env)
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
-	add(&g_tools.garbage, data);
 	if (!data)
 		return (0);
+	add(&g_tools.garbage, data);
 	data_initializer(data, env);
 	(void)argv;
 	if (argc > 1)

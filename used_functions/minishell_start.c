@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/16 02:31:05 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:35:53 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	minishel_start(t_data *data)
 		if (ft_strlen(data->command_buf) > 0)
 		{
 			data->tokens = ft_tokenizer(&data->tokens, data->command_buf);
-			final_tokens(data, &data->tokens, data->env);
+			final_tokens(data, &data->tokens);
 			launch_minishell(data, cmd);
 			add_history(data->command_buf);
 		}

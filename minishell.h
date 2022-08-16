@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouqssi <hbouqssi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/15 14:28:40 by hbouqssi         ###   ########.fr       */
+/*   Updated: 2022/08/16 19:35:33 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,8 @@ int							word(t_token **tokens, char *str);
 int							dollar(t_token **tokens, char *str);
 int							semicolon(t_token **tokens, char *str);
 t_token						*initialize_list(void);
-char						*crd_res(char *cmd, char *var_name,
-								char *res, char **env);
+char						*crd_res(t_data *data, char *cmd,
+								char *var_name, char *res);
 char						*expand_readline_herdoc_helper(char *cmd, char *tmp,
 								char *res, t_data *data);
 t_token						*create_token(int type, char *value);
@@ -213,7 +213,7 @@ int							tab_size(char **cmd_args);
 t_token						*is_last(t_token *last);
 void						add_back(t_token **lst, t_token *new);
 t_token						*create_token(int type, char *value);
-char						*check_remove_dollars(char **env, char *cmd);
+char						*check_remove_dollars(t_data *data, char *cmd);
 t_token						*ft_tokenizer(t_token **tokens, char *str);
 int							for_squotes(t_token **tokens, int *i,
 								char *str, int *temp);
@@ -254,8 +254,7 @@ char						*ft_itoa(int n);
 int							ft_lstsize(t_cmdline *lst);
 char						*ft_strrchr(const char *s, int c);
 int							ft_atoi(const char *str);
-char						**final_tokens(t_data *data,
-								t_token **token, char **env);
+char						**final_tokens(t_data *data, t_token **token);
 void						data_initializer(t_data *data, char **env);
 void						handler(int signm);
 char						*exec_herdoc(t_data *data, t_cmdline *cmd,

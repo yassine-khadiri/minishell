@@ -12,7 +12,7 @@
 
 #include "../minishell.h"
 
-char	*check_remove_dollars(char **env, char *cmd)
+char	*check_remove_dollars(t_data *data, char *cmd)
 {
 	char	*var_name;
 	char	*res;
@@ -23,7 +23,7 @@ char	*check_remove_dollars(char **env, char *cmd)
 		return (0);
 	add(&g_tools.garbage, var_name);
 	add(&g_tools.garbage, res);
-	res = crd_res(cmd, var_name, res, env);
+	res = crd_res(data, cmd, var_name, res);
 	res[ft_strlen(res)] = '\0';
 	return (res);
 }
