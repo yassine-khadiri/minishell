@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 11:06:20 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 22:34:11 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 02:53:56 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,9 @@ int	output_rdr_std_appnd(t_data *data, t_command *cmd,
 				perror(ft_strjoin("minishell: ", red->file));
 				return (-1);
 			}
+			data->g_std._redout = data->fd_reds;
 		}
-		else
-			return (0);
 		red = red->next;
 	}
-	data->g_std._redout = data->fd_reds;
-	return (1);
+	return (0);
 }

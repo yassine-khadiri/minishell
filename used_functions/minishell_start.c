@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:38:27 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 03:53:17 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 02:31:05 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	minishel_start(t_data *data)
 	{
 		ft_ctl_c();
 		ft_ctl_slash();
+		data->g_std._redin = 0;
+		data->g_std._redout = 1;
 		data->command_buf = readline(BLU "minishell> " WHT);
 		ft_ctl_d(data);
 		if (ft_strlen(data->command_buf) > 0)

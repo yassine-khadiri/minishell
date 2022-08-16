@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_rdr_std_appnd.c                              :+:      :+:    :+:   */
+/*   input_rdr_srd_appnd.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:33:56 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/15 19:41:17 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 03:29:00 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ int	input_rdr_std_appnd(t_data *data, t_command *cmd, t_redirection *red)
 					return (-1);
 				}
 			}
+			data->g_std._redin = data->fd_reds;
 		}
-		else
-			return (0);
 		red = red->next;
 	}
-	data->g_std._redin = data->fd_reds;
-	return (1);
+	return (0);
 }
