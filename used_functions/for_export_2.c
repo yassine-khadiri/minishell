@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:14:40 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 19:00:24 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:21:58 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ char	*ignore_something(char *var_name)
 	j = -1;
 	val = false;
 	new_var = malloc(sizeof(char) * ft_strlen(var_name));
-	add(&g_tools.garbage, new_var);
 	if (!new_var)
 		return (NULL);
+	add(&g_tools.garbage, new_var);
 	while (var_name[++i])
 	{
 		if (var_name[i] == '+' && var_name[i + 1] == '=')

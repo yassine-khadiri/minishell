@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 10:18:25 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/16 19:35:13 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:13:49 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ t_token	*ft_tokenizer(t_token **tokens, char *str)
 	{
 		sub_tokens (tokens, &i, str);
 		if (for_dbquotes (tokens, &i, str, &temp) == 42)
-			return (printf("minishell: syntax error, Missing Db_Quotes\n"),
+			return (write(2, "minishell: syntax error, Missing Db_Quotes\n", 43),
 				NULL);
 		else if (for_squotes (tokens, &i, str, &temp) == 1337)
-			return (printf("minishell: syntax error, Missing S_Quotes\n"),
+			return (write(2, "minishell: syntax error, Missing S_Quotes\n", 42),
 				NULL);
 		else if (not_word(str[i], " |\"<'>;"))
 			i += word(tokens, &str[i]);

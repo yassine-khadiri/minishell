@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 15:38:16 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/13 20:19:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:19:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	check_options(t_command *cmd)
 			return (0);
 		else if (cmd->cmd_array[i + 1][0] == '-')
 		{
-			printf(RED "%s Command Must Works Without Options\n",
-				cmd->cmd_array[i]);
+			write(2, cmd->cmd_array[i], ft_strlen(cmd->cmd_array[i]));
+			write(2, RED" Command Must Works Without Options\n", 44);
 			return (1);
 		}
 	}

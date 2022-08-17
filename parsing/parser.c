@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 00:15:45 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/10 01:43:07 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:12:39 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_cmdline	*init_subcmd(char *cmd)
 	t_cmdline	*sub_cmd;
 
 	sub_cmd = malloc(sizeof(t_cmdline));
-	add(&g_tools.garbage, sub_cmd);
 	if (!sub_cmd)
 		return (NULL);
+	add(&g_tools.garbage, sub_cmd);
 	sub_cmd->cmd = cmd;
 	sub_cmd->next = NULL;
 	return (sub_cmd);

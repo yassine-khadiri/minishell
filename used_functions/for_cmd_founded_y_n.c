@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 19:42:12 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/13 19:23:31 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/17 02:31:09 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	case_1(t_data *data, t_command *cmd, char *path)
 	{
 		path = extract_path(cmd);
 		cmd->cmd_array[0] = (ft_strrchr(cmd->cmd_array[0], '/') + 1);
-		cmd->cmd_array[1] = NULL;
 		data->pid1 = fork();
 		if (data->pid1 < 0)
 			return (0);

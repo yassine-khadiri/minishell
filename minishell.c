@@ -6,22 +6,13 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:10 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/16 04:24:48 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:25:16 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 t_globals	g_tools = {0, 0};
-
-void	setup_term(void)
-{
-	struct termios	t;
-
-	tcgetattr(0, &t);
-	t.c_lflag &= ~ECHOCTL;
-	tcsetattr(0, TCSANOW, &t);
-}
 
 void	data_initializer(t_data *data, char **env)
 {
@@ -54,10 +45,9 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	if (argc > 1)
 	{
-		printf(RED "The Program Works Without Args\n");
+		write(2, RED "The Program Works Without Args\n", 40);
 		exit(1);
 	}
-	setup_term();
 	minishel_start(data);
 	free_all(g_tools.garbage);
 	return (0);

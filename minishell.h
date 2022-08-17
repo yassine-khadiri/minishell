@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:57:48 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/16 19:35:33 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 21:56:32 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # include <stdbool.h>
 # include <signal.h>
 # include <fcntl.h>
-# include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 

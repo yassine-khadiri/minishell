@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 16:42:07 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/14 04:04:02 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:20:17 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ char	*extract_path(t_command *cmd)
 
 	i = 0;
 	command = malloc(sizeof(char *) * ft_strlen(cmd->cmd_array[0]));
-	add(&g_tools.garbage, command);
 	if (!command)
 		return (NULL);
+	add(&g_tools.garbage, command);
 	size = ft_strlen(cmd->cmd_array[0])
 		- ft_strlen(ft_strrchr(cmd->cmd_array[0], '/'));
 	while (cmd->cmd_array[0][i] && i < size)

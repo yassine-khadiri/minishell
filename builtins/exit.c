@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 18:27:51 by ykhadiri          #+#    #+#             */
-/*   Updated: 2022/08/10 19:19:23 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:05:06 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	set_res(t_command *cmd, int index)
 		i++;
 	if (i > 1)
 	{
-		printf("minishell: exit: too many arguments\n");
+		write(2, "minishell: exit: too many arguments\n", 36);
 		return (1);
 	}
 	if (i == 0)
@@ -51,8 +51,9 @@ int	ft_exit(t_command *cmd)
 	{
 		if (!ft_isnumber(cmd->cmd_array[i]))
 		{
-			printf(RED "minishell: exit: %s: numeric argument required\n",
-				cmd->cmd_array[i]);
+			write(2, RED"minishell: exit: ", 25);
+			write(2, cmd->cmd_array[i], ft_strlen(cmd->cmd_array[i]));
+			write(2, ": numeric argument required\n"BLU, 35);
 			break ;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: ykhadiri <ykhadiri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:08:26 by hbouqssi          #+#    #+#             */
-/*   Updated: 2022/08/10 19:18:45 by ykhadiri         ###   ########.fr       */
+/*   Updated: 2022/08/16 22:10:30 by ykhadiri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	none_error(t_token *tokens, t_token *head)
 	result = 0;
 	if (tokens->next->type == PIPE || tokens->next->type == SEMICOLON)
 	{
-		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
-			tokens->next->value);
+		write(2, RED "minishell: syntax error near unexpected token `", 54);
+		write(2, tokens->next->value, ft_strlen(tokens->next->value));
+		write(2, "'\n", 2);
 		g_tools.g_dollar_question = 258;
 		result = 1;
 	}
@@ -55,15 +56,17 @@ int	pipe_error(t_token *tokens, t_token *head)
 	result = 0;
 	if (tokens->next->type == PIPE || tokens->next->type == SEMICOLON)
 	{
-		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
-			tokens->next->value);
+		write(2, RED "minishell: syntax error near unexpected token `", 54);
+		write(2, tokens->next->value, ft_strlen(tokens->next->value));
+		write(2, "'\n", 2);
 		g_tools.g_dollar_question = 258;
 		result = 1;
 	}
 	else if (tokens->next->type == N_line)
 	{
-		printf(RED "minishell: syntax error near unexpected token `%s'\n" WHT,
-			tokens->next->value);
+		write(2, RED "minishell: syntax error near unexpected token `", 54);
+		write(2, tokens->next->value, ft_strlen(tokens->next->value));
+		write(2, "'\n", 2);
 		g_tools.g_dollar_question = 258;
 		result = 1;
 	}
